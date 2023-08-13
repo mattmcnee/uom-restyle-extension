@@ -8,6 +8,13 @@ body{
 
 
 
+/*
+  ---
+  ---
+  --- Nav bar
+  ---
+  ---
+*/
 
 .global-nav-bar-wrap{
   background-color: #5E0366 !important;
@@ -57,8 +64,6 @@ margin-top: 5px;
     background-color: #fff !important;
 }
 
-
-
 /* Top tab indicator */
 .appTabs td.active{
   border: none !important;
@@ -74,7 +79,6 @@ margin-top: 5px;
   width: 100%;
   bottom: -5px;
   background-color: #5E0366;
-/*  border-bottom: 10px solid red;*/
 }
 
 .global-nav-bar .nav-link{
@@ -99,7 +103,6 @@ margin-top: 5px;
   border-radius: 10px !important;
   background-color: #5E0366 !important;
   transform: scale(1.3);
-/*  font-size: 1em !important;*/
 }
 
 #quick_links_wrap a{
@@ -110,15 +113,36 @@ margin-top: 5px;
   border-radius: 15px;
 }
 
+.logout-link{
+  transform: scale(0.8);
+}
+
+#badgeTotalCount{
+  padding: 3px 5px 0 5px;
+  border-radius: 4px;
+}
+
+/* Breadcrumbs */
+.breadcrumbs{
+  border-bottom: none !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+  z-index: 5;
+}
 
 
 
+/*
+  ---
+  ---
+  --- Dropdown menu from nav
+  ---
+  ---
+*/
 
-/* Dropdown menu from nav */
 .flyout-menu{
-  background-color: red;
   margin-top: 30px !important;
   border-radius: 10px;
+  height: calc(100vh - 70px) !important;
 }
 
 .flyout-menu .accordion-wrapper{
@@ -131,15 +155,25 @@ margin-top: 5px;
 }
 
 
+/*
+  ---
+  ---
+  --- Main menu cards
+  ---
+  ---
+*/
 
-
-/* Main menu cards */
 .portlet{
   background-color: white !important;
   border-radius: 10px !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   border-top-left-radius: 10px !important;
   border-color: white !important;
+}
+
+.portlet .collapsible{
+   max-height: 100vh !important;
+  overflow-y: auto !important;
 }
 
 .portlet h2{
@@ -169,14 +203,35 @@ margin-top: 5px;
   margin: 3px 0 !important;
 }
 
+/*#CurrentCourses li a{
+  padding: 8px 0;
+}*/
+
+
 
 /*
   ---
-  Recent courses dropdown
+  ---
+  --- Recent courses dropdown
+  ---
   ---
 */
+
+.courseArrow{
+  transform: scale(1.1);
+}
+
+.courseArrow .cmimg{
+    border: none;
+    outline: none;
+}
+
+.courseArrow a:hover{
+  transform: scale(1.12);
+}
+
 .cmdiv{
-  position: absolute !important;
+/*  position: absolute !important;*/
   top: 124px !important;
   width: 300px;
   height: calc(100vh - 124px - 20px) !important;
@@ -184,15 +239,264 @@ margin-top: 5px;
 }
 
 .cmdiv ul{
-  width: calc(100% - 20px) !important;
-  padding: 0 10px !important;
+  width: calc(100% - 10px) !important;
+  padding: 0 5px 5px 5px !important;
+}
+
+.cmdiv ul .labelMenuItem{
+  padding: 10px 5px 0 5px;
 }
 
 .cmdiv ul li .close-menu{
     border: none;
     outline: none;
     width: 30px !important;
-    margin-left: calc(100% - 40px);
+/*    margin-left: ;*/
+    margin: 5px 10px 0 calc(300px - 80px);
+    transform: scale(1.5);
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+
+
+/*
+  ---
+  ---
+  --- Side menu clicker
+  ---
+  ---
+*/
+
+
+
+.clickpuller{
+/*  background-color: #fff !important;*/
+      border: none !important;
+    outline: none !important;
+    width: 20px !important;
+
+  background-color: transparent !important;
+  background-image: none !important;
+  background-repeat: initial !important;
+/*  background-position: initial !important;
+  background-size: initial !important;*/
+  box-shadow: none !important;
+  z-index: 2 !important;
+
+
+
+    margin-top: 1px;
+    transform: translateX(-8px);
+}
+
+#puller.pullcollapsed{
+  transform: translateX(10px);
+}
+
+#puller.pullcollapsed a:after {
+  display: none;
+}
+
+#puller a:after {
+  display: none;
+}
+
+
+/*
+  ---
+  ---
+  --- Side menu
+  ---
+  ---
+*/
+
+.menuWrap h3 a{
+  color: black !important;
+}
+
+.menuWrap {
+  background-color: white !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+  z-index: 2;
+}
+
+.menuWrap::after{
+  content: "";
+  background-color: white; !important;
+  z-index: 10;
+  width:100%;
+  height: 10px;
+  position: absolute;
+  border-top: 1px solid #eee;
+  top: 0;
+  left: 0;
+}
+
+
+.menuWrap .navPaletteContent{
+  background-color: white !important;
+}
+
+/*.menuWrap .courseMenu, */
+
+.menuWrap .courseMenu{
+  background-color: white !important;
+}
+
+#courseMenuPalette_contents li {
+  background-color: white !important;
+}
+
+#courseMenuPalette_contents li a span{
+  color: black !important;
+}
+
+#courseMenuPalette h3 a{
+  color: black !important;
+}
+
+#courseMenuPalette_paletteTitleHeading h3 {
+  background-color: white !important;
+  color: black !important;
+}
+
+#courseMenuPalette, #courseMenuPalette ul, .courseMenu span, .courseMenu a{
+  background-color: white !important;
+  color: black !important;
+}
+
+#courseMenuPalette #courseMapButton{
+  margin: 0;
+  flex-grow: 1;
+  position: absolute;
+  left: 30px;
+  top: 11px;
+}
+
+#courseMenuPalette #refreshMenuLink{
+  margin: 0;
+  flex-grow: 1;
+  position: absolute;
+  left: 53px;
+  top: 11px;
+}
+
+#courseMenuPalette .actionBarMicro ul li a {
+  padding: 1px !important;
+  margin: 0 !important;
+  border-radius: 4px !important;
+  background-color: #777;
+} 
+
+.actionBarMicro ul{
+  display: flex !important;
+  justify-content: center !important;
+  float: none !important;
+  padding: 10px 10px 0 10px !important;
+  margin: 0 !important;
+}
+
+.actionBarMicro{
+  height: 0 !important;
+}
+
+.navPaletteContent{
+  padding-top: 0 !important;
+}
+
+.navPaletteTitle{
+  padding-top: 30px;
+}
+
+.navPaletteTitle h3 {
+  position: initial !important;
+}
+
+
+#homeicon:before {
+  position: absolute !important;
+  top: 7px !important;
+  left: 0px !important;
+  color: #ccc !important;
+  background-color: #777;
+  padding: 1px 2.5px !important;
+  width: 15px !important;
+  border-radius: 4px !important;
+  transform: scale(0.90);
+}
+
+
+
+/*
+  ---
+  ---
+  --- Course content
+  ---
+  ---
+*/
+
+.contentList .liItem .item_icon{
+/*  display: none;*/
+/*background-color: #eee;*/
+box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+border-radius: 5px;
+/*position: initial !important;*/
+left: 28px !important;*/
+}
+
+.contentList, .contentListPlain{
+  margin: 0 !important;
+}
+
+.shadow .container{
+  border: none !important;
+  border-radius: 10px !important;
+  margin: 0 0 0 0 !important;
+  padding: 0 !important;
+  width: calc(100% - 1px);
+/*  overflow-x: hidden;
+  overflow-y: visible;*/
+}
+
+.contentList li, .contentListPlain li{
+  border: none !important;
+  border-top: 1px solid #eee !important;
+/*    display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;*/
+  
+}
+
+/*.contentList ul, .contentListPlain ul{
+  border-bottom: 1px solid #eee !important;
+}*/
+
+.contentList li{
+  min-height: 20px !important;
+  padding: 25px 30px !important;
+}
+
+.contentList li:nth-child(odd) {
+  background-color: #fbfbfb !important;
+}
+
+.contentList li:nth-child(even) {
+  background-color: #fefefe !important;
+}
+
+.contentList .liItem span{
+  background-color: transparent !important;
+}
+
+.item h3 a span{
+  text-decoration: none !important;
+}
+
+.contentList .details li{
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
 }
 
 
@@ -202,6 +506,19 @@ margin-top: 5px;
 
 
 
+
+
+
+
+/*.pageTitleIcon::before {
+    content: "<h1>Hi</h1>";
+    display: block;
+    margin: 3px 0 0 6px;
+    color: #666;
+    position: absolute;
+    right: 7px;
+    top: 3px;
+}*/
 
 
 /*.appTabs td.active a{
@@ -237,8 +554,8 @@ margin-top: 5px;
 
 /*#module\\:_334_1{
   display: none !important;
-}
-*/
+}*/
+
 
 
 
