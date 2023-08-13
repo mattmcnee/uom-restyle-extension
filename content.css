@@ -461,7 +461,7 @@ left: 28px !important;*/
   background-color: #fefefe !important;
 }
 
-.contentList .liItem span{
+.contentList .liItem span, .contentList .liItem div{
   background-color: transparent !important;
 }
 
