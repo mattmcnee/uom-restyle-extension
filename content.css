@@ -6,6 +6,10 @@ body{
   background-color: #fff !important;
 }
 
+/* Main content holder*/
+.locationPane{
+    margin-top: 0 !important;
+}
 
 
 /*
@@ -154,6 +158,10 @@ margin-top: 5px;
   border-top-left-radius: 10px;
 }
 
+.flyout-menu .bottom-buttons-help, .flyout-menu .bottom-buttons{
+  border-bottom-right-radius: 10px !important;
+}
+
 
 /*
   ---
@@ -173,6 +181,10 @@ margin-top: 5px;
 
 .portlet .collapsible{
    max-height: 100vh !important;
+  overflow-y: hidden !important;
+}
+
+.portlet .collapsible:hover{
   overflow-y: auto !important;
 }
 
@@ -203,12 +215,6 @@ margin-top: 5px;
   margin: 3px 0 !important;
 }
 
-/*#CurrentCourses li a{
-  padding: 8px 0;
-}*/
-
-
-
 /*
   ---
   ---
@@ -231,7 +237,6 @@ margin-top: 5px;
 }
 
 .cmdiv{
-/*  position: absolute !important;*/
   top: 124px !important;
   width: 300px;
   height: calc(100vh - 124px - 20px) !important;
@@ -251,13 +256,11 @@ margin-top: 5px;
     border: none;
     outline: none;
     width: 30px !important;
-/*    margin-left: ;*/
     margin: 5px 10px 0 calc(300px - 80px);
     transform: scale(1.5);
     padding: 0 !important;
     background-color: transparent !important;
 }
-
 
 
 /*
@@ -269,25 +272,17 @@ margin-top: 5px;
 */
 
 
-
 .clickpuller{
-/*  background-color: #fff !important;*/
-      border: none !important;
-    outline: none !important;
-    width: 20px !important;
-
+  border: none !important;
+  outline: none !important;
+  width: 20px !important;
   background-color: transparent !important;
   background-image: none !important;
   background-repeat: initial !important;
-/*  background-position: initial !important;
-  background-size: initial !important;*/
   box-shadow: none !important;
   z-index: 2 !important;
-
-
-
-    margin-top: 1px;
-    transform: translateX(-8px);
+  margin-top: 1px;
+  transform: translateX(-8px);
 }
 
 #puller.pullcollapsed{
@@ -333,12 +328,9 @@ margin-top: 5px;
   left: 0;
 }
 
-
 .menuWrap .navPaletteContent{
   background-color: white !important;
 }
-
-/*.menuWrap .courseMenu, */
 
 .menuWrap .courseMenu{
   background-color: white !important;
@@ -413,7 +405,6 @@ margin-top: 5px;
   position: initial !important;
 }
 
-
 #homeicon:before {
   position: absolute !important;
   top: 7px !important;
@@ -426,8 +417,6 @@ margin-top: 5px;
   transform: scale(0.90);
 }
 
-
-
 /*
   ---
   ---
@@ -437,11 +426,8 @@ margin-top: 5px;
 */
 
 .contentList .liItem .item_icon{
-/*  display: none;*/
-/*background-color: #eee;*/
 box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 border-radius: 5px;
-/*position: initial !important;*/
 left: 28px !important;*/
 }
 
@@ -455,22 +441,12 @@ left: 28px !important;*/
   margin: 0 0 0 0 !important;
   padding: 0 !important;
   width: calc(100% - 1px);
-/*  overflow-x: hidden;
-  overflow-y: visible;*/
 }
 
 .contentList li, .contentListPlain li{
   border: none !important;
-  border-top: 1px solid #eee !important;
-/*    display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;*/
-  
+  border-top: 1px solid #eee !important;  
 }
-
-/*.contentList ul, .contentListPlain ul{
-  border-bottom: 1px solid #eee !important;
-}*/
 
 .contentList li{
   min-height: 20px !important;
@@ -500,80 +476,20 @@ left: 28px !important;*/
 }
 
 
+/*
+  ---
+  ---
+  --- Screen readjustment rules
+  ---
+  ---
+*/
 
-
-
-
-
-
-
-
-
-
-/*.pageTitleIcon::before {
-    content: "<h1>Hi</h1>";
-    display: block;
-    margin: 3px 0 0 6px;
-    color: #666;
-    position: absolute;
-    right: 7px;
-    top: 3px;
-}*/
-
-
-/*.appTabs td.active a{
-  color: #c56fd5;
-}
-
-.appTabs .active a, .appTabs .active a:hover, .appTabs .active a:focus {
-  color:grey !important;
-}
-
-.appTabs td.active a:hover{
-  color:black !important;
-}*/
-
-/*Screen readjustment rules*/
 @media only screen and (min-width: 320px) and (max-width: 1037px){
   .global-nav-bar .nav-link{
-  margin: 0 !important;
+    margin: 0 !important;
+  }
+
+  .tabWrapper-right{
+    display: block; !important;
+  }
 }
-
-.tabWrapper-right{
-  display: block; !important;
-}
-
-}
-
-
-/* Main content holder*/
-.locationPane{
-    margin-top: 0 !important;
-}
-
-
-/*#module\\:_334_1{
-  display: none !important;
-}*/
-
-
-
-
-
-
-
-/*.topTabs{
-  background-color: green;
-}
-
-.bgBanner{
-  background-color: orange;
-}
-
-.bouncer{
-  background-color: turquoise;
-}
-
-.global-nav-bar-wrap{
-  background-color: pink;
-}*/
