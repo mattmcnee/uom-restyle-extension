@@ -49,12 +49,17 @@ margin-top: 5px;
 
 .locationPane .contentPaneWide .container{
   border: none !important;
-  margin: 0 !important;
+/*  margin: 0 !important;*/
 }
 
+.contentPane .shadow {
+    border-top: 6px solid #fff !important;
+    background-color: #fff !important;
+}
+
+
+
 /* Top tab indicator */
-
-
 .appTabs td.active{
   border: none !important;
   position: relative;
@@ -126,6 +131,8 @@ margin-top: 5px;
 }
 
 
+
+
 /* Main menu cards */
 .portlet{
   background-color: white !important;
@@ -153,14 +160,44 @@ margin-top: 5px;
   border: none !important;
 }
 
+.portlet .tab button:hover{
+  cursor: pointer;
+}
+
+
 .portlet .tabcontent h3{
   margin: 3px 0 !important;
 }
 
 
-/*.global-nav-bar{
-    padding: 15px !important;
-}*/
+/*
+  ---
+  Recent courses dropdown
+  ---
+*/
+.cmdiv{
+  position: absolute !important;
+  top: 124px !important;
+  width: 300px;
+  height: calc(100vh - 124px - 20px) !important;
+  overflow: hidden auto !important;
+}
+
+.cmdiv ul{
+  width: calc(100% - 20px) !important;
+  padding: 0 10px !important;
+}
+
+.cmdiv ul li .close-menu{
+    border: none;
+    outline: none;
+    width: 30px !important;
+    margin-left: calc(100% - 40px);
+}
+
+
+
+
 
 
 
