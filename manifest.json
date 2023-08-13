@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Blackboard Restyle",
+  "version": "1.0",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://online.manchester.ac.uk/*"],
+      "css": ["content.css"],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "16": "icon-16.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    },
+    "default_popup": "popup.html"
+  }
+}
+
+
