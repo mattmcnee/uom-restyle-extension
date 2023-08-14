@@ -29,7 +29,7 @@ body{
 .tabWrapper-right{
   height: 20px;
   position: absolute;
-  top: 8px;
+  top: 1px;
   right: 240px;
   background-color: none !important;
   transform: scaleY(0.5);
@@ -67,13 +67,28 @@ margin-top: 5px;
     border-top: 6px solid #fff !important;
     background-color: #fff !important;
 }
+.appTabs td{
+  height: 20px !important;
+  padding: 20px 0 20px 0 !important;
+  vertical-align: top !important;
+}
+
 
 /* Top tab indicator */
 .appTabs td.active{
-  border: none !important;
   position: relative;
-  padding-top: 3px;
+  padding: 0px 0 14px 0 !important;
+  transform: translateY(15px);
 }
+
+.appTabs td.active + td{
+  transform: translateY(-5px);
+}
+/*
+.appTabs td.active a{
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}*/
 
 /* Hides tab border */
 .appTabs td.active::before{
@@ -81,7 +96,7 @@ margin-top: 5px;
   position: absolute;
   height: 10px;
   width: 100%;
-  bottom: -5px;
+  bottom: 8px;
   background-color: #5E0366;
 }
 
@@ -143,24 +158,51 @@ margin-top: 5px;
   ---
 */
 
+.global-nav-bar .nav-link{
+  outline: none !important;
+}
+
 .flyout-menu{
   margin-top: 30px !important;
   border-radius: 10px;
   height: calc(100vh - 70px) !important;
+  background-color: #5E0366 !important;
+  width: 350px !important;
 }
+
 
 .flyout-menu .accordion-wrapper{
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+  width: 301px !important; /* -49 */
 }
 
 .flyout-menu .mybb-tools{
   border-top-left-radius: 10px;
+  background-color: #5E0366 !important;
 }
 
 .flyout-menu .bottom-buttons-help, .flyout-menu .bottom-buttons{
   border-bottom-right-radius: 10px !important;
 }
+
+.flyout-menu .bottom-buttons{
+  width: 301px !important;
+}
+
+.flyout-menu .bottom-buttons li{
+  width: 50% !important;
+}
+
+.accordion_content{
+  height: calc(100vh - 199px) !important;
+}
+
+.flyout-menu .mybb-tools a{
+  outline: none !important;
+}
+
+
 
 
 /*
@@ -378,7 +420,7 @@ margin-top: 5px;
   padding: 1px !important;
   margin: 0 !important;
   border-radius: 4px !important;
-  background-color: #777;
+  background-color: #999;
 } 
 
 .actionBarMicro ul{
@@ -409,8 +451,8 @@ margin-top: 5px;
   position: absolute !important;
   top: 7px !important;
   left: 0px !important;
-  color: #ccc !important;
-  background-color: #777;
+  color: #ddd !important;
+  background-color: #999;
   padding: 1px 2.5px !important;
   width: 15px !important;
   border-radius: 4px !important;
@@ -474,6 +516,52 @@ left: 28px !important;*/
   border: none !important;
   padding: 0 !important;
 }
+
+.contentList li img, .contentListPlain li img{
+  border-radius: 10px !important;
+}
+
+/*
+  ---
+  ---
+  --- Blackboard main
+  ---
+  ---
+*/
+
+/*#5E0366*/
+.iframe-wrap{
+  border: none !important;
+/*  width: 100% !important;*/
+}
+
+.cloud-iframe {
+}
+
+
+.side-nav{
+  background-color: #fff  !important;
+}
+
+
+
+/*
+  ---
+  ---
+  --- iframe content -- loads from https://github.com/mattmcnee/uom-restyle-extension/blob/main/content.css
+  ---
+  ---
+*/
+
+
+
+.stream_header{
+  background-color: red !important;
+}
+
+
+
+
 
 
 /*
