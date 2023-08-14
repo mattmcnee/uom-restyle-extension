@@ -941,4 +941,34 @@ margin-top: 5px;
   border-bottom: none !important;
 }
 
+.filterBarHorizontal {
+  width: calc(100% - 15px) !important;
+}
+
+.filterBarHorizontal li{
+  height: 30px !important;
+}
+
+#filterby {
+  padding: 15px 0 10px 10px !important;
+}
+
+.filterBarHorizontal ul li a {
+  padding: 3px 5px !important;
+  border-radius: 5px !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.sorter select{
+  border: none !important;
+  outline: none !important;
+  border-radius: 5px !important;
+}
+
+#streamDetail .receiptBarHorizontal {
+  bottom: 0 !important;
+  margin: 0 35px !important;
+}
+
 
