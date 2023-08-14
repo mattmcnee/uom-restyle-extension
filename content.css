@@ -203,6 +203,20 @@ margin-top: 5px;
   outline: none !important;
 }
 
+.flyout-menu .accordion_content a{
+  text-decoration: none !important;
+  border-bottom: none !important;
+  margin-bottom: 1px !important;
+}
+
+.flyout-menu .accordion_content li{
+  border-top: 1px dotted #ccc !important;
+}
+
+.flyout-menu .accordion_content li:first-child {
+  border: none !important;
+}
+
 
 
 
