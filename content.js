@@ -288,6 +288,32 @@ var inlineCSS = `
   border-bottom: 1px dashed #ccc !important;
 }
 
+/* Updates */
+#streamHeader_alerts{
+  padding: 0 5px 15px 5px !important;
+}
+
+#streamHeader_alerts h1{
+  margin-top: 20px !important;
+  margin-left: 10px !important;
+}
+
+#dynamic_filters_alerts{
+  background-color: var(--background-main) !important;
+}
+
+#dynamic_filters_alerts a{
+  text-decoration: none !important;
+}
+
+#left_stream_stream{
+  padding-top: 20px !important;
+}
+
+#column_0, #column_1, #mybb_column_wrapper{
+  background-color: var(--background-main);
+}
+
 
 `;
 
