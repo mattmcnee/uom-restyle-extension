@@ -615,15 +615,83 @@ left: 28px !important;*/
   border: none !important;
   padding: 0 !important;
   box-shadow: none !important;
-  opacity: 1 !important;
+}
+
+#selectAll_top, #selectNone_top{
+    padding: 0.1rem 0.4rem 0.1rem 0.4rem !important;
+  background-color: #dadada;
+    box-shadow: inset 0 0 0 2px #dadada;
+    text-decoration: none !important;
+}
+
+.thread-controls-top .navigationBar button{
+    padding: 0.1rem 0.4rem 0.1rem 0.4rem !important;
+  background-color: #dadada;
+    box-shadow: inset 0 0 0 2px #dadada;
+    border: none !important;
+}
+
+.thread-controls-top .navigationBar button img{
+   border-radius: 2px !important;
+}
+
+.dbThreadInfo{
+  
+}
+
+.unread-posts, .unread-replies-to-me-posts{
+  border: none !important;
+  background-color: transparent !important;
+  position: relative !important;
+}
+
+.unread-posts:before, .unread-replies-to-me-posts:before{
+  font-size: 1.5em;
+  content: '•';
+  position: absolute;
+  top: 2px;
+  left: -6px;
+  width: 5px;
+  height: 100%;
+  z-index: 2;
+}
+
+.dbThreadInfo div:first-child {
+  margin-right: 9px;
 }
 
 .actionBar .secondaryButton{
-  background-color: #888 !important;
-  padding-left: 10px !important;
+  outline: none !important;
+  border-radius: 4px !important;
 }
 
-.actionBar .secondaryButton:before{
+/*#selectAll_top{
+  position: absolute !important;
+  top: 40px;
+  left: 40px;
+  z-index: 2;
+  padding: 0.5625rem 1.125rem 0.625rem !important;
+  background-color: #dadada;
+    box-shadow: inset 0 0 0 2px #dadada;
+}*/
+
+/*#selectNone_top{
+  position: absolute !important;
+  top: 50px;
+  left: 40px;
+  z-index: 2;
+}*/
+
+/*#messageDetailActionMenu{
+  margin-left: 50px !important;
+}*/
+
+/*.actionBar .secondaryButton{
+  background-color: #888 !important;
+  padding-left: 10px !important;
+}*/
+
+/*.actionBar .secondaryButton:before{
     content: '';
   position: absolute;
   top: 0;
@@ -661,7 +729,7 @@ left: 28px !important;*/
   background-repeat: initial !important;
   box-shadow: none !important;
   color: black !important;
-}
+}*/
 
 .profileCardAvatarThumb img{
   border-radius: 50% !important;
@@ -687,14 +755,28 @@ left: 28px !important;*/
   margin-top: 46px !important;
 }
 
-.message-wrapper-inner{
+/*.message-wrapper-inner{
   margin-top: 0 !important;
   padding-top: 0 !important;
+  background-color: #fff !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-top: 1px solid #ccc !important;
+}
+
+.db-reply-block{
+  border: none !important;
 }
 
 .db-message-wrapper{
   padding-top: 0 !important;
-}
+  border: none !important;
+}*/
+
+
+
+
+
 
 /*.navigationBar{
   position: absolute !important;
