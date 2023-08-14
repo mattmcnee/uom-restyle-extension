@@ -189,7 +189,7 @@ var inlineCSS = `
 }
 
 
-/* My marks */
+/* grade breakdown */
 #grades_wrapper div{
   border: none !important;
   box-shadow: none !important;
@@ -213,6 +213,7 @@ var inlineCSS = `
 
 #grades_wrapper {
   margin-top: 70px !important;
+  margin-bottom: 30px !important;
 }
 
 .grades_header{
@@ -236,6 +237,7 @@ var inlineCSS = `
 .filterBarHorizontal li{
   height: 30px !important;
 }
+
 #filterby {
   padding: 15px 0 10px 10px !important;
 }
@@ -256,6 +258,34 @@ var inlineCSS = `
 #streamDetail .receiptBarHorizontal {
   bottom: 0 !important;
   margin: 0 35px !important;
+}
+
+/* my marks */
+
+#left_stream_mygrades .stream_item:nth-child(odd) {
+  background-color: var(--background-tint-1) !important;
+}
+
+#left_stream_mygrades .stream_item:nth-child(odd):hover {
+  background-color: var(--background-tint-1-highlight) !important;
+}
+
+#left_stream_mygrades .stream_item:nth-child(even) {
+  background-color: var(--background-tint-2); !important;
+}
+
+#left_stream_mygrades .stream_item:nth-child(even):hover {
+  background-color: var(--background-tint-2-highlight) !important;
+}
+
+.stream_item {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.active_stream_item {
+  border-bottom: 1px dashed #ccc !important;
 }
 
 
