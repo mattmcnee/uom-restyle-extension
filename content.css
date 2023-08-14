@@ -625,6 +625,51 @@ margin-top: 5px;
   .appTabs td.active::before{
     display: none;
   }
+
+  #global-nav .u_floatThis-right{
+    width: 120px !important;
+    height: 40px !important;
+    top: -140px !important;
+    left: 10px !important;
+  }
+  #global-nav .global-top-avatar {
+    top: 5px !important;
+    left: 5px !important;
+    margin: initial !important;
+  }
+
+  #appTabList{
+    margin-top: 100px !important;
+    min-width: 0 !important;
+  }
+
+  #appTabList td{
+    border-bottom: none !important;
+    margin-bottom: 10px !important;
+  }
+
+  .bgBanner .tabWrapper-right{
+    width: 200px;
+  }
+
+  #global-nav-flyout{
+    top: 0 !important;
+    margin-top: 0 !important;
+    height: 70vh !important;
+  }
+
+  #bottomButtons li{
+    height: 25px !important;
+    background-color: var(--background-main) !important;
+  }
+
+/*  #puller{
+    position: absolute !important;
+    left: 200px !important;
+    top: 200px !important;
+    z-index: 20;
+  }*/
+
 }
 
 /*
