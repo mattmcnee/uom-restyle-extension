@@ -542,13 +542,13 @@ left: 28px !important;*/
 }
 
 .uomFooter:before{
-    content: "";
+  content: "";
   position: absolute;
   height: 3px;
-  width: calc(100vw - 97px);
+  width: 100%;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: #fff;
 }
 
 .uomFooter span a{
