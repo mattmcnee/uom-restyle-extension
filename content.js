@@ -76,11 +76,9 @@ box-shadow: none !important;
 
 
 
+if(iframe != null){
+  addInlineStylesInIframe(iframe, inlineCSS);
+}
 
-
-
-
-
-addInlineStylesInIframe(iframe, inlineCSS);
 
 
