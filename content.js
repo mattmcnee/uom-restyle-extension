@@ -12,29 +12,47 @@ console.log('Custom script injected');
 
 
 
-// const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-// console.log(iframeDoc);
-       // Function to add inline CSS rules inside the iframe
+// Function to add inline CSS rules inside the iframe
 function addInlineStylesInIframe(iframeElement, cssRules) {
     iframeElement.onload = function() {
+        // Loads inner document
         var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
         console.log(iframeDocument);
+
         // Create a new <style> element for inline styles
         var styleElement = iframeDocument.createElement("style");
         styleElement.type = "text/css";
-
-        console.log(cssRules);
         styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
-        
-        console.log(styleElement);
-        // Append the style element to the iframe's head
         iframeDocument.head.appendChild(styleElement);
+
+        // deals with iframe-ception
+        var iframe2 = iframeDocument.getElementById("right_stream_mygrades");
+        console.log("iframe2 "+iframe2);
+        if(iframe2 != null){
+          console.log("added")
+          addInlineStylesInIframe(iframe2, cssRules);
+        }
     };
 }
 
-        // Call the function to add inline styles
-var iframe = document.getElementById("mybbCanvas");
 var inlineCSS = `
+
+:root {
+  --main-theme: #5E0366;
+
+  --background-main: #fff;
+
+  --background-tint-1: #fbfbfb;
+
+  --background-tint-1-highlight: #f4f4f4;
+
+  --background-tint-2: #fefefe;
+
+  --background-tint-2-highlight: #f7f7f7;
+}
+
+
+/* Calendar */
 
 .stream_header{
   background-color: #fff !important;
@@ -131,7 +149,7 @@ var inlineCSS = `
 .colorPicker-picker{
   position: absolute;
   right: 0 !important;
-  top: -4px !important; 
+  top: -6px !important; 
   transform: rotateZ(45deg) scale(1.2);
 }
 
@@ -163,7 +181,7 @@ var inlineCSS = `
 .fc-header button{
   background-image: none !important;
   background-color: #dadada;
-  box-shadow: inset 0 0 0 2px #dadada;
+  box-shadow: inset 0 0 0 2px #dadada !important;
   border: none !important;
   border-radius: 5px !important;
   text-align: center;
@@ -171,17 +189,60 @@ var inlineCSS = `
 }
 
 
+/* My marks */
+#grades_wrapper div{
+  border: none !important;
+  box-shadow: none !important;
+}
 
+#grades_wrapper .sortable_item_row:nth-child(odd) {
+  background-color: var(--background-tint-1) !important;
+}
 
+#grades_wrapper .sortable_item_row:nth-child(odd):hover {
+  background-color: var(--background-tint-1-highlight) !important;
+}
+
+#grades_wrapper .sortable_item_row:nth-child(even) {
+  background-color: var(--background-tint-2); !important;
+}
+
+#grades_wrapper .sortable_item_row:nth-child(even):hover {
+  background-color: var(--background-tint-2-highlight) !important;
+}
+
+#grades_wrapper {
+  margin-top: 70px !important;
+}
+
+.grades_header{
+  box-shadow: none !important;
+  border-bottom: none !important;
+}
+
+#streamDetailRightColumn .detail-heading {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
+#streamDetailRightColumn .detail-heading h2 a {
+  border-bottom: none !important;
+}
 
 
 `;
 
-
-
+var iframe = document.getElementById("mybbCanvas");
+var iframe2 = document.getElementById("right_stream_mygrades");
+console.log(iframe2);
 if(iframe != null){
   addInlineStylesInIframe(iframe, inlineCSS);
+}else{
+  if(iframe2 != null){
+    addInlineStylesInIframe(iframe2, inlineCSS);
+  }
 }
+
 
 
 
