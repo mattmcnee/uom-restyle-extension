@@ -403,18 +403,16 @@ margin-top: 5px;
 
 #courseMenuPalette #courseMapButton{
   margin: 0;
-  flex-grow: 1;
-  position: absolute;
-  left: 30px;
-  top: 11px;
+  position: absolute !important;
+  left: 30px !important;
+  top: 11px !important;
 }
 
 #courseMenuPalette #refreshMenuLink{
   margin: 0;
-  flex-grow: 1;
-  position: absolute;
-  left: 53px;
-  top: 11px;
+  position: absolute !important;
+  left: 53px !important;
+  top: 11px !important;
 }
 
 #courseMenuPalette .actionBarMicro ul li a {
@@ -460,6 +458,10 @@ margin-top: 5px;
   transform: scale(0.90);
 }
 
+.menuWrap .courseMenu a{
+  outline: none !important;
+}
+
 /*
   ---
   ---
@@ -500,8 +502,16 @@ left: 28px !important;*/
   background-color: #fbfbfb !important;
 }
 
+.contentList li:nth-child(odd):hover {
+  background-color: #f4f4f4 !important;
+}
+
 .contentList li:nth-child(even) {
   background-color: #fefefe !important;
+}
+
+.contentList li:nth-child(even):hover {
+  background-color: #f8f8f8 !important;
 }
 
 .contentList .liItem span, .contentList .liItem div{
@@ -570,8 +580,148 @@ left: 28px !important;*/
 
   .tabWrapper-right{
     display: block; !important;
+    transform: scaleY(1);
+  }
+
+  .tabWrapper-right a{
+    transform: scaleY(1);
+  }
+
+  .appTabs{
+    transform: translateX(500px);
+  }
+
+  .appTabs td.active::before{
+    display: none;
   }
 }
+
+/*
+  ---
+  ---
+  --- Discussion boards
+  ---
+  ---
+*/
+
+
+.db-conversation {
+  margin-right: 30px !important;
+}
+
+.actionBar{
+  margin-right: 30px !important;
+  margin-top: 20px !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.actionBar .secondaryButton{
+  background-color: #888 !important;
+  padding-left: 10px !important;
+}
+
+.actionBar .secondaryButton:before{
+    content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 100%;
+  background-color: #fff;
+  z-index: 2;
+}
+
+
+.actionBar .secondaryButton:after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 2;
+  display: block;
+  opacity: 0;
+  transition: .4s;
+}
+
+.actionBar .secondaryButton:hover:after{
+  opacity: 1;
+  transition: .4s;
+}
+
+.actionBar .secondaryButton a{
+  z-index: 3;
+  background-color: transparent !important;
+  background-image: none !important;
+  background-repeat: initial !important;
+  box-shadow: none !important;
+  color: black !important;
+}
+
+.profileCardAvatarThumb img{
+  border-radius: 50% !important;
+  border: none;
+}
+
+.profileCardAvatarThumb button{
+  background-color: transparent !important;
+}
+
+.dbThreadDetailTreeRowCellItem .message_selection_checkboxes{
+  margin-left: 5px !important;
+  margin-top: 22px !important;
+}
+
+.dbThreadDetailTreeRowCellItem + .flag{
+  margin-left: 2px !important;
+  margin-top: 5px !important;
+}
+
+.dbThreadDetailTreeRowCellItem + .read-status{
+  margin-left: 2px !important;
+  margin-top: 46px !important;
+}
+
+.message-wrapper-inner{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.db-message-wrapper{
+  padding-top: 0 !important;
+}
+
+/*.navigationBar{
+  position: absolute !important;
+  top: -80px !important;
+}*/
+
+/*#pageTitleText{
+  position: absolute !important;
+  bottom: 0 !important; 
+}*/
+
+/*.dbThreadInfo{
+    position: absolute !important;
+  top: -40px !important;
+  right: 0 !important;
+}*/
+
+
+
+
+
+
+
+
+
+
+
 
 /*
   ---
