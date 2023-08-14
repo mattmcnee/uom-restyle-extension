@@ -9,6 +9,7 @@ body{
 /* Main content holder*/
 .locationPane{
     margin-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 
@@ -524,6 +525,57 @@ left: 28px !important;*/
 /*
   ---
   ---
+  --- Front page footer
+  ---
+  ---
+*/
+
+.uomFooter{
+  margin-top: 10px !important;
+}
+
+.uomFooter span{
+  display: inline-block !important;
+  width: 100%;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.uomFooter:before{
+    content: "";
+  position: absolute;
+  height: 3px;
+  width: calc(100vw - 97px);
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+.uomFooter span a{
+  text-decoration: none !important;
+}
+
+/*
+  ---
+  ---
+  --- Screen readjustment rules
+  ---
+  ---
+*/
+
+@media only screen and (min-width: 320px) and (max-width: 1037px){
+  .global-nav-bar .nav-link{
+    margin: 0 !important;
+  }
+
+  .tabWrapper-right{
+    display: block; !important;
+  }
+}
+
+/*
+  ---
+  ---
   --- Blackboard main
   ---
   ---
@@ -545,7 +597,6 @@ left: 28px !important;*/
 }
 
 
-
 /*
   ---
   ---
@@ -555,6 +606,8 @@ left: 28px !important;*/
 */
 
 
+
+/* Calendar */
 
 .stream_header{
   background-color: #fff !important;
@@ -597,27 +650,11 @@ box-shadow: none !important;
     row-gap: 2px !important;
 }*/
 
-
-
-
-
-
-
-
-/*
-  ---
-  ---
-  --- Screen readjustment rules
-  ---
-  ---
-*/
-
-@media only screen and (min-width: 320px) and (max-width: 1037px){
-  .global-nav-bar .nav-link{
-    margin: 0 !important;
-  }
-
-  .tabWrapper-right{
-    display: block; !important;
-  }
+.fc-border-separate .fc-state-highlight{
+  background-color: lightblue !important;
 }
+
+
+
+
+

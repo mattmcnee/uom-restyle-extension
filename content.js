@@ -72,6 +72,15 @@ box-shadow: none !important;
   padding: 3px 0 !important;
 }
 
+.fc-border-separate .fc-state-highlight{
+  background-color: lightblue !important;
+}
+
+
+
+
+
+
 `;
 
 
