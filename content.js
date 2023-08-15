@@ -37,7 +37,7 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
 
 var inlineCSS = `
 
-:root {
+:root {  
   --main-theme: #5E0366;
 
   --background-main: #fff;
@@ -49,6 +49,20 @@ var inlineCSS = `
   --background-tint-2: #fefefe;
 
   --background-tint-2-highlight: #f7f7f7;
+
+  --secondary-button: #dadada;
+
+  --primary-button: #5E0366;
+
+  --text-main: #000;
+
+  --global-font: Arial, sans-serif;
+/*  --global-font: Consolas, monospace;*/
+}
+
+*{
+  font-family: var(--global-font) !important;
+  outline: none !important;
 }
 
 

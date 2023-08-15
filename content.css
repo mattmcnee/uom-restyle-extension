@@ -20,15 +20,26 @@
   --text-main: #000;
 
   --global-font: Arial, sans-serif;
+/*  --global-font: Consolas, monospace;*/
 }
+
+*{
+  font-family: var(--global-font) !important;
+  outline: none !important;
+}
+
+
+/*
+  ---
+  ---
+  --- Copy all above this to content.js if changed
+  ---
+  ---
+*/
 
 body{
   background-color: var(--background-main) !important;
-  font-family: var(--global-font);
-}
-
-a, input, select{
-  outline: none !important;
+  font-family: var(--global-font) !important;
 }
 
 .contentBox{
