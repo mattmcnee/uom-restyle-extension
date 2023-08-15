@@ -716,6 +716,7 @@ margin-top: 5px;
   color: #333 !important;
   font-size: 16px !important;
   margin-top: 2px !important;
+  content: "F";
 }
 
 .actionBar a{
@@ -747,8 +748,6 @@ margin-top: 5px;
 #searchActionButtonId a:after{
   content: "Search" !important;
 }
-
-
 
 #selectAll_top, #selectNone_top{
   padding: 0.1rem 0.4rem 0.1rem 0.4rem !important;
@@ -819,6 +818,99 @@ margin-top: 5px;
   margin-left: 2px !important;
   margin-top: 46px !important;
 }
+
+.threadButtons .reply {
+  background-color: var(--main-theme) !important;
+  background-image: none !important;
+  color: #eee !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.threadButtons .browse{
+  background-color: var(--secondary-button) !important;
+    border: none !important;
+  outline: none !important;
+  background-image: none !important;
+}
+
+.threadButtons .emailAuthor{
+  margin-left: 0 !important;
+}
+
+.message-wrapper-inner{
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.db-reply-block{
+  border: none !important;
+}
+
+#forumMessagesContainer .db-message-wrapper{
+  border: none !important;
+  padding: 0 18px 10px 18px;
+}
+
+.reply-lvl-0 .message-wrapper-inner{
+  background: transparent !important;
+}
+
+.reply-lvl-0{
+  margin: 0 !important;
+}
+
+.db-reply-block{
+  margin: 0 !important;
+  border-top: 30px solid var(--background-main) !important;
+  background-color: var(--background-tint-1) !important;
+  box-shadow: none !important;
+}
+
+.db-reply-block .db-message-wrapper:last-child {
+    margin-bottom: 0px !important;
+}
+
+.message-wrapper-inner{
+  padding: 0 15px !important;
+}
+
+.db-message .profileCardAvatarThumb:after {
+  display: none !important;
+}
+
+
+
+#forumMessagesContainer .db-message-wrapper:nth-child(odd) {
+  background-color: var(--background-tint-1) !important;
+}
+
+#forumMessagesContainer .db-message-wrapper:nth-child(odd):hover {
+  background-color: var(--background-tint-1-highlight) !important;
+}
+
+#forumMessagesContainer .db-message-wrapper:nth-child(even) {
+  background-color: var(--background-tint-2) !important;
+}
+
+#forumMessagesContainer .db-message-wrapper:nth-child(even):hover {
+  background-color: var(--background-tint-2-highlight) !important;
+}
+
+
+a.reply-count-link {
+  padding: 0.2rem 0.6rem !important;
+  background-image: none !important;
+  background-color: var(--secondary-button) !important;
+  box-shadow: inset 0 0 0 2px var(--secondary-button);
+  border: none !important;
+  text-decoration: none !important;
+  color: var(--text-main) !important;
+  outline: none !important;
+  border-radius: 2px !important;
+}
+
+
 
 
 /*
