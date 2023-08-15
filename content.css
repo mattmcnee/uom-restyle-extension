@@ -12,15 +12,20 @@
   --background-tint-2: #fefefe;
 
   --background-tint-2-highlight: #f7f7f7;
+
+  --secondary-button: #dadada;
+
+  --primary-button: #5E0366;
+
+  --text-main: #000;
 }
 
-
 body{
-  background-color: #fff !important;
+  background-color: var(--background-main) !important;
 }
 
 .contentBox{
-  background-color: #fff !important;
+  background-color: var(--background-main) !important;
 }
 
 /* Main content holder*/
@@ -82,8 +87,8 @@ margin-top: 5px;
 }
 
 .contentPane .shadow {
-  border-top: 6px solid #fff !important;
-  background-color: #fff !important;
+  border-top: 6px solid var(--background-main) !important;
+  background-color: var(--background-main) !important;
 }
 .appTabs td{
   height: 20px !important;
@@ -119,7 +124,7 @@ margin-top: 5px;
 }
 
 .global-nav-bar .nav-link{
-  background-color: #5E0366 !important;
+  background-color: var(--main-theme) !important;
   margin: 22px 10px  10px 0 !important;
   border-radius: 10px;
   transform: scale(1.2);
@@ -246,11 +251,11 @@ margin-top: 5px;
 */
 
 .portlet{
-  background-color: white !important;
+  background-color: var(--background-main) !important;
   border-radius: 10px !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   border-top-left-radius: 10px !important;
-  border-color: white !important;
+  border-color: var(--background-main) !important;
 }
 
 .portlet .collapsible{
@@ -265,11 +270,11 @@ margin-top: 5px;
 .portlet h2{
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
-  background-color: #fff !important;
+  background-color: var(--background-main) !important;
 }
 
 .portlet .tab{
-  background-color: #fff !important;
+  background-color: var(--background-main) !important;
 }
 
 .portlet .tabcontent{
@@ -381,18 +386,18 @@ margin-top: 5px;
 */
 
 .menuWrap h3 a{
-  color: black !important;
+  color: var(--text-main) !important;
 }
 
 .menuWrap {
-  background-color: white !important;
+  background-color: var(--background-main) !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   z-index: 2;
 }
 
 .menuWrap::after{
   content: "";
-  background-color: white; !important;
+  background-color: var(--background-main) !important;
   z-index: 10;
   width:100%;
   height: 10px;
@@ -402,34 +407,22 @@ margin-top: 5px;
   left: 0;
 }
 
-.menuWrap .navPaletteContent{
-  background-color: white !important;
+.menuWrap .navPaletteContent, .menuWrap .courseMenu, #courseMenuPalette_contents li {
+  background-color: var(--background-main) !important;
 }
 
-.menuWrap .courseMenu{
-  background-color: white !important;
-}
-
-#courseMenuPalette_contents li {
-  background-color: white !important;
-}
-
-#courseMenuPalette_contents li a span{
-  color: black !important;
-}
-
-#courseMenuPalette h3 a{
-  color: black !important;
+#courseMenuPalette_contents li a span, #courseMenuPalette h3 a{
+  color: var(--text-main) !important;
 }
 
 #courseMenuPalette_paletteTitleHeading h3 {
-  background-color: white !important;
-  color: black !important;
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
 }
 
 #courseMenuPalette, #courseMenuPalette ul, .courseMenu span, .courseMenu a{
-  background-color: white !important;
-  color: black !important;
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
 }
 
 #courseMenuPalette #courseMapButton{
@@ -691,20 +684,84 @@ margin-top: 5px;
   border: none !important;
   padding: 0 !important;
   box-shadow: none !important;
+  opacity: 1 !important;
 }
+
+.actionBar li{
+  padding-right: 5px !important;
+  z-index: 1 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.actionBar li:before{
+  position: absolute;
+    content: "";
+      left: -1px;
+    top: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    z-index: 2;
+    background-color: var(--background-main); !important;
+    pointer-events: none !important;
+}
+
+.actionBar a:hover:after{
+  background-color: #dfdfdf !important;
+}
+
+
+.actionBar a:before{
+  z-index: 4;
+  color: #333 !important;
+  font-size: 16px !important;
+  margin-top: 2px !important;
+}
+
+.actionBar a{
+  outline: none !important;
+}
+
+.actionBar a:after{
+  position: absolute;
+  color: #333 !important;
+  box-shadow: inset 0 0 0 2px #dadada;
+    border-radius: 2px;
+  background-color: var(--secondary-button) !important;
+  content: "";
+      left: 0px;
+    top: 0px;
+  width:calc(50% + 10px) !important;
+    height: 100%;
+    pointer-events: none !important;
+    padding-left: 32px;
+    z-index: 3;
+    outline: none !important;
+
+}
+
+#refreshTreeActionButtonId:after{
+  content: "Refresh" !important;
+}
+
+#searchActionButtonId a:after{
+  content: "Search" !important;
+}
+
+
 
 #selectAll_top, #selectNone_top{
   padding: 0.1rem 0.4rem 0.1rem 0.4rem !important;
-  background-color: #dadada;
-  box-shadow: inset 0 0 0 2px #dadada;
+  background-color: var(--secondary-button);
+  box-shadow: inset 0 0 0 2px var(--secondary-button);
   text-decoration: none !important;
 }
 
 .thread-controls-top .navigationBar button{
   background-image: none !important;
   padding: 0.1rem 0.4rem 0.1rem 0.4rem !important;
-  background-color: #dadada;
-  box-shadow: inset 0 0 0 2px #dadada;
+  background-color: var(--secondary-button);
+  box-shadow: inset 0 0 0 2px var(--secondary-button);
   border: none !important;
 }
 
@@ -1046,7 +1103,7 @@ margin-top: 5px;
 }
 
 .active_stream_item {
-  border-bottom: 1px dashed #ccc !important;
+  border-right: 1px dashed #ccc !important;
 }
 
 
