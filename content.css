@@ -583,11 +583,11 @@ margin-top: 5px;
 }
 
 [id="bbNG.receiptTag.content"] {
-  margin-left: 20px !important;
+  margin-left: 40px !important;
 }
 
 [id="bbNG.receiptTag.content"] ~ p{
-  margin-left: 20px !important;
+  margin-left: 40px !important;
 }
 
 /*
