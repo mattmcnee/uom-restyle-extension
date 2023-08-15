@@ -596,6 +596,52 @@ margin-top: 5px;
   text-decoration: none !important;
 }
 
+
+/*
+  ---
+  ---
+  --- Grade table
+  ---
+  ---
+*/
+
+.gradeTableNew .row{
+  padding-left: 10px !important;
+}
+
+/*
+  ---
+  ---
+  --- Table of contents
+  ---
+  ---
+*/
+.tocWrapper{
+  background-color: var(--background-main) !important;  
+}
+
+.tocSide_pullExpanded{
+  transform: translate(-12px, -4px);
+  border-bottom-right-radius: 10px !important;
+  border: none !important;
+  z-index: 2 !important;
+  border-right: 1px solid #ccc !important;
+  border-bottom: 1px solid #ccc !important;
+}
+
+.tocWrapper a{
+  background-color: var(--background-main) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+
+
+
+
+
+
+
 /*
   ---
   ---
@@ -1091,7 +1137,11 @@ a.reply-count-link {
 }
 
 .inventoryListHead th:first-child {
-  padding-left: 12px !important;
+  padding-left: 22px !important;
+}
+
+#listContainer_databody th:first-child{
+  padding-left: 19px !important;
 }
 
 #navsecondary a{
