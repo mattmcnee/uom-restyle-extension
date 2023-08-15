@@ -334,7 +334,7 @@ margin-top: 5px;
 }
 
 .cmdiv{
-  top: 124px !important;
+  top: 121px !important;
   width: 300px;
   height: calc(100vh - 124px - 20px) !important;
   overflow: hidden auto !important;
@@ -583,11 +583,12 @@ margin-top: 5px;
 }
 
 [id="bbNG.receiptTag.content"] {
-  margin-left: 40px !important;
+  margin-left: 20px !important;
+  margin-right: 20px !important;
 }
 
 [id="bbNG.receiptTag.content"] ~ p{
-  margin-left: 40px !important;
+  margin-left: 20px !important;
 }
 
 /*
