@@ -504,6 +504,14 @@ margin-top: 5px;
   outline: none !important;
 }
 
+.locationPane .navigationPane{
+  height: calc(100% + 30px) !important;
+}
+
+.locationPane{
+  overflow-y: hidden;
+}
+
 /*
   ---
   ---
@@ -572,6 +580,14 @@ margin-top: 5px;
 
 .contentList li img, .contentListPlain li img{
   border-radius: 10px !important;
+}
+
+[id="bbNG.receiptTag.content"] {
+  margin-left: 20px !important;
+}
+
+[id="bbNG.receiptTag.content"] ~ p{
+  margin-left: 20px !important;
 }
 
 /*
