@@ -104,13 +104,18 @@ margin-top: 5px;
 
 .locationPane .contentPaneWide .container{
   border: none !important;
-/*  margin: 0 !important;*/
+  margin: 0 !important;
 }
 
 .contentPane .shadow {
   border-top: 6px solid var(--background-main) !important;
   background-color: var(--background-main) !important;
 }
+
+.contentPaneWide{
+  margin: 0 !important;
+}
+
 .appTabs td{
   height: 20px !important;
   padding: 20px 0 20px 0 !important;
@@ -778,7 +783,7 @@ margin-top: 5px;
   }
 
   .accordion_content{
-    height: calc(100vh - 150px - 200px) !important;
+    height: calc(100vh - 150px - 240px) !important;
   }
 
   #flyoutMenuContent .mybb-tools {
@@ -799,6 +804,30 @@ margin-top: 5px;
 
   .global-nav-bar .nav-link {
     transform: scale(1.0);
+  }
+
+  .global-nav-bar-wrap:after{
+    content: "The University";
+    position: absolute;
+    left: 51px;
+    top: 4px;
+    color: #ddd;
+  }
+
+  .global-nav-bar-wrap:before{
+    content: "of Manchester";
+    position: absolute;
+    left: 50px;
+    top: 19px;
+    color: #ddd;
+  }
+
+  .containerPortal .column-3{
+    margin: 0 !important;
+  }
+
+  .containerPortal .column-3 .portlet{
+    margin-bottom: 15px !important;
   }
 }
 
@@ -1255,6 +1284,9 @@ a.reply-count-link {
   background-color: transparent !important;
 }
 
+.pagingprefs{
+  margin-bottom: 10px !important;
+}
 
 
 
