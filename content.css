@@ -676,22 +676,6 @@ margin-top: 5px;
 }
 
 
-
-
-
-
-
-
-
-
-/*  #puller{
-    position: absolute !important;
-    left: 200px !important;
-    top: 200px !important;
-    z-index: 20;
-  }*/
-
-
 /*
   ---
   ---
@@ -1003,7 +987,7 @@ a.reply-count-link {
 }
 
 .pageTitle {
-  padding: 10px 30px 0 30px !important;
+  padding: 10px 30px !important;
   margin-bottom: 0 !important;
 }
 
@@ -1023,16 +1007,9 @@ a.reply-count-link {
 /*.localViewToggle a:before, .localViewToggle a:after{
   display: none !important;
 }*/
-#treeView:before{
-  content: "Tree View";
-}
-
-#listView:before{
-  content: "List View";
-}
-
 
 .localViewToggle a:before{
+  content: "Button";
   text-align: center;
   position: absolute;
   left: -2px !important;
@@ -1046,6 +1023,23 @@ a.reply-count-link {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
+
+#treeView:before{
+  content: "Tree View";
+}
+
+#listView:before{
+  content: "List View";
+}
+
+#annFilter1Id:before{
+  content: "Institution";
+}
+
+#annFilter2Id:before{
+  content: "Course";
+}
+
 
 .localViewToggle a:after{
   display: none !important;
@@ -1179,6 +1173,66 @@ a.reply-count-link {
 
 #listContainer_closepaging{
   margin: 2px !important;
+}
+
+/*
+  ---
+  ---
+  --- Announcements
+  ---
+  ---
+*/
+#announcementList{
+  padding-left: 10px !important;
+  width: 100%;
+}
+
+#announcementList li:nth-child(odd) :not(.vtbegenerated li, b, strong){
+  background-color: var(--background-tint-1) !important;
+}
+
+#announcementList li:nth-child(odd):hover :not(.vtbegenerated li, b, strong){
+  background-color: var(--background-tint-1-highlight) !important;
+}
+
+#announcementList li:nth-child(even) :not(.vtbegenerated li, b, strong){
+  background-color: var(--background-tint-2) !important;
+}
+
+#announcementList li:nth-child(even):hover :not(.vtbegenerated li, b, strong){
+  background-color: var(--background-tint-2-highlight) !important;
+}
+
+#announcementList li{
+  border: none !important;
+  padding: 0 !important;
+}
+
+#announcementList li:first-child{
+  margin-top: 10px !important;
+}
+
+#pageTitleDiv{
+  margin-bottom: 20px !important;
+  background-color: var(--background-main) !important;
+}
+
+#announcementList .details{
+  margin-right: 0 !important;
+  width: calc(100% - 15em - 18px) !important;
+  padding: 10px 20px !important;
+}
+
+#announcementList h3{
+  margin-right: 0 !important;
+  width: calc(100% - 15em) !important;
+  background-color: transparent !important;
+  padding: 10px 20px !important;
+}
+
+#announcementList .itemDetails, #announcementList .announcementInfo {
+  top: 0 !important;
+  bottom: 0 !important;
 }
 
 
@@ -1318,10 +1372,6 @@ a.reply-count-link {
     opacity: 1 !important;
     z-index: 3 !important;
   }
-
-/*  .flyout-menu .accordion-wrapper:last-child{
-    margin-bottom: 135px !important;
-  }*/
 
   .flyout-menu .accordion-wrapper {
     width: calc(100% - 65px) !important;
@@ -1468,7 +1518,14 @@ a.reply-count-link {
   .rumble{
     margin-bottom: 45px !important;
   }
-}
+
+  #announcementList .details{
+    width: calc(100% - 18px) !important;
+  }
+
+  #announcementList h3{
+    width: calc(100%) !important;
+  }
 
 
 /*
