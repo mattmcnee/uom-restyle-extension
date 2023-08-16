@@ -56,6 +56,10 @@ body{
     min-height: calc(100vh - 75px) !important;
 }
 
+.locationPane .tabbedPane .contentBox .container{
+  margin-top: 0 !important;
+}
+
 /*
   ---
   ---
@@ -678,210 +682,7 @@ margin-top: 5px;
 
 
 
-/*
-  ---
-  ---
-  --- Screen readjustment rules
-  ---
-  ---
-*/
 
-@media only screen and (min-width: 320px) and (max-width: 1037px){
-  .global-nav-bar .nav-link{
-    margin: 0 !important;
-  }
-
-  .tabWrapper-right{
-    display: block !important;
-    width: 100vw !important;
-    left: 0 !important;
-    right: 0 !important;
-    transform: scaleY(1) !important;
-    background-color: #333 !important;
-  }
-
-  .tabWrapper-right a{
-    transform: scaleY(1) !important;
-  }
-
-  .appTabs{
-    margin-top: 0 !important;
-    background-color: transparent !important;
-  }
-
-  .appTabs td.active::before{
-    display: none;
-  }
-
-  #global-nav .u_floatThis-right{
-    transform: scale(1) !important;
-    width: calc(100vw - 85px) !important;
-    height: 40px !important;
-    top: 0px !important;
-    left: 10px !important;
-  }
-  #global-nav .global-top-avatar {
-    top: 5px !important;
-    left: 5px !important;
-    margin: initial !important;
-  }
-
-  #appTabList td{
-    border-bottom: none !important;
-    margin-bottom: 10px !important;
-    display: block !important;
-
-  }
-
-  .appTabs td.active {
-    background-color: transparent !important;
-}
-  .bgBanner .tabWrapper-right{
-    width: 200px;
-  }
-
-  #global-nav-flyout{
-    top: 140px !important;
-/*    margin-top: 60px !important;*/
-    height: calc(100vh - 150px - 75px) !important;
-    width: calc(100% - 60px) !important;
-    left: 20px !important;
-    right: 20px !important;
-  }
-
-  #global-nav-link{
-    margin-top: 20px !important;
-    margin-left: 22px !important;
-  }
-
-  #global-nav-link:after{
-    content: "▼";
-    position: absolute;
-    top: 8px;
-    right: 12px;
-    color: #ccc;
-  }
-
-  #bottomButtons li{
-    height: 25px !important;
-    background-color: transparent !important;
-    opacity: 1 !important;
-    z-index: 3 !important;
-  }
-
-/*  .flyout-menu .accordion-wrapper:last-child{
-    margin-bottom: 135px !important;
-  }*/
-
-  .flyout-menu .accordion-wrapper {
-    width: calc(100% - 65px) !important;
-/*    margin-bottom: 25px !important;*/
-  }
-
-  .flyout-menu .bottom-buttons {
-    width: calc(100% - 65px) !important;
-  }
-
-  .accordion_content{
-    height: calc(100vh - 150px - 240px) !important;
-  }
-
-  #flyoutMenuContent .mybb-tools {
-    width: 65px !important;
-  }
-
-  .tabWrapper-right{
-    display: none !important;
-  }
-
-  .main-nav-open .tabWrapper-right{
-    display: block !important;
-  }
-
-  .hideoff{
-    display: none !important;
-  }
-
-  .global-nav-bar .nav-link {
-    transform: scale(1.0);
-  }
-
-  .global-nav-bar-wrap:after{
-    content: "The University";
-    position: absolute;
-    left: 51px;
-    top: 4px;
-    color: #ddd;
-  }
-
-  .global-nav-bar-wrap:before{
-    content: "of Manchester";
-    position: absolute;
-    left: 50px;
-    top: 19px;
-    color: #ddd;
-  }
-
-  .containerPortal .column-3{
-    margin: 0 !important;
-  }
-
-  .containerPortal .column-3 .portlet{
-    margin-bottom: 15px !important;
-  }
-
-  .locationPane .contentPaneWide .container{
-    margin-top: 15px !important;
-  }
-
-  .navigationPane{
-    top: 37px !important;
-    border-top: none !important;
-  }
-
-  .navigationPane .menuWrap{
-    border: none !important;
-  }
-
-  #puller, #puller.pullcollapsed {
-    top: 50px !important;
-    left: 6px !important;
-    background-color: #999;
-  }
-
-  #puller a, #puller.pullcollapsed a{
-    width: 25px !important;
-    height: 25px !important;
-    z-index: 8;
-  }
-
-  #puller.pullcollapsed{
-    transform: translateX(-2px);
-  }
-
-/*  .navigationPane:after{
-    content: "";
-    position: absolute;
-    top: -15px;
-    left: 0;
-    width: 100%;
-    height: 16px;
-    background-color: var(--background-main);
-    z-index: 0;
-  }*/
-
-  .locationPane .contentPane{
-    margin-top: 30px !important;
-  }
-
-
-
-
-
-
-
-
-}
 
 /*  #puller{
     position: absolute !important;
@@ -1424,6 +1225,249 @@ a.reply-count-link {
 
 #mybbCanvas{
   height: calc(100vh - 75px) !important;
+}
+
+
+/*
+  ---
+  ---
+  --- Screen readjustment rules
+  ---
+  ---
+*/
+
+@media only screen and (min-width: 320px) and (max-width: 1037px){
+  .global-nav-bar .nav-link{
+    margin: 0 !important;
+  }
+
+  .tabWrapper-right{
+    display: block !important;
+    width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: scaleY(1) !important;
+    background-color: #333 !important;
+  }
+
+  .tabWrapper-right a{
+    transform: scaleY(1) !important;
+  }
+
+  .appTabs{
+    margin-top: 0 !important;
+    background-color: transparent !important;
+  }
+
+  .appTabs td.active::before{
+    display: none;
+  }
+
+  #global-nav .u_floatThis-right{
+    transform: scale(1) !important;
+    width: calc(100vw - 85px) !important;
+    height: 40px !important;
+    top: 0px !important;
+    left: 10px !important;
+  }
+  #global-nav .global-top-avatar {
+    top: 5px !important;
+    left: 5px !important;
+    margin: initial !important;
+  }
+
+  #appTabList td{
+    border-bottom: none !important;
+    margin-bottom: 10px !important;
+    display: block !important;
+
+  }
+
+  .appTabs td.active {
+    background-color: transparent !important;
+}
+  .bgBanner .tabWrapper-right{
+    width: 200px;
+  }
+
+  #global-nav-flyout{
+    top: 140px !important;
+/*    margin-top: 60px !important;*/
+    height: calc(100vh - 150px - 75px) !important;
+    width: calc(100% - 60px) !important;
+    left: 20px !important;
+    right: 20px !important;
+  }
+
+  #global-nav-link{
+    margin-top: 20px !important;
+    margin-left: 22px !important;
+  }
+
+  #global-nav-link:after{
+    content: "▼";
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    color: #ccc;
+  }
+
+  #bottomButtons li{
+    height: 25px !important;
+    background-color: transparent !important;
+    opacity: 1 !important;
+    z-index: 3 !important;
+  }
+
+/*  .flyout-menu .accordion-wrapper:last-child{
+    margin-bottom: 135px !important;
+  }*/
+
+  .flyout-menu .accordion-wrapper {
+    width: calc(100% - 65px) !important;
+/*    margin-bottom: 25px !important;*/
+  }
+
+  .flyout-menu .bottom-buttons {
+    width: calc(100% - 65px) !important;
+  }
+
+  .accordion_content{
+    height: calc(100vh - 150px - 240px) !important;
+  }
+
+  #flyoutMenuContent .mybb-tools {
+    width: 65px !important;
+  }
+
+  .tabWrapper-right{
+    display: none !important;
+  }
+
+  .main-nav-open .tabWrapper-right{
+    display: block !important;
+  }
+
+  .hideoff{
+    display: none !important;
+  }
+
+  .global-nav-bar .nav-link {
+    transform: scale(1.0);
+  }
+
+  .global-nav-bar-wrap:after{
+    content: "The University";
+    position: absolute;
+    left: 51px;
+    top: 4px;
+    color: #ddd;
+  }
+
+  .global-nav-bar-wrap:before{
+    content: "of Manchester";
+    position: absolute;
+    left: 50px;
+    top: 19px;
+    color: #ddd;
+  }
+
+  .containerPortal .column-3{
+    margin: 0 !important;
+  }
+
+  .containerPortal .column-3 .portlet{
+    margin-bottom: 15px !important;
+  }
+
+  #column0{
+    margin-top: 15px !important;
+  }
+
+  .navigationPane{
+    top: 37px !important;
+    border-top: none !important;
+  }
+
+  .navigationPane .menuWrap{
+    border: none !important;
+  }
+
+  #puller, #puller.pullcollapsed {
+    top: 50px !important;
+    left: 6px !important;
+    background-color: #999;
+  }
+
+  #puller a, #puller.pullcollapsed a{
+    width: 25px !important;
+    height: 25px !important;
+    z-index: 8;
+  }
+
+  #puller.pullcollapsed{
+    transform: translateX(-2px);
+  }
+
+/*  .navigationPane:after{
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    background-color: var(--background-main);
+    z-index: 0;
+  }*/
+
+  .locationPane .shadow{
+    margin-top: 32px !important;
+  }
+
+/* Discussion boards */
+
+  .actionBar{
+    margin: 10px 30px !important;
+  }
+
+  .paging .pagingprefs{
+    margin: 10px 30px 20px 30px !important;
+  }
+
+  #navsecondary li,  #nav li{
+    margin: 5px 0 !important;
+  }
+
+  #nav{
+    margin-bottom: 10px !important;
+  }
+
+  #content .localViewToggle{
+    width: calc(100% - 106px) !important;
+    left: 30px !important;
+  }
+
+  .shadow .contentBox{
+    max-width: 100vw !important;
+    overflow: hidden;
+  }
+
+  .backLink{
+    bottom: 0 !important;
+  }
+
+  .backLink a{
+    width: calc(100vw - 106px) !important;
+    margin-right: 30px !important;
+  }
+
+  .rumble ~ .paging{
+    transform: translateY(-30px);
+  }
+
+  .rumble{
+    margin-bottom: 45px !important;
+  }
 }
 
 
