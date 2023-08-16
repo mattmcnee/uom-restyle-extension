@@ -19,15 +19,17 @@
 
   --text-main: #000;
 
-  --global-font: Arial, sans-serif;
+  --global-font: Open Sans,sans-serif;
+
+/*  --global-font: Arial, sans-serif;*/
 /*  --global-font: Consolas, monospace;*/
 }
 
 *{
-  font-family: var(--global-font) !important;
   outline: none !important;
+  font-family: var(--global-font) !important;
+/*  line-height: 1.2;*/
 }
-
 
 /*
   ---
@@ -50,8 +52,9 @@ body{
 .locationPane{
     margin-top: 0 !important;
     padding-bottom: 0 !important;
+    background-color: var(--background-main) !important;
+    min-height: calc(100vh - 75px) !important;
 }
-
 
 /*
   ---
@@ -119,11 +122,11 @@ margin-top: 5px;
 .appTabs td.active{
   position: relative;
   padding: 0px 0 14px 0 !important;
-  transform: translateY(15px);
+  transform: translateY(18px);
 }
 
 .appTabs td.active + td{
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 /*
 .appTabs td.active a{
@@ -137,7 +140,7 @@ margin-top: 5px;
   position: absolute;
   height: 10px;
   width: 100%;
-  bottom: 8px;
+  bottom: 12px;
   background-color: var(--main-theme);
 }
 
@@ -684,16 +687,21 @@ margin-top: 5px;
   }
 
   .tabWrapper-right{
-    display: block; !important;
-    transform: scaleY(1);
+    display: block !important;
+    width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: scaleY(1) !important;
+    background-color: #333 !important;
   }
 
   .tabWrapper-right a{
-    transform: scaleY(1);
+    transform: scaleY(1) !important;
   }
 
   .appTabs{
-    transform: translateX(500px);
+    margin-top: 0 !important;
+    background-color: transparent !important;
   }
 
   .appTabs td.active::before{
@@ -701,9 +709,10 @@ margin-top: 5px;
   }
 
   #global-nav .u_floatThis-right{
-    width: 120px !important;
+    transform: scale(1) !important;
+    width: calc(100vw - 85px) !important;
     height: 40px !important;
-    top: -140px !important;
+    top: 0px !important;
     left: 10px !important;
   }
   #global-nav .global-top-avatar {
@@ -712,30 +721,86 @@ margin-top: 5px;
     margin: initial !important;
   }
 
-  #appTabList{
-    margin-top: 100px !important;
-    min-width: 0 !important;
-  }
-
   #appTabList td{
     border-bottom: none !important;
     margin-bottom: 10px !important;
+    display: block !important;
+
   }
 
+  .appTabs td.active {
+    background-color: transparent !important;
+}
   .bgBanner .tabWrapper-right{
     width: 200px;
   }
 
   #global-nav-flyout{
-    top: 0 !important;
-    margin-top: 0 !important;
-    height: 70vh !important;
+    top: 140px !important;
+/*    margin-top: 60px !important;*/
+    height: calc(100vh - 150px - 75px) !important;
+    width: calc(100% - 60px) !important;
+    left: 20px !important;
+    right: 20px !important;
+  }
+
+  #global-nav-link{
+    margin-top: 20px !important;
+    margin-left: 22px !important;
+  }
+
+  #global-nav-link:after{
+    content: "▼";
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    color: #ccc;
   }
 
   #bottomButtons li{
     height: 25px !important;
-    background-color: var(--background-main) !important;
+    background-color: transparent !important;
+    opacity: 1 !important;
+    z-index: 3 !important;
   }
+
+/*  .flyout-menu .accordion-wrapper:last-child{
+    margin-bottom: 135px !important;
+  }*/
+
+  .flyout-menu .accordion-wrapper {
+    width: calc(100% - 65px) !important;
+/*    margin-bottom: 25px !important;*/
+  }
+
+  .flyout-menu .bottom-buttons {
+    width: calc(100% - 65px) !important;
+  }
+
+  .accordion_content{
+    height: calc(100vh - 150px - 200px) !important;
+  }
+
+  #flyoutMenuContent .mybb-tools {
+    width: 65px !important;
+  }
+
+  .tabWrapper-right{
+    display: none !important;
+  }
+
+  .main-nav-open .tabWrapper-right{
+    display: block !important;
+  }
+
+  .hideoff{
+    display: none !important;
+  }
+
+  .global-nav-bar .nav-link {
+    transform: scale(1.0);
+  }
+}
 
 /*  #puller{
     position: absolute !important;
@@ -744,7 +809,6 @@ margin-top: 5px;
     z-index: 20;
   }*/
 
-}
 
 /*
   ---
@@ -1232,6 +1296,10 @@ a.reply-count-link {
   border: none !important;
   transform: scale(1.05);
 /*  background-color: red;*/
+}
+
+#mybbCanvas{
+  height: calc(100vh - 75px) !important;
 }
 
 

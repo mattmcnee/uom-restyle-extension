@@ -333,6 +333,7 @@ var inlineCSS = `
 
 var iframe = document.getElementById("mybbCanvas");
 var iframe2 = document.getElementById("right_stream_mygrades");
+var iframe3 = document.getElementById("contentFrame");
 console.log(iframe2);
 if(iframe != null){
   addInlineStylesInIframe(iframe, inlineCSS);
@@ -340,6 +341,9 @@ if(iframe != null){
   if(iframe2 != null){
     addInlineStylesInIframe(iframe2, inlineCSS);
   }
+}
+if(iframe3 != null){
+  addInlineStylesInIframe(iframe3, inlineCSS);
 }
 
 
