@@ -4,21 +4,20 @@
   --main-theme: #5E0366;
 
   --background-main: #fff;
-
   --background-tint-1: #fbfbfb;
-
   --background-tint-1-highlight: #f4f4f4;
-
   --background-tint-2: #fefefe;
-
   --background-tint-2-highlight: #f7f7f7;
 
   --secondary-button: #dadada;
+  --secondary-button-highlight: #e8e8e8;
+  --secondary-button-text: #333;
 
   --primary-button: #5E0366;
+  --primary-button-highlight: #7a0485;
+  --primary-button-text: #eee;
 
   --text-main: #000;
-
   --global-font: Open Sans,sans-serif;
 
 /*  --global-font: Arial, sans-serif;*/
@@ -1238,6 +1237,134 @@ a.reply-count-link {
 }
 
 
+/*
+  ---
+  ---
+  --- Assessments
+  ---
+  ---
+*/
+
+
+.stepTitleRight{
+  margin-top: 0 !important;
+  margin-right: 10px !important;
+  padding: 4px 12px !important;
+  border-bottom-right-radius: 5px !important;
+  border-right: 1px solid #ccc !important;
+}
+
+.stepTitleRight input{
+  color: var(--secondary-button-text);
+  background-color: var(--secondary-button) !important;
+  box-shadow: inset 0 0 0 2px var(--secondary-button) !important;
+  border: none !important;
+  border-radius: 2px !important;
+  text-align: center;
+}
+
+.stepTitleRight input:hover{
+  background-color: var(--secondary-button-highlight) !important;
+}
+
+.stepTitleRight .answerSavedButton{
+  background-color: var(--primary-button) !important;
+  box-shadow: inset 0 0 0 2px var(--primary-button) !important;
+  padding: 0.5625rem 1.125rem 0.625rem  22px !important;
+  color: var(--primary-button-text) !important;
+}
+
+.stepTitleRight .answerSavedButton:hover{
+  background-color: var(--primary-button-highlight) !important;
+}
+
+#dataCollectionContainer .stepcontent{
+  border-bottom: none !important;
+}
+.takeQuestionDiv .steptitle{
+  padding-top: 10px !important;
+}
+
+#dataCollectionContainer{
+  margin-bottom: 35px !important;
+}
+
+.submitStepFixed{
+  border-top-left-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  border: none !important;
+  background-color: #eee !important;
+}
+
+.submitStepBottom .submit{
+    background-color: var(--primary-button) !important;
+  box-shadow: inset 0 0 0 2px var(--primary-button) !important;
+  color: var(--primary-button-text) !important;
+
+}
+
+#bottom_saveAllAnswersButton{
+   background-color: var(--secondary-button) !important;
+  box-shadow: inset 0 0 0 2px var(--secondary-button) !important;
+  color: var(--secondary-button-text) !important;
+}
+
+.assessmentPortlet .liveArea{
+  border: none !important;
+  background-color: #eee !important;
+  border-radius: 5px !important;
+  z-index: 5 !important;
+}
+
+.tox .tox-editor-header {
+  z-index: 0 !important;
+}
+
+#instructionBlock{
+  margin: 10px 10px !important;
+  border-radius: 5px !important;
+  background-color: #eee !important;
+  border: none !important;
+}
+
+.assessmentPortlet .liveArea{
+  margin: 10px -10px 10px 10px !important;
+}
+
+
+
+.completionContainer .qComplete{
+  background-color: var(--primary-button) !important;
+  border: none !important;
+  border-radius: 2px !important;
+    box-shadow: inset 0 0 0 2px var(--primary-button) !important;
+  color: var(--primary-button-text) !important;
+}
+
+.completionContainer .qIncomplete{
+  background-color: var(--secondary-button) !important;
+    box-shadow: inset 0 0 0 2px var(--secondary-button) !important;
+  color: var(--secondary-button-text) !important;
+    border: none !important;
+  border-radius: 2px !important;
+  font-weight: initial !important;
+}
+
+.completionContainer .qComplete img{
+  display: none;
+}
+
+.assessmentPortlet .timerBar{
+  border: none !important;
+  padding: 6px !important;
+}
+
+.assessmentPortlet .timerBar .progressBar{
+  border-radius: 6px !important;
+  background-color: var(--primary-button) !important;
+  background-image: none !important;
+}
+
 
 
 
@@ -1528,6 +1655,7 @@ a.reply-count-link {
   #announcementList h3{
     width: calc(100%) !important;
   }
+}
 
 
 /*
