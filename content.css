@@ -1,6 +1,6 @@
 /* Global style choices. Needs to be copied to content.js for embedded content */
 
-/*:root {  
+:root {  
   --main-theme: #5E0366;
 
   --background-main: #fff;
@@ -21,9 +21,9 @@
   --text-main: #000;
   --text-light: #333;
   --global-font: Open Sans,sans-serif;
-}*/
+}
 
-:root {  
+/*:root {  
   --main-theme: #5E0366;
 
   --background-main: #111;
@@ -44,12 +44,7 @@
   --text-main: #ccc;
   --text-light: #999;
   --global-font: Open Sans,sans-serif;
-
-  --isDarkMode: true;
-
-}
-
-/* var(--isDarkMode, true) ? var(--main-theme) : blue */
+}*/
 
 *{
   outline: none !important;
