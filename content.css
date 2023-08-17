@@ -613,6 +613,7 @@ margin-top: 5px;
 
 .uomFooter{
   margin-top: 10px !important;
+  width: min(800px, calc(100vw - 60px)) !important;
 }
 
 .uomFooter span{
@@ -1182,6 +1183,7 @@ a.reply-count-link {
   ---
   ---
 */
+
 #announcementList{
   padding-left: 10px !important;
   width: 100%;
