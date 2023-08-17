@@ -1,9 +1,10 @@
 /* Global style choices. Needs to be copied to content.js for embedded content */
 
-:root {  
+/*:root {  
   --main-theme: #5E0366;
 
   --background-main: #fff;
+  --background-main-outline: #333;
   --background-tint-1: #fbfbfb;
   --background-tint-1-highlight: #f4f4f4;
   --background-tint-2: #fefefe;
@@ -18,11 +19,37 @@
   --primary-button-text: #eee;
 
   --text-main: #000;
+  --text-light: #333;
+  --global-font: Open Sans,sans-serif;
+}*/
+
+:root {  
+  --main-theme: #5E0366;
+
+  --background-main: #111;
+  --background-main-outline: #333;
+  --background-tint-1: #191919;
+  --background-tint-1-highlight: #191919;
+  --background-tint-2: #222;
+  --background-tint-2-highlight: #222;
+
+  --secondary-button: #dadada;
+  --secondary-button-highlight: #e8e8e8;
+  --secondary-button-text: #333;
+
+  --primary-button: #5E0366;
+  --primary-button-highlight: #7a0485;
+  --primary-button-text: #eee;
+
+  --text-main: #ccc;
+  --text-light: #999;
   --global-font: Open Sans,sans-serif;
 
-/*  --global-font: Arial, sans-serif;*/
-/*  --global-font: Consolas, monospace;*/
+  --isDarkMode: true;
+
 }
+
+/* var(--isDarkMode, true) ? var(--main-theme) : blue */
 
 *{
   outline: none !important;
@@ -40,6 +67,7 @@
 
 body{
   background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
   font-family: var(--global-font) !important;
 }
 
@@ -55,8 +83,13 @@ body{
     min-height: calc(100vh - 75px) !important;
 }
 
+.container{
+  background-color: var(--background-main) !important;
+}
+
 .locationPane .tabbedPane .contentBox .container{
   margin-top: 0 !important;
+  background-color: var(--background-main) !important;
 }
 
 /*
@@ -198,6 +231,12 @@ margin-top: 5px;
   border-bottom: none !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   z-index: 5;
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
+}
+
+.breadcrumbs span{
+  color: var(--text-main) !important;
 }
 
 
@@ -285,6 +324,7 @@ margin-top: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   border-top-left-radius: 10px !important;
   border-color: var(--background-main) !important;
+    color: var(--text-main) !important;
 }
 
 .portlet .collapsible{
@@ -300,6 +340,7 @@ margin-top: 5px;
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
   background-color: var(--background-main) !important;
+    color: var(--text-main) !important;
 }
 
 .portlet .tab{
@@ -531,6 +572,10 @@ margin-top: 5px;
   ---
 */
 
+.pageTitleDiv span, .pageTitleDiv h3{
+  color: var(--text-main) !important;
+}
+
 .contentList .liItem .item_icon{
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -560,19 +605,32 @@ margin-top: 5px;
 }
 
 .contentList li:nth-child(odd) {
-  background-color: #fbfbfb !important;
+  background-color: var(--background-tint-1) !important;
 }
 
 .contentList li:nth-child(odd):hover {
-  background-color: #f4f4f4 !important;
+  background-color: var(--background-tint-1-highlight) !important;
 }
 
 .contentList li:nth-child(even) {
-  background-color: #fefefe !important;
+  background-color: var(--background-tint-2) !important;
 }
 
 .contentList li:nth-child(even):hover {
-  background-color: #f8f8f8 !important;
+  background-color: var(--background-tint-2-highlight) !important;
+}
+
+.contentListPlain li{
+  background-color: var(--background-tint-1) !important;
+  border-color: var(--background-main-highlight) !important;
+}
+
+.contentListPlain li span, .contentListPlain li h3, .contentList li span, .contentList li h3{
+  color: var(--text-main) !important;
+}
+
+.contentListPlain li:hover{
+  background-color: var(--background-tint-1-highlight) !important;
 }
 
 .contentList .liItem span, .contentList .liItem div{
@@ -683,6 +741,10 @@ margin-top: 5px;
   ---
   ---
 */
+
+.thread-controls-top{
+  background-color: var(--background-main) !important;
+}
 
 
 .db-conversation {
@@ -954,8 +1016,21 @@ a.reply-count-link {
   ---
 */
 
+#helpPageTitle p, #helpPageTitle p a{
+  color: var(--text-light) !important;
+}
+
 .inventoryListHead .sorted{
   background-color: var(--background-main) !important;
+}
+
+.inventoryListHead .sorted .sortheader{
+  color: var(--text-main) !important;
+}
+
+.inventoryListHead th, .inventoryListHead th a{
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
 }
 
 #listContainer_databody td, #listContainer_databody th{
@@ -977,6 +1052,14 @@ a.reply-count-link {
 
 #listContainer_databody tr:nth-child(even):hover {
   background-color: var(--background-tint-2-highlight) !important;
+}
+
+#listContainer_databody tr th, #listContainer_databody tr td{
+  background-color: transparent !important;
+}
+
+#listContainer{
+  background-color: var(--background-main) !important;
 }
 
 .localViewToggle{
@@ -1045,6 +1128,10 @@ a.reply-count-link {
   display: none !important;
 }
 
+.localViewToggle li a.active{
+  background-color: var(--background-main) !important;
+}
+
 .localViewToggle a.active:before{
   background-color: var(--main-theme) !important;
 
@@ -1066,8 +1153,8 @@ a.reply-count-link {
     padding: 0.1rem 0.4rem !important;
     font-size: .875rem !important;
     color: #333;
-    background-color: #dadada;
-    box-shadow: inset 0 0 0 2px #dadada;
+    background-color: var(--secondary-button);
+    box-shadow: inset 0 0 0 2px var(--secondary-button);
     border-radius: 2px;
 }
 
@@ -1103,6 +1190,11 @@ a.reply-count-link {
 
 .pagingprefs{
   margin-right: 80px !important;
+  margin-bottom: 10px !important;
+}
+
+.pagingprefs span{
+  color: var(--text-main) !important;
 }
 
 .jumptopage{
@@ -1141,10 +1233,6 @@ a.reply-count-link {
   background-color: transparent !important;
 }
 
-.pagingprefs{
-  margin-bottom: 10px !important;
-}
-
 .backLink a{
   margin-right: 10px !important;
   margin-bottom: 10px !important;
@@ -1156,6 +1244,10 @@ a.reply-count-link {
 
 .inventoryListTableContainerDiv .contextMenuContainer .cmimg{
   display: none;
+}
+
+.inventoryListTableContainerDiv span{
+  color: var(--text-main) !important;
 }
 
 
@@ -1229,11 +1321,16 @@ a.reply-count-link {
   width: calc(100% - 15em) !important;
   background-color: transparent !important;
   padding: 10px 20px !important;
+  color: var(--text-main) !important;
 }
 
 #announcementList .itemDetails, #announcementList .announcementInfo {
   top: 0 !important;
   bottom: 0 !important;
+}
+
+#pageTitleHeader span{
+  color: var(--text-main) !important;
 }
 
 
