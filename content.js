@@ -1,33 +1,52 @@
-// Listen for messages from popup.js
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.action === 'changeRestylingState') {
-    const isEnabled = message.isEnabled;
-    
-    // Call your function to restyle the page or update its behavior
-    if (isEnabled) {
-      console.log('Restyling enabled!');
-      // Your restyling logic here
-    } else {
-      console.log('Restyling disabled.');
-      // Logic to revert or disable your restyling
-    }
+
+
+// Retrieve data from storage
+chrome.storage.local.get(["userData"], (result) => {
+  console.log("Data retrieved:", result.userData);
+  userData = result.userData;
+  if (userData.theme == "dark") {
+    setProperties(userData.dark);
+  }
+  else{
+    setProperties(userData.light);
   }
 });
 
+function updateStyles(message){
+
+  // Save data to storage
+  var userData = message;
+  chrome.storage.local.set({ userData}, () => {
+    console.log("Data saved:", message);
+  });
+
+  if (userData.theme == "dark") {
+    setProperties(userData.dark);
+  }
+  else{
+    setProperties(userData.light);
+  }
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+function setProperties(themeData) {
+  root.style.setProperty('--main-theme', themeData.mainTheme);
+  root.style.setProperty('--background-main', themeData.backgroundMain);
+  root.style.setProperty('--background-main-outline', themeData.backgroundMainOutline);
+  root.style.setProperty('--background-tint-1', themeData.backgroundTint1);
+  root.style.setProperty('--background-tint-1-highlight', themeData.backgroundTint1Highlight);
+  root.style.setProperty('--background-tint-2', themeData.backgroundTint2);
+  root.style.setProperty('--background-tint-2-highlight', themeData.backgroundTint2Highlight);
+  root.style.setProperty('--secondary-button', themeData.secondaryButton);
+  root.style.setProperty('--secondary-button-highlight', themeData.secondaryButtonHighlight);
+  root.style.setProperty('--secondary-button-text', themeData.secondaryButtonText);
+  root.style.setProperty('--primary-button', themeData.primaryButton);
+  root.style.setProperty('--primary-button-highlight', themeData.primaryButtonHighlight);
+  root.style.setProperty('--primary-button-text', themeData.primaryButtonText);
+  root.style.setProperty('--text-main', themeData.textMain);
+  root.style.setProperty('--text-light', themeData.textLight);
+  root.style.setProperty('--global-font', themeData.globalFont);
+}
 
 
 
@@ -40,10 +59,7 @@ const root = document.documentElement;
 // Set the CSS variables using the root element's style property
 // root.style.setProperty('--main-theme', 'blue');
 
-// Retrieve data from storage
-chrome.storage.local.get(["userData"], (result) => {
-  console.log("Data retrieved:", result.userData);
-});
+
 
 
 
