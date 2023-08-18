@@ -111,7 +111,7 @@ function prefillColours() {
 var userData;
 try{
   chrome.storage.local.get(["userData"], (result) => {
-    console.log("Data retrieved:", result.userData.theme);
+    console.log("Data retrieved:", result.userData.theme.x);
     userData = result.userData;
     prefillColours(userData);
   });
@@ -121,11 +121,13 @@ try{
 }
 
 
-var button = document.getElementById("refreshButton");
+// var button = document.getElementById("refreshButton");
+// var resetButton = document.getElementById("restyleCheckbox")
+// button.addEventListener("click", refreshStyles);
 var lightModeRadioButton = document.getElementById("lightMode");
-var darkModeRadioButton = document.getElementById("lightMode");
-var resetButton = document.getElementById("restyleCheckbox")
-button.addEventListener("click", refreshStyles);
+var darkModeRadioButton = document.getElementById("nightMode");
+lightModeRadioButton.addEventListener("change", refreshStyles);
+darkModeRadioButton.addEventListener("change", refreshStyles);
 
 // var mainThemeLight = document.getElementById("mainThemeLight");
 // var mainThemeDark = document.getElementById("mainThemeDark");
