@@ -3,68 +3,77 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style type="text/css">
-
-	</style>
+	<link rel="stylesheet" type="text/css" href="popup.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
 	<title></title>
 </head>
 <body>
 	<table>
 		<tr>
-		    <th><input type="checkbox" id="restyleCheckbox"></th>
-		    <th><button></button> </th>
-		    <th><button id="refreshButton">Refresh</button></th>
+		    <th><button id="resetButton"><i class="fas fa-trash"></i></button></th>
+		    <th>On/Refresh</th>
+		    <th><button id="refreshButton"><i class="fas fa-sync-alt"></i></button></th>
 		</tr>
 		<tr>
-			<th><label for="nightMode">Night Mode</label></th>
-		    <th><input type="radio" name="mode" id="lightMode"></th>
-		    <th><input type="radio" name="mode" id="nightMode"></th>
+			<td><input type="radio" name="mode" id="nightMode" class="light"></th>
+			<td><label for="nightMode">Light/Dark</label></th>
+		    <td><input type="radio" name="mode" id="lightMode"></th>
 		</tr>
-		<tr>
+<!-- 		<tr>
+			
+			<td><input type="text" id="mainThemeLight" class="light"></td>
 			<td><label for="mainThemeLight mainThemeDark">Theme</label></td>
-			<td><input type="text" id="mainThemeLight"></td>
 			<td><input type="text" id="mainThemeDark"></td>
 		</tr>
 		<tr>
+			
+			<td><input type="text" id="backgroundMainLight" class="light"></td>
 			<td><label for="backgroundMainLight backgroundMainDark">Background</label></td>
-			<td><input type="text" id="backgroundMainLight"></td>
 			<td><input type="text" id="backgroundMainDark"></td>
 		</tr>
 		<tr>
+			
+			<td><input type="text" id="mainTextLight" class="light"></td>
 			<td><label for="mainTextLight mainTextDark">Main Text</label></td>
-			<td><input type="text" id="mainTextLight"></td>
 			<td><input type="text" id="mainTextDark"></td>
 		</tr>
 		<tr>
+			
+			<td><input type="text" id="fontLight" class="light"></td>
 			<td><label for="fontLight fontDark">Font</label></td>
-			<td><input type="text" id="fontLight"></td>
 			<td><input type="text" id="fontDark"></td>
 		</tr>
 		<tr>
+			
+			<td><input type="text" id="backgroundMainOutlineLight" class="light"></td>
 			<td><label for="backgroundMainOutlineLight backgroundMainOutlineDark">Background Outline</label></td>
-			<td><input type="text" id="backgroundMainOutlineLight"></td>
 			<td><input type="text" id="backgroundMainOutlineDark"></td>
 		</tr>
 		<tr>
+			
+			<td><input type="text" id="primaryButtonLight" class="light"></td>
 			<td><label for="primaryButtonLight primaryButtonDark">Primary Button</label></td>
-			<td><input type="text" id="primaryButtonLight"></td>
 			<td><input type="text" id="primaryButtonDark"></td>
 		</tr>
 		<tr>
+			
+			<td><input type="text" id="primaryButtonTextLight" class="light"></td>
 			<td><label for="primaryButtonTextLight primaryButtonTextDark">Primary Button Text</label></td>
-			<td><input type="text" id="primaryButtonTextLight"></td>
 			<td><input type="text" id="primaryButtonTextDark"></td>
 		</tr>
 		<tr>
+			
+			<td><input type="text" id="secondaryButtonLight" class="light"></td>
 			<td><label for="secondaryButtonLight secondaryButtonDark">Secondary Button</label></td>
-			<td><input type="text" id="secondaryButtonLight"></td>
 			<td><input type="text" id="secondaryButtonDark"></td>
 		</tr>
 		<tr>
+			
+			<td><input type="text" id="secondaryButtonTextLight" class="light"></td>
 			<td><label for="secondaryButtonTextLight secondaryButtonTextDark">Secondary Button Text</label></td>
-			<td><input type="text" id="secondaryButtonTextLight"></td>
 			<td><input type="text" id="secondaryButtonTextDark"></td>
-		</tr>
+		</tr> -->
 
 </table>
 <script src="popup.js"></script>
