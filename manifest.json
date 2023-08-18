@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Blackboard Restyle",
   "version": "1.0",
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "storage", "scripting"],
   "content_scripts": [
     {
       "matches": ["https://online.manchester.ac.uk/*"],

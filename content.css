@@ -1,6 +1,6 @@
 /* Global style choices. Needs to be copied to content.js for embedded content */
 
-/*:root {  
+:root {  
   --main-theme: #5E0366;
 
   --background-main: #fff;
@@ -21,9 +21,9 @@
   --text-main: #000;
   --text-light: #555;
   --global-font: Open Sans,sans-serif;
-}*/
+}
 
-:root {  
+/*:root {  
   --main-theme: #410247;
 
   --background-main: #111;
@@ -44,7 +44,7 @@
   --text-main: #ccc;
   --text-light: #999;
   --global-font: Open Sans,sans-serif;
-}
+}*/
 
 *{
   outline: none !important;
@@ -862,6 +862,12 @@ li::marker{
   color: var(--secondary-button-text) !important;
 }
 
+#top_list_action_bar li a, #bottom_list_action_bar li a{
+    background-color: var(--secondary-button) !important;
+  color: var(--secondary-button-text) !important;
+  box-shadow: inset 0 0 0 2px var(--secondary-button) !important;
+}
+
 
 #searchActionButtonId a:before, #refreshTreeActionButtonId:before{
   z-index: 4;
@@ -878,7 +884,7 @@ li::marker{
 #searchActionButtonId a:after, #refreshTreeActionButtonId:after{
   position: absolute;
  color: var(--secondary-button-text) !important;
-  box-shadow: inset 0 0 0 2px #dadada;
+  box-shadow: inset 0 0 0 2px var(--secondary-button);
     border-radius: 2px;
   background-color: var(--secondary-button) !important;
   content: "";
@@ -938,8 +944,18 @@ li::marker{
   z-index: 2;
 }
 
+.db-collapse-control a{
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
+  border-radius: 2px !important;
+}
+
 .dbThreadInfo div:first-child {
   margin-right: 9px;
+}
+
+.dbThreadInfo span, .dbThreadInfo div{
+  color: var(--text-light) !important;
 }
 
 .actionBar .secondaryButton{
@@ -991,6 +1007,8 @@ li::marker{
 
 .threadButtons .browse{
   background-color: var(--secondary-button) !important;
+  box-shadow: inset 0 0 0 2px var(--secondary-button) !important;
+  color: var(--secondary-button-text) !important;
     border: none !important;
   outline: none !important;
   background-image: none !important;
@@ -1319,7 +1337,7 @@ a.reply-count-link {
   padding: 0.5625rem 1.125rem 0.625rem !important;
 /*    font-size: .875rem;*/
   border-radius: 2px !important;
-  color: #333;
+  color: var(--secondary-button-text);
   transform: translateY(-10px);
 }
 
@@ -1460,6 +1478,10 @@ a.reply-count-link {
 #dataCollectionContainer div h3{
    background-color: var(--background-main) !important;
    color: var(--text-main) !important;
+}
+
+#dataCollectionContainer #step1{
+  background-color: var(--background-main) !important;
 }
 
 

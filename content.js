@@ -1,4 +1,49 @@
+// Listen for messages from popup.js
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'changeRestylingState') {
+    const isEnabled = message.isEnabled;
+    
+    // Call your function to restyle the page or update its behavior
+    if (isEnabled) {
+      console.log('Restyling enabled!');
+      // Your restyling logic here
+    } else {
+      console.log('Restyling disabled.');
+      // Logic to revert or disable your restyling
+    }
+  }
+});
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Get the document's root element
+const root = document.documentElement;
+
+// Set the CSS variables using the root element's style property
+// root.style.setProperty('--main-theme', 'blue');
+
+// Retrieve data from storage
+chrome.storage.local.get(["userData"], (result) => {
+  console.log("Data retrieved:", result.userData);
+});
 
 
 
