@@ -1,16 +1,9 @@
 
+
+
+
+
 console.log('Custom script injected');
-
-// const iframe2 = document.getElementById('iframe_wrap');
-// console.log(iframe2);
-
-// var iframe = iframe2.children[0];
-
-// // const iframe = document.getElementById('mybbCanvas');
-// console.log(iframe);
-
-
-
 
 // Function to add inline CSS rules inside the iframe
 function addInlineStylesInIframe(iframeElement, cssRules) {
@@ -64,6 +57,11 @@ var inlineCSS = `
   font-family: var(--global-font) !important;
   outline: none !important;
 }
+
+html {
+    background-color: var(--background-main) !important;
+    color: var(--text-main) !important;
+  }
 
 
 /* Calendar */
@@ -334,7 +332,10 @@ var inlineCSS = `
 var iframe = document.getElementById("mybbCanvas");
 var iframe2 = document.getElementById("right_stream_mygrades");
 var iframe3 = document.getElementById("contentFrame");
-console.log(iframe2);
+var iframe4 = document.querySelector(".tox-edit-area__iframe");
+
+console.log(iframe4);
+
 if(iframe != null){
   addInlineStylesInIframe(iframe, inlineCSS);
 }else{
@@ -345,6 +346,12 @@ if(iframe != null){
 if(iframe3 != null){
   addInlineStylesInIframe(iframe3, inlineCSS);
 }
+
+if(iframe4 != null){
+  addInlineStylesInIframe(iframe4, inlineCSS);
+  console.log("Detected box");
+}
+
 
 
 

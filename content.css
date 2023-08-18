@@ -1,10 +1,10 @@
 /* Global style choices. Needs to be copied to content.js for embedded content */
 
-:root {  
+/*:root {  
   --main-theme: #5E0366;
 
   --background-main: #fff;
-  --background-main-outline: #333;
+  --background-main-outline: #dddddd;
   --background-tint-1: #fbfbfb;
   --background-tint-1-highlight: #f4f4f4;
   --background-tint-2: #fefefe;
@@ -19,12 +19,12 @@
   --primary-button-text: #eee;
 
   --text-main: #000;
-  --text-light: #333;
+  --text-light: #555;
   --global-font: Open Sans,sans-serif;
-}
+}*/
 
-/*:root {  
-  --main-theme: #5E0366;
+:root {  
+  --main-theme: #410247;
 
   --background-main: #111;
   --background-main-outline: #333;
@@ -33,9 +33,9 @@
   --background-tint-2: #222;
   --background-tint-2-highlight: #222;
 
-  --secondary-button: #dadada;
-  --secondary-button-highlight: #e8e8e8;
-  --secondary-button-text: #333;
+  --secondary-button: #555;
+  --secondary-button-highlight: #585858;
+  --secondary-button-text: #ddd;
 
   --primary-button: #5E0366;
   --primary-button-highlight: #7a0485;
@@ -44,7 +44,7 @@
   --text-main: #ccc;
   --text-light: #999;
   --global-font: Open Sans,sans-serif;
-}*/
+}
 
 *{
   outline: none !important;
@@ -234,6 +234,10 @@ margin-top: 5px;
   color: var(--text-main) !important;
 }
 
+.breadcrumbs .coursePath{
+  margin-right: 0 !important;
+}
+
 
 
 /*
@@ -313,6 +317,12 @@ margin-top: 5px;
   ---
 */
 
+.locationPane .contentBox + div div div{
+  background-color: var(--background-main) !important;
+  border-top-color: var(--background-main) !important;
+  border-bottom-color: var(--background-main-outline) !important;
+}
+
 .portlet{
   background-color: var(--background-main) !important;
   border-radius: 10px !important;
@@ -325,6 +335,7 @@ margin-top: 5px;
 .portlet .collapsible{
    max-height: 100vh !important;
   overflow-y: hidden !important;
+  border-color: var(--background-main-outline) !important;
 }
 
 .portlet .collapsible:hover{
@@ -342,6 +353,16 @@ margin-top: 5px;
   background-color: var(--background-main) !important;
 }
 
+.portlet .tab .tablinks{
+  background-color: var(--background-main) !important;
+  color: var(--text-light) !important;
+}
+
+.portlet .tab .tablinks.active{
+  background-color: var(--background-tint-1) !important;
+  color: var(--text-main) !important;
+}
+
 .portlet .tabcontent{
   border: none !important;
 }
@@ -354,9 +375,42 @@ margin-top: 5px;
   cursor: pointer;
 }
 
+.portlet .listElement li, .portlet .courseListing li{
+  border-color: var(--background-main-outline) !important;
+}
+
+.portlet hr{
+  background-color: var(--background-main-outline) !important;
+  color: var(--background-main-outline) !important;
+  border-color: var(--background-main-outline) !important;
+}
+
 
 .portlet .tabcontent h3{
   margin: 3px 0 !important;
+}
+
+.portlet b, .portlet span, .portlet h4{
+  color: var(--text-main) !important;
+}
+
+.portlet tr td{
+  color: var(--text-light) !important;
+}
+
+.portlet .actionMenuButton{
+  background-color: var(--secondary-button) !important;
+  border: none !important;
+  box-shadow: inset 0 0 0 2px var(--secondary-button) !important;
+  color: var(--secondary-button-text) !important;
+}
+
+.portlet .actionMenuButton:hover{
+  background-color: var(--secondary-button-highlight) !important;
+}
+
+.portlet .portletBlock{
+  border-color: var(--background-main) !important;
 }
 
 /*
@@ -467,9 +521,13 @@ margin-top: 5px;
   width:100%;
   height: 10px;
   position: absolute;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--background-main-outline) !important;
   top: 0;
   left: 0;
+}
+
+li::marker{
+  color: var(--text-main) !important;
 }
 
 .menuWrap .navPaletteContent, .menuWrap .courseMenu, #courseMenuPalette_contents li {
@@ -555,8 +613,19 @@ margin-top: 5px;
   height: calc(100% + 30px) !important;
 }
 
+.locationPane .navigationPane hr{
+  background-color: var(--background-main) !important;
+  border-color: var(--background-main-outline) !important;
+}
+
 .locationPane{
   overflow-y: hidden;
+}
+
+.menuWrap .menuWrap-inner {
+  background-color: var(--background-main) !important;
+  overflow-y: hidden !important;
+  height: 200%;
 }
 
 /*
@@ -591,7 +660,7 @@ margin-top: 5px;
 
 .contentList li, .contentListPlain li{
   border: none !important;
-  border-top: 1px solid #eee !important;  
+  border-top: 1px solid var(--background-main-outline) !important;  
 }
 
 .contentList li{
@@ -655,6 +724,10 @@ margin-top: 5px;
   margin-left: 20px !important;
 }
 
+/*.ally-alternative-formats{
+  color: var(--text-light) !important;
+}*/
+
 /*
   ---
   ---
@@ -682,11 +755,16 @@ margin-top: 5px;
   width: 100%;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: var(--background-main);
 }
 
 .uomFooter span a{
   text-decoration: none !important;
+}
+
+.uomFooter img{
+  background-color: transparent !important;
+  border-radius: 5px !important;
 }
 
 
@@ -781,12 +859,13 @@ margin-top: 5px;
 
 .actionBar .nav .secondaryButton{
   background-color: var(--background-main) !important;
+  color: var(--secondary-button-text) !important;
 }
 
 
 #searchActionButtonId a:before, #refreshTreeActionButtonId:before{
   z-index: 4;
-  color: #333 !important;
+  color: var(--secondary-button-text) !important;
   font-size: 16px !important;
   margin-top: 2px !important;
   content: "F";
@@ -798,7 +877,7 @@ margin-top: 5px;
 
 #searchActionButtonId a:after, #refreshTreeActionButtonId:after{
   position: absolute;
-  color: #333 !important;
+ color: var(--secondary-button-text) !important;
   box-shadow: inset 0 0 0 2px #dadada;
     border-radius: 2px;
   background-color: var(--secondary-button) !important;
@@ -868,6 +947,16 @@ margin-top: 5px;
   border-radius: 4px !important;
 }
 
+.secondaryButton ul{
+  background-color: var(--secondary-button) !important;
+}
+
+.actionBar .secondaryButton a, .backLink a, .pagingprefs a, #listContainer_nav_batch_top a, #listContainer_nav_batch_bot a{
+  color: var(--secondary-button-text) !important;
+    background-color: var(--secondary-button) !important;
+    box-shadow: inset 0 0 0 2px var(--secondary-button) !important;
+}
+
 .profileCardAvatarThumb img{
   border-radius: 50% !important;
   border: none;
@@ -893,9 +982,9 @@ margin-top: 5px;
 }
 
 .threadButtons .reply {
-  background-color: var(--main-theme) !important;
+  background-color: var(--primary-button) !important;
   background-image: none !important;
-  color: #eee !important;
+  color: var(--primary-button-text) !important;
   border: none !important;
   outline: none !important;
 }
@@ -1168,19 +1257,38 @@ a.reply-count-link {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: var(--main-theme);
+  background-color: var(--primary-button);
   top: 0;
   left: 0;
   z-index: -1;
   border-radius: 5px;
 }
 
+.table-data-cell-value .unread-count{
+  color: var(--primary-button-text) !important;
+}
+
 .unread-count.none:before{
-  background-color: #777;
+  background-color: var(--secondary-button);
+  color: var(--text-main);
+}
+
+.table-data-cell-value .unread-count.none{
+  color: var(--secondary-button-text) !important;
 }
 
 .inventoryListHead img{
   display: none;
+}
+
+.collectionViewUnreadMessageBorder{
+  border: none !important;
+}
+
+.dbThread{
+  border: none !important;
+  box-shadow: none !important;
+  background-color: var(--background-tint-1) !important;
 }
 
 .pagingprefs{
@@ -1262,6 +1370,15 @@ a.reply-count-link {
   margin: 2px !important;
 }
 
+.collabContainer{
+  width: calc( 100% - 3px) !important;
+}
+
+.inventoryListTableContainerDiv .smallCell input {
+  height: 13px !important;
+  width: 13px !important;
+}
+
 /*
   ---
   ---
@@ -1337,6 +1454,14 @@ a.reply-count-link {
   ---
 */
 
+#dataCollectionContainer, #dataCollectionContainer .stepcontent{
+  background-color: var(--background-main) !important;
+}
+#dataCollectionContainer div h3{
+   background-color: var(--background-main) !important;
+   color: var(--text-main) !important;
+}
+
 
 .stepTitleRight{
   margin-top: 0 !important;
@@ -1344,6 +1469,8 @@ a.reply-count-link {
   padding: 4px 12px !important;
   border-bottom-right-radius: 5px !important;
   border-right: 1px solid #ccc !important;
+  border-color: var(--background-main-outline) !important;
+  background-color: var(--background-main) !important;
 }
 
 .stepTitleRight input{
@@ -1370,6 +1497,19 @@ a.reply-count-link {
   background-color: var(--primary-button-highlight) !important;
 }
 
+.textboxtable .tox {
+  border-radius: 4px !important;
+  background-color: var(--background-main-outline) !important;
+}
+
+.tox .tox-edit-area__iframe {
+  background-color: var(--background-main) !important;
+}
+
+.textboxtable .vtbehelp{
+  color: var(--text-light) !important;
+}
+
 #dataCollectionContainer .stepcontent{
   border-bottom: none !important;
 }
@@ -1377,22 +1517,39 @@ a.reply-count-link {
   padding-top: 10px !important;
 }
 
+.takeQuestionDiv {
+  border-color: var(--background-main-outline) !important;
+}
+
 #dataCollectionContainer{
   margin-bottom: 35px !important;
 }
 
-.submitStepFixed{
+#dataCollectionContainer .submitStepBottom{
+  background-color: var(--background-main) !important;
+}
+
+#dataCollectionContainer .submitStepFixed{
   border-top-left-radius: 5px !important;
   border-top-right-radius: 5px !important;
   border: none !important;
-  background-color: #eee !important;
+  background-color: var(--background-main-outline) !important;
 }
 
-.submitStepBottom .submit{
+.submitStepBottom .taskbuttondiv input{
+    background-color: var(--secondary-button) !important;
+    box-shadow: inset 0 0 0 2px var(--secondary-button) !important;
+  color: var(--secondary-button-text) !important;
+}
+
+.submitStepBottom .taskbuttondiv .submit{
     background-color: var(--primary-button) !important;
   box-shadow: inset 0 0 0 2px var(--primary-button) !important;
   color: var(--primary-button-text) !important;
+}
 
+.submitStepBottom .taskbuttonhelp{
+  color: var(--text-light) !important;
 }
 
 #bottom_saveAllAnswersButton{
@@ -1403,9 +1560,10 @@ a.reply-count-link {
 
 .assessmentPortlet .liveArea{
   border: none !important;
-  background-color: #eee !important;
+  background-color: var(--background-main-outline) !important;
   border-radius: 5px !important;
   z-index: 5 !important;
+  margin: 10px -10px 10px 10px !important;
 }
 
 .tox .tox-editor-header {
@@ -1415,14 +1573,9 @@ a.reply-count-link {
 #instructionBlock{
   margin: 10px 10px !important;
   border-radius: 5px !important;
-  background-color: #eee !important;
+  background-color: var(--background-main-outline) !important;
   border: none !important;
 }
-
-.assessmentPortlet .liveArea{
-  margin: 10px -10px 10px 10px !important;
-}
-
 
 
 .completionContainer .qComplete{
@@ -1510,6 +1663,7 @@ a.reply-count-link {
   ---
   ---
 */
+
 
 @media only screen and (min-width: 320px) and (max-width: 1037px){
   .global-nav-bar .nav-link{
@@ -1680,6 +1834,10 @@ a.reply-count-link {
     transform: translateX(-2px);
   }
 
+  .cmdiv{
+    top: 44px !important;
+  }
+
 /*  .navigationPane:after{
     content: "";
     position: absolute;
@@ -1747,6 +1905,21 @@ a.reply-count-link {
   #announcementList h3{
     width: calc(100%) !important;
   }
+
+  #badgeTotal{
+    top: 7px !important;
+    left: 45px !important;   
+  }
+
+  #badgeTotalCount{
+    padding: 3px 5px !important;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 738px){
+  #navigationPane{
+    top: 42px !important;
+  }
 }
 
 
@@ -1757,6 +1930,11 @@ a.reply-count-link {
   ---
   ---
 */
+
+/*html {
+    background-color: var(--background-main) !important;
+    color: var(--text-main) !important;
+  }*/
 
 
 
