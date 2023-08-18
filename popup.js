@@ -1,16 +1,3 @@
-
-// var userData;
-// try {
-//   chrome.storage.local.get(["userData"], (result) => {
-//     console.log("Data retrieved:", result.userData.theme);
-//     userData = result.userData;
-//   });
-// } catch (error) {
-  userData = initialiseUserData();
-// }
-
-
-
 function initialiseUserData(){
   const temp = 
   {
@@ -87,7 +74,25 @@ function sendMessageFunction(message) {
   updateStyles(message);
 }
 
-// Example usage: Get active tab ID and send a message to content.js
-getActiveTabId(function (tabId) {
-  sendMessageToContentScript(tabId, userData);
-});
+
+
+try{
+  chrome.storage.local.get(["userData"], (result) => {
+    console.log("Data retrieved:", result.userData.theme);
+    userData = result.userData;
+  });
+} catch (error){
+  userData = initialiseUserData();
+}
+
+var button = document.getElementById("refreshButton");
+button.addEventListener("click", refreshStyles);
+
+
+function refreshStyles(){
+  // Example usage: Get active tab ID and send a message to content.js
+  getActiveTabId(function (tabId) {
+    sendMessageToContentScript(tabId, userData);
+  });
+}
+
