@@ -1,24 +1,103 @@
+function initialiseUserData(){
+  const temp = 
+  {
+    theme: "light",
+    power: "on",
+    light: {
+      mainTheme: "#5E0366",
+      backgroundMain: "#fff",
+      backgroundMainOutline: "#dddddd",
+      backgroundTint1: "#fbfbfb",
+      backgroundTint1Highlight: "#f4f4f4",
+      backgroundTint2: "#fefefe",
+      backgroundTint2Highlight: "#f7f7f7",
+      secondaryButton: "#dadada",
+      secondaryButtonHighlight: "#e8e8e8",
+      secondaryButtonText: "#333",
+      primaryButton: "#5E0366",
+      primaryButtonHighlight: "#7a0485",
+      primaryButtonText: "#eee",
+      textMain: "#000",
+      textLight: "#555",
+      globalFont: "Open Sans, sans-serif"
+    },
+    dark: {
+      mainTheme: "#410247",
+      backgroundMain: "#111",
+      backgroundMainOutline: "#333",
+      backgroundTint1: "#191919",
+      backgroundTint1Highlight: "#191919",
+      backgroundTint2: "#222",
+      backgroundTint2Highlight: "#222",
+      secondaryButton: "#555",
+      secondaryButtonHighlight: "#585858",
+      secondaryButtonText: "#ddd",
+      primaryButton: "#5E0366",
+      primaryButtonHighlight: "#7a0485",
+      primaryButtonText: "#eee",
+      textMain: "#ccc",
+      textLight: "#999",
+      globalFont: "Open Sans, sans-serif"
+    }
+  };
+  return temp; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const jsonData = initialiseUserData();
+// localStorage.setItem('data', JSON.stringify(jsonData));
+
+// Retrieving data
+const storedData = localStorage.getItem('data');
+const userData = JSON.parse(storedData);
+console.log(userData);
+const root = document.documentElement;
+if (userData.theme == "dark") {
+  setProperties(userData.dark);
+}
+else{
+  setProperties(userData.light);
+}
+
+
 
 
 // Retrieve data from storage
-chrome.storage.local.get(["userData"], (result) => {
-  console.log("Data retrieved:", result.userData);
-  userData = result.userData;
-  if (userData.theme == "dark") {
-    setProperties(userData.dark);
-  }
-  else{
-    setProperties(userData.light);
-  }
-});
+// chrome.storage.local.get(["userData"], (result) => {
+//   console.log("Data retrieved:", result.userData);
+//   userData = result.userData;
+//   if (userData.theme == "dark") {
+//     setProperties(userData.dark);
+//   }
+//   else{
+//     setProperties(userData.light);
+//   }
+// });
 
 function updateStyles(message){
 
   // Save data to storage
-  var userData = message;
-  chrome.storage.local.set({ userData}, () => {
-    console.log("Data saved:", message);
-  });
+  // var userData = message;
+  // chrome.storage.local.set({ userData}, () => {
+  //   console.log("Data saved:", message);
+  // });
+
+  const jsonData = message;
+  localStorage.setItem('data', JSON.stringify(jsonData));
 
   if (userData.theme == "dark") {
     setProperties(userData.dark);
@@ -30,22 +109,26 @@ function updateStyles(message){
 
 
 function setProperties(themeData) {
-  root.style.setProperty('--main-theme', themeData.mainTheme);
-  root.style.setProperty('--background-main', themeData.backgroundMain);
-  root.style.setProperty('--background-main-outline', themeData.backgroundMainOutline);
-  root.style.setProperty('--background-tint-1', themeData.backgroundTint1);
-  root.style.setProperty('--background-tint-1-highlight', themeData.backgroundTint1Highlight);
-  root.style.setProperty('--background-tint-2', themeData.backgroundTint2);
-  root.style.setProperty('--background-tint-2-highlight', themeData.backgroundTint2Highlight);
-  root.style.setProperty('--secondary-button', themeData.secondaryButton);
-  root.style.setProperty('--secondary-button-highlight', themeData.secondaryButtonHighlight);
-  root.style.setProperty('--secondary-button-text', themeData.secondaryButtonText);
-  root.style.setProperty('--primary-button', themeData.primaryButton);
-  root.style.setProperty('--primary-button-highlight', themeData.primaryButtonHighlight);
-  root.style.setProperty('--primary-button-text', themeData.primaryButtonText);
-  root.style.setProperty('--text-main', themeData.textMain);
-  root.style.setProperty('--text-light', themeData.textLight);
-  root.style.setProperty('--global-font', themeData.globalFont);
+  const cssText = `
+    --main-theme: ${themeData.mainTheme};
+    --background-main: ${themeData.backgroundMain};
+    --background-main-outline: ${themeData.backgroundMainOutline};
+    --background-tint-1: ${themeData.backgroundTint1};
+    --background-tint-1-highlight: ${themeData.backgroundTint1Highlight};
+    --background-tint-2: ${themeData.backgroundTint2};
+    --background-tint-2-highlight: ${themeData.backgroundTint2Highlight};
+    --secondary-button: ${themeData.secondaryButton};
+    --secondary-button-highlight: ${themeData.secondaryButtonHighlight};
+    --secondary-button-text: ${themeData.secondaryButtonText};
+    --primary-button: ${themeData.primaryButton};
+    --primary-button-highlight: ${themeData.primaryButtonHighlight};
+    --primary-button-text: ${themeData.primaryButtonText};
+    --text-main: ${themeData.textMain};
+    --text-light: ${themeData.textLight};
+    --global-font: ${themeData.globalFont};
+  `;
+
+  root.style.cssText = cssText;
 }
 
 
@@ -54,7 +137,7 @@ function setProperties(themeData) {
 
 
 // Get the document's root element
-const root = document.documentElement;
+
 
 // Set the CSS variables using the root element's style property
 // root.style.setProperty('--main-theme', 'blue');
