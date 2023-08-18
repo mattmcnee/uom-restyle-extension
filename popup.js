@@ -74,25 +74,50 @@ function sendMessageFunction(message) {
   updateStyles(message);
 }
 
-
-
-try{
-  chrome.storage.local.get(["userData"], (result) => {
-    console.log("Data retrieved:", result.userData.theme);
-    userData = result.userData;
-  });
-} catch (error){
-  userData = initialiseUserData();
-}
-
-var button = document.getElementById("refreshButton");
-button.addEventListener("click", refreshStyles);
-
-
 function refreshStyles(){
+  userData.light.mainTheme = mainThemeLight.value;
+  userData.light.backgroundMain = backgroundMainLight.value;
+
   // Example usage: Get active tab ID and send a message to content.js
   getActiveTabId(function (tabId) {
     sendMessageToContentScript(tabId, userData);
   });
 }
+
+function prefillColours(cData) {
+  mainThemeLight.value = cData.light.mainTheme;
+  backgroundMainLight.value = cData.light.backgroundMain;
+}
+
+
+var userData;
+try{
+  chrome.storage.local.get(["userData"], (result) => {
+    console.log("Data retrieved:", result.userData.theme);
+    userData = result.userData;
+    prefillColours(userData);
+  });
+} catch (error){
+  userData = initialiseUserData();
+  prefillColours(userData);
+}
+
+
+var button = document.getElementById("refreshButton");
+button.addEventListener("click", refreshStyles);
+
+var mainThemeLight = document.getElementById("mainThemeLight");
+var mainThemeDark = document.getElementById("mainThemeDark");
+var backgroundMainLight = document.getElementById("backgroundMainLight");
+var backgroundMainDark = document.getElementById("backgroundMainDark");
+
+
+
+
+
+
+
+
+
+
 
