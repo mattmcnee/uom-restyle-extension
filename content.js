@@ -1,7 +1,7 @@
 function initialiseUserData(){
   const temp = 
   {
-    theme: "light",
+    theme: "dark",
     power: "on",
     light: {
       mainTheme: "#5E0366",
@@ -44,7 +44,23 @@ function initialiseUserData(){
 }
 
 
+// function loadCSSFile(file) {
+//   const link = document.createElement("link");
+//   link.rel = "stylesheet";
+//   link.type = "text/css";
+//   link.href = chrome.runtime.getURL(file);
+//   document.head.appendChild(link);
+// }
 
+// // Load content2.css
+// // loadCSSFile("content2.css");
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   // This code will run when the page begins to load
+//   console.log("Page is starting to load...");
+//   loadCSSFile("content2.css");
+
+// });
 
 
 
