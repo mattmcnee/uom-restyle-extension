@@ -43,77 +43,42 @@ function initialiseUserData(){
   return temp; 
 }
 
-
-// function loadCSSFile(file) {
-//   const link = document.createElement("link");
-//   link.rel = "stylesheet";
-//   link.type = "text/css";
-//   link.href = chrome.runtime.getURL(file);
-//   document.head.appendChild(link);
-// }
-
-// // Load content2.css
-// // loadCSSFile("content2.css");
-
-// document.addEventListener("DOMContentLoaded", function() {
-//   // This code will run when the page begins to load
-//   console.log("Page is starting to load...");
-//   loadCSSFile("content2.css");
-
-// });
+var root;
+document.addEventListener("DOMContentLoaded", function() {
+  // This code will run when the page begins to load
+  console.log("Page is starting to load...");
+  root = document.documentElement;
+    if (userData.theme == "dark") {
+    setProperties(userData.dark);
+  }
+  else{
+    setProperties(userData.light);
+  }
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-// const jsonData = initialiseUserData();
-// localStorage.setItem('data', JSON.stringify(jsonData));
-
-// Retrieving data
-const storedData = localStorage.getItem('data');
-const userData = JSON.parse(storedData);
-console.log(userData);
-const root = document.documentElement;
-if (userData.theme == "dark") {
-  setProperties(userData.dark);
-}
-else{
-  setProperties(userData.light);
-}
-
-
-
-
-// Retrieve data from storage
-// chrome.storage.local.get(["userData"], (result) => {
-//   console.log("Data retrieved:", result.userData);
-//   userData = result.userData;
-//   if (userData.theme == "dark") {
-//     setProperties(userData.dark);
-//   }
-//   else{
-//     setProperties(userData.light);
-//   }
-// });
+//Retrieve data from storage
+chrome.storage.local.get(["userData"], (result) => {
+  console.log("Data retrieved:", result.userData);
+  userData = result.userData;
+  if (userData.theme == "dark") {
+    setProperties(userData.dark);
+  }
+  else{
+    setProperties(userData.light);
+  }
+});
 
 function updateStyles(message){
 
   // Save data to storage
-  // var userData = message;
-  // chrome.storage.local.set({ userData}, () => {
-  //   console.log("Data saved:", message);
-  // });
+  var userData = message;
+  chrome.storage.local.set({ userData}, () => {
+    console.log("Data saved:", message);
+  });
 
-  const jsonData = message;
-  localStorage.setItem('data', JSON.stringify(jsonData));
+  // const jsonData = message;
+  // localStorage.setItem('data', JSON.stringify(jsonData));
 
   if (userData.theme == "dark") {
     setProperties(userData.dark);
@@ -146,22 +111,6 @@ function setProperties(themeData) {
 
   root.style.cssText = cssText;
 }
-
-
-
-
-
-
-// Get the document's root element
-
-
-// Set the CSS variables using the root element's style property
-// root.style.setProperty('--main-theme', 'blue');
-
-
-
-
-
 
 console.log('Custom script injected');
 

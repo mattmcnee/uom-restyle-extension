@@ -111,7 +111,7 @@ function prefillColours() {
 var userData;
 try{
   chrome.storage.local.get(["userData"], (result) => {
-    console.log("Data retrieved:", result.userData.theme.x);
+    console.log("Data retrieved:", result.userData.theme);
     userData = result.userData;
     prefillColours(userData);
   });

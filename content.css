@@ -1,6 +1,6 @@
 /* Global style choices. Needs to be copied to content.js for embedded content */
 
-/*:root {  
+:root {  
   --main-theme: #5E0366;
 
   --background-main: #fff;
@@ -21,7 +21,7 @@
   --text-main: #000;
   --text-light: #555;
   --global-font: Open Sans,sans-serif;
-}*/
+}
 
 /*:root {  
   --main-theme: #410247;
