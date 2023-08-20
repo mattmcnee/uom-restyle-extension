@@ -4,7 +4,7 @@
   --main-theme: #5E0366;
 
   --background-main: #fff;
-  --background-main-outline: #dddddd;
+  --background-main-outline: #eee;
   --background-tint-1: #fbfbfb;
   --background-tint-1-highlight: #f4f4f4;
   --background-tint-2: #fefefe;
@@ -661,6 +661,7 @@ li::marker{
 .contentList li, .contentListPlain li{
   border: none !important;
   border-top: 1px solid var(--background-main-outline) !important;  
+  background-color: var(--background-tint-1) !important;
 }
 
 .contentList li{
@@ -682,11 +683,6 @@ li::marker{
 
 .contentList li:nth-child(even):hover {
   background-color: var(--background-tint-2-highlight) !important;
-}
-
-.contentListPlain li{
-  background-color: var(--background-tint-1) !important;
-  border-color: var(--background-main-highlight) !important;
 }
 
 .contentListPlain li span, .contentListPlain li h3, .contentList li span, .contentList li h3{
@@ -1630,6 +1626,15 @@ a.reply-count-link {
   border-radius: 6px !important;
   background-color: var(--primary-button) !important;
   background-image: none !important;
+}
+
+.infoListWrapper{
+  background-color: var(--background-main-outline) !important;
+  border: none !important;
+}
+
+.infoListWrapper .key-valueTable th, .infoListWrapper .key-valueTable td{
+  color: var(--text-main) !important;
 }
 
 

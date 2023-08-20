@@ -6,7 +6,7 @@ function initialiseUserData(){
     light: {
       mainTheme: "#5E0366",
       backgroundMain: "#fff",
-      backgroundMainOutline: "#dddddd",
+      backgroundMainOutline: "#eee",
       backgroundTint1: "#fbfbfb",
       backgroundTint1Highlight: "#f4f4f4",
       backgroundTint2: "#fefefe",
@@ -107,18 +107,20 @@ function prefillColours() {
   // mainTextLight.value = userData.light.textMain;
 }
 
-
 var userData;
-try{
-  chrome.storage.local.get(["userData"], (result) => {
-    console.log("Data retrieved:", result.userData.theme);
-    userData = result.userData;
+document.addEventListener("DOMContentLoaded", function() {
+  try{
+    chrome.storage.local.get(["userData"], (result) => {
+      console.log("Data retrieved:", result.userData.theme);
+      userData = result.userData;
+      prefillColours(userData);
+    });
+  } catch (error){
+    userData = initialiseUserData();
     prefillColours(userData);
-  });
-} catch (error){
-  userData = initialiseUserData();
-  prefillColours(userData);
-}
+  }
+
+});
 
 
 // var button = document.getElementById("refreshButton");

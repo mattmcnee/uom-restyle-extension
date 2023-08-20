@@ -6,7 +6,7 @@ function initialiseUserData(){
     light: {
       mainTheme: "#5E0366",
       backgroundMain: "#fff",
-      backgroundMainOutline: "#dddddd",
+      backgroundMainOutline: "#eee",
       backgroundTint1: "#fbfbfb",
       backgroundTint1Highlight: "#f4f4f4",
       backgroundTint2: "#fefefe",
