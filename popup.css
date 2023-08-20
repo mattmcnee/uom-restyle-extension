@@ -14,7 +14,11 @@ button{
 	padding: 2px 3px;
 }
 
-tr td:first-child, tr th:first-child {
+select{
+	width: 100%;
+}
+
+/*tr td:first-child, tr th:first-child {
 	background-color: #fff;
 	width: 30px;
 	display: flex;
@@ -30,7 +34,7 @@ tr td:last-child, tr th:last-child{
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-}
+}*/
 
 #nightMode, #lightMode{
 	margin: 5px;

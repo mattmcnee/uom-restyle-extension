@@ -609,9 +609,9 @@ li::marker{
   outline: none !important;
 }
 
-.locationPane .navigationPane{
+/*.locationPane .navigationPane{
   height: calc(100% + 30px) !important;
-}
+}*/
 
 .locationPane .navigationPane hr{
   background-color: var(--background-main) !important;
@@ -620,6 +620,7 @@ li::marker{
 
 .locationPane{
   overflow-y: hidden;
+/*  max-height: 100% !important;*/
 }
 
 .menuWrap .menuWrap-inner {
@@ -720,6 +721,7 @@ li::marker{
 
 [id="bbNG.receiptTag.content"] ~ p{
   margin-left: 20px !important;
+  bottom: unset !important;
 }
 
 /*.ally-alternative-formats{

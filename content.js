@@ -49,18 +49,16 @@ document.addEventListener("DOMContentLoaded", function() {
   console.log("Page is starting to load...");
   root = document.documentElement;
     if (userData.theme == "dark") {
-    setProperties(userData.dark);
+    root.style.cssText = setProperties(userData.dark);
   }
   else{
-    setProperties(userData.light);
+    root.style.cssText = setProperties(userData.light);
   }
 
   var iframe = document.getElementById("mybbCanvas");
   var iframe2 = document.getElementById("right_stream_mygrades");
   var iframe3 = document.getElementById("contentFrame");
   var iframe4 = document.querySelector(".tox-edit-area__iframe");
-
-  console.log(iframe4);
 
   if(iframe != null){
     addInlineStylesInIframe(iframe, inlineCSS);
@@ -104,10 +102,10 @@ function updateStyles(message){
   // localStorage.setItem('data', JSON.stringify(jsonData));
 
   if (userData.theme == "dark") {
-    setProperties(userData.dark);
+      root.style.cssText = setProperties(userData.dark);
   }
   else{
-    setProperties(userData.light);
+      root.style.cssText = setProperties(userData.light);
   }
 }
 
@@ -131,8 +129,7 @@ function setProperties(themeData) {
     --text-light: ${themeData.textLight};
     --global-font: ${themeData.globalFont};
   `;
-
-  root.style.cssText = cssText;
+  return cssText;
 }
 
 console.log('Custom script injected');
