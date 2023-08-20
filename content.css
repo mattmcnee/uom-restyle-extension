@@ -654,7 +654,9 @@ li::marker{
   border: none !important;
   border-radius: 10px !important;
   margin: 0 0 0 0 !important;
-  padding: 0 !important;
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   width: calc(100% - 1px);
 }
 
@@ -1467,6 +1469,18 @@ a.reply-count-link {
   ---
   ---
 */
+
+/*.locationPane .contentPaneWide .contentBox #pageTitleDiv + #containerdiv{
+  padding-bottom: 165px;
+}  */
+
+[id="bbNG.receiptTag.content"] {
+  padding-bottom: 40px !important;
+}
+
+[id="bbNG.receiptTag.content"] + p, .receiptDate{
+  transform: translateY(-20px);
+}
 
 #dataCollectionContainer, #dataCollectionContainer .stepcontent{
   background-color: var(--background-main) !important;
