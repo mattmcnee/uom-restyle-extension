@@ -54,6 +54,29 @@ document.addEventListener("DOMContentLoaded", function() {
   else{
     setProperties(userData.light);
   }
+
+  var iframe = document.getElementById("mybbCanvas");
+  var iframe2 = document.getElementById("right_stream_mygrades");
+  var iframe3 = document.getElementById("contentFrame");
+  var iframe4 = document.querySelector(".tox-edit-area__iframe");
+
+  console.log(iframe4);
+
+  if(iframe != null){
+    addInlineStylesInIframe(iframe, inlineCSS);
+  }else{
+    if(iframe2 != null){
+      addInlineStylesInIframe(iframe2, inlineCSS);
+    }
+  }
+  if(iframe3 != null){
+    addInlineStylesInIframe(iframe3, inlineCSS);
+  }
+
+  if(iframe4 != null){
+    addInlineStylesInIframe(iframe4, inlineCSS);
+    console.log("Detected box");
+  }
 });
 
 
@@ -173,6 +196,7 @@ html {
   }
 
 
+
 /* Calendar */
 
 .stream_header{
@@ -265,6 +289,18 @@ html {
 
 .colorPicker-palette{
   background-color: #fff !important;
+  border: none !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+.colorPicker-palette div{
+  border-radius: 3px !important;
+}
+
+.colorPicker-palette input{
+  border-radius: 3px !important;
+  padding-left: 2px !important;
 }
 
 .colorPicker-picker{
@@ -406,8 +442,9 @@ html {
 }
 
 .active_stream_item {
-  border-bottom: 1px dashed #ccc !important;
+  border-right: 1px dashed #ccc !important;
 }
+
 
 /* Updates */
 #streamHeader_alerts{
@@ -436,30 +473,8 @@ html {
 }
 
 
+
 `;
-
-var iframe = document.getElementById("mybbCanvas");
-var iframe2 = document.getElementById("right_stream_mygrades");
-var iframe3 = document.getElementById("contentFrame");
-var iframe4 = document.querySelector(".tox-edit-area__iframe");
-
-console.log(iframe4);
-
-if(iframe != null){
-  addInlineStylesInIframe(iframe, inlineCSS);
-}else{
-  if(iframe2 != null){
-    addInlineStylesInIframe(iframe2, inlineCSS);
-  }
-}
-if(iframe3 != null){
-  addInlineStylesInIframe(iframe3, inlineCSS);
-}
-
-if(iframe4 != null){
-  addInlineStylesInIframe(iframe4, inlineCSS);
-  console.log("Detected box");
-}
 
 
 

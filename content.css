@@ -636,10 +636,6 @@ li::marker{
   ---
 */
 
-#content_listContainer{
-  margin-bottom: -20px !important;
-}
-
 .pageTitleDiv span, .pageTitleDiv h3{
   color: var(--text-main) !important;
 }
@@ -1429,6 +1425,11 @@ a.reply-count-link {
   cursor: pointer;
 }
 
+
+#content_listContainer{
+  margin-bottom: -20px !important;
+}
+
 /*
   ---
   ---
@@ -2005,11 +2006,6 @@ a.reply-count-link {
   ---
 */
 
-/*html {
-    background-color: var(--background-main) !important;
-    color: var(--text-main) !important;
-  }*/
-
 
 
 /* Calendar */
@@ -2104,6 +2100,18 @@ a.reply-count-link {
 
 .colorPicker-palette{
   background-color: #fff !important;
+  border: none !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 4px !important;
+}
+
+.colorPicker-palette div{
+  border-radius: 3px !important;
+}
+
+.colorPicker-palette input{
+  border-radius: 3px !important;
+  padding-left: 2px !important;
 }
 
 .colorPicker-picker{
