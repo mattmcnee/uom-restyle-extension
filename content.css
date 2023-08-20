@@ -817,6 +817,14 @@ li::marker{
   ---
 */
 
+.itemDetails, .announcementInfo {
+  border-color: var(--background-main-outline) !important;
+}
+
+.localViewToggle a.active{
+  border: none !important;
+}
+
 .thread-controls-top{
   background-color: var(--background-main) !important;
 }
@@ -1312,7 +1320,7 @@ a.reply-count-link {
 }
 
 .pagingprefs{
-  margin-right: 80px !important;
+  margin-right: 10px !important;
   margin-bottom: 10px !important;
 }
 
@@ -1397,6 +1405,28 @@ a.reply-count-link {
 .inventoryListTableContainerDiv .smallCell input {
   height: 13px !important;
   width: 13px !important;
+}
+
+.nav .sub ul{
+  background-color: var(--secondary-button) !important;
+  border-color: var(--secondary-button) !important;
+}
+
+.profile-card{
+  border-radius: 4px !important;
+  background-color: var(--secondary-button) !important;
+}
+
+.profile-card h1, .profile-card p{
+  color: var(--secondary-button-text) !important;
+}
+
+.profile-card .img-profile-card{
+  border-radius: 50% !important;
+}
+
+.profile-card .profile-card-close-button:hover{
+  cursor: pointer;
 }
 
 /*
@@ -1899,7 +1929,6 @@ a.reply-count-link {
   }
 
 /* Discussion boards */
-
   .actionBar{
     margin: 10px 30px !important;
   }
