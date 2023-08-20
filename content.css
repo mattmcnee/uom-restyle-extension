@@ -636,6 +636,10 @@ li::marker{
   ---
 */
 
+#content_listContainer{
+  margin-bottom: -20px !important;
+}
+
 .pageTitleDiv span, .pageTitleDiv h3{
   color: var(--text-main) !important;
 }
