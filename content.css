@@ -1,5 +1,7 @@
 /* Global style choices. Needs to be copied to content.js for embedded content */
 
+
+/* Light Mode Default */
 :root {  
   --main-theme: #5E0366;
 
@@ -23,6 +25,7 @@
   --global-font: Open Sans,sans-serif;
 }
 
+/* Dark Mode Default */
 /*:root {  
   --main-theme: #410247;
 
@@ -43,6 +46,30 @@
 
   --text-main: #ccc;
   --text-light: #999;
+  --global-font: Open Sans,sans-serif;
+}*/
+
+/* Test themes */
+/*:root {  
+  --main-theme: #B8860B;
+
+  --background-main: #fff;
+  --background-main-outline: #eee;
+  --background-tint-1: #fbfbfb;
+  --background-tint-1-highlight: #f4f4f4;
+  --background-tint-2: #fefefe;
+  --background-tint-2-highlight: #f7f7f7;
+
+  --secondary-button: #dadada;
+  --secondary-button-highlight: #e8e8e8;
+  --secondary-button-text: #333;
+
+  --primary-button: #28850c;
+  --primary-button-highlight: #353535;
+  --primary-button-text: #eee;
+
+  --text-main: #000;
+  --text-light: #555;
   --global-font: Open Sans,sans-serif;
 }*/
 
@@ -1510,6 +1537,24 @@ a.reply-count-link {
 /*.locationPane .contentPaneWide .contentBox #pageTitleDiv + #containerdiv{
   padding-bottom: 165px;
 }  */
+
+.filterBarHorizontal{
+  background-color: var(--background-main-outline) !important;
+}
+
+.filterBarHorizontal #sortby{
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
+}
+
+.filterBarHorizontal label{
+  color: var(--text-light) !important;
+}
+
+.grades_header{
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+}
 
 [id="bbNG.receiptTag.content"] {
   padding-bottom: 40px !important;

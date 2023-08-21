@@ -1,47 +1,145 @@
-function initialiseUserData(){
-  const temp = 
-  {
-    theme: "light",
-    power: "on",
-    light: {
-      mainTheme: "#5E0366",
-      backgroundMain: "#fff",
-      backgroundMainOutline: "#eee",
-      backgroundTint1: "#fbfbfb",
-      backgroundTint1Highlight: "#f4f4f4",
-      backgroundTint2: "#fefefe",
-      backgroundTint2Highlight: "#f7f7f7",
-      secondaryButton: "#dadada",
-      secondaryButtonHighlight: "#e8e8e8",
-      secondaryButtonText: "#333",
-      primaryButton: "#5E0366",
-      primaryButtonHighlight: "#7a0485",
-      primaryButtonText: "#eee",
-      textMain: "#000",
-      textLight: "#555",
-      globalFont: "Open Sans, sans-serif"
-    },
-    dark: {
-      mainTheme: "#410247",
-      backgroundMain: "#111",
-      backgroundMainOutline: "#333",
-      backgroundTint1: "#191919",
-      backgroundTint1Highlight: "#191919",
-      backgroundTint2: "#222",
-      backgroundTint2Highlight: "#222",
-      secondaryButton: "#555",
-      secondaryButtonHighlight: "#585858",
-      secondaryButtonText: "#ddd",
-      primaryButton: "#5E0366",
-      primaryButtonHighlight: "#7a0485",
-      primaryButtonText: "#eee",
-      textMain: "#ccc",
-      textLight: "#999",
-      globalFont: "Open Sans, sans-serif"
-    }
-  };
-  return temp; 
+
+// This sets up the JSON with the chosen style
+function initialiseUserData(styleChoice){
+  if (styleChoice == "default") {
+    const temp = 
+    {
+      theme: "light",
+      style: "default",
+      light: {
+        mainTheme: "#5E0366",
+        backgroundMain: "#fff",
+        backgroundMainOutline: "#eee",
+        backgroundTint1: "#fbfbfb",
+        backgroundTint1Highlight: "#f4f4f4",
+        backgroundTint2: "#fefefe",
+        backgroundTint2Highlight: "#f7f7f7",
+        secondaryButton: "#dadada",
+        secondaryButtonHighlight: "#e8e8e8",
+        secondaryButtonText: "#333",
+        primaryButton: "#5E0366",
+        primaryButtonHighlight: "#7a0485",
+        primaryButtonText: "#eee",
+        textMain: "#000",
+        textLight: "#555",
+        globalFont: "Open Sans, sans-serif"
+      },
+      dark: {
+        mainTheme: "#410247",
+        backgroundMain: "#111",
+        backgroundMainOutline: "#333",
+        backgroundTint1: "#191919",
+        backgroundTint1Highlight: "#191919",
+        backgroundTint2: "#222",
+        backgroundTint2Highlight: "#222",
+        secondaryButton: "#555",
+        secondaryButtonHighlight: "#585858",
+        secondaryButtonText: "#ddd",
+        primaryButton: "#5E0366",
+        primaryButtonHighlight: "#7a0485",
+        primaryButtonText: "#eee",
+        textMain: "#ccc",
+        textLight: "#999",
+        globalFont: "Open Sans, sans-serif"
+      }
+    };
+    return temp; 
+  }
+  else if( styleChoice == "blackboard"){
+    const temp = 
+    {
+      theme: "light",
+      style: "blackboard",
+      light: {
+        mainTheme: "#333",
+        backgroundMain: "#fff",
+        backgroundMainOutline: "#eee",
+        backgroundTint1: "#fbfbfb",
+        backgroundTint1Highlight: "#f4f4f4",
+        backgroundTint2: "#fefefe",
+        backgroundTint2Highlight: "#f7f7f7",
+        secondaryButton: "#dadada",
+        secondaryButtonHighlight: "#e8e8e8",
+        secondaryButtonText: "#333",
+        primaryButton: "#333",
+        primaryButtonHighlight: "#353535",
+        primaryButtonText: "#eee",
+        textMain: "#000",
+        textLight: "#555",
+        globalFont: "Open Sans, sans-serif"
+      },
+      dark: {
+        mainTheme: "#333",
+        backgroundMain: "#111",
+        backgroundMainOutline: "#333",
+        backgroundTint1: "#191919",
+        backgroundTint1Highlight: "#191919",
+        backgroundTint2: "#222",
+        backgroundTint2Highlight: "#222",
+        secondaryButton: "#555",
+        secondaryButtonHighlight: "#585858",
+        secondaryButtonText: "#ddd",
+        primaryButton: "#333",
+        primaryButtonHighlight: "#353535",
+        primaryButtonText: "#eee",
+        textMain: "#ccc",
+        textLight: "#999",
+        globalFont: "Open Sans, sans-serif"
+      }
+    };
+    return temp; 
+  }
+
+  else if( styleChoice == "forest"){
+    const temp = 
+    {
+      theme: "light",
+      style: "forest",
+      light: {
+        mainTheme: "#124a01",
+        backgroundMain: "#fff",
+        backgroundMainOutline: "#eee",
+        backgroundTint1: "#fbfbfb",
+        backgroundTint1Highlight: "#f4f4f4",
+        backgroundTint2: "#fefefe",
+        backgroundTint2Highlight: "#f7f7f7",
+        secondaryButton: "#dadada",
+        secondaryButtonHighlight: "#e8e8e8",
+        secondaryButtonText: "#333",
+        primaryButton: "#124a01",
+        primaryButtonHighlight: "#165902",
+        primaryButtonText: "#eee",
+        textMain: "#000",
+        textLight: "#555",
+        globalFont: "Open Sans, sans-serif"
+      },
+      dark: {
+        mainTheme: "#124a01",
+        backgroundMain: "#111",
+        backgroundMainOutline: "#333",
+        backgroundTint1: "#191919",
+        backgroundTint1Highlight: "#191919",
+        backgroundTint2: "#222",
+        backgroundTint2Highlight: "#222",
+        secondaryButton: "#555",
+        secondaryButtonHighlight: "#585858",
+        secondaryButtonText: "#ddd",
+        primaryButton: "#124a01",
+        primaryButtonHighlight: "#165902",
+        primaryButtonText: "#eee",
+        textMain: "#ccc",
+        textLight: "#999",
+        globalFont: "Open Sans, sans-serif"
+      }
+    };
+    return temp; 
+  }
 }
+
+
+
+
+
 
 
 
@@ -87,7 +185,7 @@ function refreshStyles(){
   // userData.light.backgroundMain = backgroundMainLight.value;
   // userData.light.textMain = mainTextLight.value;
 
-  // Example usage: Get active tab ID and send a message to content.js
+  // Get active tab ID and send a message to content.js
   getActiveTabId(function (tabId) {
     sendMessageToContentScript(tabId, userData);
   });
@@ -101,6 +199,8 @@ function prefillColours() {
     lightModeRadioButton.checked = true;
   }
 
+  selectElement.value = userData.style;
+
 
   // mainThemeLight.value = userData.light.mainTheme;
   // backgroundMainLight.value = userData.light.backgroundMain;
@@ -109,6 +209,27 @@ function prefillColours() {
 
 var userData;
 document.addEventListener("DOMContentLoaded", function() {
+
+  // Initialises radio buttons
+  var lightModeRadioButton = document.getElementById("lightMode");
+  var darkModeRadioButton = document.getElementById("nightMode");
+  lightModeRadioButton.addEventListener("change", refreshStyles);
+  darkModeRadioButton.addEventListener("change", refreshStyles);
+
+  // Initialises select element
+  const selectElement = document.getElementById('styleSelect');
+  selectElement.addEventListener('change', function() {
+      const selectedOption = selectElement.value;
+      if (selectedOption == "stylesheet") {
+          userData.style = selectedOption;
+      }
+      else{
+        userData = initialiseUserData(selectedOption);
+      }
+      refreshStyles();
+  });
+
+  // Loads userData
   try{
     chrome.storage.local.get(["userData"], (result) => {
       console.log("Data retrieved:", result.userData.theme);
@@ -116,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
       prefillColours(userData);
     });
   } catch (error){
-    userData = initialiseUserData();
+    userData = initialiseUserData("default");
     prefillColours(userData);
   }
 
@@ -126,10 +247,6 @@ document.addEventListener("DOMContentLoaded", function() {
 // var button = document.getElementById("refreshButton");
 // var resetButton = document.getElementById("restyleCheckbox")
 // button.addEventListener("click", refreshStyles);
-var lightModeRadioButton = document.getElementById("lightMode");
-var darkModeRadioButton = document.getElementById("nightMode");
-lightModeRadioButton.addEventListener("change", refreshStyles);
-darkModeRadioButton.addEventListener("change", refreshStyles);
 
 // var mainThemeLight = document.getElementById("mainThemeLight");
 // var mainThemeDark = document.getElementById("mainThemeDark");

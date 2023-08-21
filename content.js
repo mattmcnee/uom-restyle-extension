@@ -1,8 +1,8 @@
 function initialiseUserData(){
   const temp = 
   {
+    style: "default",
     theme: "dark",
-    power: "on",
     light: {
       mainTheme: "#5E0366",
       backgroundMain: "#fff",
@@ -43,52 +43,22 @@ function initialiseUserData(){
   return temp; 
 }
 
-var root;
-document.addEventListener("DOMContentLoaded", function() {
-  // This code will run when the page begins to load
-  console.log("Page is starting to load...");
-  root = document.documentElement;
-    if (userData.theme == "dark") {
-    root.style.cssText = setProperties(userData.dark);
+function updateTheme(uData){
+  console.log("Data retrieved:", uData);
+  if(uData.style == "stylesheet"){
+    root.style.cssText = "";
   }
   else{
-    root.style.cssText = setProperties(userData.light);
-  }
-
-  var iframe = document.getElementById("mybbCanvas");
-  var iframe2 = document.getElementById("right_stream_mygrades");
-  var iframe3 = document.getElementById("contentFrame");
-  var iframe4 = document.querySelector(".tox-edit-area__iframe");
-
-  if(iframe != null){
-    addInlineStylesInIframe(iframe, inlineCSS);
-  }else{
-    if(iframe2 != null){
-      addInlineStylesInIframe(iframe2, inlineCSS);
+    if (uData.theme == "dark") {
+      root.style.cssText = getProperties(uData.dark);
+      console.log("set dark");
+    }
+    else{
+      root.style.cssText = getProperties(uData.light);
     }
   }
-  if(iframe3 != null){
-    addInlineStylesInIframe(iframe3, inlineCSS);
-  }
+}
 
-  if(iframe4 != null){
-    addInlineStylesInIframe(iframe4, inlineCSS);
-    console.log("Detected box");
-  }
-});
-
-
-//Retrieve data from storage
-chrome.storage.local.get(["userData"], (result) => {
-  console.log("Data retrieved:", result.userData);
-  userData = result.userData;
-  if (userData.theme == "dark") {
-    setProperties(userData.dark);
-  }
-  else{
-    setProperties(userData.light);
-  }
-});
 
 function updateStyles(message){
 
@@ -101,16 +71,11 @@ function updateStyles(message){
   // const jsonData = message;
   // localStorage.setItem('data', JSON.stringify(jsonData));
 
-  if (userData.theme == "dark") {
-      root.style.cssText = setProperties(userData.dark);
-  }
-  else{
-      root.style.cssText = setProperties(userData.light);
-  }
+  updateTheme(userData);
 }
 
 
-function setProperties(themeData) {
+function getProperties(themeData) {
   const cssText = `
     --main-theme: ${themeData.mainTheme};
     --background-main: ${themeData.backgroundMain};
@@ -131,8 +96,6 @@ function setProperties(themeData) {
   `;
   return cssText;
 }
-
-console.log('Custom script injected');
 
 // Function to add inline CSS rules inside the iframe
 function addInlineStylesInIframe(iframeElement, cssRules) {
@@ -157,7 +120,44 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
     };
 }
 
-var inlineCSS = `
+console.log('Custom script injected');
+
+//Retrieve data from storage
+chrome.storage.local.get(["userData"], (result) => {
+  console.log("Data retrieved:", result.userData);
+  userData = result.userData;
+  // updateTheme(userData);
+});
+
+var root;
+document.addEventListener("DOMContentLoaded", function() {
+  // This code will run when the page begins to load
+  root = document.documentElement;
+  updateTheme(userData);
+
+  var iframe = document.getElementById("mybbCanvas");
+  var iframe2 = document.getElementById("right_stream_mygrades");
+  var iframe3 = document.getElementById("contentFrame");
+  var iframe4 = document.querySelector(".tox-edit-area__iframe");
+
+  if(iframe != null){
+    addInlineStylesInIframe(iframe, inlineCSS);
+  }else{
+    if(iframe2 != null){
+      addInlineStylesInIframe(iframe2, inlineCSS);
+    }
+  }
+  if(iframe3 != null){
+    addInlineStylesInIframe(iframe3, inlineCSS);
+  }
+
+  if(iframe4 != null){
+    addInlineStylesInIframe(iframe4, inlineCSS);
+  }
+});
+
+
+var inlineCSSRoot =`
 
 :root {  
   --main-theme: #5E0366;
@@ -181,6 +181,11 @@ var inlineCSS = `
   --global-font: Arial, sans-serif;
 /*  --global-font: Consolas, monospace;*/
 }
+
+`
+
+var inlineCSS = inlineCSSRoot + `
+
 
 *{
   font-family: var(--global-font) !important;
