@@ -143,36 +143,41 @@ a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.action
   background-color: var(--primary-button-highlight) !important;
 }
 
+/* backgroundMain */
+body, .contentBox, .locationPane, .container, .locationPane .tabbedPane .contentBox .container,
+.contentPane .shadow, .contentPane, .breadcrumbs, .locationPane .contentBox + div div div,
+.portlet, .portlet .tab, .portlet .tab .tablinks, .menuWrap, .menuWrap::after,
+.menuWrap .navPaletteContent, .menuWrap .courseMenu, #courseMenuPalette_contents li,
+#courseMenuPalette_paletteTitleHeading h3, #courseMenuPalette, #courseMenuPalette ul, 
+.courseMenu span, .courseMenu a, .locationPane .navigationPane hr, .menuWrap .menuWrap-inner,
+.tocWrapper, .tocWrapper a, .inventory, .thread-controls-top, .actionBar .nav .secondaryButton,
+.db-collapse-control a, #panelbutton1, .inventoryListHead .sorted, .inventoryListHead th, 
+.inventoryListHead th a, #listContainer, .localViewToggle, .localViewToggle a:before,
+.localViewToggle li a.active, #pageTitleDiv, .filterBarHorizontal #sortby,
+#dataCollectionContainer, #dataCollectionContainer .stepcontent, #dataCollectionContainer div h3,
+#dataCollectionContainer #step1, .stepTitleRight, .tox .tox-edit-area__iframe,
+#dataCollectionContainer .submitStepBottom{
+  background-color: var(--background-main) !important;
+}
 
 
 
 
 
 body{
-  background-color: var(--background-main) !important;
   color: var(--text-main) !important;
   font-family: var(--global-font) !important;
-}
-
-.contentBox{
-  background-color: var(--background-main) !important;
 }
 
 /* Main content holder*/
 .locationPane{
     margin-top: 0 !important;
     padding-bottom: 0 !important;
-    background-color: var(--background-main) !important;
     min-height: calc(100vh - 75px) !important;
-}
-
-.container{
-  background-color: var(--background-main) !important;
 }
 
 .locationPane .tabbedPane .contentBox .container{
   margin-top: 0 !important;
-  background-color: var(--background-main) !important;
 }
 
 /*
@@ -228,15 +233,10 @@ margin-top: 5px;
 
 .contentPane .shadow {
   border-top: 6px solid var(--background-main) !important;
-  background-color: var(--background-main) !important;
 }
 
 .contentPaneWide{
   margin: 0 !important;
-}
-
-.contentPane{
-  background-color: var(--background-main) !important;
 }
 
 .contentPane #copyright p, .contentPane #copyright div{
@@ -328,7 +328,6 @@ margin-top: 5px;
   border-bottom: none !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   z-index: 5;
-  background-color: var(--background-main) !important;
   color: var(--text-main) !important;
 }
 
@@ -420,13 +419,11 @@ margin-top: 5px;
 */
 
 .locationPane .contentBox + div div div{
-  background-color: var(--background-main) !important;
   border-top-color: var(--background-main) !important;
   border-bottom-color: var(--background-main-outline) !important;
 }
 
 .portlet{
-  background-color: var(--background-main) !important;
   border-radius: 10px !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   border-top-left-radius: 10px !important;
@@ -447,16 +444,11 @@ margin-top: 5px;
 .portlet h2{
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
-  background-color: var(--background-main) !important;
+  background-color: transparent; !important;
     color: var(--text-main) !important;
 }
 
-.portlet .tab{
-  background-color: var(--background-main) !important;
-}
-
 .portlet .tab .tablinks{
-  background-color: var(--background-main) !important;
   color: var(--text-light) !important;
 }
 
@@ -611,14 +603,12 @@ margin-top: 5px;
 }
 
 .menuWrap {
-  background-color: var(--background-main) !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   z-index: 2;
 }
 
 .menuWrap::after{
   content: "";
-  background-color: var(--background-main) !important;
   z-index: 10;
   width:100%;
   height: 10px;
@@ -632,21 +622,15 @@ li::marker{
   color: var(--text-main) !important;
 }
 
-.menuWrap .navPaletteContent, .menuWrap .courseMenu, #courseMenuPalette_contents li {
-  background-color: var(--background-main) !important;
-}
-
 #courseMenuPalette_contents li a span, #courseMenuPalette h3 a{
   color: var(--text-main) !important;
 }
 
 #courseMenuPalette_paletteTitleHeading h3 {
-  background-color: var(--background-main) !important;
   color: var(--text-main) !important;
 }
 
 #courseMenuPalette, #courseMenuPalette ul, .courseMenu span, .courseMenu a{
-  background-color: var(--background-main) !important;
   color: var(--text-main) !important;
 }
 
@@ -716,7 +700,6 @@ li::marker{
 }*/
 
 .locationPane .navigationPane hr{
-  background-color: var(--background-main) !important;
   border-color: var(--background-main-outline) !important;
 }
 
@@ -726,7 +709,6 @@ li::marker{
 }
 
 .menuWrap .menuWrap-inner {
-  background-color: var(--background-main) !important;
   overflow-y: hidden !important;
   height: 200%;
 }
@@ -889,9 +871,6 @@ li::marker{
   ---
   ---
 */
-.tocWrapper{
-  background-color: var(--background-main) !important;  
-}
 
 .tocSide_pullExpanded{
   transform: translate(-12px, -4px);
@@ -903,7 +882,6 @@ li::marker{
 }
 
 .tocWrapper a{
-  background-color: var(--background-main) !important;
   border: none !important;
   box-shadow: none !important;
 }
@@ -917,9 +895,6 @@ li::marker{
   ---
 */
 
-.inventory{
-  background-color: var(--background-main) !important;
-}
 
 .inventoryListHead tr th, #listContainer_datatable tbody tr {
   border-color: var(--background-main-outline) !important;
@@ -931,10 +906,6 @@ li::marker{
 
 .localViewToggle a.active{
   border: none !important;
-}
-
-.thread-controls-top{
-  background-color: var(--background-main) !important;
 }
 
 
@@ -976,7 +947,6 @@ li::marker{
 }
 
 .actionBar .nav .secondaryButton{
-  background-color: var(--background-main) !important;
   color: var(--secondary-button-text) !important;
 }
 
@@ -1052,7 +1022,6 @@ li::marker{
 }
 
 .db-collapse-control a{
-  background-color: var(--background-main) !important;
   color: var(--text-main) !important;
   border-radius: 2px !important;
 }
@@ -1206,10 +1175,6 @@ a.reply-count-link {
   ---
 */
 
-#panelbutton1 {
-  background-color: var(--background-main) !important;
-}
-
 #panelbutton1 li{
   color: var(--text-main) !important;
 }
@@ -1218,16 +1183,11 @@ a.reply-count-link {
   color: var(--text-light) !important;
 }
 
-.inventoryListHead .sorted{
-  background-color: var(--background-main) !important;
-}
-
 .inventoryListHead .sorted .sortheader{
   color: var(--text-main) !important;
 }
 
 .inventoryListHead th, .inventoryListHead th a{
-  background-color: var(--background-main) !important;
   color: var(--text-main) !important;
 }
 
@@ -1256,12 +1216,7 @@ a.reply-count-link {
   background-color: transparent !important;
 }
 
-#listContainer{
-  background-color: var(--background-main) !important;
-}
-
 .localViewToggle{
-  background-color: var(--background-main) !important;
   position: absolute;
   right: 20px;
   top: 0;
@@ -1299,7 +1254,6 @@ a.reply-count-link {
   height: calc(100% - 10px) !important;
   margin: 0 !important;
   border: none !important;
-  background-color: var(--background-main) !important;
   padding: 5px 0 !important;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -1324,10 +1278,6 @@ a.reply-count-link {
 
 .localViewToggle a:after{
   display: none !important;
-}
-
-.localViewToggle li a.active{
-  background-color: var(--background-main) !important;
 }
 
 .localViewToggle a.active:before{
@@ -1557,7 +1507,6 @@ a.reply-count-link {
 
 #pageTitleDiv{
   margin-bottom: 20px !important;
-  background-color: var(--background-main) !important;
 }
 
 #announcementList .details{
@@ -1601,7 +1550,6 @@ a.reply-count-link {
 }
 
 .filterBarHorizontal #sortby{
-  background-color: var(--background-main) !important;
   color: var(--text-main) !important;
 }
 
@@ -1622,18 +1570,9 @@ a.reply-count-link {
   transform: translateY(-20px);
 }
 
-#dataCollectionContainer, #dataCollectionContainer .stepcontent{
-  background-color: var(--background-main) !important;
-}
 #dataCollectionContainer div h3{
-   background-color: var(--background-main) !important;
    color: var(--text-main) !important;
 }
-
-#dataCollectionContainer #step1{
-  background-color: var(--background-main) !important;
-}
-
 
 .stepTitleRight{
   margin-top: 0 !important;
@@ -1642,7 +1581,6 @@ a.reply-count-link {
   border-bottom-right-radius: 5px !important;
   border-right: 1px solid #ccc !important;
   border-color: var(--background-main-outline) !important;
-  background-color: var(--background-main) !important;
 }
 
 .stepTitleRight input{
@@ -1656,10 +1594,6 @@ a.reply-count-link {
 .textboxtable .tox {
   border-radius: 4px !important;
   background-color: var(--background-main-outline) !important;
-}
-
-.tox .tox-edit-area__iframe {
-  background-color: var(--background-main) !important;
 }
 
 .textboxtable .vtbehelp{
@@ -1679,10 +1613,6 @@ a.reply-count-link {
 
 #dataCollectionContainer{
   margin-bottom: 35px !important;
-}
-
-#dataCollectionContainer .submitStepBottom{
-  background-color: var(--background-main) !important;
 }
 
 #dataCollectionContainer .submitStepFixed{
@@ -2064,6 +1994,11 @@ a.reply-count-link {
   ---
 */
 
+/* iframeBackgroundMain */
+#dynamic_filters_alerts, #column_0, #column_1, #mybb_column_wrapper{
+  background-color: var(--background-main) !important;
+}
+
 
 
 /* Calendar */
@@ -2325,20 +2260,12 @@ a.reply-count-link {
   margin-left: 10px !important;
 }
 
-#dynamic_filters_alerts{
-  background-color: var(--background-main) !important;
-}
-
 #dynamic_filters_alerts a{
   text-decoration: none !important;
 }
 
 #left_stream_stream{
   padding-top: 20px !important;
-}
-
-#column_0, #column_1, #mybb_column_wrapper{
-  background-color: var(--background-main);
 }
 
 
