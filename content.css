@@ -87,8 +87,29 @@
   ---
 */
 
+/* 
+Ideally each of the items below would be its own class instead
+of a combination of many but this is not possible as the html
+cannot be changed 
+*/
 
+/* primaryButton */
+.threadButtons .reply, .submitStepBottom .taskbuttondiv .submit,
+.completionContainer .qComplete {
+  outline: none !important;
+  border: none !important;
+  background-image: none !important;
+  background-color: var(--primary-button) !important;
+  box-shadow: inset 0 0 0 2px var(--primary-button) !important;
+  color: var(--primary-button-text) !important;
+  border-radius: 2px !important;
+}
 
+/* primaryButton:hover */
+.threadButtons .reply:hover, .submitStepBottom .taskbuttondiv .submit:hover,
+.completionContainer .qComplete:hover{
+  background-color: var(--primary-button-highlight) !important;
+}
 
 /* secondaryButton */
 .portlet .actionMenuButton, #top_list_action_bar li a, #bottom_list_action_bar li a,
@@ -110,7 +131,6 @@ a.reply-count-link, .inventory_paging a, #navsecondary a:not(.actionMenuItem a),
   border-radius: 2px !important;
 }
 
-
 /* secondaryButton:hover */
 .portlet .actionMenuButton:hover, #top_list_action_bar li a:hover, #bottom_list_action_bar li a:hover,
 #searchActionButtonId a:hover:after, #refreshTreeActionButtonId:hover:after,
@@ -123,24 +143,6 @@ a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.action
 .submitStepBottom .taskbuttondiv input:hover, #bottom_saveAllAnswersButton:hover,
 .completionContainer .qIncomplete:hover, #panelbutton1 .genericButton:hover{
   background-color: var(--secondary-button-highlight) !important;
-}
-
-/* primaryButton */
-.threadButtons .reply, .submitStepBottom .taskbuttondiv .submit,
-.completionContainer .qComplete {
-  outline: none !important;
-  border: none !important;
-  background-image: none !important;
-  background-color: var(--primary-button) !important;
-  box-shadow: inset 0 0 0 2px var(--primary-button) !important;
-  color: var(--primary-button-text) !important;
-  border-radius: 2px !important;
-}
-
-/* primaryButton:hover */
-.threadButtons .reply:hover, .submitStepBottom .taskbuttondiv .submit:hover,
-.completionContainer .qComplete:hover{
-  background-color: var(--primary-button-highlight) !important;
 }
 
 /* backgroundMain */
@@ -156,24 +158,29 @@ body, .contentBox, .locationPane, .container, .locationPane .tabbedPane .content
 .localViewToggle li a.active, #pageTitleDiv, .filterBarHorizontal #sortby,
 #dataCollectionContainer, #dataCollectionContainer .stepcontent, #dataCollectionContainer div h3,
 #dataCollectionContainer #step1, .stepTitleRight, .tox .tox-edit-area__iframe,
-#dataCollectionContainer .submitStepBottom{
+#dataCollectionContainer .submitStepBottom, .portlet h2{
   background-color: var(--background-main) !important;
 }
 
-
-
-
-
-body{
+/* textMain */
+body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .breadcrumbs span,
+.portlet, .portlet h2, .portlet .tab .tablinks.active, .portlet b, .portlet span, .portlet h4,
+.menuWrap h3 a, li::marker, #courseMenuPalette_contents li a span, #courseMenuPalette h3 a,
+#courseMenuPalette_paletteTitleHeading h3, #courseMenuPalette, #courseMenuPalette ul, 
+.courseMenu span, .courseMenu a, .pageTitleDiv span, .pageTitleDiv h3, .contentListPlain li span, 
+.contentListPlain li h3, .contentList li span, .contentList li h3, .db-collapse-control a,
+#panelbutton1 li, .inventoryListHead .sorted .sortheader, .inventoryListHead th, 
+.inventoryListHead th a, .localViewToggle a, .pagingprefs span, .inventoryListTableContainerDiv span,
+#announcementList h3, #pageTitleHeader span, .filterBarHorizontal #sortby, .grades_header,
+#dataCollectionContainer div h3, .infoListWrapper .key-valueTable th, .infoListWrapper .key-valueTable td{
   color: var(--text-main) !important;
-  font-family: var(--global-font) !important;
 }
 
 /* Main content holder*/
 .locationPane{
-    margin-top: 0 !important;
-    padding-bottom: 0 !important;
-    min-height: calc(100vh - 75px) !important;
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: calc(100vh - 75px) !important;
 }
 
 .locationPane .tabbedPane .contentBox .container{
@@ -237,10 +244,6 @@ margin-top: 5px;
 
 .contentPaneWide{
   margin: 0 !important;
-}
-
-.contentPane #copyright p, .contentPane #copyright div{
-  color: var(--text-main) !important;
 }
 
 .contentPane #copyright .logo img{
@@ -328,18 +331,11 @@ margin-top: 5px;
   border-bottom: none !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   z-index: 5;
-  color: var(--text-main) !important;
-}
-
-.breadcrumbs span{
-  color: var(--text-main) !important;
 }
 
 .breadcrumbs .coursePath{
   margin-right: 0 !important;
 }
-
-
 
 /*
   ---
@@ -360,7 +356,6 @@ margin-top: 5px;
   background-color: var(--main-theme) !important;
   width: 350px !important;
 }
-
 
 .flyout-menu .accordion-wrapper{
   border-top-right-radius: 10px;
@@ -407,9 +402,6 @@ margin-top: 5px;
   border: none !important;
 }
 
-
-
-
 /*
   ---
   ---
@@ -428,7 +420,6 @@ margin-top: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   border-top-left-radius: 10px !important;
   border-color: var(--background-main) !important;
-    color: var(--text-main) !important;
 }
 
 .portlet .collapsible{
@@ -445,7 +436,6 @@ margin-top: 5px;
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
   background-color: transparent; !important;
-    color: var(--text-main) !important;
 }
 
 .portlet .tab .tablinks{
@@ -454,7 +444,6 @@ margin-top: 5px;
 
 .portlet .tab .tablinks.active{
   background-color: var(--background-tint-1) !important;
-  color: var(--text-main) !important;
 }
 
 .portlet .tabcontent{
@@ -485,13 +474,8 @@ margin-top: 5px;
   color: var(--text-light) !important;
 }
 
-
 .portlet .tabcontent h3{
   margin: 3px 0 !important;
-}
-
-.portlet b, .portlet span, .portlet h4{
-  color: var(--text-main) !important;
 }
 
 .portlet tr td{
@@ -598,9 +582,6 @@ margin-top: 5px;
   ---
 */
 
-.menuWrap h3 a{
-  color: var(--text-main) !important;
-}
 
 .menuWrap {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
@@ -616,22 +597,6 @@ margin-top: 5px;
 /*  border-top: 1px solid var(--background-main-outline) !important;*/
   top: 0;
   left: 0;
-}
-
-li::marker{
-  color: var(--text-main) !important;
-}
-
-#courseMenuPalette_contents li a span, #courseMenuPalette h3 a{
-  color: var(--text-main) !important;
-}
-
-#courseMenuPalette_paletteTitleHeading h3 {
-  color: var(--text-main) !important;
-}
-
-#courseMenuPalette, #courseMenuPalette ul, .courseMenu span, .courseMenu a{
-  color: var(--text-main) !important;
 }
 
 #courseMenuPalette #courseMapButton{
@@ -721,10 +686,6 @@ li::marker{
   ---
 */
 
-.pageTitleDiv span, .pageTitleDiv h3{
-  color: var(--text-main) !important;
-}
-
 .contentList .liItem .item_icon{
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -770,10 +731,6 @@ li::marker{
 
 .contentList li:nth-child(even):hover {
   background-color: var(--background-tint-2-highlight) !important;
-}
-
-.contentListPlain li span, .contentListPlain li h3, .contentList li span, .contentList li h3{
-  color: var(--text-main) !important;
 }
 
 .contentListPlain li:hover{
@@ -850,7 +807,6 @@ li::marker{
   background-color: transparent !important;
   border-radius: 5px !important;
 }
-
 
 /*
   ---
@@ -931,14 +887,14 @@ li::marker{
 
 #searchActionButtonId:before, #searchActionButtonId ~ li:before {
   position: absolute;
-    content: "";
-      left: -5px;
-    top: -1px;
-    width: calc(100% + 10px);
-    height: calc(100% + 2px);
-    z-index: -1;
-    background-color: var(--background-main); !important;
-    pointer-events: none !important;
+  content: "";
+  left: -5px;
+  top: -1px;
+  width: calc(100% + 10px);
+  height: calc(100% + 2px);
+  z-index: -1;
+  background-color: var(--background-main); !important;
+  pointer-events: none !important;
 /*    transform: translateY(-5px);*/
 }
 
@@ -966,14 +922,14 @@ li::marker{
 #searchActionButtonId a:after, #refreshTreeActionButtonId:after{
   position: absolute;
   content: "";
-      left: 0px;
-    top: 0px;
+  left: 0px;
+  top: 0px;
   width:calc(50% + 10px) !important;
-    height: 100%;
-    pointer-events: none !important;
-    padding-left: 32px;
-    z-index: 3 !important;
-    outline: none !important;
+  height: 100%;
+  pointer-events: none !important;
+  padding-left: 32px;
+  z-index: 3 !important;
+  outline: none !important;
 }
 
 #refreshTreeActionButtonId:after{
@@ -1022,7 +978,6 @@ li::marker{
 }
 
 .db-collapse-control a{
-  color: var(--text-main) !important;
   border-radius: 2px !important;
 }
 
@@ -1129,8 +1084,6 @@ li::marker{
   display: none !important;
 }
 
-
-
 #forumMessagesContainer .db-message-wrapper:nth-child(odd) {
   background-color: var(--background-tint-1) !important;
 }
@@ -1175,26 +1128,13 @@ a.reply-count-link {
   ---
 */
 
-#panelbutton1 li{
-  color: var(--text-main) !important;
-}
-
 #helpPageTitle p, #helpPageTitle p a{
   color: var(--text-light) !important;
-}
-
-.inventoryListHead .sorted .sortheader{
-  color: var(--text-main) !important;
-}
-
-.inventoryListHead th, .inventoryListHead th a{
-  color: var(--text-main) !important;
 }
 
 #listContainer_databody td, #listContainer_databody th{
   border: none !important;
 }
-
 
 #listContainer_databody tr:nth-child(odd) {
   background-color: var(--background-tint-1) !important;
@@ -1275,7 +1215,6 @@ a.reply-count-link {
   content: "Course";
 }
 
-
 .localViewToggle a:after{
   display: none !important;
 }
@@ -1287,7 +1226,6 @@ a.reply-count-link {
 
 .localViewToggle a{
   text-decoration: none !important;
-  color: var(--text-main);
   outline: none !important;
   margin-left: 4px !important;
   background-color: var(--background-main);
@@ -1356,10 +1294,6 @@ a.reply-count-link {
   margin-bottom: 10px !important;
 }
 
-.pagingprefs span{
-  color: var(--text-main) !important;
-}
-
 .jumptopage{
   margin-right: 85px !important;
 }
@@ -1395,17 +1329,12 @@ a.reply-count-link {
 .backLink a{
   margin-right: 10px !important;
   margin-bottom: 10px !important;
-   padding: 0.48rem 1.1rem !important;
+  padding: 0.48rem 1.1rem !important;
 }
 
 .inventoryListTableContainerDiv .contextMenuContainer .cmimg{
   display: none;
 }
-
-.inventoryListTableContainerDiv span{
-  color: var(--text-main) !important;
-}
-
 
 .paging .jumptopage{
   margin-top: 10px !important;
@@ -1520,16 +1449,11 @@ a.reply-count-link {
   width: calc(100% - 15em) !important;
   background-color: transparent !important;
   padding: 10px 20px !important;
-  color: var(--text-main) !important;
 }
 
 #announcementList .itemDetails, #announcementList .announcementInfo {
   top: 0 !important;
   bottom: 0 !important;
-}
-
-#pageTitleHeader span{
-  color: var(--text-main) !important;
 }
 
 
@@ -1549,17 +1473,12 @@ a.reply-count-link {
   background-color: var(--background-main-outline) !important;
 }
 
-.filterBarHorizontal #sortby{
-  color: var(--text-main) !important;
-}
-
 .filterBarHorizontal label{
   color: var(--text-light) !important;
 }
 
 .grades_header{
   background-color: transparent !important;
-  color: var(--text-main) !important;
 }
 
 [id="bbNG.receiptTag.content"] {
@@ -1568,10 +1487,6 @@ a.reply-count-link {
 
 [id="bbNG.receiptTag.content"] + p, .receiptDate{
   transform: translateY(-20px);
-}
-
-#dataCollectionContainer div h3{
-   color: var(--text-main) !important;
 }
 
 .stepTitleRight{
@@ -1585,10 +1500,6 @@ a.reply-count-link {
 
 .stepTitleRight input{
   text-align: center;
-}
-
-.stepTitleRight .answerSavedButton:hover{
-  background-color: var(--primary-button-highlight) !important;
 }
 
 .textboxtable .tox {
@@ -1670,13 +1581,6 @@ a.reply-count-link {
   border: none !important;
 }
 
-.infoListWrapper .key-valueTable th, .infoListWrapper .key-valueTable td{
-  color: var(--text-main) !important;
-}
-
-
-
-
 /*
   ---
   ---
@@ -1685,15 +1589,13 @@ a.reply-count-link {
   ---
 */
 
-/*#5E0366*/
 .iframe-wrap{
   border: none !important;
 /*  width: 100% !important;*/
 }
 
-
 .side-nav{
-  background-color: #fff  !important;
+/*  background-color: #fff  !important;*/
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -1719,7 +1621,6 @@ a.reply-count-link {
   height: calc(100vh - 75px) !important;
 }
 
-
 /*
   ---
   ---
@@ -1727,7 +1628,6 @@ a.reply-count-link {
   ---
   ---
 */
-
 
 @media only screen and (min-width: 320px) and (max-width: 1037px){
   .global-nav-bar .nav-link{
@@ -1998,7 +1898,6 @@ a.reply-count-link {
 #dynamic_filters_alerts, #column_0, #column_1, #mybb_column_wrapper{
   background-color: var(--background-main) !important;
 }
-
 
 
 /* Calendar */
