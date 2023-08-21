@@ -114,7 +114,7 @@ function initialiseUserData(styleChoice){
         globalFont: "Open Sans, sans-serif"
       },
       dark: {
-        mainTheme: "#124a01",
+        mainTheme: "#0d3601",
         backgroundMain: "#111",
         backgroundMainOutline: "#333",
         backgroundTint1: "#191919",
@@ -124,8 +124,8 @@ function initialiseUserData(styleChoice){
         secondaryButton: "#555",
         secondaryButtonHighlight: "#585858",
         secondaryButtonText: "#ddd",
-        primaryButton: "#124a01",
-        primaryButtonHighlight: "#165902",
+        primaryButton: "#0d3601",
+        primaryButtonHighlight: "#124a01",
         primaryButtonText: "#eee",
         textMain: "#ccc",
         textLight: "#999",
@@ -208,16 +208,19 @@ function prefillColours() {
 }
 
 var userData;
+var lightModeRadioButton;
+var darkModeRadioButton;
+var selectElement;
 document.addEventListener("DOMContentLoaded", function() {
 
   // Initialises radio buttons
-  var lightModeRadioButton = document.getElementById("lightMode");
-  var darkModeRadioButton = document.getElementById("nightMode");
+  lightModeRadioButton = document.getElementById("lightMode");
+  darkModeRadioButton = document.getElementById("nightMode");
   lightModeRadioButton.addEventListener("change", refreshStyles);
   darkModeRadioButton.addEventListener("change", refreshStyles);
 
   // Initialises select element
-  const selectElement = document.getElementById('styleSelect');
+  selectElement = document.getElementById('styleSelect');
   selectElement.addEventListener('change', function() {
       const selectedOption = selectElement.value;
       if (selectedOption == "stylesheet") {
