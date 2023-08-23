@@ -22,6 +22,7 @@ function initialiseUserData(styleChoice){
         primaryButtonText: "#eee",
         textMain: "#000",
         textLight: "#555",
+        textLink: "#1874a4",
         globalFont: "Open Sans, sans-serif"
       },
       dark: {
@@ -40,6 +41,7 @@ function initialiseUserData(styleChoice){
         primaryButtonText: "#eee",
         textMain: "#ccc",
         textLight: "#999",
+        textLink: "#6ebff5",
         globalFont: "Open Sans, sans-serif"
       }
     };
@@ -66,6 +68,7 @@ function initialiseUserData(styleChoice){
         primaryButtonText: "#eee",
         textMain: "#000",
         textLight: "#555",
+        textLink: "#1874a4",
         globalFont: "Open Sans, sans-serif"
       },
       dark: {
@@ -84,6 +87,7 @@ function initialiseUserData(styleChoice){
         primaryButtonText: "#eee",
         textMain: "#ccc",
         textLight: "#999",
+        textLink: "#6ebff5",
         globalFont: "Open Sans, sans-serif"
       }
     };
@@ -111,6 +115,7 @@ function initialiseUserData(styleChoice){
         primaryButtonText: "#eee",
         textMain: "#000",
         textLight: "#555",
+        textLink: "#1874a4",
         globalFont: "Open Sans, sans-serif"
       },
       dark: {
@@ -129,6 +134,7 @@ function initialiseUserData(styleChoice){
         primaryButtonText: "#eee",
         textMain: "#ccc",
         textLight: "#999",
+        textLink: "#6ebff5",
         globalFont: "Open Sans, sans-serif"
       }
     };

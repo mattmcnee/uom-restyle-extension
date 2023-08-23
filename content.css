@@ -2,7 +2,7 @@
 
 
 /* Light Mode Default */
-/*:root {  
+:root {  
   --main-theme: #5E0366;
 
   --background-main: #fff;
@@ -23,10 +23,11 @@
   --text-main: #000;
   --text-light: #555;
   --global-font: Open Sans,sans-serif;
-}*/
+  --text-link: #1874a4;
+}
 
 /* Dark Mode Default */
-:root {  
+/*:root {  
   --main-theme: #410247;
 
   --background-main: #111;
@@ -47,11 +48,14 @@
   --text-main: #ccc;
   --text-light: #999;
   --global-font: Open Sans,sans-serif;
-}
+  --text-link: #6ebff5;
+}*/
 
 /* Test themes */
 /*:root {  
-  --main-theme: #B8860B;
+  --main-theme: #222;
+  --main-theme-text: #ebbc00;
+  --main-theme-text-light: #FFCC00;
 
   --background-main: #fff;
   --background-main-outline: #eee;
@@ -64,14 +68,16 @@
   --secondary-button-highlight: #e8e8e8;
   --secondary-button-text: #333;
 
-  --primary-button: #28850c;
-  --primary-button-highlight: #353535;
+  --primary-button: #333;
+  --primary-button-highlight: #555;
   --primary-button-text: #eee;
 
   --text-main: #000;
   --text-light: #555;
   --global-font: Open Sans,sans-serif;
 }*/
+
+/* Lime: #AABB00 */
 
 *{
   outline: none !important;
@@ -202,6 +208,22 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
   ---
   ---
 */
+
+#Blackboard a{
+  color: #eee !important;
+}
+
+[id="My Manchester"] a{
+  color: #eee !important;
+}
+
+/*#global-nav-link{
+   color: var(--main-theme-text) !important;
+}
+
+#quick_links_lightbox_link{
+  color: var(--main-theme-text) !important;
+}*/
 
 .global-nav-bar-wrap{
   background-color: var(--main-theme) !important;
@@ -428,6 +450,14 @@ margin-top: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   border-top-left-radius: 10px !important;
   border-color: var(--background-main) !important;
+}
+
+.portlet span{
+  text-decoration: none !important;
+}
+
+.portlet a {
+  color: var(--text-link) !important;
 }
 
 .portlet .collapsible{
@@ -843,6 +873,10 @@ margin-top: 5px;
   ---
 */
 
+.message-wrapper-inner form .dbThread{
+  background-color: transparent !important;
+}
+
 
 .inventoryListHead tr th, #listContainer_datatable tbody tr {
   border-color: var(--background-main-outline) !important;
@@ -890,8 +924,10 @@ margin-top: 5px;
 /*    transform: translateY(-5px);*/
 }
 
+
+/* Need to figure out what this does */
 .actionBar a:hover:after{
-  background-color: #dfdfdf !important;
+  background-color: #dfdfdf !important;  
 }
 
 .actionBar .nav .secondaryButton{
@@ -1363,7 +1399,6 @@ a.reply-count-link {
   cursor: pointer;
 }
 
-
 #content_listContainer{
   margin-bottom: -20px !important;
 }
@@ -1372,7 +1407,7 @@ a.reply-count-link {
   background-color: transparent !important;
 }
 
-#content_listContainer table{
+#content_listContainer table, #content_listContainer table tr{
   border-color: var(--background-main-outline) !important;
 }
 

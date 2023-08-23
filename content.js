@@ -92,6 +92,7 @@ function getProperties(themeData) {
     --primary-button-text: ${themeData.primaryButtonText};
     --text-main: ${themeData.textMain};
     --text-light: ${themeData.textLight};
+    --text-link: ${themeData.textLink};
     --global-font: ${themeData.globalFont};
   `;
   return cssText;
