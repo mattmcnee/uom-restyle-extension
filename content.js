@@ -43,20 +43,33 @@ function initialiseUserData(){
   return temp; 
 }
 
-function updateTheme(uData){
+function updateTheme(uData, updateIframe){
   console.log("Data retrieved:", uData);
   if(uData.style == "stylesheet"){
     root.style.cssText = "";
+    inlineCSS = getCss(uData.light) + inlineCSSCont;
   }
   else{
     if (uData.theme == "dark") {
       root.style.cssText = getProperties(uData.dark);
+      inlineCSS = getCss(uData.dark) + inlineCSSCont;
       console.log("set dark");
     }
     else{
       root.style.cssText = getProperties(uData.light);
+      inlineCSS = getCss(uData.light) + inlineCSSCont;
     }
   }
+
+  if (updateIframe) {
+    for (const iframe of iframes) {
+      if (iframe !== null) {
+        updateInlineStylesInIframe(iframe, inlineCSS);
+        break;
+      }
+    }
+  }
+
 }
 
 
@@ -71,29 +84,39 @@ function updateStyles(message){
   // const jsonData = message;
   // localStorage.setItem('data', JSON.stringify(jsonData));
 
-  updateTheme(userData);
+  updateTheme(userData, true);
 }
 
 
 function getProperties(themeData) {
   const cssText = `
-    --main-theme: ${themeData.mainTheme};
-    --background-main: ${themeData.backgroundMain};
-    --background-main-outline: ${themeData.backgroundMainOutline};
-    --background-tint-1: ${themeData.backgroundTint1};
-    --background-tint-1-highlight: ${themeData.backgroundTint1Highlight};
-    --background-tint-2: ${themeData.backgroundTint2};
-    --background-tint-2-highlight: ${themeData.backgroundTint2Highlight};
-    --secondary-button: ${themeData.secondaryButton};
-    --secondary-button-highlight: ${themeData.secondaryButtonHighlight};
-    --secondary-button-text: ${themeData.secondaryButtonText};
-    --primary-button: ${themeData.primaryButton};
-    --primary-button-highlight: ${themeData.primaryButtonHighlight};
-    --primary-button-text: ${themeData.primaryButtonText};
-    --text-main: ${themeData.textMain};
-    --text-light: ${themeData.textLight};
-    --text-link: ${themeData.textLink};
-    --global-font: ${themeData.globalFont};
+--main-theme: ${themeData.mainTheme};
+--background-main: ${themeData.backgroundMain};
+--background-main-outline: ${themeData.backgroundMainOutline};
+--background-tint-1: ${themeData.backgroundTint1};
+--background-tint-1-highlight: ${themeData.backgroundTint1Highlight};
+--background-tint-2: ${themeData.backgroundTint2};
+--background-tint-2-highlight: ${themeData.backgroundTint2Highlight};
+--secondary-button: ${themeData.secondaryButton};
+--secondary-button-highlight: ${themeData.secondaryButtonHighlight};
+--secondary-button-text: ${themeData.secondaryButtonText};
+--primary-button: ${themeData.primaryButton};
+--primary-button-highlight: ${themeData.primaryButtonHighlight};
+--primary-button-text: ${themeData.primaryButtonText};
+--text-main: ${themeData.textMain};
+--text-light: ${themeData.textLight};
+--text-link: ${themeData.textLink};
+--global-font: ${themeData.globalFont};
+  `;
+  return cssText;
+}
+
+function getCss(themeData){
+  const temp = getProperties(themeData);
+  const cssText = `
+:root { 
+${temp}
+}
   `;
   return cssText;
 }
@@ -103,57 +126,72 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
     iframeElement.onload = function() {
         // Loads inner document
         var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
-        console.log(iframeDocument);
+        // console.log(iframeDocument);
 
         // Create a new <style> element for inline styles
         var styleElement = iframeDocument.createElement("style");
         styleElement.type = "text/css";
+        styleElement.id = "injectedStyles";
         styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
         iframeDocument.head.appendChild(styleElement);
 
+        console.log(styleElement);
+
         // deals with iframe-ception
         var iframe2 = iframeDocument.getElementById("right_stream_mygrades");
-        console.log("iframe2 "+iframe2);
+        // console.log("iframe2 "+iframe2);
         if(iframe2 != null){
-          console.log("added")
+          // console.log("added")
           addInlineStylesInIframe(iframe2, cssRules);
         }
     };
+}
+
+
+// Function to add inline CSS rules inside the iframe
+function updateInlineStylesInIframe(iframeElement, cssRules) {
+  // Loads inner document
+  var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
+
+  var styleElement = iframeDocument.getElementById("injectedStyles");
+  styleElement.textContent = cssRules;
+
+  // deals with iframe-ception
+  var iframe2 = iframeDocument.getElementById("right_stream_mygrades");
+  if(iframe2 != null){
+    updateInlineStylesInIframe(iframe2, cssRules);
+  }
 }
 
 console.log('Custom script injected');
 
 //Retrieve data from storage
 chrome.storage.local.get(["userData"], (result) => {
-  console.log("Data retrieved:", result.userData);
+  // console.log("Data retrieved:", result.userData);
   userData = result.userData;
-  // updateTheme(userData);
 });
 
+var iframes;
 var root;
 document.addEventListener("DOMContentLoaded", function() {
   // This code will run when the page begins to load
   root = document.documentElement;
-  updateTheme(userData);
+  updateTheme(userData, false);
 
-  var iframe = document.getElementById("mybbCanvas");
-  var iframe2 = document.getElementById("right_stream_mygrades");
-  var iframe3 = document.getElementById("contentFrame");
-  var iframe4 = document.querySelector(".tox-edit-area__iframe");
+  iframes = [
+    document.getElementById("mybbCanvas"),
+    document.getElementById("right_stream_mygrades"),
+    document.getElementById("contentFrame"),
+    document.querySelector(".tox-edit-area__iframe")
+  ];
 
-  if(iframe != null){
-    addInlineStylesInIframe(iframe, inlineCSS);
-  }else{
-    if(iframe2 != null){
-      addInlineStylesInIframe(iframe2, inlineCSS);
+  // console.log(inlineCSS, iframes);
+
+  for (const iframe of iframes) {
+    if (iframe !== null) {
+      addInlineStylesInIframe(iframe, inlineCSS);
+      break;
     }
-  }
-  if(iframe3 != null){
-    addInlineStylesInIframe(iframe3, inlineCSS);
-  }
-
-  if(iframe4 != null){
-    addInlineStylesInIframe(iframe4, inlineCSS);
   }
 });
 
@@ -185,7 +223,7 @@ var inlineCSSRoot =`
 
 `
 
-var inlineCSS = inlineCSSRoot + `
+var inlineCSSCont = `
 
 
 *{
@@ -193,17 +231,39 @@ var inlineCSS = inlineCSSRoot + `
   outline: none !important;
 }
 
-html {
-    background-color: var(--background-main) !important;
-    color: var(--text-main) !important;
-  }
+/* iframeBackgroundMain */
+#dynamic_filters_alerts, #column_0, #column_1, #mybb_column_wrapper,
+.stream_header{
+  background-color: var(--background-main) !important;
+}
 
+/* iframeBackgroundTint1 */
+#grades_wrapper .sortable_item_row:nth-child(odd),
+#left_stream_mygrades .stream_item:nth-child(odd) {
+  background-color: var(--background-tint-1) !important;
+}
 
+/* iframeBackgroundTint1Highlight */
+#grades_wrapper .sortable_item_row:nth-child(odd):hover,
+#left_stream_mygrades .stream_item:nth-child(odd):hover {
+  background-color: var(--background-tint-1-highlight) !important;
+}
+
+/* iframeBackgroundTint2 */
+#grades_wrapper .sortable_item_row:nth-child(even),
+#left_stream_mygrades .stream_item:nth-child(even) {
+  background-color: var(--background-tint-2) !important;
+}
+
+/* iframeBackgroundTint2Highlight */
+#grades_wrapper .sortable_item_row:nth-child(even):hover,
+#left_stream_mygrades .stream_item:nth-child(even):hover {
+  background-color: var(--background-tint-2-highlight) !important;
+}
 
 /* Calendar */
 
 .stream_header{
-  background-color: #fff !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   z-index: 6 !important;
   position: relative;
@@ -355,22 +415,6 @@ html {
   box-shadow: none !important;
 }
 
-#grades_wrapper .sortable_item_row:nth-child(odd) {
-  background-color: var(--background-tint-1) !important;
-}
-
-#grades_wrapper .sortable_item_row:nth-child(odd):hover {
-  background-color: var(--background-tint-1-highlight) !important;
-}
-
-#grades_wrapper .sortable_item_row:nth-child(even) {
-  background-color: var(--background-tint-2); !important;
-}
-
-#grades_wrapper .sortable_item_row:nth-child(even):hover {
-  background-color: var(--background-tint-2-highlight) !important;
-}
-
 #grades_wrapper {
   margin-top: 70px !important;
   margin-bottom: 30px !important;
@@ -422,22 +466,6 @@ html {
 
 /* my marks */
 
-#left_stream_mygrades .stream_item:nth-child(odd) {
-  background-color: var(--background-tint-1) !important;
-}
-
-#left_stream_mygrades .stream_item:nth-child(odd):hover {
-  background-color: var(--background-tint-1-highlight) !important;
-}
-
-#left_stream_mygrades .stream_item:nth-child(even) {
-  background-color: var(--background-tint-2); !important;
-}
-
-#left_stream_mygrades .stream_item:nth-child(even):hover {
-  background-color: var(--background-tint-2-highlight) !important;
-}
-
 .stream_item {
   border: none !important;
   box-shadow: none !important;
@@ -459,10 +487,6 @@ html {
   margin-left: 10px !important;
 }
 
-#dynamic_filters_alerts{
-  background-color: var(--background-main) !important;
-}
-
 #dynamic_filters_alerts a{
   text-decoration: none !important;
 }
@@ -471,13 +495,10 @@ html {
   padding-top: 20px !important;
 }
 
-#column_0, #column_1, #mybb_column_wrapper{
-  background-color: var(--background-main);
-}
-
-
 
 `;
+
+var inlineCSS = inlineCSSRoot + inlineCSSCont;
 
 
 
