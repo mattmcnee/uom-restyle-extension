@@ -128,8 +128,8 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
   // Loads inner document
   var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
 
-  // Checks if document is loaded yet and uses onload if not
-  if(iframeDocument.location.origin == "null"){
+  // // Checks if document is loaded yet and uses onload if not
+  if(iframeDocument.location.origin == "null" || iframeElement.id == "right_stream_mygrades"){
     iframeElement.onload = function() {
       iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
       addStyles();
@@ -146,9 +146,6 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
     styleElement.id = "injectedStyles";
     styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
     iframeDocument.head.appendChild(styleElement);
-
-    // console.log(styleElement);
-    // console.log(iframeDocument.head);
 
     // deals with iframe-ception
     var babyIframes = [
@@ -758,6 +755,20 @@ display: flex;
 .streamError{
   box-shadow: none !important;
   background-color: transparent !important;
+}
+
+.stream_show_more_data .extras, .stream_show_more_data .extras:after {
+  color: var(--text-main) !important;
+}
+
+.stream_header{
+  box-shadow: none !important;
+  border-color: var(--background-main-outline) !important;
+}
+
+.stream_header h1 span{
+  color: var(--text-main) !important;
+  text-shadow: none !important;
 }
 
 

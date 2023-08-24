@@ -2340,6 +2340,20 @@ display: flex;
   background-color: transparent !important;
 }
 
+.stream_show_more_data .extras, .stream_show_more_data .extras:after {
+  color: var(--text-main) !important;
+}
+
+.stream_header{
+  box-shadow: none !important;
+  border-color: var(--background-main-outline) !important;
+}
+
+.stream_header h1 span{
+  color: var(--text-main) !important;
+  text-shadow: none !important;
+}
+
 
 
 
