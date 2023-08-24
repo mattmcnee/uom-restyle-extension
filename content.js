@@ -504,15 +504,16 @@ display: flex;
 
 .fc-widget-header + div{
   height: calc(100vh - 160px) !important;
+  overflow-y: hidden !important;
 }
 
 /* 35px difference */
-/*.fc-widget-content div:not(.fc-day-content, .fc-day-content div){
-  height: calc(100vh - 125px) !important;
-}*/
-
 .fc-agenda-days .fc-widget-content div{
   height: calc(100vh - 125px) !important;
+}
+
+.fc-widget-header + div:hover{
+  overflow-y: auto !important;
 }
 
 
@@ -769,6 +770,14 @@ display: flex;
 .stream_header h1 span{
   color: var(--text-main) !important;
   text-shadow: none !important;
+}
+
+#streamDetail{
+  border-top: none !important;
+}
+
+.mybb.filterBarHorizontal, .mybb.gradeTableNew .grades_header {
+  background-color: var(--background-main) !important;
 }
 
 
