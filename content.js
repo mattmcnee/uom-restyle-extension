@@ -125,56 +125,45 @@ ${temp}
 
 // Function to add inline CSS rules inside the iframe
 function addInlineStylesInIframe(iframeElement, cssRules) {
+  // Loads inner document
+  var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
 
-    var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
-        console.log(iframeDocument.readyState);
-
-    if (iframeDocument.readyState === "complete") {
-      applyStyles();
-  } else {
-      // Otherwise, set up the onload event handler
-      iframeElement.onload = function() {
-          applyStyles();
-      };
+  // Checks if document is loaded yet and uses onload if not
+  if(iframeDocument.location.origin == "null"){
+    iframeElement.onload = function() {
+      iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
+      addStyles();
+    };
   }
-    function applyStyles() {
-      console.log("Aplying stykes");
-        // Loads inner document
+  else{
+    addStyles();
+  }
 
-        // Create a new <style> element for inline styles
-        var styleElement = iframeDocument.createElement("style");
-        styleElement.type = "text/css";
-        styleElement.id = "injectedStyles";
-        styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
-        iframeDocument.head.appendChild(styleElement);
+  function addStyles() {
+    // Create a new <style> element for inline styles
+    var styleElement = iframeDocument.createElement("style");
+    styleElement.type = "text/css";
+    styleElement.id = "injectedStyles";
+    styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
+    iframeDocument.head.appendChild(styleElement);
 
-        console.log(styleElement);
-        console.log(iframeDocument.head);
+    // console.log(styleElement);
+    // console.log(iframeDocument.head);
 
-        // deals with iframe-ception
-        var babyIframes = [
-          iframeDocument.getElementById("right_stream_mygrades"),
-          iframeDocument.getElementById("right_stream_stream")
-        ]
+    // deals with iframe-ception
+    var babyIframes = [
+      iframeDocument.getElementById("right_stream_mygrades"),
+      iframeDocument.getElementById("right_stream_stream")
+    ]
 
-
-
-        for (const iframe of babyIframes) {
-          if (iframe !== null) {
-            console.log("Adding iframe" + iframe);
-            addInlineStylesInIframe(iframe, inlineCSS);
-            break;
-          }
-        }
-
-
-        // var iframe2 = iframeDocument.getElementById("right_stream_mygrades");
-        // // console.log("iframe2 "+iframe2);
-        // if(iframe2 != null){
-        //   // console.log("added")
-        //   addInlineStylesInIframe(iframe2, cssRules);
-        // }
+    for (const iframe of babyIframes) {
+      if (iframe !== null) {
+        console.log("Adding iframe" + iframe);
+        addInlineStylesInIframe(iframe, inlineCSS);
+        break;
+      }
     }
+  }
 }
 
 
