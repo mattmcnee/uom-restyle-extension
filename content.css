@@ -2004,6 +2004,12 @@ a.reply-count-link {
   color: var(--text-link) !important;
 }
 
+.ui-datepicker-calendar .ui-state-active{
+  box-shadow: none !important;
+  color: var(--main-theme) !important;
+  font-weight: bold !important;
+}
+
 .ui-datepicker-calendar th span{
   color: var(--text-light) !important;
 }
@@ -2045,6 +2051,57 @@ a.reply-count-link {
 
 #outer_left_stream_alerts{
   background-color: var(--background-main) !important;
+}
+
+/* Calendar days planner */
+.fc-widget-header{
+  border-bottom: none !important;
+  height: 2px !important;
+  padding: 0 !important;
+  color: var(--text-light) !important;
+}
+
+/*.fc-header-left{
+display: flex;
+    align-items: center;
+  }*/
+
+.fc-header button{
+  margin-top: 6px !important;
+}
+
+.fc-widget-header .fc-agenda-divider-inner {
+  background-color: var(--background-main-outline) !important;
+}
+
+.fc-agenda-days .fc-agenda-axis, .fc-view-agendaWeek .fc-agenda-axis{
+  border-right: none !important;
+}
+
+.fc-widget-header, .fc-widget-content{
+  border-color: var(--background-main-outline) !important;
+}
+
+.fc-minor .fc-widget-header, .fc-minor .fc-widget-content {
+  border-top: 1px solid var(--background-main-outline) !important;
+}
+
+.fc-widget-header + div{
+  height: calc(100vh - 160px) !important;
+}
+
+/* 35px difference */
+/*.fc-widget-content div:not(.fc-day-content, .fc-day-content div){
+  height: calc(100vh - 125px) !important;
+}*/
+
+.fc-agenda-days .fc-widget-content div{
+  height: calc(100vh - 125px) !important;
+}
+
+
+.fc-agenda .fc-agenda-axis {
+  border-right: none !important;
 }
 
 .calendar-item .label-color{
