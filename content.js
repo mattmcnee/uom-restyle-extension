@@ -44,7 +44,7 @@ function initialiseUserData(){
 }
 
 function updateTheme(uData, updateIframe){
-  console.log("Data retrieved:", uData);
+  // console.log("Data retrieved:", uData);
   if(uData.style == "stylesheet"){
     root.style.cssText = "";
     inlineCSS = getCss(uData.light) + inlineCSSCont;
@@ -53,17 +53,19 @@ function updateTheme(uData, updateIframe){
     if (uData.theme == "dark") {
       root.style.cssText = getProperties(uData.dark);
       inlineCSS = getCss(uData.dark) + inlineCSSCont;
-      console.log("set dark");
+      console.log("Set dark: " + root.style.cssText);
     }
     else{
       root.style.cssText = getProperties(uData.light);
       inlineCSS = getCss(uData.light) + inlineCSSCont;
+      console.log("Set light: "+ root.style.cssText);
     }
   }
 
   if (updateIframe) {
     for (const iframe of iframes) {
       if (iframe !== null) {
+        console.log("Updating iframe");
         updateInlineStylesInIframe(iframe, inlineCSS);
         break;
       }
@@ -78,7 +80,7 @@ function updateStyles(message){
   // Save data to storage
   var userData = message;
   chrome.storage.local.set({ userData}, () => {
-    console.log("Data saved:", message);
+    // console.log("Data saved:", message);
   });
 
   // const jsonData = message;
@@ -135,7 +137,7 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
         styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
         iframeDocument.head.appendChild(styleElement);
 
-        console.log(styleElement);
+        // console.log(styleElement);
 
         // deals with iframe-ception
         var iframe2 = iframeDocument.getElementById("right_stream_mygrades");
@@ -163,6 +165,17 @@ function updateInlineStylesInIframe(iframeElement, cssRules) {
   }
 }
 
+function refreshIframe(){
+  console.log("Button clicked");
+  for (const iframe of iframes) {
+    if (iframe !== null) {
+      console.log("Adding iframe");
+      addInlineStylesInIframe(iframe, inlineCSS);
+      break;
+    }
+  }
+}
+
 console.log('Custom script injected');
 
 //Retrieve data from storage
@@ -185,14 +198,48 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".tox-edit-area__iframe")
   ];
 
-  // console.log(inlineCSS, iframes);
+  // console.log(inlineCSS);
 
   for (const iframe of iframes) {
     if (iframe !== null) {
+      console.log("Adding iframe");
       addInlineStylesInIframe(iframe, inlineCSS);
       break;
     }
   }
+
+
+  iframeSwitch = [
+    document.querySelector('#BB-CORE_____overview-tool a'),
+    document.querySelector('#StreamsOnMyBb_____MyStreamTool a'),
+    document.querySelector('#AlertsOnMyBb_____AlertsTool a'),
+    document.querySelector('#MyGradesOnMyBb_____MyGradesTool a'),
+    document.querySelector('#calendar-mybb_____calendar-tool a')
+  ];
+
+
+  console.log(iframeSwitch[0]);
+
+  for (const iframe of iframeSwitch) {
+    if (iframe !== null) {
+      iframe.addEventListener('click', refreshIframe);
+    }
+  }
+
+  // updateTheme(userData, true)
+
+// // Add an event listener to the <a> element
+// iframeSwitch[0].addEventListener('click', function(event) {
+//     // Your event handling code here
+//     console.log('Link clicked!');
+//     // Prevent the default behavior of the link (e.g., navigating to a new page)
+//     event.preventDefault();
+// });
+
+
+
+
+
 });
 
 
