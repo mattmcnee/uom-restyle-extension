@@ -2363,6 +2363,19 @@ display: flex;
   background-color: var(--background-main) !important;
 }
 
+#streamDetailHeaderRight .context{
+  display: none !important;
+} 
+
+#streamDetailHeaderRight .timestamp{
+  color: var(--text-light) !important;
+  right: -3px !important;
+}
+
+#streamDetailHeaderRight .context h2 a{
+  color: var(--text-link) !important;
+}
+
 
 
 
