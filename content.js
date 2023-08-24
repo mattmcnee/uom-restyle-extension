@@ -224,16 +224,16 @@ var inlineCSSRoot =`
 `
 
 var inlineCSSCont = `
-
-
 *{
   font-family: var(--global-font) !important;
   outline: none !important;
-}
+}`+`
+
+
 
 /* iframeBackgroundMain */
 #dynamic_filters_alerts, #column_0, #column_1, #mybb_column_wrapper,
-.stream_header{
+.stream_header, .locationPane, body{
   background-color: var(--background-main) !important;
 }
 
@@ -261,7 +261,46 @@ var inlineCSSCont = `
   background-color: var(--background-tint-2-highlight) !important;
 }
 
+/* iframePrimaryButton */
+#ical{
+  outline: none !important;
+  border: none !important;
+  background-image: none !important;
+  background-color: var(--primary-button) !important;
+  box-shadow: inset 0 0 0 2px var(--primary-button) !important;
+  color: var(--primary-button-text) !important;
+  border-radius: 2px !important;
+  text-shadow: none !important;
+}
+
+/* iframePrimaryButton:hover */
+#ical:hover{
+  background-color: var(--primary-button-highlight) !important;
+}
+
+/* iframeButtonSecondary */
+.ui-datepicker-next, .ui-datepicker-prev, .fc-header .fc-button-content{
+  outline: none !important;
+  border: none !important;
+  background-image: none !important;
+  background-color: var(--secondary-button) !important;
+  box-shadow: inset 0 0 0 2px var(--secondary-button) !important;
+  color: var(--secondary-button-text) !important;
+  border-radius: 2px !important;
+  text-shadow: none !important;
+}
+
+.ui-datepicker-next:hover, .ui-datepicker-prev:hover, .fc-header .fc-button-content:hover{
+  background-color: var(--secondary-button-highlight) !important;
+  cursor: pointer;
+}
+
 /* Calendar */
+
+#calendar_content{
+  background-color: var(--background-main) !important;
+}
+
 
 .stream_header{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
@@ -271,7 +310,15 @@ var inlineCSSCont = `
 
 .stream_page_left {
   border: none !important;
+}
 
+ .cal-nav li{
+  background-color: #fff !important;
+ }
+
+#streamHeader_calendar .title-text{
+  color: var(--text-main) !important;
+  text-shadow: none !important;
 }
 
 .left_stream_wrapper{
@@ -288,21 +335,63 @@ var inlineCSSCont = `
   text-align: center !important;
   border: none !important;
   border-radius: 5px !important;
-  background-color: #f0f0f0 !important;
-
 }
 
-.ui-datepicker-calendar td{
+.ui-datepicker-calendar td a{
   padding: 3px 0 !important;
+  background-color: var(--background-tint-1) !important;
+  background-image: none !important;
+  background-repeat: none !important;
+  text-shadow: none !important;
+  color: var(--text-main) !important;
 }
+
+.ui-datepicker-calendar .ui-state-highlight{
+  box-shadow: none !important;
+  color: var(--text-link) !important;
+}
+
+.ui-datepicker-calendar th span{
+  color: var(--text-light) !important;
+}
+
+.ui-datepicker-header .ui-datepicker-title{
+  color: var(--text-main) !important;
+}
+
+
 
 /*.ui-datepicker-calendar table {
     border-spacing: 2px;
     row-gap: 2px !important;
 }*/
 
-.fc-border-separate .fc-state-highlight{
-  background-color: lightblue !important;
+.fc-border-separate .fc-today{
+  background-color: transparent; !important;
+}
+
+.fc-border-separate .fc-widget-content .fc-day-number{
+  color: var(--text-light) !important;
+}
+
+.fc-border-separate .fc-today .fc-day-number{
+  color: var(--text-link) !important;
+}
+
+.fc-border-separate, .fc-border-separate th, .fc-border-separate td {
+  border: 1px solid var(--background-main-outline) !important;
+}
+
+.fc-header-title{
+  color: var(--text-main) !important;
+}
+
+.fc-event-skin:hover {
+  cursor: pointer;
+}
+
+#outer_left_stream_alerts{
+  background-color: var(--background-main) !important;
 }
 
 .calendar-item .label-color{
@@ -312,6 +401,8 @@ var inlineCSSCont = `
   padding: 0 !important;
   margin-top: 2px !important;
   margin-bottom: 2px !important;
+  left: 1px !important;
+  top: -1px !important;
 }
 .calendar-item input[type="checkbox"]{
   appearance: none;
@@ -355,6 +446,7 @@ var inlineCSSCont = `
   border: none !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
   border-radius: 4px !important;
+  margin-top: 10px !important;
 }
 
 .colorPicker-palette div{
@@ -383,22 +475,26 @@ var inlineCSSCont = `
 }
 
 #ical{
-  background-color: #5E0366 !important;
-  background-image: none !important;
-  box-shadow: inset 0 0 0 2px #5E0366 !important;
-  border: none !important;
-  border-radius: 5px !important;
   text-align: center;
   padding: 0.5625rem 1.125rem 0.625rem !important;
+}
+
+#calendarList h3, .margin-interact h3{
+  color: var(--text-main) !important;
   text-shadow: none !important;
-  color: white !important;
 }
 
-#ical:hover{
-  color: #eee !important;
+.calendar-list .calendar-item label{
+  color: var(--text-main) !important;
+  text-shadow: none !important;
 }
 
-.fc-header button{
+.calendar-list .calendar-name label:hover {
+  color: var(--text-link) !important;
+    background-color: transparent !important;
+}
+
+/*.fc-header button{
   background-image: none !important;
   background-color: #dadada;
   box-shadow: inset 0 0 0 2px #dadada !important;
@@ -406,7 +502,7 @@ var inlineCSSCont = `
   border-radius: 5px !important;
   text-align: center;
   padding: 0.5625rem 1.125rem 0.625rem !important;
-}
+}*/
 
 
 /* grade breakdown */
@@ -494,7 +590,6 @@ var inlineCSSCont = `
 #left_stream_stream{
   padding-top: 20px !important;
 }
-
 
 `;
 
