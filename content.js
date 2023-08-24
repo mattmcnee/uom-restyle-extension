@@ -125,10 +125,21 @@ ${temp}
 
 // Function to add inline CSS rules inside the iframe
 function addInlineStylesInIframe(iframeElement, cssRules) {
-    iframeElement.onload = function() {
+
+    var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
+        console.log(iframeDocument.readyState);
+
+    if (iframeDocument.readyState === "complete") {
+      applyStyles();
+  } else {
+      // Otherwise, set up the onload event handler
+      iframeElement.onload = function() {
+          applyStyles();
+      };
+  }
+    function applyStyles() {
+      console.log("Aplying stykes");
         // Loads inner document
-        var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
-        // console.log(iframeDocument);
 
         // Create a new <style> element for inline styles
         var styleElement = iframeDocument.createElement("style");
@@ -137,16 +148,33 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
         styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
         iframeDocument.head.appendChild(styleElement);
 
-        // console.log(styleElement);
+        console.log(styleElement);
+        console.log(iframeDocument.head);
 
         // deals with iframe-ception
-        var iframe2 = iframeDocument.getElementById("right_stream_mygrades");
-        // console.log("iframe2 "+iframe2);
-        if(iframe2 != null){
-          // console.log("added")
-          addInlineStylesInIframe(iframe2, cssRules);
+        var babyIframes = [
+          iframeDocument.getElementById("right_stream_mygrades"),
+          iframeDocument.getElementById("right_stream_stream")
+        ]
+
+
+
+        for (const iframe of babyIframes) {
+          if (iframe !== null) {
+            console.log("Adding iframe" + iframe);
+            addInlineStylesInIframe(iframe, inlineCSS);
+            break;
+          }
         }
-    };
+
+
+        // var iframe2 = iframeDocument.getElementById("right_stream_mygrades");
+        // // console.log("iframe2 "+iframe2);
+        // if(iframe2 != null){
+        //   // console.log("added")
+        //   addInlineStylesInIframe(iframe2, cssRules);
+        // }
+    }
 }
 
 
@@ -159,9 +187,17 @@ function updateInlineStylesInIframe(iframeElement, cssRules) {
   styleElement.textContent = cssRules;
 
   // deals with iframe-ception
-  var iframe2 = iframeDocument.getElementById("right_stream_mygrades");
-  if(iframe2 != null){
-    updateInlineStylesInIframe(iframe2, cssRules);
+  var babyIframes = [
+    iframeDocument.getElementById("right_stream_mygrades"),
+    iframeDocument.getElementById("right_stream_stream")
+  ]
+
+  for (const iframe of babyIframes) {
+    if (iframe !== null) {
+      console.log("Adding iframe");
+      updateInlineStylesInIframe(iframe, cssRules);
+      break;
+    }
   }
 }
 
@@ -280,7 +316,7 @@ var inlineCSSCont = `
 
 /* iframeBackgroundMain */
 #dynamic_filters_alerts, #column_0, #column_1, #mybb_column_wrapper,
-.stream_header, .locationPane, body{
+.stream_header, .locationPane, body, .stream_page_left .left_stream_wrapper{
   background-color: var(--background-main) !important;
 }
 
@@ -694,6 +730,47 @@ display: flex;
 #left_stream_stream{
   padding-top: 20px !important;
 }
+
+.title-date, .section-title{
+  text-shadow: none !important;
+  color: var(--text-main) !important;
+}
+
+.left_stream_wrapper .stream_item{
+  background-color: var(--background-tint-1) !important;
+}
+
+.left_stream_wrapper .stream_item:hover{
+  background-color: var(--background-tint-1-highlight) !important;
+}
+
+.left_stream_wrapper .stream_context_bottom span{
+  color: var(--text-main) !important;
+}
+
+.stream_show_more_data{
+   text-shadow: none !important;
+  color: var(--text-light) !important; 
+}
+
+.left_stream_wrapper .stream_left{
+  border-color: var(--background-main-outline) !important;
+}
+
+.mybb-column{
+  border-left: none !important;
+  box-shadow: none !important;
+}
+
+#mybb_column_wrapper #column_0{
+  border-right: 1px solid var(--background-main-outline) !important;
+}
+
+.streamError{
+  box-shadow: none !important;
+  background-color: transparent !important;
+}
+
 
 `;
 
