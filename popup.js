@@ -239,16 +239,16 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   // Loads userData
-  try{
-    chrome.storage.local.get(["userData"], (result) => {
-      console.log("Data retrieved:", result.userData.theme);
+  chrome.storage.local.get(["userData"], (result) => {
+    console.log("Data retrieved:", result);
+    if(JSON.stringify(result) === '{}'){
+      userData = initialiseUserData("default");
+    }
+    else{
       userData = result.userData;
-      prefillColours(userData);
-    });
-  } catch (error){
-    userData = initialiseUserData("default");
+    }
     prefillColours(userData);
-  }
+  });
 
 });
 

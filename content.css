@@ -873,6 +873,24 @@ margin-top: 5px;
   text-decoration: none !important;
 }
 
+/*.details table{
+  border-collapse: collapse !important;
+  border-spacing: 0 !important;
+  border-radius: 5px !important;
+}*/
+
+.details table {
+  border-collapse: collapse !important;
+  border-spacing: 1px;
+  border: 1px solid var(--background-main-outline) !important;
+}
+
+.details td, th {
+  border-spacing: 1px;
+  border: 1px solid var(--background-main-outline) !important;
+  padding: 2px 5px !important;
+}
+
 .vtbegenerated a {
   text-decoration: none !important;
 }
