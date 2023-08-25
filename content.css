@@ -841,6 +841,12 @@ margin-top: 5px;
   border-radius: 10px !important;
 }
 
+.contentList .details hr, .contentListPlain .details hr{
+  border: none !important;
+  height: 1px !important;
+  background-color: var(--background-main-outline) !important;
+}
+
 [id="bbNG.receiptTag.content"] {
   margin-left: 20px !important;
   margin-right: 20px !important;
