@@ -894,6 +894,11 @@ margin-top: 5px;
   margin: 4px !important;
 }
 
+.newCopyright .additionalInfo a{
+  color: var(--text-link) !important;
+  text-decoration: none !important;
+}
+
 /*
   ---
   ---
