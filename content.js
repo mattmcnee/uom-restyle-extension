@@ -249,16 +249,13 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
 
-  // Fixes specific bug with text for Assessment & Feedback
+  // Fixes specific bug with text "&" symbol
   var element = document.getElementById("crumb_2");
   if (element) {
     var innerText = element.textContent.trim();
-    if(innerText == "Assessment &amp; Feedback"){
-      element.textContent = "Assessment & Feedback";
-    }
+    element.textContent = innerText.replace(/&amp;/g, '&');
   }
 });
-
 
 var inlineCSSRoot =`
 

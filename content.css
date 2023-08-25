@@ -715,7 +715,7 @@ margin-top: 5px;
   padding: 1px !important;
   margin: 0 !important;
   border-radius: 4px !important;
-  background-color: #999;
+  background-color: transparent !important;
 } 
 
 .actionBarMicro ul{
@@ -746,12 +746,13 @@ margin-top: 5px;
   position: absolute !important;
   top: 7px !important;
   left: 0px !important;
-  color: #ddd !important;
-  background-color: #999;
+  color: #ccc !important;
+  background-color: transparent;
   padding: 1px 2.5px !important;
   width: 15px !important;
   border-radius: 4px !important;
   transform: scale(0.90);
+  opacity: 0.6;
 }
 
 .menuWrap .courseMenu a{
@@ -821,9 +822,10 @@ margin-top: 5px;
   padding-left: 0 !important;
   padding-right: 0 !important;
   width: calc(100% - 1px);
+  min-height: 0 !important;
 }
 
-.contentList li, .contentListPlain li{
+.contentList li:not(.details li), .contentListPlain li:not(.details li){
   border: none !important;
   border-top: 1px solid var(--background-main-outline) !important;  
 }
@@ -857,6 +859,32 @@ margin-top: 5px;
   background-color: var(--background-main-outline) !important;
 }
 
+.contentList .details .vtbegenerated_div, .contentList .details li{
+  color: var(--text-main) !important;
+}
+
+#announcementList .details p, .announcementList .details span{
+  color: var(--text-main) !important;
+}
+
+#announcementList .details a, .contentListPlain .details a,
+.contentListPlain .details a span, .contentList .details a{
+  color: var(--text-link) !important;
+  text-decoration: none !important;
+}
+
+.vtbegenerated a {
+  text-decoration: none !important;
+}
+
+.attachments a{
+  color: var(--text-link) !important;
+}
+
+
+
+
+
 [id="bbNG.receiptTag.content"] {
   margin-left: 20px !important;
   margin-right: 20px !important;
@@ -865,6 +893,19 @@ margin-top: 5px;
 [id="bbNG.receiptTag.content"] ~ p{
   margin-left: 20px !important;
   bottom: unset !important;
+}
+
+.fluidWrapperScheduler{
+  margin: 0 !important;
+}
+
+.fluidFrameScheduler iframe{
+  width: calc(100vw - 240px) !important;
+  height: 100vh !important;
+}
+
+.contcollapsed .fluidFrameScheduler iframe{
+  width: calc(100vw - 42px) !important;
 }
 
 /*
