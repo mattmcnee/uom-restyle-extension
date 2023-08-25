@@ -3,7 +3,7 @@
 
 /* Light Mode Default */
 :root {  
-  --main-theme: #5E0366;
+  --main-theme: #6b2c90;
 
   --background-main: #fff;
   --background-main-outline: #eee;
@@ -25,6 +25,8 @@
   --global-font: Open Sans,sans-serif;
   --text-link: #1874a4;
 }
+
+/* #00C1D4 */
 
 /* Dark Mode Default */
 /*:root {  
@@ -288,8 +290,13 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
    color: var(--main-theme-text) !important;
 }*/
 
+#quick_links_wrap{
+  z-index: 1 !important;
+}
+
 #quick_links_lightbox_link{
   color: #eee !important;
+  z-index: -1 !important;
 }
 
 .global-nav-bar-wrap{
@@ -317,6 +324,25 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
   height: 75px !important;
   display: flex;
   align-items: center;
+}
+
+.brandingImgWrap img{
+  z-index: 2 !important;
+  cursor: pointer;
+}
+
+.brandingImgWrap::after{
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  width: 117px;
+  height: 37px;
+  background-color: transparent;
+  z-index: 3;
+  border: 2px solid var(--main-theme);
+  border-radius: 4px;
+  pointer-events: none;
 }
 
 .brandingImgWrap a{

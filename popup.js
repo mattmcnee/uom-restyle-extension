@@ -4,8 +4,8 @@ function initialiseUserData(styleChoice){
   if (styleChoice == "default") {
     const temp = 
     {
-      theme: "light",
       style: "default",
+      theme: "dark",
       light: {
         mainTheme: "#5E0366",
         backgroundMain: "#fff",
@@ -22,7 +22,6 @@ function initialiseUserData(styleChoice){
         primaryButtonText: "#eee",
         textMain: "#000",
         textLight: "#555",
-        textLink: "#1874a4",
         globalFont: "Open Sans, sans-serif"
       },
       dark: {
@@ -34,19 +33,19 @@ function initialiseUserData(styleChoice){
         backgroundTint2: "#222",
         backgroundTint2Highlight: "#222",
         secondaryButton: "#555",
-        secondaryButtonHighlight: "#777",
+        secondaryButtonHighlight: "#585858",
         secondaryButtonText: "#ddd",
         primaryButton: "#5E0366",
         primaryButtonHighlight: "#7a0485",
         primaryButtonText: "#eee",
         textMain: "#ccc",
         textLight: "#999",
-        textLink: "#6ebff5",
         globalFont: "Open Sans, sans-serif"
       }
     };
     return temp; 
   }
+
   else if( styleChoice == "blackboard"){
     const temp = 
     {
@@ -94,6 +93,52 @@ function initialiseUserData(styleChoice){
     return temp; 
   }
 
+else if( styleChoice == "purple2"){
+    const temp = 
+    {
+      theme: "light",
+      style: "purple2",
+      light: {
+        mainTheme: "#6b2c90",
+        backgroundMain: "#fff",
+        backgroundMainOutline: "#eee",
+        backgroundTint1: "#fbfbfb",
+        backgroundTint1Highlight: "#f4f4f4",
+        backgroundTint2: "#fefefe",
+        backgroundTint2Highlight: "#f7f7f7",
+        secondaryButton: "#dadada",
+        secondaryButtonHighlight: "#e8e8e8",
+        secondaryButtonText: "#333",
+        primaryButton: "#5E0366",
+        primaryButtonHighlight: "#7a0485",
+        primaryButtonText: "#eee",
+        textMain: "#000",
+        textLight: "#555",
+        textLink: "#1874a4",
+        globalFont: "Open Sans, sans-serif"
+      },
+      dark: {
+        mainTheme: "#401a56",
+        backgroundMain: "#111",
+        backgroundMainOutline: "#333",
+        backgroundTint1: "#191919",
+        backgroundTint1Highlight: "#191919",
+        backgroundTint2: "#222",
+        backgroundTint2Highlight: "#222",
+        secondaryButton: "#555",
+        secondaryButtonHighlight: "#777",
+        secondaryButtonText: "#ddd",
+        primaryButton: "#5E0366",
+        primaryButtonHighlight: "#7a0485",
+        primaryButtonText: "#eee",
+        textMain: "#ccc",
+        textLight: "#999",
+        textLink: "#6ebff5",
+        globalFont: "Open Sans, sans-serif"
+      }
+    };
+    return temp; 
+  }
   else if( styleChoice == "forest"){
     const temp = 
     {
