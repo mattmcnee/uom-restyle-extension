@@ -118,16 +118,16 @@ cannot be changed
 }
 
 /* secondaryButton */
-.portlet .actionMenuButton, #top_list_action_bar li a, #bottom_list_action_bar li a,
+.portlet .actionMenuButton, #top_list_action_bar li a:not(.sub a), #bottom_list_action_bar li a:not(.sub a),
 #searchActionButtonId a:after, #refreshTreeActionButtonId:after,
-#selectAll_top, #selectNone_top, #selectAll_bottom, #selectNone_bottom,
 .thread-controls-top .navigationBar button,
 .actionBar .secondaryButton a, .backLink a, .pagingprefs a,
-#listContainer_nav_batch_top a, #listContainer_nav_batch_bot a, .threadButtons .browse,
+#listContainer_nav_batch_top a:not(.sub a), #listContainer_nav_batch_bot a:not(.sub a), .threadButtons .browse,
 a.reply-count-link, .inventory_paging a, #navsecondary a:not(.actionMenuItem a),
 .backLink a, .stepTitleRight input, .stepTitleRight .answerSavedButton, 
 .submitStepBottom .taskbuttondiv input, #bottom_saveAllAnswersButton,
-.completionContainer .qIncomplete, #panelbutton1 .genericButton{
+.completionContainer .qIncomplete, #panelbutton1 .genericButton, .genericButton,
+.mainButton a{
   outline: none !important;
   border: none !important;
   background-image: none !important;
@@ -140,16 +140,36 @@ a.reply-count-link, .inventory_paging a, #navsecondary a:not(.actionMenuItem a),
 /* secondaryButton:hover */
 .portlet .actionMenuButton:hover, #top_list_action_bar li a:hover, #bottom_list_action_bar li a:hover,
 #searchActionButtonId a:hover:after, #refreshTreeActionButtonId:hover:after,
-#selectAll_top:hover, #selectNone_top:hover, #selectAll_bottom:hover, #selectNone_bottom:hover,
 .thread-controls-top .navigationBar button:hover,
 .actionBar .secondaryButton a:hover, .backLink a:hover, .pagingprefs a:hover,
 #listContainer_nav_batch_top a:hover, #listContainer_nav_batch_bot a:hover, .threadButtons .browse:hover,
 a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.actionMenuItem a):hover,
 .backLink a:hover, .stepTitleRight input:hover, .stepTitleRight .answerSavedButton:hover,
 .submitStepBottom .taskbuttondiv input:hover, #bottom_saveAllAnswersButton:hover,
-.completionContainer .qIncomplete:hover, #panelbutton1 .genericButton:hover{
+.completionContainer .qIncomplete:hover, #panelbutton1 .genericButton:hover, .genericButton:hover,
+.mainButton a:hover{
   background-color: var(--secondary-button-highlight) !important;
 }
+
+/* tertiaryButton */
+#selectAll_top, #selectNone_top, #selectAll_bottom, #selectNone_bottom,
+#top_list_action_bar .nav .sub ul li a, #bottom_list_action_bar .nav .sub ul li a{
+  outline: none !important;
+  border: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: var(--text-light) !important;
+  border-radius: 2px !important;
+}
+
+/* tertiaryButtonHighlight */
+#selectAll_top:hover, #selectNone_top:hover, #selectAll_bottom:hover, #selectNone_bottom:hover,
+#top_list_action_bar .nav .sub ul li a:hover, #bottom_list_action_bar .nav .sub ul li a:hover{
+  color: var(--text-link) !important;
+}
+
+
 
 /* backgroundMain */
 body, .contentBox, .locationPane, .container, .locationPane .tabbedPane .contentBox .container,
@@ -324,10 +344,10 @@ margin-top: 5px;
 }
 
 .contentPane #copyright .logo img{
-  background: linear-gradient(to bottom, transparent, white, transparent);
+  background: linear-gradient(to bottom, transparent 0%, transparent 25%, #fff 25%, #fff 75%, transparent 75%, transparent 100%);
   border-radius: 24px !important;
-
 }
+
 
 .appTabs td{
   height: 20px !important;
@@ -560,6 +580,11 @@ margin-top: 5px;
   border-width: 1px !important;
 }
 
+.portlet img.eud-avatar {
+  border-radius: 50% !important;
+  transform: rotate(0) !important;
+}
+
 .eudModule .eudModule-inner{
   border-color: var(--background-main-outline) !important;
 }
@@ -770,7 +795,7 @@ margin-top: 5px;
   text-decoration: none !important;
 }
 
-.contentList .liItem a:hover{
+.contentList .liItem a:not(h3 a):hover{
   text-decoration: underline !important;
 }
 
@@ -862,7 +887,9 @@ margin-top: 5px;
 
 .uomFooter img{
   background-color: transparent !important;
-  border-radius: 5px !important;
+  border-radius: 33% !important;
+  opacity: 0.6 !important;
+  margin: 4px !important;
 }
 
 /*
@@ -954,7 +981,7 @@ margin-top: 5px;
   width: calc(100% + 10px);
   height: calc(100% + 2px);
   z-index: -1;
-  background-color: var(--background-main); !important;
+  background-color: var(--background-main) !important;
   pointer-events: none !important;
 /*    transform: translateY(-5px);*/
 }
@@ -982,17 +1009,29 @@ margin-top: 5px;
   outline: none !important;
 }
 
+.mainButton a{
+  padding: 0.5625rem 1.125rem 0.625rem !important;
+  transform: translateY(-10px);
+}
+
 #searchActionButtonId a:after, #refreshTreeActionButtonId:after{
   position: absolute;
   content: "";
   left: 0px;
   top: 0px;
-  width:calc(50% + 10px) !important;
   height: 100%;
   pointer-events: none !important;
   padding-left: 32px;
   z-index: 3 !important;
   outline: none !important;
+}
+
+#refreshTreeActionButtonId:after{
+  width:calc(50% + 12px) !important;
+}
+
+#searchActionButtonId a:after{
+  width:calc(50% + 9px) !important;
 }
 
 #refreshTreeActionButtonId:after{
@@ -1380,9 +1419,15 @@ a.reply-count-link {
   width: 13px !important;
 }
 
-.nav .sub ul{
-  background-color: var(--secondary-button) !important;
-  border-color: var(--secondary-button) !important;
+#top_list_action_bar .nav .sub ul, .rumble_top .nav .sub ul,
+#bottom_list_action_bar .nav .sub ul, .rumble .nav .sub ul{
+  background-color: var(--background-main) !important;
+  border: 2px solid var(--background-main-outline) !important;
+  border-radius: 6px !important;
+}
+
+#uniqueIdTop{
+  padding-top: 20px !important;
 }
 
 .profile-card{
@@ -1763,9 +1808,12 @@ a.reply-count-link {
     margin-top: 15px !important;
   }
 
-  .navigationPane{
-    top: 37px !important;
+  .locationPane .navigationPane{
+    top: calc(37px + 46px) !important;
     border-top: none !important;
+    position: fixed !important;
+    height: calc(100vh - 83px) !important;
+    overflow-y: scroll !important;
   }
 
   .navigationPane .menuWrap{
@@ -1870,8 +1918,9 @@ a.reply-count-link {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 738px){
-  #navigationPane{
-    top: 42px !important;
+  .locationPane .navigationPane{
+    top: calc(42px + 46px) !important;
+    height: calc(100vh - 88px) !important;
   }
 }
 
