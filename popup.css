@@ -16,6 +16,7 @@ button{
 
 select{
 	width: 100%;
+	outline: none !important;
 }
 
 /*tr td:first-child, tr th:first-child {

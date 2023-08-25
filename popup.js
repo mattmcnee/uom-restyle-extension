@@ -61,7 +61,11 @@ function initialiseUserData(styleChoice){
   else if( styleChoice == "purple2"){
     temp.style = styleChoice;
     temp.light.mainTheme = "#6b2c90";
+    temp.light.primaryButton = "#6b2c90";
+    temp.light.primaryButtonHighlight = "#7832a1";
     temp.dark.mainTheme = "#401a56";
+    temp.dark.primaryButton = "#401a56";
+    temp.dark.primaryButtonHighlight = "#542370";
     return temp; 
   }
   else if(styleChoice == "ocean"){
@@ -69,9 +73,9 @@ function initialiseUserData(styleChoice){
     temp.light.mainTheme = "#005F52";
     temp.light.primaryButton = "#005F52";
     temp.light.primaryButtonHighlight = "#007a6a";
-    temp.dark.mainTheme = "#005F52";
-    temp.dark.primaryButton = "#005F52";
-    temp.dark.primaryButtonHighlight = "#007a6a";
+    temp.dark.mainTheme = "#01362e";
+    temp.dark.primaryButton = "#01362e";
+    temp.dark.primaryButtonHighlight = "#005F52";
     return temp;   
   }  
 }
