@@ -869,6 +869,7 @@ margin-top: 5px;
   width: 100%;
   text-align: center;
   overflow-x: hidden;
+  color: var(--text-light) !important;
 }
 
 .uomFooter:before{
@@ -883,6 +884,7 @@ margin-top: 5px;
 
 .uomFooter span a{
   text-decoration: none !important;
+  color: var(--text-link) !important;
 }
 
 .uomFooter img{
@@ -1055,6 +1057,10 @@ margin-top: 5px;
 
 .thread-controls-top .navigationBar button img{
   border-radius: 2px !important;
+}
+
+#listContainer_datatable tbody tr th a{
+  color: var(--text-link) !important;
 }
 
 
@@ -1345,6 +1351,14 @@ a.reply-count-link {
   border: none !important;
   box-shadow: none !important;
   background-color: var(--background-tint-1) !important;
+}
+
+.dbThread dt{
+  color: var(--text-light) !important;
+}
+
+.dbThread table, .dbThread table tr{
+  border-color: var(--background-main-outline) !important;
 }
 
 .pagingprefs{

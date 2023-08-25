@@ -248,20 +248,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  // updateTheme(userData, true)
 
-// // Add an event listener to the <a> element
-// iframeSwitch[0].addEventListener('click', function(event) {
-//     // Your event handling code here
-//     console.log('Link clicked!');
-//     // Prevent the default behavior of the link (e.g., navigating to a new page)
-//     event.preventDefault();
-// });
-
-
-
-
-
+  // Fixes specific bug with text for Assessment & Feedback
+  var element = document.getElementById("crumb_2");
+  if (element) {
+    var innerText = element.textContent.trim();
+    if(innerText == "Assessment &amp; Feedback"){
+      element.textContent = "Assessment & Feedback";
+    }
+  }
 });
 
 
