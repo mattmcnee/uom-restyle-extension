@@ -1,7 +1,6 @@
 
 // This sets up the JSON with the chosen style
 function initialiseUserData(styleChoice){
-  if (styleChoice == "default") {
     const temp = 
     {
       style: "default",
@@ -22,6 +21,7 @@ function initialiseUserData(styleChoice){
         primaryButtonText: "#eee",
         textMain: "#000",
         textLight: "#555",
+        textLink: "#1874a4",
         globalFont: "Open Sans, sans-serif"
       },
       dark: {
@@ -33,158 +33,47 @@ function initialiseUserData(styleChoice){
         backgroundTint2: "#222",
         backgroundTint2Highlight: "#222",
         secondaryButton: "#555",
-        secondaryButtonHighlight: "#585858",
+        secondaryButtonHighlight: "#777",
         secondaryButtonText: "#ddd",
         primaryButton: "#5E0366",
         primaryButtonHighlight: "#7a0485",
         primaryButtonText: "#eee",
         textMain: "#ccc",
         textLight: "#999",
+        textLink: "#6ebff5",
         globalFont: "Open Sans, sans-serif"
       }
     };
-    return temp; 
-  }
 
-  else if( styleChoice == "blackboard"){
-    const temp = 
-    {
-      theme: "light",
-      style: "blackboard",
-      light: {
-        mainTheme: "#333",
-        backgroundMain: "#fff",
-        backgroundMainOutline: "#eee",
-        backgroundTint1: "#fbfbfb",
-        backgroundTint1Highlight: "#f4f4f4",
-        backgroundTint2: "#fefefe",
-        backgroundTint2Highlight: "#f7f7f7",
-        secondaryButton: "#dadada",
-        secondaryButtonHighlight: "#e8e8e8",
-        secondaryButtonText: "#333",
-        primaryButton: "#333",
-        primaryButtonHighlight: "#353535",
-        primaryButtonText: "#eee",
-        textMain: "#000",
-        textLight: "#555",
-        textLink: "#1874a4",
-        globalFont: "Open Sans, sans-serif"
-      },
-      dark: {
-        mainTheme: "#333",
-        backgroundMain: "#111",
-        backgroundMainOutline: "#333",
-        backgroundTint1: "#191919",
-        backgroundTint1Highlight: "#191919",
-        backgroundTint2: "#222",
-        backgroundTint2Highlight: "#222",
-        secondaryButton: "#555",
-        secondaryButtonHighlight: "#777",
-        secondaryButtonText: "#ddd",
-        primaryButton: "#333",
-        primaryButtonHighlight: "#353535",
-        primaryButtonText: "#eee",
-        textMain: "#ccc",
-        textLight: "#999",
-        textLink: "#6ebff5",
-        globalFont: "Open Sans, sans-serif"
-      }
-    };
+  if(styleChoice == "default"){
+    return temp;
+  }
+  else if(styleChoice == "blackboard"){
+    temp.style = styleChoice;
+    temp.light.mainTheme = "#333";
+    temp.light.primaryButton = "#333";
+    temp.light.primaryButtonHighlight = "#353535";
+    temp.dark.mainTheme = "#333";
+    temp.dark.primaryButton = "#333";
+    temp.dark.primaryButtonHighlight = "#353535";
     return temp; 
   }
-
-else if( styleChoice == "purple2"){
-    const temp = 
-    {
-      theme: "light",
-      style: "purple2",
-      light: {
-        mainTheme: "#6b2c90",
-        backgroundMain: "#fff",
-        backgroundMainOutline: "#eee",
-        backgroundTint1: "#fbfbfb",
-        backgroundTint1Highlight: "#f4f4f4",
-        backgroundTint2: "#fefefe",
-        backgroundTint2Highlight: "#f7f7f7",
-        secondaryButton: "#dadada",
-        secondaryButtonHighlight: "#e8e8e8",
-        secondaryButtonText: "#333",
-        primaryButton: "#5E0366",
-        primaryButtonHighlight: "#7a0485",
-        primaryButtonText: "#eee",
-        textMain: "#000",
-        textLight: "#555",
-        textLink: "#1874a4",
-        globalFont: "Open Sans, sans-serif"
-      },
-      dark: {
-        mainTheme: "#401a56",
-        backgroundMain: "#111",
-        backgroundMainOutline: "#333",
-        backgroundTint1: "#191919",
-        backgroundTint1Highlight: "#191919",
-        backgroundTint2: "#222",
-        backgroundTint2Highlight: "#222",
-        secondaryButton: "#555",
-        secondaryButtonHighlight: "#777",
-        secondaryButtonText: "#ddd",
-        primaryButton: "#5E0366",
-        primaryButtonHighlight: "#7a0485",
-        primaryButtonText: "#eee",
-        textMain: "#ccc",
-        textLight: "#999",
-        textLink: "#6ebff5",
-        globalFont: "Open Sans, sans-serif"
-      }
-    };
+  else if( styleChoice == "purple2"){
+    temp.style = styleChoice;
+    temp.light.mainTheme = "#6b2c90";
+    temp.dark.mainTheme = "#401a56";
     return temp; 
   }
-  else if( styleChoice == "forest"){
-    const temp = 
-    {
-      theme: "light",
-      style: "forest",
-      light: {
-        mainTheme: "#124a01",
-        backgroundMain: "#fff",
-        backgroundMainOutline: "#eee",
-        backgroundTint1: "#fbfbfb",
-        backgroundTint1Highlight: "#f4f4f4",
-        backgroundTint2: "#fefefe",
-        backgroundTint2Highlight: "#f7f7f7",
-        secondaryButton: "#dadada",
-        secondaryButtonHighlight: "#e8e8e8",
-        secondaryButtonText: "#333",
-        primaryButton: "#124a01",
-        primaryButtonHighlight: "#165902",
-        primaryButtonText: "#eee",
-        textMain: "#000",
-        textLight: "#555",
-        textLink: "#1874a4",
-        globalFont: "Open Sans, sans-serif"
-      },
-      dark: {
-        mainTheme: "#0d3601",
-        backgroundMain: "#111",
-        backgroundMainOutline: "#333",
-        backgroundTint1: "#191919",
-        backgroundTint1Highlight: "#191919",
-        backgroundTint2: "#222",
-        backgroundTint2Highlight: "#222",
-        secondaryButton: "#555",
-        secondaryButtonHighlight: "#777",
-        secondaryButtonText: "#ddd",
-        primaryButton: "#0d3601",
-        primaryButtonHighlight: "#124a01",
-        primaryButtonText: "#eee",
-        textMain: "#ccc",
-        textLight: "#999",
-        textLink: "#6ebff5",
-        globalFont: "Open Sans, sans-serif"
-      }
-    };
-    return temp; 
-  }
+  else if(styleChoice == "ocean"){
+    temp.style = styleChoice;
+    temp.light.mainTheme = "#005F52";
+    temp.light.primaryButton = "#005F52";
+    temp.light.primaryButtonHighlight = "#007a6a";
+    temp.dark.mainTheme = "#005F52";
+    temp.dark.primaryButton = "#005F52";
+    temp.dark.primaryButtonHighlight = "#007a6a";
+    return temp;   
+  }  
 }
 
 

@@ -120,11 +120,11 @@ cannot be changed
 }
 
 /* secondaryButton */
-.portlet .actionMenuButton, #top_list_action_bar li a:not(.sub a), #bottom_list_action_bar li a:not(.sub a),
+.portlet .actionMenuButton, #top_list_action_bar li a:not(li ul li a), #bottom_list_action_bar li a:not(li ul li a),
 #searchActionButtonId a:after, #refreshTreeActionButtonId:after,
 .thread-controls-top .navigationBar button,
 .actionBar .secondaryButton a, .backLink a, .pagingprefs a,
-#listContainer_nav_batch_top a:not(.sub a), #listContainer_nav_batch_bot a:not(.sub a), .threadButtons .browse,
+#listContainer_nav_batch_top a:not(li ul li a), #listContainer_nav_batch_bot a:not(li ul li a), .threadButtons .browse,
 a.reply-count-link, .inventory_paging a, #navsecondary a:not(.actionMenuItem a),
 .backLink a, .stepTitleRight input, .stepTitleRight .answerSavedButton, 
 .submitStepBottom .taskbuttondiv input, #bottom_saveAllAnswersButton,
@@ -155,19 +155,21 @@ a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.action
 
 /* tertiaryButton */
 #selectAll_top, #selectNone_top, #selectAll_bottom, #selectNone_bottom,
-#top_list_action_bar .nav .sub ul li a, #bottom_list_action_bar .nav .sub ul li a{
+#top_list_action_bar .nav .sub ul li a, #bottom_list_action_bar .nav .sub ul li a,
+.rumble_top .nav .sub ul li a, .rumble .nav .sub ul li a{
   outline: none !important;
   border: none !important;
   background-image: none !important;
   background-color: transparent !important;
   box-shadow: none !important;
-  color: var(--text-light) !important;
+  color: var(--text-main) !important;
   border-radius: 2px !important;
 }
 
 /* tertiaryButtonHighlight */
 #selectAll_top:hover, #selectNone_top:hover, #selectAll_bottom:hover, #selectNone_bottom:hover,
 #top_list_action_bar .nav .sub ul li a:hover, #bottom_list_action_bar .nav .sub ul li a:hover{
+/*,.rumble_top .nav .sub ul li a:hover, .rumble .nav .sub ul li a:hover*/
   color: var(--text-link) !important;
 }
 
@@ -200,7 +202,8 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 #panelbutton1 li, .inventoryListHead .sorted .sortheader, .inventoryListHead th, 
 .inventoryListHead th a, .localViewToggle a, .pagingprefs span, .inventoryListTableContainerDiv span,
 #announcementList h3, #pageTitleHeader span, .filterBarHorizontal #sortby, .grades_header,
-#dataCollectionContainer div h3, .infoListWrapper .key-valueTable th, .infoListWrapper .key-valueTable td{
+#dataCollectionContainer div h3, .infoListWrapper .key-valueTable th, .infoListWrapper .key-valueTable td,
+.portlet .viewHeader h3{
   color: var(--text-main) !important;
 }
 
@@ -208,7 +211,8 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 .contextItemDetailsHeaders, .portlet .tab .tablinks, .portlet #CurrentCourses h3, 
 .portlet #_5_1termCourses_noterm h3, .portlet tr td, #uniqueIdBottom, #uniqueIdTop,
 .dbThreadInfo span, .dbThreadInfo div, #helpPageTitle p, #helpPageTitle p a,
-.filterBarHorizontal label, .textboxtable .vtbehelp, .submitStepBottom .taskbuttonhelp{
+.filterBarHorizontal label, .textboxtable .vtbehelp, .submitStepBottom .taskbuttonhelp,
+.portlet .noItems{
   color: var(--text-light) !important;
 }
 
@@ -245,14 +249,6 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 #announcementList li:nth-child(even):hover :not(.vtbegenerated li, b, strong) {
   background-color: var(--background-tint-2-highlight) !important;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -1048,8 +1044,12 @@ margin-top: 5px;
 }
 
 
-.inventoryListHead tr th, #listContainer_datatable tbody tr {
+#listContainer_datatable tbody tr {
   border-color: var(--background-main-outline) !important;
+}
+
+.inventoryListHead tr th{
+  border: none !important;
 }
 
 .itemDetails, .announcementInfo {
@@ -1477,7 +1477,7 @@ a.reply-count-link {
 }
 
 .inventoryListHead th:first-child {
-  padding-left: 22px !important;
+  padding-left: 12px !important;
 }
 
 #listContainer_databody th:first-child{
