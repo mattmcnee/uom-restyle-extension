@@ -758,9 +758,19 @@ margin-top: 5px;
   outline: none !important;
 }
 
-/*.locationPane .navigationPane{
-  height: calc(100% + 30px) !important;
-}*/
+.locationPane .navigationPane:not(.navcollapsed){
+  overflow: hidden !important;
+}
+
+.locationPane .navigationPane:not(.navcollapsed):hover{
+  overflow: hidden auto !important;
+}
+
+@media only screen and (min-width: 1037px){
+  .locationPane .navigationPane::-webkit-scrollbar {
+    width: 0;
+  }
+}
 
 .locationPane .navigationPane hr{
   border-color: var(--background-main-outline) !important;
