@@ -268,10 +268,10 @@ var inlineCSSCont = `
 }
 
 /* iframePrimaryButton */
-#ical{
+/* */
+#ical, #createeventbutton{
   outline: none !important;
   border: none !important;
-  background-image: none !important;
   background-color: var(--primary-button) !important;
   box-shadow: inset 0 0 0 2px var(--primary-button) !important;
   color: var(--primary-button-text) !important;
@@ -280,16 +280,18 @@ var inlineCSSCont = `
 }
 
 /* iframePrimaryButton:hover */
-#ical:hover{
+#ical:hover, #createeventbutton:hover{
   background-color: var(--primary-button-highlight) !important;
 }
 
 /* iframeButtonSecondary */
-.ui-datepicker-next, .ui-datepicker-prev, .fc-header .fc-button-content,
-.streamSettingButtons .genericButton{
+/*.ui-datepicker-next, .ui-datepicker-prev, */
+/*.fc-header .fc-button-content,*/
+.fc-button-main:not(.fc-button-img),
+.streamSettingButtons .genericButton, .cal-nav .active 
+{
   outline: none !important;
   border: none !important;
-  background-image: none !important;
   background-color: var(--secondary-button) !important;
   box-shadow: inset 0 0 0 2px var(--secondary-button) !important;
   color: var(--secondary-button-text) !important;
@@ -297,10 +299,22 @@ var inlineCSSCont = `
   text-shadow: none !important;
 }
 
-.ui-datepicker-next:hover, .ui-datepicker-prev:hover, .fc-header .fc-button-content:hover,
-.streamSettingButtons .genericButton:hover{
+/*.ui-datepicker-next:hover, .ui-datepicker-prev:hover, */
+/*.fc-header .fc-button-content:hover,*/
+.fc-button-main:not(.fc-button-img):hover,
+.streamSettingButtons .genericButton:hover, .cal-nav .active:hover{
   background-color: var(--secondary-button-highlight) !important;
   cursor: pointer;
+}
+
+.fc-header .fc-button-img{
+  outline: none !important;
+  border: none !important;
+  background-image: none !important;
+  background-color: transparent; !important;
+  box-shadow: none !important;
+  color: var(--secondary-button-text) !important;
+  text-shadow: none !important;
 }
 
 /* iframeTextMain */
@@ -341,6 +355,10 @@ var inlineCSSCont = `
   color: var(--text-link) !important;
 }
 
+.fc-button-main:not(.fc-button-img){
+  background-image: none !important;
+}
+
 .left_stream_wrapper .stream_left, .left_stream_wrapper .scrollbar_track{
   height: calc(100% - 140px) !important;
 }
@@ -362,6 +380,77 @@ var inlineCSSCont = `
 }
 
 /* Calendar */
+#ical{
+  margin-bottom: 20px !important;
+}
+
+.cal-nav{
+  z-index: 1 !important;
+}
+
+.cal-nav li{
+  position: relative !important;
+  background-color: transparent !important;
+  z-index: 1 !important;
+  padding: 7px !important;
+}
+
+.cal-nav li#agendaDay {
+    background-position: center -83px !important;
+}
+
+.cal-nav li#agendaWeek {
+    background-position: center -38px !important;
+}
+
+.cal-nav li#month {
+    background-position: center 7px !important;
+}
+
+/*.cal-nav li:after{
+  content: "";
+  position: absolute;
+  background-image: inherit;
+  left: -10px;
+  top: -10px;
+  width: 200%;
+  height: 200%;
+  background-color: pink;
+  z-index: -1;
+}*/
+
+#createeventbutton{
+  position: relative !important;
+}
+
+#createeventbutton span{
+  background-image: none !important;
+}
+
+#createeventbutton:after{
+  content: "+";
+  position: absolute;
+  top: -1.5px;
+  left: 4px;
+  width: 100%;
+  height: 100%;
+  font-size: 30px;
+  line-height: 30px;
+  color: var(--primary-button-text);
+  pointer-events: none;
+}
+
+.fc-agenda .fc-agenda-slots tr:not(.fc-minor) th{
+  padding-right: 22px !important;
+  position: relative;
+}
+
+.fc-agenda .fc-agenda-slots tr:not(.fc-minor) th:after{
+  content: ":00";
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+}
 
 .stream_header{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
@@ -372,10 +461,6 @@ var inlineCSSCont = `
 .stream_page_left {
   border: none !important;
 }
-
- .cal-nav li{
-  background-color: #fff !important;
- }
 
 #streamHeader_calendar .title-text{
   text-shadow: none !important;
@@ -828,6 +913,30 @@ var inlineCSSCont = `
 
 #streamHeader_calendar #dynamic_filters_alerts .filter-content-wrapper{
   height: unset !important;
+}
+
+#streamHeader_mygrades{
+  border-bottom: 1px solid var(--background-main-outline) !important;
+}
+
+.due_date:after{
+  box-shadow: none !important;
+}
+
+.ui-datepicker-next, .ui-datepicker-prev{
+  outline: none !important;
+  border: none !important;
+  background-image: none !important;
+  border-radius: 2px !important;
+  text-shadow: none !important;
+}
+
+.ui-datepicker-next:hover, .ui-datepicker-prev:hover{
+  cursor: pointer;
+}
+
+#streamHeader_calendar{
+  border-right: 1px solid var(--background-main-outline) !important;
 }
 
 `;
