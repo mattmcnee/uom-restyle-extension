@@ -3,6 +3,9 @@
 A Chrome extension that cleans up the user interface of blackboard 
 for UoM and adds custom colour schemes as well as dark mode
 
+A preview of the changes is available here:
+https://mattmcneedev.000webhostapp.com/blackboard-restyle/
+
 To use this, either clone the repository or download and unzip 
 uom-restyle-extension.zip
 
