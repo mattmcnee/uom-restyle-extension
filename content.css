@@ -2304,7 +2304,8 @@ div.collectionViewReadMessageBorder{
 }
 
 /* iframeButtonSecondary */
-.ui-datepicker-next, .ui-datepicker-prev, .fc-header .fc-button-content{
+.ui-datepicker-next, .ui-datepicker-prev, .fc-header .fc-button-content,
+.streamSettingButtons .genericButton{
   outline: none !important;
   border: none !important;
   background-image: none !important;
@@ -2315,7 +2316,8 @@ div.collectionViewReadMessageBorder{
   text-shadow: none !important;
 }
 
-.ui-datepicker-next:hover, .ui-datepicker-prev:hover, .fc-header .fc-button-content:hover{
+.ui-datepicker-next:hover, .ui-datepicker-prev:hover, .fc-header .fc-button-content:hover,
+.streamSettingButtons .genericButton:hover{
   background-color: var(--secondary-button-highlight) !important;
   cursor: pointer;
 }
@@ -2684,7 +2686,7 @@ display: flex;
   border-left: none !important;
 }
 
-.stream_dynamic_filters{
+#dynamic_filters_mygrades{
   left: unset !important;
   right: 15px !important;
 /*  top: 117px !important;*/
@@ -2868,4 +2870,112 @@ display: flex;
 
 #streamDetail .detail-heading h2{
   word-break: initial !important;
+}
+
+.current_filter{
+  border-left: none !important;
+}
+
+.stream_header{
+  border-bottom: none !important;
+}
+
+#dynamic_filters_alerts li a{
+  color: var(--text-link) !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+#dynamic_filters_alerts li a.active{
+  color: var(--text-light) !important;
+  cursor: initial !important;
+}
+
+#filter_type_all_alerts{
+    color: transparent !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  padding-left: 27px !important;
+}
+
+#filter_type_all_alerts:before{
+  color: var(--text-link) !important;
+  content: "Select All";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#left_stream_alerts{
+  height: calc(100vh - 100px) !important;
+}
+
+#outer_left_stream_alerts{
+  height: 100vh !important;
+}
+
+#left_stream_alerts + .scrollbar_track{
+  height: calc(100vh - 100px) !important;
+}
+
+#dynamic_filters_alerts, #dynamic_filters_alerts .filter-content-wrapper,
+#dynamic_filters_alerts .stream_dynamic_filters_content,
+#dynamic_filters_alerts .scrollbar_track{
+  height: calc(100vh - 130px) !important;
+}
+
+#streamHeader_alerts{
+  border-right: 1px solid var(--background-main-outline) !important;
+  padding-right: 0 !important;
+}
+
+#settingsContainer_alerts{
+  background-color: var(--background-main) !important;
+  border: 1px solid var(--background-main-outline) !important;
+  box-shadow: none !important;
+  top: 15px !important;
+  right: 15px !important;
+}
+
+#settingsContainer_alerts label{
+  color: var(--text-main) !important;
+}
+
+#settingsContainer_alerts .streamSettingHelpLinks a{
+  color: var(--text-link) !important;
+}
+
+#left_stream_alerts .inlineContextMenu a{
+  border-bottom: none !important;
+  color: var(--text-link) !important;
+}
+
+#left_stream_alerts .inlineContextMenu a:hover{
+  text-decoration: underline !important;
+}
+
+#left_stream_alerts .active_stream_item .stream_context, 
+#left_stream_alerts .active_stream_item .stream_context_bottom,
+#left_stream_alerts .active_stream_item .stream_area_name,
+.stream_left .stream_context, .stream_left .stream_context_bottom,
+.stream_left .announcementTitle, .stream_left .announcementBody,
+.stream_left .stream_area_name{
+  color: var(--text-main) !important;
+}
+
+
+
+.stream_dynamic_filters_content h5{
+  text-shadow: none !important;
+  color: var(--text-main) !important;
+}
+
+.current_filter{
+  color: var(--text-main) !important;
+}
+
+#streamHeader_calendar #dynamic_filters_alerts .filter-content-wrapper{
+  height: unset !important;
 }
