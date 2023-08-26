@@ -268,8 +268,9 @@ var inlineCSSCont = `
 }
 
 /* iframePrimaryButton */
-/* */
-#ical, #createeventbutton{
+#ical, #createeventbutton,
+.ui-dialog-buttonset button:last-child{
+  background-image: none !important;
   outline: none !important;
   border: none !important;
   background-color: var(--primary-button) !important;
@@ -280,16 +281,15 @@ var inlineCSSCont = `
 }
 
 /* iframePrimaryButton:hover */
-#ical:hover, #createeventbutton:hover{
+#ical:hover, #createeventbutton:hover,
+.ui-dialog-buttonset button:last-child:hover{
   background-color: var(--primary-button-highlight) !important;
 }
 
 /* iframeButtonSecondary */
-/*.ui-datepicker-next, .ui-datepicker-prev, */
-/*.fc-header .fc-button-content,*/
-.fc-button-main:not(.fc-button-img),
-.streamSettingButtons .genericButton, .cal-nav .active 
-{
+.fc-button-main:not(.fc-button-img), .streamSettingButtons .genericButton,
+.ui-dialog-buttonset button:first-child {
+  background-image: none !important;
   outline: none !important;
   border: none !important;
   background-color: var(--secondary-button) !important;
@@ -299,10 +299,9 @@ var inlineCSSCont = `
   text-shadow: none !important;
 }
 
-/*.ui-datepicker-next:hover, .ui-datepicker-prev:hover, */
-/*.fc-header .fc-button-content:hover,*/
-.fc-button-main:not(.fc-button-img):hover,
-.streamSettingButtons .genericButton:hover, .cal-nav .active:hover{
+/* iframeButtonSecondary:hover */
+.fc-button-main:not(.fc-button-img):hover, .streamSettingButtons .genericButton:hover, 
+.ui-dialog-buttonset button:first-child:hover{
   background-color: var(--secondary-button-highlight) !important;
   cursor: pointer;
 }
@@ -355,10 +354,6 @@ var inlineCSSCont = `
   color: var(--text-link) !important;
 }
 
-.fc-button-main:not(.fc-button-img){
-  background-image: none !important;
-}
-
 .left_stream_wrapper .stream_left, .left_stream_wrapper .scrollbar_track{
   height: calc(100% - 140px) !important;
 }
@@ -395,6 +390,13 @@ var inlineCSSCont = `
   padding: 7px !important;
 }
 
+.cal-nav .active{
+  background-color: var(--background-main-outline) !important;
+  border: none !important;
+/*  border: 1px solid var(--background-main-outline) !important;*/
+  box-shadow: none !important;
+}
+
 .cal-nav li#agendaDay {
     background-position: center -83px !important;
 }
@@ -407,17 +409,42 @@ var inlineCSSCont = `
     background-position: center 7px !important;
 }
 
-/*.cal-nav li:after{
-  content: "";
-  position: absolute;
-  background-image: inherit;
-  left: -10px;
-  top: -10px;
-  width: 200%;
-  height: 200%;
-  background-color: pink;
-  z-index: -1;
-}*/
+/* Create event */
+.ui-dialog{
+  background-color: var(--background-main) !important;
+  border: 1px solid var(--background-main-outline) !important;
+}
+
+.ui-dialog .ui-dialog-titlebar{
+  color: var(--text-main);
+  background-color: transparent !important;
+}
+
+.ui-dialog input, .ui-dialog textarea{
+  outline: none !important;
+  border: 1px solid var(--background-main-outline) !important;
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
+  border-radius: 4px !important;
+}
+
+.ui-dialog label{
+  color: var(--text-main) !important;
+}
+
+.ui-dialog .axInfoForDatePicker{
+  color: var(--text-light) !important;
+}
+
+.ui-dialog #axInfoForDatePickerId{
+  border-bottom: none !important;
+  color: var(--text-link) !important;
+  text-decoration: none !important;
+}
+
+.ui-dialog #axInfoForDatePickerId:hover{
+  text-decoration: underline !important;
+}
 
 #createeventbutton{
   position: relative !important;
@@ -938,6 +965,7 @@ var inlineCSSCont = `
 #streamHeader_calendar{
   border-right: 1px solid var(--background-main-outline) !important;
 }
+
 
 `;
 
