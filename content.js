@@ -34,7 +34,10 @@ ${temp}
 }
 
 function updateTheme(uData, updateIframe){
-  // console.log("Data retrieved:", uData);
+  if (!uData) {
+    return 1;
+  }
+
   if(uData.style == "stylesheet"){
     root.style.cssText = "";
     inlineCSS = getCss(uData.light) + inlineCSSCont;
@@ -45,10 +48,14 @@ function updateTheme(uData, updateIframe){
       inlineCSS = getCss(uData.dark) + inlineCSSCont;
       console.log("Set dark: " + root.style.cssText);
     }
-    else{
+    else if (uData.theme == "light") {
       root.style.cssText = getProperties(uData.light);
       inlineCSS = getCss(uData.light) + inlineCSSCont;
       console.log("Set light: "+ root.style.cssText);
+    }
+    else{
+      console.log("Called updateTheme when userData is not defined");
+      return 1;
     }
   }
 
