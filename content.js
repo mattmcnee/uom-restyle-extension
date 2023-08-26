@@ -1,3 +1,38 @@
+// Converts JSON to root style element inner text
+function getProperties(themeData) {
+  const cssText = `
+--main-theme: ${themeData.mainTheme};
+--background-main: ${themeData.backgroundMain};
+--background-main-outline: ${themeData.backgroundMainOutline};
+--background-tint-1: ${themeData.backgroundTint1};
+--background-tint-1-highlight: ${themeData.backgroundTint1Highlight};
+--background-tint-2: ${themeData.backgroundTint2};
+--background-tint-2-highlight: ${themeData.backgroundTint2Highlight};
+--secondary-button: ${themeData.secondaryButton};
+--secondary-button-highlight: ${themeData.secondaryButtonHighlight};
+--secondary-button-text: ${themeData.secondaryButtonText};
+--primary-button: ${themeData.primaryButton};
+--primary-button-highlight: ${themeData.primaryButtonHighlight};
+--primary-button-text: ${themeData.primaryButtonText};
+--text-main: ${themeData.textMain};
+--text-light: ${themeData.textLight};
+--text-link: ${themeData.textLink};
+--global-font: ${themeData.globalFont};
+  `;
+  return cssText;
+}
+
+// Converts JSON to root style element using getProperties()
+function getCss(themeData){
+  const temp = getProperties(themeData);
+  const cssText = `
+:root { 
+${temp}
+}
+  `;
+  return cssText;
+}
+
 function updateTheme(uData, updateIframe){
   // console.log("Data retrieved:", uData);
   if(uData.style == "stylesheet"){
@@ -36,41 +71,6 @@ function updateStyles(message){
     // console.log("Data saved:", message);
   });
   updateTheme(userData, true);
-}
-
-// Converts JSON to root style element inner text
-function getProperties(themeData) {
-  const cssText = `
---main-theme: ${themeData.mainTheme};
---background-main: ${themeData.backgroundMain};
---background-main-outline: ${themeData.backgroundMainOutline};
---background-tint-1: ${themeData.backgroundTint1};
---background-tint-1-highlight: ${themeData.backgroundTint1Highlight};
---background-tint-2: ${themeData.backgroundTint2};
---background-tint-2-highlight: ${themeData.backgroundTint2Highlight};
---secondary-button: ${themeData.secondaryButton};
---secondary-button-highlight: ${themeData.secondaryButtonHighlight};
---secondary-button-text: ${themeData.secondaryButtonText};
---primary-button: ${themeData.primaryButton};
---primary-button-highlight: ${themeData.primaryButtonHighlight};
---primary-button-text: ${themeData.primaryButtonText};
---text-main: ${themeData.textMain};
---text-light: ${themeData.textLight};
---text-link: ${themeData.textLink};
---global-font: ${themeData.globalFont};
-  `;
-  return cssText;
-}
-
-// Converts JSON to root style element
-function getCss(themeData){
-  const temp = getProperties(themeData);
-  const cssText = `
-:root { 
-${temp}
-}
-  `;
-  return cssText;
 }
 
 
@@ -148,7 +148,7 @@ function refreshIframe(){
   }
 }
 
-console.log('Custom script injected');
+// console.log('Custom script injected');
 
 //Retrieve data from storage
 chrome.storage.local.get(["userData"], (result) => {
@@ -298,6 +298,28 @@ var inlineCSSCont = `
   cursor: pointer;
 }
 
+/*.stream_pages div.left_stream_wrapper{
+  padding-bottom: 20px !important;
+}
+*/
+.left_stream_wrapper .stream_left, .left_stream_wrapper .scrollbar_track{
+  height: calc(100% - 140px) !important;
+/*  margin-bottom: 20px !important;*/
+}
+
+.left_stream_wrapper{
+  height: 100% !important;
+}
+
+
+.stream_page_left .current-page .icon{
+  display: none !important;
+}
+
+#stream_mygrades, #outer_left_stream_mygrades{
+  height: 100vh;
+}
+
 /* Calendar */
 
 #calendar_content{
@@ -327,7 +349,6 @@ var inlineCSSCont = `
 .left_stream_wrapper{
 /*  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2) !important;*/
   border: none !important;
-  background-color: #fff !important;
   z-index: 5 !important;
   box-shadow: none !important;
 }
@@ -629,8 +650,66 @@ display: flex;
   border-radius: 0 !important;
 }
 
-.active_stream_item {
-  border-right: 1px dashed #ccc !important;
+.stream_item .grade-value{
+  color: var(--text-main) !important;
+}
+
+.stream_filterlinks_divider{
+  border-left: none !important;
+}
+
+.stream_dynamic_filters{
+  left: unset !important;
+  right: 15px !important;
+/*  top: 117px !important;*/
+  top: unset !important;
+  bottom: calc(-100vh + 181px) !important;
+  background-color: var(--background-main) !important;
+  height: calc(100vh - 203px) !important;
+  border: 1px solid var(--background-main-outline) !important;
+  box-shadow: none !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.stream_dynamic_filters .filter-content-wrapper .stream_dynamic_filters_content{
+  height: calc(100vh - 203px) !important;
+}
+
+.stream_dynamic_filters .scrollbar_track{
+  height: calc(100vh - 183px) !important;
+}
+
+.stream_list_filter{
+  padding-top: 0 !important;
+}
+
+.stream_list_filter li {
+  vertical-align: initial !important;
+  margin-top: 15px !important;
+}
+
+#filter_by_mygrades button{
+  box-shadow: none !important;
+  border: none !important;
+  background-color: transparent !important;
+  margin-top: 10px !important;
+}
+
+#streamHeader_mygrades{
+  position: relative !important;
+}
+
+#filter_by_mygrades button.active{
+  color: var(--text-main) !important;
+}
+
+#filter_by_mygrades button:not(.active) {
+  color: var(--text-light) !important;
+}
+
+#filter_by_mygrades button:not(.active):hover{
+  color: var(--text-link) !important;
 }
 
 
@@ -665,8 +744,23 @@ display: flex;
   background-color: var(--background-tint-1-highlight) !important;
 }
 
-.left_stream_wrapper .stream_context_bottom span{
+.left_stream_wrapper .stream_datestamp{
+  color: var(--text-light) !important;
+}
+
+.left_stream_wrapper .stream_context_bottom span:not(.active_stream_item span){
   color: var(--text-main) !important;
+}
+
+.active_stream_item .grade-value, .active_stream_item .stream_context,
+.active_stream_item .stream_context_bottom, .active_stream_item .stream_area_name{
+  color: var(--text-link) !important;
+
+/*  border-right: 1px dashed #ccc !important;*/
+}
+
+.gradeTableNew .row .cell a{
+  cursor: pointer;
 }
 
 .stream_show_more_data{
@@ -718,9 +812,18 @@ display: flex;
   display: none !important;
 } 
 
+#streamDetailHeaderRight{
+  position: relative;
+  margin-bottom: 10px !important;
+  min-height: 0 !important;
+}
+
 #streamDetailHeaderRight .timestamp{
   color: var(--text-light) !important;
   right: -3px !important;
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
 }
 
 #streamDetailHeaderRight .context h2 a{
@@ -730,6 +833,15 @@ display: flex;
 .stream_right{
   box-shadow: none !important;
   border-left: 1px solid var(--background-main-outline) !important;
+  height: 100vh !important;
+}
+
+#streamDetail{
+  margin-bottom: 60px !important;
+}
+
+#streamDetail .detail-heading h2{
+  word-break: initial !important;
 }
 
 
