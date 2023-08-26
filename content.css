@@ -630,6 +630,28 @@ margin-top: 5px;
   ---
 */
 
+.contextMenuContainer .cmimg{
+  position: relative !important;
+  background-image: none !important;
+
+}
+
+/*.contextMenuContainer .cmimg{
+  display: none !important;
+}
+*/
+.contextMenuContainer .cmimg:after{
+  content: "^";
+  position: absolute;
+  top: -2px;
+  left: 5px;
+  background-color: transparent;
+  text-align: center;
+  transform: rotateZ(180deg) scaleX(1.7) scaleY(1);
+  pointer-events: none;
+  color: var(--text-main);
+}
+
 .courseArrow{
   transform: scale(1.1);
 }
