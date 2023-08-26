@@ -1,48 +1,3 @@
-function initialiseUserData(){
-  const temp = 
-  {
-    style: "default",
-    theme: "dark",
-    light: {
-      mainTheme: "#5E0366",
-      backgroundMain: "#fff",
-      backgroundMainOutline: "#eee",
-      backgroundTint1: "#fbfbfb",
-      backgroundTint1Highlight: "#f4f4f4",
-      backgroundTint2: "#fefefe",
-      backgroundTint2Highlight: "#f7f7f7",
-      secondaryButton: "#dadada",
-      secondaryButtonHighlight: "#e8e8e8",
-      secondaryButtonText: "#333",
-      primaryButton: "#5E0366",
-      primaryButtonHighlight: "#7a0485",
-      primaryButtonText: "#eee",
-      textMain: "#000",
-      textLight: "#555",
-      globalFont: "Open Sans, sans-serif"
-    },
-    dark: {
-      mainTheme: "#410247",
-      backgroundMain: "#111",
-      backgroundMainOutline: "#333",
-      backgroundTint1: "#191919",
-      backgroundTint1Highlight: "#191919",
-      backgroundTint2: "#222",
-      backgroundTint2Highlight: "#222",
-      secondaryButton: "#555",
-      secondaryButtonHighlight: "#585858",
-      secondaryButtonText: "#ddd",
-      primaryButton: "#5E0366",
-      primaryButtonHighlight: "#7a0485",
-      primaryButtonText: "#eee",
-      textMain: "#ccc",
-      textLight: "#999",
-      globalFont: "Open Sans, sans-serif"
-    }
-  };
-  return temp; 
-}
-
 function updateTheme(uData, updateIframe){
   // console.log("Data retrieved:", uData);
   if(uData.style == "stylesheet"){
@@ -71,25 +26,19 @@ function updateTheme(uData, updateIframe){
       }
     }
   }
-
 }
 
-
+// This is called by popup.js
 function updateStyles(message){
-
   // Save data to storage
   var userData = message;
   chrome.storage.local.set({ userData}, () => {
     // console.log("Data saved:", message);
   });
-
-  // const jsonData = message;
-  // localStorage.setItem('data', JSON.stringify(jsonData));
-
   updateTheme(userData, true);
 }
 
-
+// Converts JSON to root style element inner text
 function getProperties(themeData) {
   const cssText = `
 --main-theme: ${themeData.mainTheme};
@@ -113,6 +62,7 @@ function getProperties(themeData) {
   return cssText;
 }
 
+// Converts JSON to root style element
 function getCss(themeData){
   const temp = getProperties(themeData);
   const cssText = `
@@ -123,7 +73,8 @@ ${temp}
   return cssText;
 }
 
-// Function to add inline CSS rules inside the iframe
+
+// Adds CSS styles to iframes
 function addInlineStylesInIframe(iframeElement, cssRules) {
   // Loads inner document
   var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
@@ -164,7 +115,7 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
 }
 
 
-// Function to add inline CSS rules inside the iframe
+// Updates CSS styles in iframes
 function updateInlineStylesInIframe(iframeElement, cssRules) {
   // Loads inner document
   var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
@@ -187,11 +138,10 @@ function updateInlineStylesInIframe(iframeElement, cssRules) {
   }
 }
 
+// Called when MyBb chosen content changes
 function refreshIframe(){
-  console.log("Button clicked");
   for (const iframe of iframes) {
     if (iframe !== null) {
-      console.log("Adding iframe");
       addInlineStylesInIframe(iframe, inlineCSS);
       break;
     }
@@ -208,8 +158,8 @@ chrome.storage.local.get(["userData"], (result) => {
 
 var iframes;
 var root;
+// This code will run when the page begins to load
 document.addEventListener("DOMContentLoaded", function() {
-  // This code will run when the page begins to load
   root = document.documentElement;
   updateTheme(userData, false);
 
@@ -220,8 +170,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".tox-edit-area__iframe")
   ];
 
-  // console.log(inlineCSS);
-
   for (const iframe of iframes) {
     if (iframe !== null) {
       console.log("Adding iframe");
@@ -229,7 +177,6 @@ document.addEventListener("DOMContentLoaded", function() {
       break;
     }
   }
-
 
   iframeSwitch = [
     document.querySelector('#BB-CORE_____overview-tool a'),
@@ -239,15 +186,11 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('#calendar-mybb_____calendar-tool a')
   ];
 
-
-  console.log(iframeSwitch[0]);
-
   for (const iframe of iframeSwitch) {
     if (iframe !== null) {
       iframe.addEventListener('click', refreshIframe);
     }
   }
-
 
   // Fixes specific bug with text "&" symbol
   var element = document.getElementById("crumb_2");
@@ -289,7 +232,6 @@ var inlineCSSCont = `
   font-family: var(--global-font) !important;
   outline: none !important;
 }`+`
-
 
 
 /* iframeBackgroundMain */
@@ -785,12 +727,12 @@ display: flex;
   color: var(--text-link) !important;
 }
 
+.stream_right{
+  box-shadow: none !important;
+  border-left: 1px solid var(--background-main-outline) !important;
+}
+
 
 `;
 
 var inlineCSS = inlineCSSRoot + inlineCSSCont;
-
-
-
-
-

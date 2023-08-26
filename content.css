@@ -602,8 +602,15 @@ margin-top: 5px;
 }
 
 .portlet .portletBlock{
-  border-color: var(--background-main) !important;
-  border-width: 1px !important;
+  border-top: 1px solid var(--background-main-outline) !important;
+}
+
+.moduleActions + .portletBlock {
+  border: none !important;
+}
+
+.portlet .portletBlock .viewHeader{
+  border: none !important;
 }
 
 .portlet img.eud-avatar {
@@ -927,7 +934,11 @@ margin-top: 5px;
 }
 
 
+#content .vtbegenerated p{
+  background-color: transparent !important;
+  color: var(--text-main) !important;
 
+}
 
 
 [id="bbNG.receiptTag.content"] {
@@ -1396,6 +1407,11 @@ a.reply-count-link {
   border-bottom-right-radius: 2px !important;
   border-top-right-radius: 2px !important;
   border-left: 1px solid var(--background-main-outline) !important;
+  color: var(--text-light) !important;
+}
+
+.containerOptions fieldset .genericButton:hover{
+  color: var(--text-main) !important;
 }
 
 .containerOptions fieldset .stepHelp{
@@ -1919,7 +1935,13 @@ div.collectionViewReadMessageBorder{
 
 .side-nav{
   background-color: var(--background-main)  !important;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: none !important;
+  border-right: 1px solid var(--background-main-outline) !important;
+}
+
+.stream_right{
+  box-shadow: none !important;
+  border-left: 1px solid var(--background-main-outline) !important;
 }
 
 .side-nav ul{
@@ -2724,6 +2746,11 @@ display: flex;
 
 #streamDetailHeaderRight .context h2 a{
   color: var(--text-link) !important;
+}
+
+.stream_right{
+  box-shadow: none !important;
+  border-left: 1px solid var(--background-main-outline) !important;
 }
 
 
