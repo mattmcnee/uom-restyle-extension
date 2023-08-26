@@ -2089,7 +2089,7 @@ div.collectionViewReadMessageBorder{
   }
 
   .accordion_content{
-    height: calc(100vh - 150px - 240px) !important;
+    height: calc(100vh - 150px - 200px) !important;
   }
 
   #flyoutMenuContent .mybb-tools {
@@ -2259,6 +2259,10 @@ div.collectionViewReadMessageBorder{
 
   .actionBar .nav .secondaryButton .actionMenu {
     left: 0 !important;
+  }
+
+  .flyout-menu .accordion_toggle span {
+    line-height: 24px !important;
   }
 }
 
