@@ -236,7 +236,10 @@ var inlineCSSCont = `
 
 /* iframeBackgroundMain */
 #dynamic_filters_alerts, #column_0, #column_1, #mybb_column_wrapper,
-.stream_header, .locationPane, body, .stream_page_left .left_stream_wrapper{
+.stream_header, .locationPane, body, .stream_page_left .left_stream_wrapper,
+#calendar_content, #outer_left_stream_alerts, #dynamic_filters_mygrades,
+.mybb.filterBarHorizontal, .mybb.gradeTableNew .grades_header,
+#settingsContainer_alerts {
   background-color: var(--background-main) !important;
 }
 
@@ -300,13 +303,46 @@ var inlineCSSCont = `
   cursor: pointer;
 }
 
-/*.stream_pages div.left_stream_wrapper{
-  padding-bottom: 20px !important;
+/* iframeTextMain */
+.stream_left .stream_context, .stream_left .stream_context_bottom,
+.stream_left .announcementTitle, .stream_left .announcementBody,
+.stream_left .stream_area_name, #streamHeader_calendar .title-text,
+.stream_left .stream_context_bottom span:not(.active_stream_item span),
+.ui-datepicker-calendar td a, .ui-datepicker-header .ui-datepicker-title,
+.fc-header-title, #calendarList h3, .margin-interact h3,
+.calendar-list .calendar-item label, .stream_item .grade-value,
+#filter_by_mygrades button.active, .title-date, .section-title,
+.stream_show_more_data .extras, .stream_show_more_data .extras:after,
+.stream_header h1 span, #settingsContainer_alerts label,
+.stream_dynamic_filters_content h5, .current_filter{
+  color: var(--text-main) !important;
+  text-shadow: none !important;
 }
-*/
+
+/* iframeTextLight */
+.stream_left .stream_datestamp, .ui-datepicker-calendar th span,
+.fc-border-separate .fc-widget-content .fc-day-number, .fc-widget-header,
+#filter_by_mygrades button:not(.active), .stream_show_more_data,
+#streamDetailHeaderRight .timestamp, #dynamic_filters_alerts li a.active{
+  color: var(--text-light) !important;
+  text-shadow: none !important;
+}
+
+/* iframeTextLink */
+#left_stream_mygrades .active_stream_item .grade-value, 
+#left_stream_mygrades .active_stream_item .stream_context,
+#left_stream_mygrades .active_stream_item .stream_context_bottom, 
+#left_stream_mygrades .active_stream_item .stream_area_name,
+.ui-datepicker-calendar .ui-state-highlight, .fc-border-separate .fc-today .fc-day-number,
+.calendar-list .calendar-name label:hover, #filter_by_mygrades button:not(.active):hover,
+#streamDetailHeaderRight .context h2 a, #dynamic_filters_alerts li a,
+#filter_type_all_alerts:before, #settingsContainer_alerts .streamSettingHelpLinks a,
+#left_stream_alerts .inlineContextMenu a {
+  color: var(--text-link) !important;
+}
+
 .left_stream_wrapper .stream_left, .left_stream_wrapper .scrollbar_track{
   height: calc(100% - 140px) !important;
-/*  margin-bottom: 20px !important;*/
 }
 
 .left_stream_wrapper{
@@ -317,7 +353,6 @@ var inlineCSSCont = `
   height: 100vh !important;
 }
 
-
 .stream_page_left .current-page .icon{
   display: none !important;
 }
@@ -327,11 +362,6 @@ var inlineCSSCont = `
 }
 
 /* Calendar */
-
-#calendar_content{
-  background-color: var(--background-main) !important;
-}
-
 
 .stream_header{
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
@@ -348,12 +378,10 @@ var inlineCSSCont = `
  }
 
 #streamHeader_calendar .title-text{
-  color: var(--text-main) !important;
   text-shadow: none !important;
 }
 
 .left_stream_wrapper{
-/*  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2) !important;*/
   border: none !important;
   z-index: 5 !important;
   box-shadow: none !important;
@@ -373,12 +401,10 @@ var inlineCSSCont = `
   background-image: none !important;
   background-repeat: none !important;
   text-shadow: none !important;
-  color: var(--text-main) !important;
 }
 
 .ui-datepicker-calendar .ui-state-highlight{
   box-shadow: none !important;
-  color: var(--text-link) !important;
 }
 
 .ui-datepicker-calendar .ui-state-active{
@@ -387,47 +413,16 @@ var inlineCSSCont = `
   font-weight: bold !important;
 }
 
-.ui-datepicker-calendar th span{
-  color: var(--text-light) !important;
-}
-
-.ui-datepicker-header .ui-datepicker-title{
-  color: var(--text-main) !important;
-}
-
-
-
-/*.ui-datepicker-calendar table {
-    border-spacing: 2px;
-    row-gap: 2px !important;
-}*/
-
 .fc-border-separate .fc-today{
-  background-color: transparent; !important;
-}
-
-.fc-border-separate .fc-widget-content .fc-day-number{
-  color: var(--text-light) !important;
-}
-
-.fc-border-separate .fc-today .fc-day-number{
-  color: var(--text-link) !important;
+  background-color: transparent !important;
 }
 
 .fc-border-separate, .fc-border-separate th, .fc-border-separate td {
   border: 1px solid var(--background-main-outline) !important;
 }
 
-.fc-header-title{
-  color: var(--text-main) !important;
-}
-
 .fc-event-skin:hover {
   cursor: pointer;
-}
-
-#outer_left_stream_alerts{
-  background-color: var(--background-main) !important;
 }
 
 /* Calendar days planner */
@@ -435,13 +430,7 @@ var inlineCSSCont = `
   border-bottom: none !important;
   height: 2px !important;
   padding: 0 !important;
-  color: var(--text-light) !important;
 }
-
-/*.fc-header-left{
-display: flex;
-    align-items: center;
-  }*/
 
 .fc-header button{
   margin-top: 6px !important;
@@ -477,7 +466,6 @@ display: flex;
   overflow-y: auto !important;
 }
 
-
 .fc-agenda .fc-agenda-axis {
   border-right: none !important;
 }
@@ -492,6 +480,7 @@ display: flex;
   left: 1px !important;
   top: -1px !important;
 }
+
 .calendar-item input[type="checkbox"]{
   appearance: none;
   background-color: #eee;
@@ -567,31 +556,9 @@ display: flex;
   padding: 0.5625rem 1.125rem 0.625rem !important;
 }
 
-#calendarList h3, .margin-interact h3{
-  color: var(--text-main) !important;
-  text-shadow: none !important;
-}
-
-.calendar-list .calendar-item label{
-  color: var(--text-main) !important;
-  text-shadow: none !important;
-}
-
 .calendar-list .calendar-name label:hover {
-  color: var(--text-link) !important;
     background-color: transparent !important;
 }
-
-/*.fc-header button{
-  background-image: none !important;
-  background-color: #dadada;
-  box-shadow: inset 0 0 0 2px #dadada !important;
-  border: none !important;
-  border-radius: 5px !important;
-  text-align: center;
-  padding: 0.5625rem 1.125rem 0.625rem !important;
-}*/
-
 
 /* grade breakdown */
 #grades_wrapper div{
@@ -656,10 +623,6 @@ display: flex;
   border-radius: 0 !important;
 }
 
-.stream_item .grade-value{
-  color: var(--text-main) !important;
-}
-
 .stream_filterlinks_divider{
   border-left: none !important;
 }
@@ -667,10 +630,8 @@ display: flex;
 #dynamic_filters_mygrades{
   left: unset !important;
   right: 15px !important;
-/*  top: 117px !important;*/
   top: unset !important;
   bottom: calc(-100vh + 181px) !important;
-  background-color: var(--background-main) !important;
   height: calc(100vh - 203px) !important;
   border: 1px solid var(--background-main-outline) !important;
   box-shadow: none !important;
@@ -706,19 +667,6 @@ display: flex;
   position: relative !important;
 }
 
-#filter_by_mygrades button.active{
-  color: var(--text-main) !important;
-}
-
-#filter_by_mygrades button:not(.active) {
-  color: var(--text-light) !important;
-}
-
-#filter_by_mygrades button:not(.active):hover{
-  color: var(--text-link) !important;
-}
-
-
 /* Updates */
 #streamHeader_alerts{
   padding: 0 5px 15px 5px !important;
@@ -737,11 +685,6 @@ display: flex;
   padding-top: 20px !important;
 }
 
-.title-date, .section-title{
-  text-shadow: none !important;
-  color: var(--text-main) !important;
-}
-
 .left_stream_wrapper .stream_item{
   background-color: var(--background-tint-1) !important;
 }
@@ -750,28 +693,8 @@ display: flex;
   background-color: var(--background-tint-1-highlight) !important;
 }
 
-.left_stream_wrapper .stream_datestamp{
-  color: var(--text-light) !important;
-}
-
-.left_stream_wrapper .stream_context_bottom span:not(.active_stream_item span){
-  color: var(--text-main) !important;
-}
-
-.active_stream_item .grade-value, .active_stream_item .stream_context,
-.active_stream_item .stream_context_bottom, .active_stream_item .stream_area_name{
-  color: var(--text-link) !important;
-
-/*  border-right: 1px dashed #ccc !important;*/
-}
-
 .gradeTableNew .row .cell a{
   cursor: pointer;
-}
-
-.stream_show_more_data{
-   text-shadow: none !important;
-  color: var(--text-light) !important; 
 }
 
 .left_stream_wrapper .stream_left{
@@ -792,26 +715,13 @@ display: flex;
   background-color: transparent !important;
 }
 
-.stream_show_more_data .extras, .stream_show_more_data .extras:after {
-  color: var(--text-main) !important;
-}
-
 .stream_header{
   box-shadow: none !important;
   border-color: var(--background-main-outline) !important;
 }
 
-.stream_header h1 span{
-  color: var(--text-main) !important;
-  text-shadow: none !important;
-}
-
 #streamDetail{
   border-top: none !important;
-}
-
-.mybb.filterBarHorizontal, .mybb.gradeTableNew .grades_header {
-  background-color: var(--background-main) !important;
 }
 
 #streamDetailHeaderRight .context{
@@ -825,15 +735,10 @@ display: flex;
 }
 
 #streamDetailHeaderRight .timestamp{
-  color: var(--text-light) !important;
   right: -3px !important;
   position: absolute;
   bottom: -10px;
   left: 10px;
-}
-
-#streamDetailHeaderRight .context h2 a{
-  color: var(--text-link) !important;
 }
 
 .stream_right{
@@ -859,19 +764,17 @@ display: flex;
 }
 
 #dynamic_filters_alerts li a{
-  color: var(--text-link) !important;
   box-shadow: none !important;
   background-color: transparent !important;
   border: none !important;
 }
 
 #dynamic_filters_alerts li a.active{
-  color: var(--text-light) !important;
   cursor: initial !important;
 }
 
 #filter_type_all_alerts{
-    color: transparent !important;
+  color: transparent !important;
   box-shadow: none !important;
   background-color: transparent !important;
   border: none !important;
@@ -879,7 +782,6 @@ display: flex;
 }
 
 #filter_type_all_alerts:before{
-  color: var(--text-link) !important;
   content: "Select All";
   position: absolute;
   left: 0;
@@ -910,48 +812,18 @@ display: flex;
 }
 
 #settingsContainer_alerts{
-  background-color: var(--background-main) !important;
   border: 1px solid var(--background-main-outline) !important;
   box-shadow: none !important;
   top: 15px !important;
   right: 15px !important;
 }
 
-#settingsContainer_alerts label{
-  color: var(--text-main) !important;
-}
-
-#settingsContainer_alerts .streamSettingHelpLinks a{
-  color: var(--text-link) !important;
-}
-
 #left_stream_alerts .inlineContextMenu a{
   border-bottom: none !important;
-  color: var(--text-link) !important;
 }
 
 #left_stream_alerts .inlineContextMenu a:hover{
   text-decoration: underline !important;
-}
-
-#left_stream_alerts .active_stream_item .stream_context, 
-#left_stream_alerts .active_stream_item .stream_context_bottom,
-#left_stream_alerts .active_stream_item .stream_area_name,
-.stream_left .stream_context, .stream_left .stream_context_bottom,
-.stream_left .announcementTitle, .stream_left .announcementBody,
-.stream_left .stream_area_name{
-  color: var(--text-main) !important;
-}
-
-
-
-.stream_dynamic_filters_content h5{
-  text-shadow: none !important;
-  color: var(--text-main) !important;
-}
-
-.current_filter{
-  color: var(--text-main) !important;
 }
 
 #streamHeader_calendar #dynamic_filters_alerts .filter-content-wrapper{
