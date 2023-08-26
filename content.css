@@ -2322,6 +2322,30 @@ div.collectionViewReadMessageBorder{
   cursor: pointer;
 }
 
+
+
+
+/*#left_stream_alerts .active_stream_item .stream_context, 
+#left_stream_alerts .active_stream_item .stream_context_bottom,
+#left_stream_alerts .active_stream_item .stream_area_name,*/
+.stream_left .stream_context, .stream_left .stream_context_bottom,
+.stream_left .announcementTitle, .stream_left .announcementBody,
+.stream_left .stream_area_name,
+.stream_left .stream_context_bottom span:not(.active_stream_item span){
+  color: var(--text-main) !important;
+}
+
+.stream_left .stream_datestamp{
+  color: var(--text-light) !important;
+}
+
+#left_stream_mygrades .active_stream_item .grade-value, 
+#left_stream_mygrades .active_stream_item .stream_context,
+#left_stream_mygrades .active_stream_item .stream_context_bottom, 
+#left_stream_mygrades .active_stream_item .stream_area_name{
+  color: var(--text-link) !important;
+}
+
 /*.stream_pages div.left_stream_wrapper{
   padding-bottom: 20px !important;
 }
@@ -2772,20 +2796,7 @@ display: flex;
   background-color: var(--background-tint-1-highlight) !important;
 }
 
-.left_stream_wrapper .stream_datestamp{
-  color: var(--text-light) !important;
-}
 
-.left_stream_wrapper .stream_context_bottom span:not(.active_stream_item span){
-  color: var(--text-main) !important;
-}
-
-.active_stream_item .grade-value, .active_stream_item .stream_context,
-.active_stream_item .stream_context_bottom, .active_stream_item .stream_area_name{
-  color: var(--text-link) !important;
-
-/*  border-right: 1px dashed #ccc !important;*/
-}
 
 .gradeTableNew .row .cell a{
   cursor: pointer;
@@ -2956,14 +2967,7 @@ display: flex;
   text-decoration: underline !important;
 }
 
-#left_stream_alerts .active_stream_item .stream_context, 
-#left_stream_alerts .active_stream_item .stream_context_bottom,
-#left_stream_alerts .active_stream_item .stream_area_name,
-.stream_left .stream_context, .stream_left .stream_context_bottom,
-.stream_left .announcementTitle, .stream_left .announcementBody,
-.stream_left .stream_area_name{
-  color: var(--text-main) !important;
-}
+
 
 
 
