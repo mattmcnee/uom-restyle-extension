@@ -2,7 +2,7 @@
 
 
 /* Light Mode Default */
-/*:root {  
+:root {  
   --main-theme: #6b2c90;
   --main-theme-styled: #6b2c90;
 
@@ -25,7 +25,7 @@
   --text-light: #555;
   --global-font: Open Sans,sans-serif;
   --text-link: #1874a4;
-}*/
+}
 
 /* #00C1D4 */
 
@@ -55,7 +55,7 @@
 }*/
 
 /* Test themes */
-:root {  
+/*:root {  
   --main-theme: #453130;
   --main-theme-styled: #453130;
 
@@ -78,7 +78,7 @@
   --text-light: #999;
   --global-font: Open Sans,sans-serif;
   --text-link: #6ebff5;
-}
+}*/
 
 /* Lime: #AABB00 */
 

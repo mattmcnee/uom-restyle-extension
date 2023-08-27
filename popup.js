@@ -89,12 +89,12 @@ function initialiseUserData(styleChoice){
     else if(styleChoice == "deco"){
     temp.style = styleChoice;
     temp.light.mainTheme = "#005F52";
-    temp.light.mainThemeStyled = "linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 0 0 / 40px 40px, linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 20px 20px / 40px 40px";
+    temp.light.mainThemeStyled = "linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 0 0 / 50px 50px, linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 20px 20px / 50px 50px";
     temp.light.primaryButton = "#005F52";
     temp.light.primaryButtonHighlight = "#007a6a";
     temp.light.backgroundMainOutline = "#d4c594"
     temp.dark.mainTheme = "#003A30";
-    temp.dark.mainThemeStyled = "linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 0 0 / 40px 40px, linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 20px 20px / 40px 40px";
+    temp.dark.mainThemeStyled = "linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 0 0 / 50px 50px, linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 20px 20px / 50px 50px";
     temp.dark.primaryButton = "#003A30";
     temp.dark.primaryButtonHighlight = "#005F52";
     temp.dark.backgroundMainOutline = "#3b300a"
@@ -154,8 +154,8 @@ linear-gradient(black, black) 0 0 / 75px 100%`;
     temp.dark.secondaryButton = "#555";
     temp.dark.secondaryButtonHighlight = "#777";
     temp.dark.secondaryButtonText = "#ddd";
-    temp.dark.primaryButton = "#5E0366";
-    temp.dark.primaryButtonHighlight = "#7a0485";
+    temp.dark.primaryButton = "#453130";
+    temp.dark.primaryButtonHighlight = "#523a39";
     temp.dark.primaryButtonText = "#eee";
 
     return temp; 
