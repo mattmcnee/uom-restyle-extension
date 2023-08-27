@@ -127,7 +127,7 @@ linear-gradient(45deg, transparent 19%, #2cb8ee 20%, transparent 21%, transparen
 linear-gradient(90deg, #2cb8ee, transparent 1%, transparent 39%, #2cb8ee 40%, transparent 41%, transparent 99%, #2cb8ee) 0 0 / 75px 100%,
 linear-gradient(black, black) 0 0 / 75px 100%`;
     temp.dark.primaryButton = "#15556e";
-    temp.dark.primaryButtonHighlight = "#005F52";
+    temp.dark.primaryButtonHighlight = "#186280";
     temp.dark.backgroundMainOutline = "#15556e"
     return temp;   
   }  
