@@ -56,6 +56,7 @@ function initialiseUserData(styleChoice){
     temp.light.mainThemeStyled = "#333";
     temp.light.primaryButton = "#333";
     temp.light.primaryButtonHighlight = "#353535";
+    
     temp.dark.mainTheme = "#333";
     temp.dark.mainThemeStyled = "#333";
     temp.dark.primaryButton = "#333";
@@ -68,6 +69,7 @@ function initialiseUserData(styleChoice){
     temp.light.mainThemeStyled = "#6b2c90";
     temp.light.primaryButton = "#6b2c90";
     temp.light.primaryButtonHighlight = "#7832a1";
+
     temp.dark.mainTheme = "#401a56";
     temp.dark.mainThemeStyled = "#401a56";
     temp.dark.primaryButton = "#401a56";
@@ -80,6 +82,7 @@ function initialiseUserData(styleChoice){
     temp.light.mainThemeStyled = "#005F52";
     temp.light.primaryButton = "#005F52";
     temp.light.primaryButtonHighlight = "#007a6a";
+
     temp.dark.mainTheme = "#01362e";
     temp.dark.mainThemeStyled = "#01362e";
     temp.dark.primaryButton = "#01362e";
@@ -93,6 +96,7 @@ function initialiseUserData(styleChoice){
     temp.light.primaryButton = "#005F52";
     temp.light.primaryButtonHighlight = "#007a6a";
     temp.light.backgroundMainOutline = "#d4c594"
+
     temp.dark.mainTheme = "#003A30";
     temp.dark.mainThemeStyled = "linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 0 0 / 50px 50px, linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 20px 20px / 50px 50px";
     temp.dark.primaryButton = "#003A30";
@@ -113,6 +117,7 @@ linear-gradient(black, black) 0 0 / 75px 100%`;
     temp.light.primaryButton = "#3e8594";
     temp.light.primaryButtonHighlight = "#4fa1b3";
     temp.light.backgroundMainOutline = "#c3e0e6"
+
     temp.dark.mainTheme = "#111";
     temp.dark.mainThemeStyled = `
 linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) 0 0 / 75px 100%,
@@ -157,6 +162,57 @@ linear-gradient(black, black) 0 0 / 75px 100%`;
     temp.dark.primaryButton = "#453130";
     temp.dark.primaryButtonHighlight = "#523a39";
     temp.dark.primaryButtonText = "#eee";
+
+    return temp; 
+  } 
+    else if( styleChoice == "camo"){
+    temp.style = styleChoice;
+    temp.light.mainTheme = "#6e5e49";
+    temp.light.mainThemeStyled = `
+linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) 0 0 / 75px 100%,
+radial-gradient(ellipse at center, #dad3c1 50%, transparent 50%) -50% 0 / 50% 100%,
+radial-gradient(ellipse at center, #a49872 30%, transparent 30%) 0 -37.5px / 50% 100%,
+radial-gradient(ellipse at center, #87735a 50%, transparent 50%) 0 -37.5px / 50% 100%,
+linear-gradient(0deg, transparent 25%, #dad3c1 25%, #dad3c1 75%, transparent 75%),
+linear-gradient(0deg, #87735a 25%, transparent 25%, transparent 75%, #87735a 75%),
+radial-gradient(ellipse at center, #87735a 60%, #a49872 60%) -50% 0 / 50% 100%`;
+    temp.light.backgroundMain = "#f5f2eb";
+    temp.light.backgroundMainOutline = "#cfc8ba";
+    temp.light.backgroundTint1 = "#f7f4ed";
+    temp.light.backgroundTint1Highlight = "#fbf9f2";
+    temp.light.backgroundTint2 = "#f9f7f0";
+    temp.light.backgroundTint2Highlight = "#fdfbf4";
+    temp.light.secondaryButton = "#d1c4ab";
+    temp.light.secondaryButtonHighlight = "#e0d3b8";
+    temp.light.secondaryButtonText = "#333";
+    temp.light.primaryButton = "#636e48";
+    temp.light.primaryButtonHighlight = "#7a8759";
+    temp.light.primaryButtonText = "#eee";
+
+    temp.dark.mainTheme = "#6e5e49";
+    temp.dark.mainThemeStyled = `
+linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) 0 0 / 75px 100%,
+radial-gradient(ellipse at center, #dad3c1 50%, transparent 50%) -50% 0 / 50% 100%,
+radial-gradient(ellipse at center, #a49872 30%, transparent 30%) 0 -37.5px / 50% 100%,
+radial-gradient(ellipse at center, #87735a 50%, transparent 50%) 0 -37.5px / 50% 100%,
+linear-gradient(0deg, transparent 25%, #dad3c1 25%, #dad3c1 75%, transparent 75%),
+linear-gradient(0deg, #87735a 25%, transparent 25%, transparent 75%, #87735a 75%),
+radial-gradient(ellipse at center, #87735a 60%, #a49872 60%) -50% 0 / 50% 100%`;
+    temp.dark.backgroundMain = "#0A0900";
+    temp.dark.backgroundMainOutline = "#211c1c";
+    temp.dark.backgroundTint1 = "#0d0c03";
+    temp.dark.backgroundTint1Highlight = "#121108";
+    temp.dark.backgroundTint2 = "#100f07";
+    temp.dark.backgroundTint2Highlight = "#151411";
+
+    temp.dark.secondaryButton = "#6e5e49";
+    temp.dark.secondaryButtonHighlight = "#87735a";
+    temp.dark.secondaryButtonText = "#d1d1d1";
+
+    temp.dark.primaryButton = "#636e48";
+    temp.dark.primaryButtonHighlight = "#7a8759";
+    temp.dark.primaryButtonText = "#eee";
+
 
     return temp; 
   } 

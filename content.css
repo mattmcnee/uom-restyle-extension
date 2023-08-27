@@ -6,6 +6,7 @@
   --main-theme: #6b2c90;
   --main-theme-styled: #6b2c90;
 
+
   --background-main: #fff;
   --background-main-outline: #eee;
   --background-tint-1: #fbfbfb;
@@ -56,28 +57,35 @@
 
 /* Test themes */
 /*:root {  
-  --main-theme: #453130;
-  --main-theme-styled: #453130;
+  --main-theme: #6e5e49;
+  --main-theme-styled:
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) 0 0 / 75px 100%,
+    radial-gradient(ellipse at center, #dad3c1 50%, transparent 50%) -50% 0 / 50% 100%,
+    radial-gradient(ellipse at center, #a49872 30%, transparent 30%) 0 -37.5px / 50% 100%,
+    radial-gradient(ellipse at center, #87735a 50%, transparent 50%) 0 -37.5px / 50% 100%,
+    linear-gradient(0deg, transparent 25%, #dad3c1 25%, #dad3c1 75%, transparent 75%),
+    linear-gradient(0deg, #87735a 25%, transparent 25%, transparent 75%, #87735a 75%),
+    radial-gradient(ellipse at center, #87735a 60%, #a49872 60%) -50% 0 / 50% 100%;
 
-  --background-main: #212120;
-  --background-main-outline: #333;
-  --background-tint-1: #242422;
-  --background-tint-1-highlight: #292926;
-  --background-tint-2: #262624; 
-  --background-tint-2-highlight: #2a2a27;
+  --background-main: #f5f2eb;
+  --background-main-outline: #cfc8ba;
+  --background-tint-1: #f7f4ed;
+  --background-tint-1-highlight: #fbf9f2;
+  --background-tint-2: #f9f7f0;
+  --background-tint-2-highlight: #fdfbf4;
 
-  --secondary-button: #555;
-  --secondary-button-highlight: #777;
-  --secondary-button-text: #ddd;
+  --secondary-button: #d1c4ab;
+  --secondary-button-highlight: #e0d3b8;
+  --secondary-button-text: #333;
 
-  --primary-button: #5E0366;
-  --primary-button-highlight: #7a0485;
+  --primary-button: #636e48;
+  --primary-button-highlight: #7a8759;
   --primary-button-text: #eee;
 
-  --text-main: #ccc;
-  --text-light: #999;
+  --text-main: #000;
+  --text-light: #555;
   --global-font: Open Sans,sans-serif;
-  --text-link: #6ebff5;
+  --text-link: #1874a4;
 }*/
 
 /* Lime: #AABB00 */
