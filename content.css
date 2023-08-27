@@ -56,14 +56,15 @@
 
 /* Test themes */
 :root {  
-  --main-theme: #410247;
+  --main-theme: #453130;
+  --main-theme-styled: #453130;
 
-  --background-main: #111;
-  --background-main-outline: #15556e;
-  --background-tint-1: #191919;
-  --background-tint-1-highlight: #191919;
-  --background-tint-2: #222;
-  --background-tint-2-highlight: #222;
+  --background-main: #212120;
+  --background-main-outline: #333;
+  --background-tint-1: #242422;
+  --background-tint-1-highlight: #292926;
+  --background-tint-2: #262624; 
+  --background-tint-2-highlight: #2a2a27;
 
   --secondary-button: #555;
   --secondary-button-highlight: #777;

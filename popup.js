@@ -125,7 +125,41 @@ linear-gradient(black, black) 0 0 / 75px 100%`;
     temp.dark.primaryButtonHighlight = "#005F52";
     temp.dark.backgroundMainOutline = "#15556e"
     return temp;   
-  }   
+  }  
+  else if( styleChoice == "rustic"){
+    temp.style = styleChoice;
+    temp.light.mainTheme = "#A26952";
+    temp.light.mainThemeStyled = "#A26952";
+    temp.light.backgroundMain = "#e3dccf";
+    temp.light.backgroundMainOutline = "#d9cfbd";
+    temp.light.backgroundTint1 = "#e3dac8";
+    temp.light.backgroundTint1Highlight = "#e6dbca";
+    temp.light.backgroundTint2 = "#e4dbc9";
+    temp.light.backgroundTint2Highlight = "#e6ddcb";
+    temp.light.secondaryButton = "#847D72";
+    temp.light.secondaryButtonHighlight = "#91897d";
+    temp.light.secondaryButtonText = "#e7e7e7";
+    temp.light.primaryButton = "#A26952";
+    temp.light.primaryButtonHighlight = "#b3745b";
+    temp.light.primaryButtonText = "#eee";
+
+    temp.dark.mainTheme = "#453130";
+    temp.dark.mainThemeStyled = "#453130";
+    temp.dark.backgroundMain = "#212120";
+    temp.dark.backgroundMainOutline = "#333";
+    temp.dark.backgroundTint1 = "#242422";
+    temp.dark.backgroundTint1Highlight = "#292926";
+    temp.dark.backgroundTint2 = "#262624";
+    temp.dark.backgroundTint2Highlight = "#2a2a27";
+    temp.dark.secondaryButton = "#555";
+    temp.dark.secondaryButtonHighlight = "#777";
+    temp.dark.secondaryButtonText = "#ddd";
+    temp.dark.primaryButton = "#5E0366";
+    temp.dark.primaryButtonHighlight = "#7a0485";
+    temp.dark.primaryButtonText = "#eee";
+
+    return temp; 
+  } 
 }
 
 
