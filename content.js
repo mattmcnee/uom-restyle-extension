@@ -2,6 +2,7 @@
 function getProperties(themeData) {
   const cssText = `
 --main-theme: ${themeData.mainTheme};
+--main-theme-styled: ${themeData.mainThemeStyled};
 --background-main: ${themeData.backgroundMain};
 --background-main-outline: ${themeData.backgroundMainOutline};
 --background-tint-1: ${themeData.backgroundTint1};

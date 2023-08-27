@@ -7,6 +7,7 @@ function initialiseUserData(styleChoice){
       theme: "dark",
       light: {
         mainTheme: "#5E0366",
+        mainThemeStyled: "#5E0366",
         backgroundMain: "#fff",
         backgroundMainOutline: "#eee",
         backgroundTint1: "#fbfbfb",
@@ -26,6 +27,7 @@ function initialiseUserData(styleChoice){
       },
       dark: {
         mainTheme: "#410247",
+        mainThemeStyled: "#410247",
         backgroundMain: "#111",
         backgroundMainOutline: "#333",
         backgroundTint1: "#191919",
@@ -51,9 +53,11 @@ function initialiseUserData(styleChoice){
   else if(styleChoice == "blackboard"){
     temp.style = styleChoice;
     temp.light.mainTheme = "#333";
+    temp.light.mainThemeStyled = "#333";
     temp.light.primaryButton = "#333";
     temp.light.primaryButtonHighlight = "#353535";
     temp.dark.mainTheme = "#333";
+    temp.dark.mainThemeStyled = "#333";
     temp.dark.primaryButton = "#333";
     temp.dark.primaryButtonHighlight = "#353535";
     return temp; 
@@ -61,9 +65,11 @@ function initialiseUserData(styleChoice){
   else if( styleChoice == "purple2"){
     temp.style = styleChoice;
     temp.light.mainTheme = "#6b2c90";
+    temp.light.mainThemeStyled = "#6b2c90";
     temp.light.primaryButton = "#6b2c90";
     temp.light.primaryButtonHighlight = "#7832a1";
     temp.dark.mainTheme = "#401a56";
+    temp.dark.mainThemeStyled = "#401a56";
     temp.dark.primaryButton = "#401a56";
     temp.dark.primaryButtonHighlight = "#542370";
     return temp; 
@@ -71,13 +77,29 @@ function initialiseUserData(styleChoice){
   else if(styleChoice == "ocean"){
     temp.style = styleChoice;
     temp.light.mainTheme = "#005F52";
+    temp.light.mainThemeStyled = "#005F52";
     temp.light.primaryButton = "#005F52";
     temp.light.primaryButtonHighlight = "#007a6a";
     temp.dark.mainTheme = "#01362e";
+    temp.dark.mainThemeStyled = "#01362e";
     temp.dark.primaryButton = "#01362e";
     temp.dark.primaryButtonHighlight = "#005F52";
     return temp;   
-  }  
+  } 
+    else if(styleChoice == "deco"){
+    temp.style = styleChoice;
+    temp.light.mainTheme = "#005F52";
+    temp.light.mainThemeStyled = "linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 0 0 / 40px 40px, linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 20px 20px / 40px 40px";
+    temp.light.primaryButton = "#005F52";
+    temp.light.primaryButtonHighlight = "#007a6a";
+    temp.light.backgroundMainOutline = "#d4c594"
+    temp.dark.mainTheme = "#003A30";
+    temp.dark.mainThemeStyled = "linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 0 0 / 40px 40px, linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 20px 20px / 40px 40px";
+    temp.dark.primaryButton = "#003A30";
+    temp.dark.primaryButtonHighlight = "#005F52";
+    temp.dark.backgroundMainOutline = "#3b300a"
+    return temp;   
+  }   
 }
 
 

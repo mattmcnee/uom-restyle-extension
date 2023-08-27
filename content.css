@@ -2,8 +2,9 @@
 
 
 /* Light Mode Default */
-:root {  
+/*:root {  
   --main-theme: #6b2c90;
+  --main-theme-styled: #6b2c90;
 
   --background-main: #fff;
   --background-main-outline: #eee;
@@ -24,7 +25,7 @@
   --text-light: #555;
   --global-font: Open Sans,sans-serif;
   --text-link: #1874a4;
-}
+}*/
 
 /* #00C1D4 */
 
@@ -54,13 +55,12 @@
 }*/
 
 /* Test themes */
-/*:root {  
-  --main-theme: #222;
-  --main-theme-text: #ebbc00;
-  --main-theme-text-light: #FFCC00;
+:root {  
+  --main-theme: #003A30;
+  --main-theme-styled: linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 0 0 / 40px 40px, linear-gradient(45deg, #3b300a 25%, #003A30 25%, #000 75%, #3b300a 75%) 20px 20px / 40px 40px;
 
   --background-main: #fff;
-  --background-main-outline: #eee;
+  --background-main-outline: #d4c594;
   --background-tint-1: #fbfbfb;
   --background-tint-1-highlight: #f4f4f4;
   --background-tint-2: #fefefe;
@@ -70,14 +70,15 @@
   --secondary-button-highlight: #e8e8e8;
   --secondary-button-text: #333;
 
-  --primary-button: #333;
-  --primary-button-highlight: #555;
+  --primary-button: #5E0366;
+  --primary-button-highlight: #7a0485;
   --primary-button-text: #eee;
 
   --text-main: #000;
   --text-light: #555;
   --global-font: Open Sans,sans-serif;
-}*/
+  --text-link: #1874a4;
+}
 
 /* Lime: #AABB00 */
 
@@ -301,8 +302,13 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 }
 
 .global-nav-bar-wrap{
+
   background-color: var(--main-theme) !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.tabWrapper-right .appTabs td.active{
+  border-bottom: none !important;
 }
 
 
@@ -321,7 +327,9 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 }
 
 .brandingImgWrap{
-  background-color: var(--main-theme) !important;
+  background: var(--main-theme-styled) !important;
+
+/*  background-color: var(--main-theme) !important;*/
   height: 75px !important;
   display: flex;
   align-items: center;
@@ -400,17 +408,17 @@ margin-top: 5px;
 }*/
 
 /* Hides tab border */
-.appTabs td.active::before{
+/*.appTabs td.active::before{
   content: "";
   position: absolute;
   height: 10px;
   width: 100%;
   bottom: 12px;
   background-color: var(--main-theme);
-}
+}*/
 
 .global-nav-bar .nav-link{
-  background-color: var(--main-theme) !important;
+  background-color: transparent !important;
   margin: 22px 10px  10px 0 !important;
   border-radius: 10px;
   transform: scale(1.2);
@@ -429,7 +437,7 @@ margin-top: 5px;
   left: 150px !important;
   top: 25px !important;
   border-radius: 10px !important;
-  background-color: var(--main-theme) !important;
+  background-color: transparent !important;
   transform: scale(1.3);
 }
 
@@ -1999,6 +2007,7 @@ div.collectionViewReadMessageBorder{
 @media only screen and (min-width: 320px) and (max-width: 1037px){
   .global-nav-bar .nav-link{
     margin: 0 !important;
+    background-color: var(--main-theme) !important;
   }
 
   .tabWrapper-right{
