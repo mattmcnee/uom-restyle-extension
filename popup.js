@@ -56,7 +56,7 @@ function initialiseUserData(styleChoice){
     temp.light.mainThemeStyled = "#333";
     temp.light.primaryButton = "#333";
     temp.light.primaryButtonHighlight = "#353535";
-    
+
     temp.dark.mainTheme = "#333";
     temp.dark.mainThemeStyled = "#333";
     temp.dark.primaryButton = "#333";
@@ -313,6 +313,21 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       refreshStyles();
   });
+
+  // selectElement2 = document.getElementById('fontSelect');
+  // selectElement2.addEventListener('change', function() {
+  //     const selectedOption2 = selectElement2.value;
+  //     if (selectedOption2 == "default") {
+  //       var temp = initialiseUserData(userData.style);
+  //       userData.light.globalFont = temp.light.globalFont;
+  //       userData.dark.globalFont = temp.dark.globalFont;
+  //     }
+  //     else{
+  //       userData.light.globalFont = selectedOption2;
+  //       userData.dark.globalFont = selectedOption2;
+  //     }
+  //     refreshStyles();
+  // });
 
   // Loads userData
   chrome.storage.local.get(["userData"], (result) => {
