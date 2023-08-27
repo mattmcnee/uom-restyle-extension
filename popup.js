@@ -99,6 +99,32 @@ function initialiseUserData(styleChoice){
     temp.dark.primaryButtonHighlight = "#005F52";
     temp.dark.backgroundMainOutline = "#3b300a"
     return temp;   
+  }  
+  else if(styleChoice == "tron"){
+    temp.style = styleChoice;
+    temp.light.mainTheme = "#111";
+    temp.light.mainThemeStyled = `
+linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) 0 0 / 75px 100%,
+linear-gradient(black, transparent 19%, #2cb8ee 20%, transparent 21%, transparent 39%, #2cb8ee 40%, transparent 41%, transparent 59%, #2cb8ee 60%, transparent 61%, transparent 79%, #2cb8ee 80%, transparent 81%, black) 0 0 / 75px 100%,
+linear-gradient(45deg, transparent 19%, #2cb8ee 20%, transparent 21%, transparent 39%, #2cb8ee 40%, transparent 41%, transparent 59%, #2cb8ee 60%, transparent 61%, transparent 79%, #2cb8ee 80%, transparent 81%)
+  0 0 / 75px 100%,
+linear-gradient(90deg, #2cb8ee, transparent 1%, transparent 39%, #2cb8ee 40%, transparent 41%, transparent 99%, #2cb8ee) 0 0 / 75px 100%,
+linear-gradient(black, black) 0 0 / 75px 100%`;
+    temp.light.primaryButton = "#3e8594";
+    temp.light.primaryButtonHighlight = "#4fa1b3";
+    temp.light.backgroundMainOutline = "#c3e0e6"
+    temp.dark.mainTheme = "#111";
+    temp.dark.mainThemeStyled = `
+linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) 0 0 / 75px 100%,
+linear-gradient(black, transparent 19%, #2cb8ee 20%, transparent 21%, transparent 39%, #2cb8ee 40%, transparent 41%, transparent 59%, #2cb8ee 60%, transparent 61%, transparent 79%, #2cb8ee 80%, transparent 81%, black) 0 0 / 75px 100%,
+linear-gradient(45deg, transparent 19%, #2cb8ee 20%, transparent 21%, transparent 39%, #2cb8ee 40%, transparent 41%, transparent 59%, #2cb8ee 60%, transparent 61%, transparent 79%, #2cb8ee 80%, transparent 81%)
+  0 0 / 75px 100%,
+linear-gradient(90deg, #2cb8ee, transparent 1%, transparent 39%, #2cb8ee 40%, transparent 41%, transparent 99%, #2cb8ee) 0 0 / 75px 100%,
+linear-gradient(black, black) 0 0 / 75px 100%`;
+    temp.dark.primaryButton = "#15556e";
+    temp.dark.primaryButtonHighlight = "#005F52";
+    temp.dark.backgroundMainOutline = "#15556e"
+    return temp;   
   }   
 }
 
