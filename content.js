@@ -1,7 +1,4 @@
 
-
-
-
 // Converts JSON to root style element inner text
 function getProperties(themeData) {
   const cssText = `
@@ -78,38 +75,24 @@ function updateTheme(uData, updateIframe){
 }
 
 if (navigator.userAgent.includes("Firefox")) {
-  console.log("This is Firefox.");
+  // console.log("This is Firefox.");
   browser.runtime.onMessage.addListener(function (message) {
     updateStyles(message)
   });
 }
 else if (navigator.userAgent.includes("Chrome")) {
-  console.log("This is Chrome.");
+  // console.log("This is Chrome.");
   chrome.runtime.onMessage.addListener(function (message) {
     updateStyles(message)
   });
 }
 
-// This is called by popup.js in Chrome,
-// in Firefox it is called by the event listener above
 function updateStyles(message){
   // Save data to storage
   var userData = message;
-
-  console.log("hello");
-
-
   if (navigator.userAgent.includes("Firefox")) {
-    // localStorage.setItem('savedJson', message);
-    // console.log("Data saved:", message);
     browser.storage.local.set({ userData: message });
-
-    // userData = localStorage.getItem('savedJson');
-    // console.log(userData);
-
-    browser.storage.local.get('userData').then((result) => {
-  console.log(result.userData);
-});
+    // console.log("Data saved:", message);
   } 
   else if (navigator.userAgent.includes("Chrome")) {
     chrome.storage.local.set({ userData}, () => {
@@ -119,7 +102,6 @@ function updateStyles(message){
   else {
     console.log("Browser currently unsupported");
   }
-
   updateTheme(userData, true);
 }
 
@@ -221,8 +203,6 @@ document.addEventListener("DOMContentLoaded", function() {
   root = document.documentElement;
   updateTheme(userData, false);
 
-
-
   iframes = [
     document.getElementById("mybbCanvas"),
     document.getElementById("right_stream_mygrades"),
@@ -236,19 +216,6 @@ document.addEventListener("DOMContentLoaded", function() {
       break;
     }
   }
-
-    // document.querySelector(".tox-edit-area__iframe")
-
-  // var tox_iframes = document.querySelectorAll(".tox-edit-area__iframe");
-  // console.log(tox_iframes);
-
-  // for (const iframe of tox_iframes) {
-  //   if (iframe !== null) {
-  //     console.log("Adding iframe tox");
-  //     addInlineStylesInIframe(iframe, toxCSS);
-  //     break;
-  //   }
-  // }
 
   iframeSwitch = [
     document.querySelector('#BB-CORE_____overview-tool a'),
@@ -273,17 +240,13 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
-
-// Function to be called when a new iframe is added
+// This handles the tox iframes for text input in assessments
 function handleIframeAdded(iframeElement) {
-  console.log('An iframe with class ".tox-edit-area__iframe" was added:', iframeElement);
-  console.log(toxCSS);
   addInlineStylesInIframe(iframeElement, toxCSS);
-  // You can perform any actions you want here.
 }
 
 // Create a MutationObserver to watch for changes in the DOM
+// Needed as tox elements don't load instantly
 const observer = new MutationObserver((mutationsList) => {
   for (const mutation of mutationsList) {
     if (mutation.type === 'childList') {
@@ -302,10 +265,8 @@ const observer = new MutationObserver((mutationsList) => {
 observer.observe(document, { childList: true, subtree: true });
 
 
-
-
-
 var toxCSSRoot = `
+
 html {
     background-color: var(--background-main) !important;
 }
@@ -318,10 +279,8 @@ html {
 .mce-content-body.vtbegenerated.mceContentBody li{
     color: var(--text-main) !important;
 }
+
 `
-
-
-
 
 var inlineCSSRoot =`
 
