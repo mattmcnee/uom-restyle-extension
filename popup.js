@@ -255,6 +255,14 @@ function sendMessageFunction(message) {
   updateStyles(message);
 }
 
+function sendMessageFirefox(message){
+  browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      browser.tabs.sendMessage(tabs[0].id, { greeting: "Hello from popup!" });
+  });
+}
+
+
+
 function refreshStyles(){
   if (darkModeRadioButton.checked) {
     userData.theme = "dark";
@@ -267,10 +275,20 @@ function refreshStyles(){
   // userData.light.backgroundMain = backgroundMainLight.value;
   // userData.light.textMain = mainTextLight.value;
 
-  // Get active tab ID and send a message to content.js
-  getActiveTabId(function (tabId) {
-    sendMessageToContentScript(tabId, userData);
-  });
+  if (navigator.userAgent.includes("Chrome")) {
+    // Get active tab ID and send a message to content.js
+    getActiveTabId(function (tabId) {
+      sendMessageToContentScript(tabId, userData);
+    });
+  } 
+  else if (navigator.userAgent.includes("Firefox")) {
+
+  } 
+  else {
+    console.log("Browser currently unsupported");
+  }
+
+
 }
 
 function prefillColours() {
@@ -295,6 +313,13 @@ var darkModeRadioButton;
 var selectElement;
 document.addEventListener("DOMContentLoaded", function() {
 
+
+    const button = document.getElementById("popup-button");
+
+    button.addEventListener("click", function () {
+        sendMessageFirefox("message");
+    });
+
   // Initialises radio buttons
   lightModeRadioButton = document.getElementById("lightMode");
   darkModeRadioButton = document.getElementById("nightMode");
@@ -314,85 +339,26 @@ document.addEventListener("DOMContentLoaded", function() {
       refreshStyles();
   });
 
-  // selectElement2 = document.getElementById('fontSelect');
-  // selectElement2.addEventListener('change', function() {
-  //     const selectedOption2 = selectElement2.value;
-  //     if (selectedOption2 == "default") {
-  //       var temp = initialiseUserData(userData.style);
-  //       userData.light.globalFont = temp.light.globalFont;
-  //       userData.dark.globalFont = temp.dark.globalFont;
-  //     }
-  //     else{
-  //       userData.light.globalFont = selectedOption2;
-  //       userData.dark.globalFont = selectedOption2;
-  //     }
-  //     refreshStyles();
-  // });
-
-  // Loads userData
-  chrome.storage.local.get(["userData"], (result) => {
-    console.log("Data retrieved:", result);
-    if(JSON.stringify(result) === '{}'){
-      userData = initialiseUserData("default");
-    }
-    else{
-      userData = result.userData;
-    }
+  if (navigator.userAgent.includes("Chrome")) {
+      // Loads userData
+    chrome.storage.local.get(["userData"], (result) => {
+      console.log("Data retrieved:", result);
+      if(JSON.stringify(result) === '{}'){
+        userData = initialiseUserData("default");
+      }
+      else{
+        userData = result.userData;
+      }
+      prefillColours(userData);
+    });
+  } 
+  else if (navigator.userAgent.includes("Firefox")) {
+    userData = result.userData;
     prefillColours(userData);
-  });
-
+  } 
+  else {
+    console.log("Browser currently unsupported");
+    userData = result.userData;
+    prefillColours(userData);
+  }
 });
-
-
-// var button = document.getElementById("refreshButton");
-// var resetButton = document.getElementById("restyleCheckbox")
-// button.addEventListener("click", refreshStyles);
-
-// var mainThemeLight = document.getElementById("mainThemeLight");
-// var mainThemeDark = document.getElementById("mainThemeDark");
-// var backgroundMainLight = document.getElementById("backgroundMainLight");
-// var backgroundMainDark = document.getElementById("backgroundMainDark");
-// var mainTextLight = document.getElementById("mainTextLight");
-// var mainTextDark = document.getElementById("mainTextDark");
-// var fontLight = document.getElementById("fontLight");
-// var fontDark = document.getElementById("fontDark");
-// var backgroundMainOutlineLight = document.getElementById("backgroundMainOutlineLight");
-// var backgroundMainOutlineDark = document.getElementById("backgroundMainOutlineDark");
-// var primaryButtonLight = document.getElementById("primaryButtonLight");
-// var primaryButtonDark = document.getElementById("primaryButtonDark");
-// var primaryButtonTextLight = document.getElementById("primaryButtonTextLight");
-// var primaryButtonTextDark = document.getElementById("primaryButtonTextDark");
-// var secondaryButtonLight = document.getElementById("secondaryButtonLight");
-// var secondaryButtonDark = document.getElementById("secondaryButtonDark");
-// var secondaryButtonTextLight = document.getElementById("secondaryButtonTextLight");
-// var secondaryButtonTextDark = document.getElementById("secondaryButtonTextDark");
-
-
-
-
-
-// mainTextLight
-// mainTextDark
-// fontLight
-// fontDark
-// backgroundMainOutlineLight
-// backgroundMainOutlineDark
-// primaryButtonLight
-// primaryButtonDark
-// primaryButtonTextLight
-// primaryButtonTextDark
-// secondaryButtonLight
-// secondaryButtonDark
-// secondaryButtonTextLight
-// secondaryButtonTextDark
-
-
-
-
-
-
-
-
-
-
-

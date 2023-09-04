@@ -1,3 +1,20 @@
+if (navigator.userAgent.includes("Firefox")) {
+  // Code to run if the browser is Firefox
+  console.log("This is Firefox.");
+  browser.runtime.onMessage.addListener(function (message) {
+  console.log(message);
+});
+} else if (navigator.userAgent.includes("Chrome")) {
+  // Code to run if the browser is Chrome
+  console.log("This is Chrome.");
+} else {
+  // Code to run if the browser is neither Firefox nor Chrome
+  console.log("This is a different browser.");
+}
+
+
+
+
 // Converts JSON to root style element inner text
 function getProperties(themeData) {
   const cssText = `
@@ -75,9 +92,23 @@ function updateTheme(uData, updateIframe){
 function updateStyles(message){
   // Save data to storage
   var userData = message;
-  chrome.storage.local.set({ userData}, () => {
-    // console.log("Data saved:", message);
-  });
+
+  console.log("hello");
+
+
+  if (navigator.userAgent.includes("Firefox")) {
+    localStorage.setItem('userData', message);
+    console.log("Data saved:", message);
+  } 
+  else if (navigator.userAgent.includes("Chrome")) {
+    chrome.storage.local.set({ userData}, () => {
+      // console.log("Data saved:", message);
+    });
+  } 
+  else {
+    console.log("Browser currently unsupported");
+  }
+
   updateTheme(userData, true);
 }
 
@@ -170,6 +201,8 @@ var root;
 document.addEventListener("DOMContentLoaded", function() {
   root = document.documentElement;
   updateTheme(userData, false);
+
+
 
   iframes = [
     document.getElementById("mybbCanvas"),
@@ -827,6 +860,16 @@ var inlineCSSCont = `
   color: var(--text-link) !important;
 }
 
+.gradeTableNew .row .cell .eval-links input{
+  cursor: pointer;
+  color: var(--text-light) !important;
+  text-decoration: none !important;
+}
+
+.gradeTableNew .row .cell .eval-links input:hover{
+  color: var(--text-main) !important;
+}
+
 .left_stream_wrapper .stream_left{
   border-color: var(--background-main-outline) !important;
 }
@@ -983,6 +1026,23 @@ var inlineCSSCont = `
 #streamHeader_calendar{
   border-right: 1px solid var(--background-main-outline) !important;
 }
+
+.stream_dynamic_filters li a{
+  color: var(--text-main) !important;
+}
+
+.stream_dynamic_filters li a:hover{
+  color: var(--text-link) !important;
+}
+
+.stream_list_filter li a{
+  color: var(--text-light) !important;
+}
+
+.icaldialog{
+  color: var(--text-main) !important;
+}
+
 
 
 `;

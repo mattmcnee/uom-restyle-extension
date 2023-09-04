@@ -304,11 +304,6 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
   z-index: 1 !important;
 }
 
-#quick_links_lightbox_link{
-  color: #eee !important;
-  z-index: -1 !important;
-}
-
 .global-nav-bar-wrap{
 
   background-color: var(--main-theme) !important;
@@ -451,6 +446,9 @@ margin-top: 5px;
 
 #quick_links_wrap a{
   padding: 0 31px 0 0 !important;
+  color: #eee !important;
+  z-index: -1 !important;
+  text-decoration: none !important;
 }
 
 .global-nav-bar .nav-link img{
@@ -475,6 +473,34 @@ margin-top: 5px;
 
 .breadcrumbs .coursePath{
   margin-right: 0 !important;
+}
+
+/*
+  ---
+  ---
+  --- Quicklinks dropdown
+  ---
+  ---
+*/
+
+.lb-content .hideFromQuickLinks{
+  background-color: var(--background-tint-1) !important;
+  color: var(--text-main) !important;
+}
+
+.lb-wrapper .lb-header{
+  background-color: var(--secondary-button) !important;
+  color: var(--secondary-button-text) !important;
+}
+
+.lb-wrapper .lb-content, .lb-wrapper .lb-content .content-lite {
+    background-color: var(--background-main) !important;
+    border-color: var(--background-main-outline) !important;
+}
+
+.content-lite ul.shortcut-list a{
+  color: var(--text-link) !important;
+  text-decoration: none !important;
 }
 
 /*
@@ -2927,6 +2953,16 @@ fieldset.info .label{
   color: var(--text-link) !important;
 }
 
+.gradeTableNew .row .cell .eval-links input{
+  cursor: pointer;
+  color: var(--text-light) !important;
+  text-decoration: none !important;
+}
+
+.gradeTableNew .row .cell .eval-links input:hover{
+  color: var(--text-main) !important;
+}
+
 .left_stream_wrapper .stream_left{
   border-color: var(--background-main-outline) !important;
 }
@@ -3083,3 +3119,20 @@ fieldset.info .label{
 #streamHeader_calendar{
   border-right: 1px solid var(--background-main-outline) !important;
 }
+
+.stream_dynamic_filters li a{
+  color: var(--text-main) !important;
+}
+
+.stream_dynamic_filters li a:hover{
+  color: var(--text-link) !important;
+}
+
+.stream_list_filter li a{
+  color: var(--text-light) !important;
+}
+
+.icaldialog{
+  color: var(--text-main) !important;
+}
+
