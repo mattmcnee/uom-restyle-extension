@@ -139,7 +139,7 @@ cannot be changed
 a.reply-count-link, .inventory_paging a, #navsecondary a:not(.actionMenuItem a),
 .backLink a, .stepTitleRight input, .stepTitleRight .answerSavedButton, 
 .submitStepBottom .taskbuttondiv input, #bottom_saveAllAnswersButton,
-.completionContainer .qIncomplete, #panelbutton1 .genericButton,
+.completionContainer .qIncomplete, .genericButton,
 .subActionBar .browse, .rumble_top a:not(li ul li a), 
 .rumble a:not(li ul li a), .browse{
   outline: none !important;
@@ -160,7 +160,7 @@ a.reply-count-link, .inventory_paging a, #navsecondary a:not(.actionMenuItem a),
 a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.actionMenuItem a):hover,
 .backLink a:hover, .stepTitleRight input:hover, .stepTitleRight .answerSavedButton:hover,
 .submitStepBottom .taskbuttondiv input:hover, #bottom_saveAllAnswersButton:hover,
-.completionContainer .qIncomplete:hover, #panelbutton1 .genericButton:hover,
+.completionContainer .qIncomplete:hover, .genericButton:hover,
 .subActionBar .browse:hover, .rumble_top a:not(li ul li a):hover,
 .rumble a:not(li ul li a):hover, .browse:hover{
   background-color: var(--secondary-button-highlight) !important;
@@ -1823,6 +1823,36 @@ div.collectionViewReadMessageBorder{
   border-color: var(--background-main-outline) !important;
 }
 
+
+/* .treeframe */
+.inventory tbody tr{
+  border: none !important;
+}
+
+.inventory tbody tr td, .inventory tbody tr th {
+    border-bottom-color: var(--background-main-outline) !important;
+  }
+
+.inventory tbody tr td, .inventory tbody tr th,
+.inventory tbody tr td span, .inventory tbody tr th span{
+  color: var(--text-light) !important;
+}
+
+.inventory tbody .unreadmessage a, .inventory tbody .readMessage a{
+  color: var(--text-link) !important;
+}
+
+.inventory tbody tr:first-child td, .inventory tbody tr:first-child th {
+    border-top-color: var(--background-main-outline) !important;
+  }
+
+.inventory tbody .gray td, .inventory tbody .gray th{
+  background-color: var(--background-tint-1) !important;
+}
+
+
+
+
 /*
   ---
   ---
@@ -1932,7 +1962,7 @@ div.collectionViewReadMessageBorder{
 
 .tox .tox-toolbar__overflow{
   background-image: none !important;
-  background: linear-gradient(180deg, var(--background-main) 39.5px, var(--background-main-outline) 39.5px, var(--background-main-outline) 40.5px, var(--background-main) 40.5px, var(--background-main) 77px, var(--background-main-outline) 77px) !important;
+  background: linear-gradient(180deg, var(--background-main) 39px, var(--background-main-outline) 39px, var(--background-main-outline) 40px, var(--background-main) 40px, var(--background-main) 77px, var(--background-main-outline) 77px) !important;
 }
 
 .tox .tox-toolbar__group {
@@ -2036,7 +2066,7 @@ input[type="text"], input[type="password"], select {
 #instructionBlock{
   margin: 10px 10px !important;
   border-radius: 5px !important;
-  background-color: var(--background-main-outline) !important;
+  background-color: var(--background-main) !important;
   border: none !important;
 }
 
@@ -2052,6 +2082,8 @@ input[type="text"], input[type="password"], select {
 .assessmentPortlet .timerBar{
   border: none !important;
   padding: 6px !important;
+  background-color: var(--background-tint-2) !important;
+  background-image: none !important;
 }
 
 .assessmentPortlet .timerBar .progressBar{
