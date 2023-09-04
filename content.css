@@ -141,7 +141,7 @@ a.reply-count-link, .inventory_paging a, #navsecondary a:not(.actionMenuItem a),
 .submitStepBottom .taskbuttondiv input, #bottom_saveAllAnswersButton,
 .completionContainer .qIncomplete, #panelbutton1 .genericButton,
 .subActionBar .browse, .rumble_top a:not(li ul li a), 
-.rumble a:not(li ul li a){
+.rumble a:not(li ul li a), .browse{
   outline: none !important;
   border: none !important;
   background-image: none !important;
@@ -162,7 +162,7 @@ a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.action
 .submitStepBottom .taskbuttondiv input:hover, #bottom_saveAllAnswersButton:hover,
 .completionContainer .qIncomplete:hover, #panelbutton1 .genericButton:hover,
 .subActionBar .browse:hover, .rumble_top a:not(li ul li a):hover,
-.rumble a:not(li ul li a):hover{
+.rumble a:not(li ul li a):hover, .browse:hover{
   background-color: var(--secondary-button-highlight) !important;
 }
 
@@ -1797,7 +1797,8 @@ div.collectionViewReadMessageBorder{
   background-color: transparent !important;
 }
 
-#content_listContainer table, #content_listContainer table tr{
+#content_listContainer table:not([id="bbNG.receiptTag.content"] table), 
+#content_listContainer table:not([id="bbNG.receiptTag.content"] table) tr{
   border-color: var(--background-main-outline) !important;
 }
 
@@ -2002,6 +2003,48 @@ div.collectionViewReadMessageBorder{
 
 #mybbCanvas{
   height: calc(100vh - 75px) !important;
+}
+
+h3.steptitle{
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+}
+
+fieldset.info{
+  background-color: var(--background-tint-1) !important;
+  width: calc(100% - 20px) !important;
+}
+
+fieldset.info .label{
+  color: var(--text-light) !important;
+}
+
+.steptitle{
+  top: 0 !important;
+  margin: 15px 10px !important;
+
+}
+
+.attachments tr{
+  border-color: var(--background-main-outline) !important;
+}
+
+#iconLegendLink{
+  margin-top: 10px;
+}
+
+#icondiv{
+  left: 10px !important;
+}
+
+.attachments a{
+  text-decoration: none !important;
+}
+
+[id="bbNG.receiptTag.content"] .details table,
+[id="bbNG.receiptTag.content"] .details td, 
+[id="bbNG.receiptTag.content"] .details th{
+  border: none !important;
 }
 
 /*
@@ -2760,6 +2803,7 @@ div.collectionViewReadMessageBorder{
 
 #streamDetailRightColumn .detail-heading h2 a {
   border-bottom: none !important;
+  color: var(--text-link) !important;
 }
 
 .filterBarHorizontal {
@@ -2870,8 +2914,17 @@ div.collectionViewReadMessageBorder{
   background-color: var(--background-tint-1-highlight) !important;
 }
 
+.left_stream_wrapper #left_stream_alerts .active_stream_item{
+  background-color: var(--background-tint-2) !important;
+}
+
+.left_stream_wrapper #left_stream_alerts .active_stream_item:hover{
+  background-color: var(--background-tint-2-highlight) !important;
+}
+
 .gradeTableNew .row .cell a{
   cursor: pointer;
+  color: var(--text-link) !important;
 }
 
 .left_stream_wrapper .stream_left{

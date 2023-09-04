@@ -703,6 +703,7 @@ var inlineCSSCont = `
 
 #streamDetailRightColumn .detail-heading h2 a {
   border-bottom: none !important;
+  color: var(--text-link) !important;
 }
 
 .filterBarHorizontal {
@@ -813,8 +814,17 @@ var inlineCSSCont = `
   background-color: var(--background-tint-1-highlight) !important;
 }
 
+.left_stream_wrapper #left_stream_alerts .active_stream_item{
+  background-color: var(--background-tint-2) !important;
+}
+
+.left_stream_wrapper #left_stream_alerts .active_stream_item:hover{
+  background-color: var(--background-tint-2-highlight) !important;
+}
+
 .gradeTableNew .row .cell a{
   cursor: pointer;
+  color: var(--text-link) !important;
 }
 
 .left_stream_wrapper .stream_left{
