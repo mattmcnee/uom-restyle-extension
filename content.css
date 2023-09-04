@@ -683,13 +683,13 @@ margin-top: 5px;
 }
 */
 .contextMenuContainer .cmimg:after{
-  content: "^";
+  content: "▲";
   position: absolute;
   top: -2px;
   left: 5px;
   background-color: transparent;
   text-align: center;
-  transform: rotateZ(180deg) scaleX(1.7) scaleY(1);
+  transform: rotateZ(180deg) scaleX(1.2) scaleY(0.6);
   pointer-events: none;
   color: var(--text-main);
 }
@@ -708,7 +708,7 @@ margin-top: 5px;
 }
 
 .cmdiv:not([id*="actionMenu_"]){
-  top: 121px !important;
+/*  top: 121px !important;*/
   width: 300px;
   height: calc(100vh - 124px - 20px) !important;
   overflow: hidden auto !important;
