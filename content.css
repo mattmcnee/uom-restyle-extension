@@ -608,7 +608,7 @@ margin-top: 5px;
 .portlet h2{
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
-  background-color: transparent; !important;
+  background-color: transparent !important;
 }
 
 .portlet .tab .tablinks.active{
@@ -896,7 +896,7 @@ margin-top: 5px;
 .contentList .liItem .item_icon{
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  left: 28px !important;*/
+  left: 28px !important;
 }
 
 .contentList .liItem a{
@@ -2444,7 +2444,7 @@ fieldset.info .label{
   outline: none !important;
   border: none !important;
   background-image: none !important;
-  background-color: transparent; !important;
+  background-color: transparent !important;
   box-shadow: none !important;
   color: var(--secondary-button-text) !important;
   text-shadow: none !important;

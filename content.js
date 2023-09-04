@@ -1,16 +1,3 @@
-if (navigator.userAgent.includes("Firefox")) {
-  // Code to run if the browser is Firefox
-  console.log("This is Firefox.");
-  browser.runtime.onMessage.addListener(function (message) {
-  console.log(message);
-});
-} else if (navigator.userAgent.includes("Chrome")) {
-  // Code to run if the browser is Chrome
-  console.log("This is Chrome.");
-} else {
-  // Code to run if the browser is neither Firefox nor Chrome
-  console.log("This is a different browser.");
-}
 
 
 
@@ -88,7 +75,15 @@ function updateTheme(uData, updateIframe){
   }
 }
 
-// This is called by popup.js
+if (navigator.userAgent.includes("Firefox")) {
+  console.log("This is Firefox.");
+  browser.runtime.onMessage.addListener(function (message) {
+    updateStyles(message)
+  });
+}
+
+// This is called by popup.js in Chrome,
+// in Firefox it is called by the event listener above
 function updateStyles(message){
   // Save data to storage
   var userData = message;
@@ -97,8 +92,16 @@ function updateStyles(message){
 
 
   if (navigator.userAgent.includes("Firefox")) {
-    localStorage.setItem('userData', message);
-    console.log("Data saved:", message);
+    // localStorage.setItem('savedJson', message);
+    // console.log("Data saved:", message);
+    browser.storage.local.set({ userData: message });
+
+    // userData = localStorage.getItem('savedJson');
+    // console.log(userData);
+
+    browser.storage.local.get('userData').then((result) => {
+  console.log(result.userData);
+});
   } 
   else if (navigator.userAgent.includes("Chrome")) {
     chrome.storage.local.set({ userData}, () => {
@@ -190,10 +193,18 @@ function refreshIframe(){
 // console.log('Custom script injected');
 
 //Retrieve data from storage
-chrome.storage.local.get(["userData"], (result) => {
-  // console.log("Data retrieved:", result.userData);
-  userData = result.userData;
-});
+if (navigator.userAgent.includes("Chrome")) {
+  chrome.storage.local.get(["userData"], (result) => {
+    // console.log("Data retrieved:", result.userData);
+    userData = result.userData;
+  });
+} 
+else if (navigator.userAgent.includes("Firefox")) {
+  browser.storage.local.get('userData').then((result) => {
+    console.log(result.userData);
+    userData = result.userData;
+  });
+}
 
 var iframes;
 var root;

@@ -218,34 +218,17 @@ radial-gradient(ellipse at center, #87735a 60%, #a49872 60%) -50% 0 / 50% 100%`;
   } 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// Function to send a message to the background script
-function getActiveTabId(callback) {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    if (tabs && tabs.length > 0) {
-      const activeTabId = tabs[0].id;
-      callback(activeTabId);
-    }
-  });
-}
-
 // Function to send a message to the content script
-function sendMessageToContentScript(tabId, message) {
-  chrome.scripting.executeScript({
-    target: { tabId: tabId },
-    function: sendMessageFunction,
-    args: [message]
+function sendMessageChrome(message) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    if (tabs && tabs.length > 0) {
+      const tabId = tabs[0].id;
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        function: sendMessageFunction,
+        args: [message]
+      });
+    }
   });
 }
 
@@ -257,11 +240,9 @@ function sendMessageFunction(message) {
 
 function sendMessageFirefox(message){
   browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      browser.tabs.sendMessage(tabs[0].id, { greeting: "Hello from popup!" });
+      browser.tabs.sendMessage(tabs[0].id, message);
   });
 }
-
-
 
 function refreshStyles(){
   if (darkModeRadioButton.checked) {
@@ -276,13 +257,10 @@ function refreshStyles(){
   // userData.light.textMain = mainTextLight.value;
 
   if (navigator.userAgent.includes("Chrome")) {
-    // Get active tab ID and send a message to content.js
-    getActiveTabId(function (tabId) {
-      sendMessageToContentScript(tabId, userData);
-    });
+    sendMessageChrome(userData);
   } 
   else if (navigator.userAgent.includes("Firefox")) {
-
+    sendMessageFirefox(userData);
   } 
   else {
     console.log("Browser currently unsupported");
@@ -312,14 +290,6 @@ var lightModeRadioButton;
 var darkModeRadioButton;
 var selectElement;
 document.addEventListener("DOMContentLoaded", function() {
-
-
-    const button = document.getElementById("popup-button");
-
-    button.addEventListener("click", function () {
-        sendMessageFirefox("message");
-    });
-
   // Initialises radio buttons
   lightModeRadioButton = document.getElementById("lightMode");
   darkModeRadioButton = document.getElementById("nightMode");
@@ -353,8 +323,16 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   } 
   else if (navigator.userAgent.includes("Firefox")) {
-    userData = result.userData;
-    prefillColours(userData);
+    browser.storage.local.get('userData').then((result) => {
+        console.log("Data retrieved:", result);
+        if(JSON.stringify(result) === '{}'){
+          userData = initialiseUserData("default");
+        }
+        else{
+          userData = result.userData;
+        }
+        prefillColours(userData);
+    });
   } 
   else {
     console.log("Browser currently unsupported");
