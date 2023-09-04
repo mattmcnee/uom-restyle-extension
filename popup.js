@@ -162,7 +162,6 @@ linear-gradient(black, black) 0 0 / 75px 100%`;
     temp.dark.primaryButton = "#453130";
     temp.dark.primaryButtonHighlight = "#523a39";
     temp.dark.primaryButtonText = "#eee";
-
     return temp; 
   } 
     else if( styleChoice == "camo"){
@@ -204,45 +203,31 @@ radial-gradient(ellipse at center, #87735a 60%, #a49872 60%) -50% 0 / 50% 100%`;
     temp.dark.backgroundTint1Highlight = "#121108";
     temp.dark.backgroundTint2 = "#100f07";
     temp.dark.backgroundTint2Highlight = "#151411";
-
     temp.dark.secondaryButton = "#6e5e49";
     temp.dark.secondaryButtonHighlight = "#87735a";
     temp.dark.secondaryButtonText = "#d1d1d1";
-
     temp.dark.primaryButton = "#636e48";
     temp.dark.primaryButtonHighlight = "#7a8759";
     temp.dark.primaryButtonText = "#eee";
-
-
     return temp; 
   } 
 }
 
 // Function to send a message to the content script
-function sendMessageChrome(message) {
+function sendUpdateMessage(message){
+  if (navigator.userAgent.includes("Chrome")) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       chrome.tabs.sendMessage(tabs[0].id, message);
-    // if (tabs && tabs.length > 0) {
-    //   const tabId = tabs[0].id;
-    //   chrome.scripting.executeScript({
-    //     target: { tabId: tabId },
-    //     function: sendMessageFunction,
-    //     args: [message]
-    //   });
-    // }
-  });
-}
-
-// This function is executed in the content.js
-function sendMessageFunction(message) {
-  console.log(message);
-  updateStyles(message);
-}
-
-function sendMessageFirefox(message){
-  browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      browser.tabs.sendMessage(tabs[0].id, message);
-  });
+    });
+  } 
+  else if (navigator.userAgent.includes("Firefox")) {
+    browser.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        browser.tabs.sendMessage(tabs[0].id, message);
+    });
+  } 
+  else {
+    console.log("Browser currently unsupported");
+  }
 }
 
 function refreshStyles(){
@@ -252,22 +237,7 @@ function refreshStyles(){
   else{
     userData.theme = "light";
   }
-
-  // userData.light.mainTheme = mainThemeLight.value;
-  // userData.light.backgroundMain = backgroundMainLight.value;
-  // userData.light.textMain = mainTextLight.value;
-
-  if (navigator.userAgent.includes("Chrome")) {
-    sendMessageChrome(userData);
-  } 
-  else if (navigator.userAgent.includes("Firefox")) {
-    sendMessageFirefox(userData);
-  } 
-  else {
-    console.log("Browser currently unsupported");
-  }
-
-
+  sendUpdateMessage(userData);
 }
 
 function prefillColours() {
@@ -277,13 +247,7 @@ function prefillColours() {
   else{
     lightModeRadioButton.checked = true;
   }
-
   selectElement.value = userData.style;
-
-
-  // mainThemeLight.value = userData.light.mainTheme;
-  // backgroundMainLight.value = userData.light.backgroundMain;
-  // mainTextLight.value = userData.light.textMain;
 }
 
 var userData;
@@ -300,18 +264,18 @@ document.addEventListener("DOMContentLoaded", function() {
   // Initialises select element
   selectElement = document.getElementById('styleSelect');
   selectElement.addEventListener('change', function() {
-      const selectedOption = selectElement.value;
-      if (selectedOption == "stylesheet") {
-          userData.style = selectedOption;
-      }
-      else{
-        userData = initialiseUserData(selectedOption);
-      }
-      refreshStyles();
+    const selectedOption = selectElement.value;
+    if (selectedOption == "stylesheet") {
+      userData.style = selectedOption;
+    }
+    else{
+      userData = initialiseUserData(selectedOption);
+    }
+    refreshStyles();
   });
 
+  // Loads userData
   if (navigator.userAgent.includes("Chrome")) {
-      // Loads userData
     chrome.storage.local.get(["userData"], (result) => {
       console.log("Data retrieved:", result);
       if(JSON.stringify(result) === '{}'){
@@ -325,14 +289,14 @@ document.addEventListener("DOMContentLoaded", function() {
   } 
   else if (navigator.userAgent.includes("Firefox")) {
     browser.storage.local.get('userData').then((result) => {
-        console.log("Data retrieved:", result);
-        if(JSON.stringify(result) === '{}'){
-          userData = initialiseUserData("default");
-        }
-        else{
-          userData = result.userData;
-        }
-        prefillColours(userData);
+      console.log("Data retrieved:", result);
+      if(JSON.stringify(result) === '{}'){
+        userData = initialiseUserData("default");
+      }
+      else{
+        userData = result.userData;
+      }
+      prefillColours(userData);
     });
   } 
   else {
