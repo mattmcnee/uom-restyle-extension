@@ -1914,6 +1914,63 @@ div.collectionViewReadMessageBorder{
   background-color: var(--background-main-outline) !important;
 }
 
+.tox .tox-toolbar, .tox .tox-toolbar__primary,
+.tox .tox-toolbar-overlord  {
+  background-color: var(--background-main) !important;
+  color: var(--text-light) !important;
+  border-color: var(--background-main-outline) !important;
+}
+
+.tox .tox-toolbar__primary{
+  border-bottom: 1px solid var(--background-main-outline) !important;
+  background-image: none !important;
+}
+
+.tox span{
+  color: var(--text-light) !important;
+}
+
+.tox .tox-toolbar__overflow{
+  background-image: none !important;
+  background: linear-gradient(180deg, var(--background-main) 39.5px, var(--background-main-outline) 39.5px, var(--background-main-outline) 40.5px, var(--background-main) 40.5px, var(--background-main) 77px, var(--background-main-outline) 77px) !important;
+}
+
+.tox .tox-toolbar__group {
+  border-color: var(--background-main-outline) !important;
+}
+
+.tox-tinymce{
+  border-color: var(--background-main-outline) !important;
+}
+
+.tox .tox-tbtn{
+  background-color: var(--background-main) !important;
+}
+
+.tox .tox-tbtn:hover {
+  background-color: var(--background-tint-1-highlight) !important;
+}
+
+.tox .tox-tbtn--enabled, .tox .tox-tbtn--enabled:hover {
+  background-color: var(--background-tint-2-highlight) !important;
+}
+
+.tox .tox-tbtn svg {
+  fill: var(--text-light) !important;
+}
+
+.tox .tox-statusbar {
+  background-color: var(--background-main) !important;
+}
+
+.tox-statusbar__branding a,  .tox-statusbar__path-item, .tox .tox-statusbar button{
+  color: var(--text-light) !important;
+}
+
+.tox .tox-sidebar-wrap {
+  background-color: var(--background-main) !important;
+}
+
 #dataCollectionContainer .stepcontent{
   border-bottom: none !important;
 }
@@ -1946,6 +2003,34 @@ div.collectionViewReadMessageBorder{
 
 .tox .tox-editor-header {
   z-index: 0 !important;
+}
+
+.tox .tox-statusbar {
+  border-color: var(--background-main-outline) !important;
+}
+
+.tox .tox-menu{
+  background-color: var(--background-main) !important;
+  border: var(--background-main-outline) !important;
+}
+
+.tox-collection__item{
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
+}
+
+.tox-collection__item--active{
+  background-color: var(--background-tint-1) !important;
+}
+
+input[type="text"], input[type="password"], select {
+  background-color: var(--background-main) !important;
+  border-color: var(--background-main-outline) !important;
+  color: var(--text-main) !important;
+}
+
+.key-valueTable tbody th.u_normalAlign, .key-valueTable tbody th.u_normalAlign + td{
+  border-color: var(--background-main-outline) !important;
 }
 
 #instructionBlock{

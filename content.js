@@ -51,11 +51,13 @@ function updateTheme(uData, updateIframe){
     if (uData.theme == "dark") {
       root.style.cssText = getProperties(uData.dark);
       inlineCSS = getCss(uData.dark) + inlineCSSCont;
+      toxCSS = getCss(uData.dark) + toxCSSRoot;
       console.log("Set dark: " + root.style.cssText);
     }
     else if (uData.theme == "light") {
       root.style.cssText = getProperties(uData.light);
       inlineCSS = getCss(uData.light) + inlineCSSCont;
+      toxCSS = getCss(uData.light) + toxCSSRoot;
       console.log("Set light: "+ root.style.cssText);
     }
     else{
@@ -224,8 +226,7 @@ document.addEventListener("DOMContentLoaded", function() {
   iframes = [
     document.getElementById("mybbCanvas"),
     document.getElementById("right_stream_mygrades"),
-    document.getElementById("contentFrame"),
-    document.querySelector(".tox-edit-area__iframe")
+    document.getElementById("contentFrame")
   ];
 
   for (const iframe of iframes) {
@@ -235,6 +236,19 @@ document.addEventListener("DOMContentLoaded", function() {
       break;
     }
   }
+
+    // document.querySelector(".tox-edit-area__iframe")
+
+  // var tox_iframes = document.querySelectorAll(".tox-edit-area__iframe");
+  // console.log(tox_iframes);
+
+  // for (const iframe of tox_iframes) {
+  //   if (iframe !== null) {
+  //     console.log("Adding iframe tox");
+  //     addInlineStylesInIframe(iframe, toxCSS);
+  //     break;
+  //   }
+  // }
 
   iframeSwitch = [
     document.querySelector('#BB-CORE_____overview-tool a'),
@@ -257,6 +271,57 @@ document.addEventListener("DOMContentLoaded", function() {
     element.textContent = innerText.replace(/&amp;/g, '&');
   }
 });
+
+
+
+
+// Function to be called when a new iframe is added
+function handleIframeAdded(iframeElement) {
+  console.log('An iframe with class ".tox-edit-area__iframe" was added:', iframeElement);
+  console.log(toxCSS);
+  addInlineStylesInIframe(iframeElement, toxCSS);
+  // You can perform any actions you want here.
+}
+
+// Create a MutationObserver to watch for changes in the DOM
+const observer = new MutationObserver((mutationsList) => {
+  for (const mutation of mutationsList) {
+    if (mutation.type === 'childList') {
+      // Check if any added nodes are iframes with the specified class
+      const addedNodes = Array.from(mutation.addedNodes);
+      for (const node of addedNodes) {
+        if (node instanceof HTMLIFrameElement && node.classList.contains('tox-edit-area__iframe')) {
+          handleIframeAdded(node);
+        }
+      }
+    }
+  }
+});
+
+// Start observing the entire document
+observer.observe(document, { childList: true, subtree: true });
+
+
+
+
+
+var toxCSSRoot = `
+html {
+    background-color: var(--background-main) !important;
+}
+
+.mce-content-body.vtbegenerated.mceContentBody{
+    background-color: var(--background-main) !important;
+    color: var(--text-main) !important;
+}
+
+.mce-content-body.vtbegenerated.mceContentBody li{
+    color: var(--text-main) !important;
+}
+`
+
+
+
 
 var inlineCSSRoot =`
 
@@ -1065,3 +1130,4 @@ var inlineCSSCont = `
 `;
 
 var inlineCSS = inlineCSSRoot + inlineCSSCont;
+var toxCSS = inlineCSSRoot + toxCSSRoot;
