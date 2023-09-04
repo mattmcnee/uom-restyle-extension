@@ -81,6 +81,12 @@ if (navigator.userAgent.includes("Firefox")) {
     updateStyles(message)
   });
 }
+else if (navigator.userAgent.includes("Chrome")) {
+  console.log("This is Chrome.");
+  chrome.runtime.onMessage.addListener(function (message) {
+    updateStyles(message)
+  });
+}
 
 // This is called by popup.js in Chrome,
 // in Firefox it is called by the event listener above

@@ -221,14 +221,15 @@ radial-gradient(ellipse at center, #87735a 60%, #a49872 60%) -50% 0 / 50% 100%`;
 // Function to send a message to the content script
 function sendMessageChrome(message) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    if (tabs && tabs.length > 0) {
-      const tabId = tabs[0].id;
-      chrome.scripting.executeScript({
-        target: { tabId: tabId },
-        function: sendMessageFunction,
-        args: [message]
-      });
-    }
+      chrome.tabs.sendMessage(tabs[0].id, message);
+    // if (tabs && tabs.length > 0) {
+    //   const tabId = tabs[0].id;
+    //   chrome.scripting.executeScript({
+    //     target: { tabId: tabId },
+    //     function: sendMessageFunction,
+    //     args: [message]
+    //   });
+    // }
   });
 }
 
