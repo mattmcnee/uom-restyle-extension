@@ -237,7 +237,44 @@ document.addEventListener("DOMContentLoaded", function() {
     var innerText = element.textContent.trim();
     element.textContent = innerText.replace(/&amp;/g, '&');
   }
+
+
+  // Fixes resizing bug with mobile breadcrumbs bar
+  const observerBread = new ResizeObserver(useBreadcrumbHeight);
+  const breadcrumbs = document.getElementById("breadcrumbs");
+  if (breadcrumbs) {
+    observerBread.observe(breadcrumbs);
+  }
 });
+
+// adds top margin to content panel to account for the height 
+// of breadcrumbs on mobile
+function useBreadcrumbHeight(entries) {
+  for (const entry of entries) {
+    if (entry.target.id === "breadcrumbs") {
+      const height = entry.contentRect.height;
+      const mainDiv = document.getElementById("contentPanel");
+      if (mainDiv) {
+        mainDiv.style.marginTop = (height + 10) + "px";
+      }
+      else{
+        console.log("contentPanel not found");
+      }
+      // console.log("Height of breadcrumbs: " + height + " pixels");
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 // This handles the tox iframes for text input in assessments

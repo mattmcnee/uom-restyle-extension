@@ -475,6 +475,23 @@ margin-top: 5px;
   margin-right: 0 !important;
 }
 
+ol.breadcrumb-mobile-menu-open{
+  background-color: var(--background-main) !important;
+  box-shadow: none !important;
+  margin-bottom: -15px !important;
+  margin-top: -5px !important;
+  overflow-y: hidden !important;
+}
+
+ol.breadcrumb-mobile-menu-open li{
+  border-color: var(--background-main-outline) !important;
+}
+
+.breadcrumb-mobile-menu-open .cmimg{
+  margin-right: 30px !important;
+  margin-top: 8px !important;
+}
+
 /*
   ---
   ---
@@ -709,9 +726,12 @@ margin-top: 5px;
 
 .cmdiv:not([id*="actionMenu_"]){
 /*  top: 121px !important;*/
+margin-top: -2.5px !important;
   width: 300px;
-  height: calc(100vh - 124px - 20px) !important;
+  height: calc(100vh - 124px - 40px) !important;
   overflow: hidden auto !important;
+  border-color: var(--background-main-outline) !important;
+  background-color: var(--background-main) !important;
 }
 
 .cmdiv ul{
@@ -721,6 +741,21 @@ margin-top: 5px;
 
 .cmdiv ul .labelMenuItem{
   padding: 10px 5px 0 5px;
+  color: var(--text-light) !important;
+}
+
+.cmdiv:not([id*="actionMenu_"]) ul a{
+  color: var(--text-main) !important;
+  background-color: var(--background-main) !important;
+}
+
+.cmdiv:not([id*="actionMenu_"]) ul a:hover{
+  background-color: var(--background-main) !important;
+  color: var(--text-link) !important;
+}
+
+.cmdiv:not([id*="actionMenu_"]) ul{
+  border-color: var(--background-main-outline) !important;
 }
 
 .cmdiv ul li .close-menu{
@@ -731,6 +766,11 @@ margin-top: 5px;
   transform: scale(1.5);
   padding: 0 !important;
   background-color: transparent !important;
+}
+
+.cmdiv:not([id*="actionMenu_"]) ul li.contextmenubar_top a,
+.cmdiv:not([id*="actionMenu_"]) ul li.contextmenubar_top a:hover{
+  background-color: var(--background-main) !important;
 }
 
 
@@ -2463,12 +2503,22 @@ fieldset.info .label{
   .flyout-menu .accordion_toggle span {
     line-height: 24px !important;
   }
+
+  .cmdiv:not([id*="actionMenu_"]){
+    margin-top: 0 !important;
+    margin-left: -40px !important;
+  }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 738px){
   .locationPane .navigationPane{
     top: calc(42px + 46px) !important;
     height: calc(100vh - 88px) !important;
+  }
+
+  .cmdiv:not([id*="actionMenu_"]){
+    margin-top: 0 !important;
+    margin-left: -40px !important;
   }
 }
 
