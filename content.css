@@ -2311,13 +2311,18 @@ fieldset.info .label{
     transform: scale(1) !important;
     width: calc(100vw - 85px) !important;
     height: 40px !important;
-    top: 0px !important;
+    top: -140px !important;
     left: 10px !important;
   }
+
   #global-nav .global-top-avatar {
     top: 5px !important;
     left: 5px !important;
     margin: initial !important;
+  }
+
+  #appTabList{
+    margin-top: 60px !important;
   }
 
   #appTabList td{
@@ -2335,9 +2340,9 @@ fieldset.info .label{
   }
 
   #global-nav-flyout{
-    top: 140px !important;
+    top: 60px !important;
 /*    margin-top: 60px !important;*/
-    height: calc(100vh - 150px - 75px) !important;
+    height: calc(100vh - 150px) !important;
     width: calc(100% - 60px) !important;
     left: 20px !important;
     right: 20px !important;
@@ -2373,7 +2378,7 @@ fieldset.info .label{
   }
 
   .accordion_content{
-    height: calc(100vh - 150px - 200px) !important;
+    height: calc(100vh - 150px - 125px) !important;
   }
 
   #flyoutMenuContent .mybb-tools {
