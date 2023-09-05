@@ -6,7 +6,7 @@
   "content_scripts": [
     {
       "matches": ["https://online.manchester.ac.uk/*"],
-      "css": ["content.css"],
+      "css": ["content.css", "iframe.css"],
       "js": ["content.js"],
       "run_at": "document_start"
     }
