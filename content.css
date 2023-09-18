@@ -187,10 +187,11 @@ a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.action
 /* tertiaryButtonHighlight */
 #selectAll_top:hover, #selectNone_top:hover, #selectAll_bottom:hover, #selectNone_bottom:hover,
 #top_list_action_bar .nav .sub ul li a:hover, #bottom_list_action_bar .nav .sub ul li a:hover,
-.mainButton a:hover
+.mainButton a:hover, #courseMenuPalette li:hover a span, #courseMenuPalette h3 a:hover
 /*,.rumble_top .nav .sub ul li a:hover, .rumble .nav .sub ul li a:hover*/
 {
   color: var(--text-link) !important;
+  cursor: pointer;
 }
 
 
@@ -1030,6 +1031,7 @@ ol.breadcrumb-mobile-menu-open li{
 .contentList .liItem span, .contentList .liItem div, .contentList .liItem li:hover{
   background-color: transparent !important;
   border-color: var(--background-main-outline) !important;
+  border-radius: 6px;
 }
 
 .item h3 a span{
