@@ -68,7 +68,6 @@ function updateTheme(uData, updateIframe){
       if (iframe !== null) {
         console.log("Updating iframe");
         updateInlineStylesInIframe(iframe, inlineCSS);
-        break;
       }
     }
   }
@@ -175,7 +174,6 @@ function refreshIframe(){
   for (const iframe of iframes) {
     if (iframe !== null) {
       addInlineStylesInIframe(iframe, inlineCSS);
-      break;
     }
   }
 }
@@ -206,14 +204,14 @@ document.addEventListener("DOMContentLoaded", function() {
   iframes = [
     document.getElementById("mybbCanvas"),
     document.getElementById("right_stream_mygrades"),
-    document.getElementById("contentFrame")
+    document.getElementById("contentFrame"),
+    document.getElementById("orientationFrame")
   ];
 
   for (const iframe of iframes) {
     if (iframe !== null) {
-      console.log("Adding iframe");
+      console.log("Adding iframe" + iframe);
       addInlineStylesInIframe(iframe, inlineCSS);
-      break;
     }
   }
 
@@ -361,12 +359,20 @@ var inlineCSSCont = `
   ---
 */
 
+/*
+  ---
+  ---
+  --- iframe content -- copy to inlineCSS in content.js to see changes
+  ---
+  ---
+*/
+
 /* iframeBackgroundMain */
 #dynamic_filters_alerts, #column_0, #column_1, #mybb_column_wrapper,
 .stream_header, .locationPane, body, .stream_page_left .left_stream_wrapper,
 #calendar_content, #outer_left_stream_alerts, #dynamic_filters_mygrades,
 .mybb.filterBarHorizontal, .mybb.gradeTableNew .grades_header,
-#settingsContainer_alerts {
+#settingsContainer_alerts, .breadcrumbs {
   background-color: var(--background-main) !important;
 }
 
@@ -1135,6 +1141,16 @@ var inlineCSSCont = `
 
 ul.streamSettingHelpLinks{
   border-color: var(--background-main-outline);
+}
+
+.external-breadcrumbs .contentPaneWide {
+  border-top: none !important;
+}
+
+.external-breadcrumbs .receipt, .external-breadcrumbs .contentPaneWide .receipt {
+  color: var(--text-main) !important;
+  background-color: transparent !important;
+  margin-top: 10px !important;
 }
 
 `;

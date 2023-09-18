@@ -231,8 +231,8 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 }
 
 /* textLight */
-.contextItemDetailsHeaders, .portlet .tab .tablinks, .portlet #CurrentCourses h3, 
-.portlet #_5_1termCourses_noterm h3, .portlet tr td, #uniqueIdBottom, #uniqueIdTop,
+.contextItemDetailsHeaders, .portlet .tab .tablinks, .portlet h3, 
+.portlet tr td, #uniqueIdBottom, #uniqueIdTop,
 .dbThreadInfo span, .dbThreadInfo div, #helpPageTitle p, #helpPageTitle p a,
 .filterBarHorizontal label, .textboxtable .vtbehelp, .submitStepBottom .taskbuttonhelp,
 .portlet .noItems
@@ -689,10 +689,6 @@ ol.breadcrumb-mobile-menu-open li{
   background-color: transparent !important;
 }
 
-.portlet .tab .tablinks.active{
-  background-color: var(--background-tint-1) !important;
-}
-
 .portlet .tabcontent{
   border: none !important;
 }
@@ -1033,6 +1029,7 @@ ol.breadcrumb-mobile-menu-open li{
 
 .contentList .liItem span, .contentList .liItem div, .contentList .liItem li:hover{
   background-color: transparent !important;
+  border-color: var(--background-main-outline) !important;
 }
 
 .item h3 a span{
