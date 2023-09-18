@@ -66,7 +66,7 @@ function updateTheme(uData, updateIframe){
   if (updateIframe) {
     for (const iframe of iframes) {
       if (iframe !== null) {
-        console.log("Updating iframe");
+        // console.log("Updating iframe");
         updateInlineStylesInIframe(iframe, inlineCSS);
       }
     }
@@ -137,7 +137,7 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
 
     for (const iframe of babyIframes) {
       if (iframe !== null) {
-        console.log("Adding iframe" + iframe);
+        // console.log("Adding iframe" + iframe);
         addInlineStylesInIframe(iframe, inlineCSS);
         break;
       }
@@ -189,7 +189,7 @@ if (navigator.userAgent.includes("Chrome")) {
 } 
 else if (navigator.userAgent.includes("Firefox")) {
   browser.storage.local.get('userData').then((result) => {
-    console.log(result.userData);
+    // console.log(result.userData);
     userData = result.userData;
   });
 }
@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   for (const iframe of iframes) {
     if (iframe !== null) {
-      console.log("Adding iframe" + iframe);
+      // console.log("Adding iframe" + iframe);
       addInlineStylesInIframe(iframe, inlineCSS);
     }
   }
@@ -244,32 +244,26 @@ document.addEventListener("DOMContentLoaded", function() {
     observerBread.observe(breadcrumbs);
   }
 
-
-
-
-  // Remove onclick attributes from links matching the criteria
-  // document.querySelectorAll('a[href^="https://zoom.us/"]').forEach(removeOnClick);
-  console.log("hi");
-
-  document.querySelectorAll('a').forEach(whitelistLink);
+  // Prevents having to click again on whitelisted pages
+  document.querySelectorAll('a').forEach(checkWhitelistLink);
 });
 
 
+// This stops the outside blackboard environment page for urls in allowedHrefs
 const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/'];
-
-function whitelistLink(anchor) {
+function checkWhitelistLink(anchor) {
   const href = anchor.getAttribute('href');
   const attr = anchor.getAttribute('onclick');
 
-  if (href && allowedHrefs.includes(href) && attr && attr.startsWith('this.href=\'/webapps/blackboard/content/contentWrapper.jsp')) {
+  if (
+    href && allowedHrefs.some(allowedHref => href.includes(allowedHref)) &&
+    attr && attr.startsWith('this.href=\'/webapps/blackboard/content/contentWrapper.jsp')
+  ) {
     anchor.setAttribute('onclick', `this.href='${href}';`);
     anchor.setAttribute('target', '_blank');
+    console.log("Whitelisted: " + href);
   }
 }
-
-
-
-
 
 
 // adds top margin to content panel to account for the height 
@@ -285,7 +279,6 @@ function useBreadcrumbHeight(entries) {
       else{
         console.log("contentPanel not found");
       }
-      // console.log("Height of breadcrumbs: " + height + " pixels");
     }
   }
 }
@@ -477,9 +470,9 @@ var inlineCSSCont = `
 }
 
 /* iframeTextMain */
-.stream_left .stream_new_entry .stream_context, .stream_left .stream_new_entry .stream_context_bottom,
+.stream_left .stream_new_entry .stream_context,
 .stream_left .announcementTitle, .stream_left .announcementBody,
-.stream_left .stream_new_entry .stream_area_name, #streamHeader_calendar .title-text,
+#streamHeader_calendar .title-text,
 .ui-datepicker-calendar td a, .ui-datepicker-header .ui-datepicker-title,
 .fc-header-title, #calendarList h3, .margin-interact h3,
 .calendar-list .calendar-item label, .stream_item .grade-value,
@@ -495,8 +488,8 @@ var inlineCSSCont = `
 
 /* iframeTextLight */
 .stream_left :not(.stream_new_entry) .stream_context, 
-.stream_left :not(.stream_new_entry) .stream_context_bottom,
-.stream_left :not(.stream_new_entry) .stream_area_name,
+.stream_left .stream_context_bottom,
+.stream_left .stream_area_name,
 .stream_left .stream_datestamp, .ui-datepicker-calendar th span,
 .fc-border-separate .fc-widget-content .fc-day-number, .fc-widget-header,
 #filter_by_mygrades button:not(.active), .stream_show_more_data,
@@ -514,7 +507,8 @@ var inlineCSSCont = `
 .calendar-list .calendar-name label:hover, #filter_by_mygrades button:not(.active):hover,
 #streamDetailHeaderRight .context h2 a, #dynamic_filters_alerts li a,
 #filter_type_all_alerts:before, #settingsContainer_alerts .streamSettingHelpLinks a,
-#left_stream_alerts .inlineContextMenu a {
+#left_stream_alerts .inlineContextMenu a, .streamOverview-more-items a
+{
   color: var(--text-link) !important;
 }
 
