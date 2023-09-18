@@ -1075,7 +1075,10 @@ ol.breadcrumb-mobile-menu-open li{
 
 .details td, .details th {
   border-spacing: 1px;
-  border: 1px solid transparent !important;
+  border-color: var(--background-main-outline) !important;
+  border-collapse: collapse !important;
+  border-style: solid !important;
+  border-image: initial !important;
   padding: 2px 5px !important;
 }
 
