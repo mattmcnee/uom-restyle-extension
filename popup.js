@@ -237,7 +237,14 @@ function refreshStyles(){
   else{
     userData.theme = "light";
   }
-  sendUpdateMessage(userData);
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    // Check if the current tab matches the URL pattern
+    if (tabs[0].url.startsWith("https://online.manchester.ac.uk/")) {
+      sendUpdateMessage(userData);
+    } else {
+      console.log("Extension can only be used at https://online.manchester.ac.uk/");
+    }
+  });
 }
 
 function prefillColours() {
