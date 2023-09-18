@@ -380,20 +380,12 @@ var inlineCSSCont = `
   ---
 */
 
-/*
-  ---
-  ---
-  --- iframe content -- copy to inlineCSS in content.js to see changes
-  ---
-  ---
-*/
-
 /* iframeBackgroundMain */
 #dynamic_filters_alerts, #column_0, #column_1, #mybb_column_wrapper,
 .stream_header, .locationPane, body, .stream_page_left .left_stream_wrapper,
 #calendar_content, #outer_left_stream_alerts, #dynamic_filters_mygrades,
 .mybb.filterBarHorizontal, .mybb.gradeTableNew .grades_header,
-#settingsContainer_alerts, .breadcrumbs {
+#settingsContainer_alerts, .breadcrumbs, .filterBarHorizontal #sortby {
   background-color: var(--background-main) !important;
 }
 
@@ -481,7 +473,7 @@ var inlineCSSCont = `
 .stream_show_more_data .extras, .stream_show_more_data .extras:after,
 .stream_header h1 span, #settingsContainer_alerts label,
 .stream_dynamic_filters_content h5, .current_filter,
-.stream_settings h5
+.stream_settings h5, .filterBarHorizontal #sortby
 {
   color: var(--text-main) !important;
   text-shadow: none !important;
@@ -1173,6 +1165,35 @@ ul.streamSettingHelpLinks{
   color: var(--text-main) !important;
   background-color: transparent !important;
   margin-top: 10px !important;
+}
+
+.filterBarHorizontal ul li a{
+  color: var(--text-light) !important;
+  background-color: transparent !important;
+}
+
+.filterBarHorizontal ul li a.active,
+.filterBarHorizontal ul li a:hover  {
+  color: var(--text-main) !important;
+}
+
+.sorter select {
+    border-width: initial !important;
+    border-style: none !important;
+    border-color: initial !important;
+    border-image: initial !important;
+    outline: none !important;
+    border-radius: 5px !important;
+}
+
+#grades_wrapper .grade,
+#grades_wrapper .activityType{
+  color: var(--text-main) !important;
+}
+
+#grades_wrapper .itemCat,
+#grades_wrapper .lastActivityDate{
+  color: var(--text-light) !important;
 }
 
 `;
