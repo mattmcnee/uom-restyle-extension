@@ -353,6 +353,14 @@ var inlineCSSCont = `
 }`+`
 
 
+/*
+  ---
+  ---
+  --- iframe content -- copy to inlineCSS in content.js to see changes
+  ---
+  ---
+*/
+
 /* iframeBackgroundMain */
 #dynamic_filters_alerts, #column_0, #column_1, #mybb_column_wrapper,
 .stream_header, .locationPane, body, .stream_page_left .left_stream_wrapper,
@@ -429,29 +437,33 @@ var inlineCSSCont = `
   outline: none !important;
   border: none !important;
   background-image: none !important;
-  background-color: transparent; !important;
+  background-color: transparent !important;
   box-shadow: none !important;
   color: var(--secondary-button-text) !important;
   text-shadow: none !important;
 }
 
 /* iframeTextMain */
-.stream_left .stream_context, .stream_left .stream_context_bottom,
+.stream_left .stream_new_entry .stream_context, .stream_left .stream_new_entry .stream_context_bottom,
 .stream_left .announcementTitle, .stream_left .announcementBody,
-.stream_left .stream_area_name, #streamHeader_calendar .title-text,
-.stream_left .stream_context_bottom span:not(.active_stream_item span),
+.stream_left .stream_new_entry .stream_area_name, #streamHeader_calendar .title-text,
 .ui-datepicker-calendar td a, .ui-datepicker-header .ui-datepicker-title,
 .fc-header-title, #calendarList h3, .margin-interact h3,
 .calendar-list .calendar-item label, .stream_item .grade-value,
 #filter_by_mygrades button.active, .title-date, .section-title,
 .stream_show_more_data .extras, .stream_show_more_data .extras:after,
 .stream_header h1 span, #settingsContainer_alerts label,
-.stream_dynamic_filters_content h5, .current_filter{
+.stream_dynamic_filters_content h5, .current_filter,
+.stream_settings h5
+{
   color: var(--text-main) !important;
   text-shadow: none !important;
 }
 
 /* iframeTextLight */
+.stream_left :not(.stream_new_entry) .stream_context, 
+.stream_left :not(.stream_new_entry) .stream_context_bottom,
+.stream_left :not(.stream_new_entry) .stream_area_name,
 .stream_left .stream_datestamp, .ui-datepicker-calendar th span,
 .fc-border-separate .fc-widget-content .fc-day-number, .fc-widget-header,
 #filter_by_mygrades button:not(.active), .stream_show_more_data,
@@ -1121,7 +1133,9 @@ var inlineCSSCont = `
   color: var(--text-main) !important;
 }
 
-
+ul.streamSettingHelpLinks{
+  border-color: var(--background-main-outline);
+}
 
 `;
 

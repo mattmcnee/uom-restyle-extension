@@ -209,7 +209,7 @@ body, .contentBox, .locationPane, .container, .locationPane .tabbedPane .content
 #dataCollectionContainer, #dataCollectionContainer .stepcontent, #dataCollectionContainer div h3,
 #dataCollectionContainer #step1, .stepTitleRight, .tox .tox-edit-area__iframe,
 #dataCollectionContainer .submitStepBottom, .portlet h2, .containerOptions .liveArea,
-.steptitle, div[id*="step"], #dataCollectionContainer
+.steptitle, div[id*="step"], #dataCollectionContainer, body.mybb-shell
 {
   background-color: var(--background-main) !important;
 }
