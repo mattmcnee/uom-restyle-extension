@@ -114,7 +114,8 @@ cannot be changed
 
 /* primaryButton */
 .threadButtons .reply, .submitStepBottom .taskbuttondiv .submit,
-.completionContainer .qComplete {
+.completionContainer .qComplete 
+{
   outline: none !important;
   border: none !important;
   background-image: none !important;
@@ -126,7 +127,8 @@ cannot be changed
 
 /* primaryButton:hover */
 .threadButtons .reply:hover, .submitStepBottom .taskbuttondiv .submit:hover,
-.completionContainer .qComplete:hover{
+.completionContainer .qComplete:hover
+{
   background-color: var(--primary-button-highlight) !important;
 }
 
@@ -141,7 +143,8 @@ a.reply-count-link, .inventory_paging a, #navsecondary a:not(.actionMenuItem a),
 .submitStepBottom .taskbuttondiv input, #bottom_saveAllAnswersButton,
 .completionContainer .qIncomplete, .genericButton,
 .subActionBar .browse, .rumble_top a:not(li ul li a), 
-.rumble a:not(li ul li a), .browse{
+.rumble a:not(li ul li a), .browse
+{
   outline: none !important;
   border: none !important;
   background-image: none !important;
@@ -162,14 +165,16 @@ a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.action
 .submitStepBottom .taskbuttondiv input:hover, #bottom_saveAllAnswersButton:hover,
 .completionContainer .qIncomplete:hover, .genericButton:hover,
 .subActionBar .browse:hover, .rumble_top a:not(li ul li a):hover,
-.rumble a:not(li ul li a):hover, .browse:hover{
+.rumble a:not(li ul li a):hover, .browse:hover
+{
   background-color: var(--secondary-button-highlight) !important;
 }
 
 /* tertiaryButton */
 #selectAll_top, #selectNone_top, #selectAll_bottom, #selectNone_bottom,
 #top_list_action_bar .nav .sub ul li a, #bottom_list_action_bar .nav .sub ul li a,
-.rumble_top .nav .sub ul li a, .rumble .nav .sub ul li a, .mainButton a{
+.rumble_top .nav .sub ul li a, .rumble .nav .sub ul li a, .mainButton a
+{
   outline: none !important;
   border: none !important;
   background-image: none !important;
@@ -182,8 +187,9 @@ a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.action
 /* tertiaryButtonHighlight */
 #selectAll_top:hover, #selectNone_top:hover, #selectAll_bottom:hover, #selectNone_bottom:hover,
 #top_list_action_bar .nav .sub ul li a:hover, #bottom_list_action_bar .nav .sub ul li a:hover,
-.mainButton a:hover{
+.mainButton a:hover
 /*,.rumble_top .nav .sub ul li a:hover, .rumble .nav .sub ul li a:hover*/
+{
   color: var(--text-link) !important;
 }
 
@@ -202,7 +208,9 @@ body, .contentBox, .locationPane, .container, .locationPane .tabbedPane .content
 .localViewToggle li a.active, #pageTitleDiv, .filterBarHorizontal #sortby,
 #dataCollectionContainer, #dataCollectionContainer .stepcontent, #dataCollectionContainer div h3,
 #dataCollectionContainer #step1, .stepTitleRight, .tox .tox-edit-area__iframe,
-#dataCollectionContainer .submitStepBottom, .portlet h2, .containerOptions .liveArea{
+#dataCollectionContainer .submitStepBottom, .portlet h2, .containerOptions .liveArea,
+.steptitle, div[id*="step"], #dataCollectionContainer
+{
   background-color: var(--background-main) !important;
 }
 
@@ -217,7 +225,8 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 .inventoryListHead th a, .localViewToggle a, .pagingprefs span, .inventoryListTableContainerDiv span,
 #announcementList h3, #pageTitleHeader span, .filterBarHorizontal #sortby, .grades_header,
 #dataCollectionContainer div h3, .infoListWrapper .key-valueTable th, .infoListWrapper .key-valueTable td,
-.portlet .viewHeader h3{
+.portlet .viewHeader h3, .stepHelp
+{
   color: var(--text-main) !important;
 }
 
@@ -226,7 +235,8 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 .portlet #_5_1termCourses_noterm h3, .portlet tr td, #uniqueIdBottom, #uniqueIdTop,
 .dbThreadInfo span, .dbThreadInfo div, #helpPageTitle p, #helpPageTitle p a,
 .filterBarHorizontal label, .textboxtable .vtbehelp, .submitStepBottom .taskbuttonhelp,
-.portlet .noItems{
+.portlet .noItems
+{
   color: var(--text-light) !important;
 }
 
@@ -235,7 +245,8 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 .contentList li:nth-child(odd),
 #forumMessagesContainer .db-message-wrapper:nth-child(odd),
 #listContainer_databody tr:nth-child(odd),
-#announcementList li:nth-child(odd) :not(.vtbegenerated li, b, strong){
+#announcementList li:nth-child(odd) :not(.vtbegenerated li, b, strong)
+{
   background-color: var(--background-tint-1) !important;
 }
 
@@ -244,7 +255,8 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 .contentList li:nth-child(odd):hover,
 #forumMessagesContainer .db-message-wrapper:nth-child(odd):hover,
 #listContainer_databody tr:nth-child(odd):hover,
-#announcementList li:nth-child(odd):hover :not(.vtbegenerated li, b, strong) {
+#announcementList li:nth-child(odd):hover :not(.vtbegenerated li, b, strong) 
+{
   background-color: var(--background-tint-1-highlight) !important;
 }
 
@@ -252,7 +264,8 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 .contentList li:nth-child(even),
 #forumMessagesContainer .db-message-wrapper:nth-child(even),
 #listContainer_databody tr:nth-child(even),
-#announcementList li:nth-child(even) :not(.vtbegenerated li, b, strong) {
+#announcementList li:nth-child(even) :not(.vtbegenerated li, b, strong) 
+{
   background-color: var(--background-tint-2) !important;
 }
 
@@ -260,7 +273,8 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 .contentList li:nth-child(even):hover,
 #forumMessagesContainer .db-message-wrapper:nth-child(even):hover,
 #listContainer_databody tr:nth-child(even):hover,
-#announcementList li:nth-child(even):hover :not(.vtbegenerated li, b, strong) {
+#announcementList li:nth-child(even):hover :not(.vtbegenerated li, b, strong) 
+{
   background-color: var(--background-tint-2-highlight) !important;
 }
 
@@ -364,7 +378,6 @@ margin-top: 5px;
 
 .bouncer{
   border-bottom: none !important;
-  background-color: yellow;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -2269,6 +2282,10 @@ fieldset.info .label{
 [id="bbNG.receiptTag.content"] .details td, 
 [id="bbNG.receiptTag.content"] .details th{
   border: none !important;
+}
+
+div[id*="step"]{
+  border-color: var(--background-main-outline) !important;
 }
 
 /*
