@@ -243,7 +243,34 @@ document.addEventListener("DOMContentLoaded", function() {
   if (breadcrumbs) {
     observerBread.observe(breadcrumbs);
   }
+
+
+
+
+  // Remove onclick attributes from links matching the criteria
+  // document.querySelectorAll('a[href^="https://zoom.us/"]').forEach(removeOnClick);
+  console.log("hi");
+
+  document.querySelectorAll('a').forEach(whitelistLink);
 });
+
+
+const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/'];
+
+function whitelistLink(anchor) {
+  const href = anchor.getAttribute('href');
+  const attr = anchor.getAttribute('onclick');
+
+  if (href && allowedHrefs.includes(href) && attr && attr.startsWith('this.href=\'/webapps/blackboard/content/contentWrapper.jsp')) {
+    anchor.setAttribute('onclick', `this.href='${href}';`);
+    anchor.setAttribute('target', '_blank');
+  }
+}
+
+
+
+
+
 
 // adds top margin to content panel to account for the height 
 // of breadcrumbs on mobile
