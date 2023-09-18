@@ -12,6 +12,7 @@ The following themes are available in both light and dark mode:
 - Rustic (Reddish Brown)
 - Camo (Brown and Green Pattern)
 
+# Setup
 Available here:
 https://chrome.google.com/webstore/detail/uom-blackboard-restyle/bfadimingfhacpedgapjpnhikcbjhbmn
 
@@ -22,3 +23,5 @@ extensions button in the top right of Chrome and then "UoM Blackboard Restyle".
 
 # Notes
 - Assessment paragraph entry boxes on dark mode by default display white text but will submit black text (clearly visible on standard Blackboard). If you change the text colour, the submission will be this colour. Be aware that a submission of white text is not clearly visible on Blackboard.
+- The following URLs are whitelisted by the extension (Blackboard won't warn you that you're leaving the learning environment): 'https://zoom.us/', 'https://piazza.com/', 'https://www.sli.do/', 'https://gitlab.cs.man.ac.uk/'.
+- When first using the extension, it will warn you that it can read and change your data at online.manchester.ac.uk. It needs this access to apply style changes to the loaded page. No personal data is changed or stored.
