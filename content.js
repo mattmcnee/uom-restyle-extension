@@ -1,3 +1,4 @@
+const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/', 'https://www.sli.do/', 'https://gitlab.cs.man.ac.uk/'];
 
 // Converts JSON to root style element inner text
 function getProperties(themeData) {
@@ -250,7 +251,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // This stops the outside blackboard environment page for urls in allowedHrefs
-const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/'];
 function checkWhitelistLink(anchor) {
   const href = anchor.getAttribute('href');
   const attr = anchor.getAttribute('onclick');
