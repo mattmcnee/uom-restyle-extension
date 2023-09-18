@@ -1,20 +1,25 @@
 # uom-restyle-extension
 
-A Chrome extension that cleans up the user interface of blackboard 
-for UoM and adds custom colour schemes as well as dark mode
+A cleaner interface for the University of Manchester Blackboard with custom themes and dark mode.
 
-A preview of the changes is available here:
-https://mattmcneedev.000webhostapp.com/blackboard-restyle/
+This provides a universal theme to Blackboard with consistent fonts, colours and styling. It fixes many of the resizing and positioning issues present in Blackboard.
 
-To use this, either clone the repository or download and unzip 
-uom-restyle-extension.zip
+The following themes are available in both light and dark mode:
+- Default (Purple)
+- Blackboard (Grey)
+- Ocean (Light Blue)
+- UoM Purple (Same Purple as UoM Logo)
+- Art Deco (Green and Gold Pattern)
+- Tron (Black and Neon Blue Pattern)
+- Rustic (Reddish Brown)
+- Camo (Brown and Green Pattern)
 
-In Chrome, click on "extensions" then "Developer mode" then
-"load unpacked" and select the cloned repository/unzipped folder
+Available here:
+https://chrome.google.com/webstore/detail/uom-blackboard-restyle/bfadimingfhacpedgapjpnhikcbjhbmn
 
-Turn on the extension called "Blackboard Restyle" to see the style changes appear
+Alternatively, download and unzip uom-restyle-extension.zip and load it in Chrome by clicking on "extensions" then "Developer mode" then "load unpacked" and selecting the unzipped folder
+
+Turn on the extension called "UoM Blackboard Restyle" to see the style changes appear
 
 To choose the theme and switch between light and dark mode, click on the 
-extensions button in the top right of Chrome and then "Blackboard Restyle"
-
-The icon for the extension is a pixel art rocket
+extensions button in the top right of Chrome and then "UoM Blackboard Restyle"
