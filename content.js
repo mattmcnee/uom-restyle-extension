@@ -49,13 +49,13 @@ function updateTheme(uData, updateIframe){
       root.style.cssText = getProperties(uData.dark);
       inlineCSS = getCss(uData.dark) + inlineCSSCont;
       toxCSS = getCss(uData.dark) + toxCSSRoot;
-      console.log("Set dark: " + root.style.cssText);
+      // console.log("Set dark: " + root.style.cssText);
     }
     else if (uData.theme == "light") {
       root.style.cssText = getProperties(uData.light);
       inlineCSS = getCss(uData.light) + inlineCSSCont;
       toxCSS = getCss(uData.light) + toxCSSRoot;
-      console.log("Set light: "+ root.style.cssText);
+      // console.log("Set light: "+ root.style.cssText);
     }
     else{
       console.log("Called updateTheme when userData is not defined");
@@ -282,6 +282,7 @@ function useBreadcrumbHeight(entries) {
     }
   }
 }
+
 
 
 
