@@ -500,7 +500,8 @@ var inlineCSSCont = `
 .calendar-list .calendar-name label:hover, #filter_by_mygrades button:not(.active):hover,
 #streamDetailHeaderRight .context h2 a, #dynamic_filters_alerts li a,
 #filter_type_all_alerts:before, #settingsContainer_alerts .streamSettingHelpLinks a,
-#left_stream_alerts .inlineContextMenu a, .streamOverview-more-items a
+#left_stream_alerts .inlineContextMenu a, .streamOverview-more-items a,
+#streamDetailHeaderRightClickable a, .profile-card a
 {
   color: var(--text-link) !important;
 }
@@ -1194,6 +1195,18 @@ ul.streamSettingHelpLinks{
 #grades_wrapper .itemCat,
 #grades_wrapper .lastActivityDate{
   color: var(--text-light) !important;
+}
+
+.detail-heading {
+  border-bottom: 1px solid var(--background-main-outline) !important;
+}
+
+.detail-heading h2 a{
+  border-bottom: none !important;
+}
+
+.author a {
+  text-decoration: none !important;
 }
 
 `;
