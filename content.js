@@ -10,60 +10,56 @@ if (window.location.pathname === "/webapps/portal/execute/tabs/tabAction") {
   xhr.responseType = 'json';
   xhr.onload = () => {
     // Parse JSON for events
-      const events = [];
-      for (let i = 0; i < xhr.response.length; i++) {
-        const event = xhr.response[i];
-        if (event.id.indexOf('GradableItem') === -1) {
-          // Not a deadline, so ignore calendar event
-          continue;
-        }
-        let courseName = event.calendarName.split(' ');
-        courseName = courseName.splice(0, courseName.length - 3).join(' ');
-        events.push({
-          uid: event.id,
-          title: event.title,
-          course: courseName,
-          date: new Date(event.startDate),
-          url: event.attemptable ? `https://online.manchester.ac.uk/webapps/calendar/launch/attempt/${event.id}` : null
-        })
+    const events = [];
+    for (let i = 0; i < xhr.response.length; i++) {
+      const event = xhr.response[i];
+      if (event.id.indexOf('GradableItem') === -1) {
+        // Not a deadline, so ignore calendar event
+        continue;
       }
-      events.sort((a, b) => a.date - b.date);
-    console.log(events);
-
-
-
-const now = new Date();
-now.setHours(now.getHours() + 1);
-// Append future deadlines to the page
-let items = [];
-for (let i = 0; i < events.length; i++) {
-  const event = events[i];
-  const dayDiff = Math.round((event.date.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-
-  // Add a condition to only include events less than 32 days away
-  if (dayDiff < 32) {
-    if (event.date < today) continue;
-    if (event.date.toDateString() === today.toDateString()) {
-      // Due today
-      items.push(`<li><a href="${event.url}" style="color: ${now >= event.date ? 'red' : 'orange'}">
-        <b>${event.course}</b><br>
-        ${event.title}<br>
-        <b>Today</b>, ${event.date.toLocaleString().substr(12, event.date.toLocaleString().length - 15) /* Exclude minutes from date */}
-      </a></li>`);
-    } else {
-      // Not due today
-      // TODO: support 'tomorrow'
-      items.push(`<li>${event.url ? `<a href="${event.url}">`: ``}
-        <b>${event.course}</b><br>
-        ${event.title}<br>
-        ${event.date.toLocaleString().substr(0, event.date.toLocaleString().length - 3) /* Exclude minutes from date */} (${dayDiff} days)
-      ${event.url ? `</a>` : ``}</li>`);
+      let courseName = event.calendarName.split(' ');
+      courseName = courseName.splice(0, courseName.length - 3).join(' ');
+      events.push({
+        uid: event.id,
+        title: event.title,
+        course: courseName,
+        date: new Date(event.startDate),
+        url: event.attemptable ? `https://online.manchester.ac.uk/webapps/calendar/launch/attempt/${event.id}` : null
+      })
     }
-  }
-}
+    events.sort((a, b) => a.date - b.date);
 
-      console.log(items);
-      document.getElementById('$fixedId').innerHTML = `<h3>Upcoming Deadlines</h3><ul class="listElement">${items.join('')}</ul>`;
+    const now = new Date();
+    now.setHours(now.getHours() + 1);
+    // Append future deadlines to the page
+    let items = [];
+    for (let i = 0; i < events.length; i++) {
+      const event = events[i];
+      const dayDiff = Math.round((event.date.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+
+      // Add a condition to only include events less than 32 days away
+      if (dayDiff < 32) {
+        if (event.date < today) continue;
+        if (event.date.toDateString() === today.toDateString()) {
+          // Due today
+          items.push(`<li><a href="${event.url}" style="color: ${now >= event.date ? 'red' : 'orange'}">
+            <b>${event.course}</b><br>
+            ${event.title}<br>
+            <b>Today</b>, ${event.date.toLocaleString().substr(12, event.date.toLocaleString().length - 15) /* Exclude minutes from date */}
+          </a></li>`);
+        } else {
+          // Not due today
+          // TODO: support 'tomorrow'
+          items.push(`<li>${event.url ? `<a href="${event.url}">`: ``}
+            <b>${event.course}</b><br>
+            ${event.title}<br>
+            ${event.date.toLocaleString().substr(0, event.date.toLocaleString().length - 3) /* Exclude minutes from date */} (${dayDiff} days)
+          ${event.url ? `</a>` : ``}</li>`);
+        }
+      }
+    }
+
+    document.getElementById('$fixedId').innerHTML = `<h3>Upcoming Deadlines</h3><ul class="listElement">${items.join('')}</ul>`;
     // Now, 'events' contains the gradable calendar events.
   };
   xhr.send();
@@ -457,7 +453,7 @@ function replaceLePortlet() {
     var customDiv = document.createElement('div');
 
     var leStartText = document.createTextNode('You are currently using UoM Blackboard Restyle. To open extension settings click the jigsaw icon (');
-    var leEndText = document.createTextNode(') in the top right of the browser. Select "UoM blackboard Restyle" to change the style. Select "Manage extensions" to disable this extension.');
+    var leEndText = document.createTextNode(') in the top right of the browser. Select "UoM Blackboard Restyle" to change the style. Select "Manage extensions" to disable this extension.');
     var puzzlePieceIcon = document.createElement('i');
     puzzlePieceIcon.classList.add('fas', 'fa-puzzle-piece');
     puzzlePieceIcon.style.opacity = '0.8';
