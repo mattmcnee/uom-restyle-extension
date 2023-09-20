@@ -1,5 +1,14 @@
 const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/', 'https://www.sli.do/', 'https://gitlab.cs.man.ac.uk/'];
 
+const navHrefs = [ 
+  ['https://studentadmin.manchester.ac.uk/CSPROD/signon.html', 'Student System'],
+  ['https://timetables.manchester.ac.uk/', 'Timetable'],
+  ['https://www.exams.manchester.ac.uk/exam-timetable/', 'Exam Timetable'],
+  ['https://studentadmin.manchester.ac.uk/psp/CSPROD/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL', 'Grades'],
+  ['https://www.library.manchester.ac.uk/', 'Library'],
+  ['https://www.library.manchester.ac.uk/training/my-learning-essentials/', 'My Learning Essentials'],
+  ['https://manchester.evaluationkit.com/', 'Evaluation Kit']];
+
 // Converts JSON to root style element inner text
 function getProperties(themeData) {
   const cssText = `
@@ -247,6 +256,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Prevents having to click again on whitelisted pages
   document.querySelectorAll('a').forEach(checkWhitelistLink);
+
+  // Replaces some portlets in home page
+  replaceKitPortlet();
+  // replaceLePortlet();
+
 });
 
 
@@ -283,9 +297,51 @@ function useBreadcrumbHeight(entries) {
   }
 }
 
+// Replaces "EvaluationKIT Course Evaluations" portlet with nav links
+function replaceKitPortlet(){
+  const kitPortlet = document.getElementById('module:_334_1');
+  if (kitPortlet) {
+    var kitTitle = kitPortlet.querySelector('.moduleTitle');
+    if (kitTitle) {
+        kitTitle.textContent = 'Navigation Links';
+    }
+    var kitContent = kitPortlet.querySelector('#ek-widget');
+    if (kitContent) {
+        kitContent.style.display = 'none';
+    }
 
+    var kitBody = kitPortlet.querySelector('.collapsible');
+    
+    // Create an unordered list
+    var ul = document.createElement('ul');
+    ul.classList.add('listElement');
 
+    // Loop through the navHrefs array and create list items with anchor elements
+    for (var i = 0; i < navHrefs.length; i++) {
+      var linkData = navHrefs[i];
+      var li = document.createElement('li');
+      
+      var link = document.createElement('a');
+      link.href = linkData[0]; // URL
+      link.textContent = linkData[1]; // Link text
+      
+      li.appendChild(link);
+      ul.appendChild(li);
+    }
+    
+    // Append the ul to the kitBody
+    kitBody.appendChild(ul);
+  }
+}
 
+function replaceLePortlet(){
+  const lePortlet = document.getElementById('module:_422_1');
+  if (lePortlet) {
+  var leTitle = lePortlet.querySelector('.moduleTitle');
+  if (leTitle) {
+    leTitle.textContent = 'Navigation Links';
+  }
+}
 
 
 
@@ -336,7 +392,7 @@ html {
     color: var(--text-main) !important;
 }
 
-`
+`;
 
 var inlineCSSRoot =`
 
@@ -363,7 +419,7 @@ var inlineCSSRoot =`
 /*  --global-font: Consolas, monospace;*/
 }
 
-`
+`;
 
 var inlineCSSCont = `
 *{
