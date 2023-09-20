@@ -480,7 +480,7 @@ var inlineCSSCont = `
 }
 
 /* iframeTextLight */
-.stream_left :not(.stream_new_entry) .stream_context, 
+.stream_left :not(.stream_new_entry, .active_stream_item) .stream_context, 
 .stream_left .stream_context_bottom,
 .stream_left .stream_area_name,
 .stream_left .stream_datestamp, .ui-datepicker-calendar th span,
@@ -492,16 +492,19 @@ var inlineCSSCont = `
 }
 
 /* iframeTextLink */
-#left_stream_mygrades .active_stream_item .grade-value, 
-#left_stream_mygrades .active_stream_item .stream_context,
-#left_stream_mygrades .active_stream_item .stream_context_bottom, 
-#left_stream_mygrades .active_stream_item .stream_area_name,
+.active_stream_item .grade-value, .active_stream_item .stream_context,
+.active_stream_item .stream_context_bottom, .active_stream_item .stream_area_name,
 .ui-datepicker-calendar .ui-state-highlight, .fc-border-separate .fc-today .fc-day-number,
-.calendar-list .calendar-name label:hover, #filter_by_mygrades button:not(.active):hover,
 #streamDetailHeaderRight .context h2 a, #dynamic_filters_alerts li a,
 #filter_type_all_alerts:before, #settingsContainer_alerts .streamSettingHelpLinks a,
 #left_stream_alerts .inlineContextMenu a, .streamOverview-more-items a,
-#streamDetailHeaderRightClickable a, .profile-card a
+#streamDetailHeaderRightClickable a, .profile-card a, .stream_item a
+{
+  color: var(--text-link) !important;
+}
+
+/* iframeTertiaryButtonHighlight */
+.calendar-list .calendar-name label:hover, #filter_by_mygrades button:not(.active):hover
 {
   color: var(--text-link) !important;
 }

@@ -988,6 +988,15 @@ ol.breadcrumb-mobile-menu-open li{
   ---
 */
 
+#pageList .liItem:hover{
+  background: transparent;
+  border: none;
+}
+
+.liItem .details{
+  margin-left: 15px;
+}
+
 .contentList .liItem .item_icon{
   border-radius: 5px;
   left: 28px !important;
