@@ -12,6 +12,17 @@ The following themes are available in both light and dark mode:
 - Rustic (Reddish Brown)
 - Camo (Brown and Green Pattern)
 
+Upcoming deadlines are visible on the Blackboard home page, as well as links to:
+- Student System
+- Timetable
+- Lecture Recordings
+- Exam Timetable
+- Grades
+- Library
+- SPOT (CS Students)
+- My Learning Essentials
+- Evaluation Kit
+
 # Setup
 Available here:
 https://chrome.google.com/webstore/detail/uom-blackboard-restyle/bfadimingfhacpedgapjpnhikcbjhbmn
