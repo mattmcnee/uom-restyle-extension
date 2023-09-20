@@ -32,31 +32,35 @@ if (window.location.pathname === "/webapps/portal/execute/tabs/tabAction") {
 
 
 
-          const now = new Date();
-      now.setHours(now.getHours() + 1);
-      // Append future deadlines to page
-      let items = [];
-      for (let i = 0; i < events.length; i++) {
-        const event = events[i];
-        const dayDiff = Math.round((event.date.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-        if (event.date < today) continue;
-        if (event.date.toDateString() === today.toDateString()) {
-          // Due today
-          items.push(`<li><a href="${event.url}" style="color: ${now >= event.date ? 'red' : 'orange'}">
-          <b>${event.course}</b><br>
-          ${event.title}<br>
-          <b>Today</b>, ${event.date.toLocaleString().substr(12, event.date.toLocaleString().length - 15) /* Exclude minutes from date */}
-        </a></li>`);
-        } else {
-          // Not due today
-          // TODO: support 'tomorrow'
-          items.push(`<li>${event.url ? `<a href="${event.url}">`: ``}
-          <b>${event.course}</b><br>
-          ${event.title}<br>
-          ${event.date.toLocaleString().substr(0, event.date.toLocaleString().length - 3) /* Exclude minutes from date */} (${dayDiff} days)
-        ${event.url ? `</a>` : ``}</li>`);
-        }
-      }
+const now = new Date();
+now.setHours(now.getHours() + 1);
+// Append future deadlines to the page
+let items = [];
+for (let i = 0; i < events.length; i++) {
+  const event = events[i];
+  const dayDiff = Math.round((event.date.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+
+  // Add a condition to only include events less than 32 days away
+  if (dayDiff < 32) {
+    if (event.date < today) continue;
+    if (event.date.toDateString() === today.toDateString()) {
+      // Due today
+      items.push(`<li><a href="${event.url}" style="color: ${now >= event.date ? 'red' : 'orange'}">
+        <b>${event.course}</b><br>
+        ${event.title}<br>
+        <b>Today</b>, ${event.date.toLocaleString().substr(12, event.date.toLocaleString().length - 15) /* Exclude minutes from date */}
+      </a></li>`);
+    } else {
+      // Not due today
+      // TODO: support 'tomorrow'
+      items.push(`<li>${event.url ? `<a href="${event.url}">`: ``}
+        <b>${event.course}</b><br>
+        ${event.title}<br>
+        ${event.date.toLocaleString().substr(0, event.date.toLocaleString().length - 3) /* Exclude minutes from date */} (${dayDiff} days)
+      ${event.url ? `</a>` : ``}</li>`);
+    }
+  }
+}
 
       console.log(items);
       document.getElementById('$fixedId').innerHTML = `<h3>Upcoming Deadlines</h3><ul class="listElement">${items.join('')}</ul>`;
@@ -302,6 +306,8 @@ var iframes;
 var root;
 // This code will run when the page begins to load
 document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById('$fixedId').innerHTML = `<h3>Loading Upcoming Deadlines...</h3>`;
+
   root = document.documentElement;
   updateTheme(userData, false);
 
