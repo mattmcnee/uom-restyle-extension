@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "UoM Blackboard Restyle",
-  "version": "1.11",
+  "version": "1.12",
   "description": "A cleaner interface for the University of Manchester Blackboard with custom themes and dark mode.",
   "permissions": ["activeTab", "storage"],
   "content_scripts": [
