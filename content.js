@@ -3,9 +3,11 @@ const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/', 'https://www.sl
 const navHrefs = [ 
   ['https://studentadmin.manchester.ac.uk/CSPROD/signon.html', 'Student System'],
   ['https://timetables.manchester.ac.uk/', 'Timetable'],
+  ['https://video.manchester.ac.uk/lectures/', 'Lecture Recordings'],
   ['https://www.exams.manchester.ac.uk/exam-timetable/', 'Exam Timetable'],
   ['https://studentadmin.manchester.ac.uk/psp/CSPROD/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL', 'Grades'],
   ['https://www.library.manchester.ac.uk/', 'Library'],
+  ['https://studentnet.cs.manchester.ac.uk/me/spotv2/spotv2.php', 'SPOT (CS Students)'],
   ['https://www.library.manchester.ac.uk/training/my-learning-essentials/', 'My Learning Essentials'],
   ['https://manchester.evaluationkit.com/', 'Evaluation Kit']];
 
@@ -259,8 +261,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Replaces some portlets in home page
   replaceKitPortlet();
-  // replaceLePortlet();
-
+  replaceLePortlet();
 });
 
 
@@ -334,14 +335,47 @@ function replaceKitPortlet(){
   }
 }
 
-function replaceLePortlet(){
+function replaceLePortlet() {
   const lePortlet = document.getElementById('module:_422_1');
   if (lePortlet) {
-  var leTitle = lePortlet.querySelector('.moduleTitle');
-  if (leTitle) {
-    leTitle.textContent = 'Navigation Links';
+
+    // Adds Font Awesome to the page for icons
+    var faLink = document.createElement('link');
+    faLink.rel = 'stylesheet';
+    faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
+    document.head.appendChild(faLink);
+
+    var leTitle = lePortlet.querySelector('.moduleTitle');
+    if (leTitle) {
+      leTitle.textContent = 'UoM Blackboard Restyle';
+    }
+    var leContent = lePortlet.querySelector('#div_422_1');
+    if (leContent) {
+      leContent.style.display = 'none';
+    }
+    var leBody = lePortlet.querySelector('.collapsible');
+    if (leBody) {
+    // Create a div element
+    var customDiv = document.createElement('div');
+
+    var leStartText = document.createTextNode('You are currently using UoM Blackboard Restyle. To open extension settings click the jigsaw icon (');
+    var leEndText = document.createTextNode(') in the top right of the browser. Select "UoM blackboard Restyle" to change the style. Select "Manage extensions" to disable this extension.');
+    var puzzlePieceIcon = document.createElement('i');
+    puzzlePieceIcon.classList.add('fas', 'fa-puzzle-piece');
+    puzzlePieceIcon.style.opacity = '0.8';
+
+    customDiv.appendChild(leStartText);
+    customDiv.appendChild(puzzlePieceIcon);
+    customDiv.appendChild(leEndText);
+    
+    // Append the custom div to leBody
+    leBody.appendChild(customDiv);     
+    }
   }
 }
+
+
+
 
 
 
@@ -392,7 +426,7 @@ html {
     color: var(--text-main) !important;
 }
 
-`;
+`
 
 var inlineCSSRoot =`
 
@@ -419,7 +453,7 @@ var inlineCSSRoot =`
 /*  --global-font: Consolas, monospace;*/
 }
 
-`;
+`
 
 var inlineCSSCont = `
 *{

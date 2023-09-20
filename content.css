@@ -90,7 +90,7 @@
 
 /* Lime: #AABB00 */
 
-*{
+* :not(.fas){
   outline: none !important;
   font-family: var(--global-font) !important;
 /*  line-height: 1.2;*/
