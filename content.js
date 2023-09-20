@@ -1,3 +1,4 @@
+var fixedID;
 if (window.location.pathname === "/webapps/portal/execute/tabs/tabAction") {
   // On Blackboard homepage, so need to apply changes
   const today = new Date();
@@ -58,37 +59,15 @@ if (window.location.pathname === "/webapps/portal/execute/tabs/tabAction") {
         }
       }
     }
-
-    document.getElementById('$fixedId').innerHTML = `<h3>Upcoming Deadlines</h3><ul class="listElement">${items.join('')}</ul>`;
-    // Now, 'events' contains the gradable calendar events.
+    fixedID = document.getElementById('$fixedId')
+    if (fixedID) {
+      fixedID.innerHTML = `<h3>Upcoming Deadlines</h3><ul class="listElement">${items.join('')}</ul>`;
+    }
+   // Now, 'events' contains the gradable calendar events.
   };
   xhr.send();
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/', 'https://www.sli.do/', 'https://gitlab.cs.man.ac.uk/'];
 
@@ -302,7 +281,14 @@ var iframes;
 var root;
 // This code will run when the page begins to load
 document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById('$fixedId').innerHTML = `<h3>Loading Upcoming Deadlines...</h3>`;
+
+  // Pre-enters text for deadlines portlet
+  if (!fixedID) {
+    const fixedID = document.getElementById('$fixedId')
+    if (fixedID) {
+      fixedID.innerHTML = `<h3>Loading Upcoming Deadlines...</h3>`;
+    }
+  }
 
   root = document.documentElement;
   updateTheme(userData, false);
