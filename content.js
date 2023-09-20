@@ -117,7 +117,7 @@ ${temp}
 }
 
 function updateTheme(uData, updateIframe){
-  if (!uData) {
+  if (!uData) {  // Don't update theme if userData is undefined
     return 1;
   }
 
@@ -151,6 +151,12 @@ function updateTheme(uData, updateIframe){
         updateInlineStylesInIframe(iframe, inlineCSS);
       }
     }
+    for (const iframe of toxFrames) {
+      if (iframe !== null) {
+        // console.log("Updating iframe");
+        updateInlineStylesInIframe(iframe, toxCSS);
+      }
+    }
   }
 }
 
@@ -165,6 +171,29 @@ else if (navigator.userAgent.includes("Chrome")) {
   chrome.runtime.onMessage.addListener(function (message) {
     updateStyles(message)
   });
+}
+
+function addStyles(iframeDocument, cssRules) {
+  // Create a new <style> element for inline styles
+  var styleElement = iframeDocument.createElement("style");
+  styleElement.type = "text/css";
+  styleElement.id = "injectedStyles";
+  styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
+  iframeDocument.head.appendChild(styleElement);
+
+  // deals with iframe-ception
+  var babyIframes = [
+    iframeDocument.getElementById("right_stream_mygrades"),
+    iframeDocument.getElementById("right_stream_stream")
+  ]
+
+  for (const iframe of babyIframes) {
+    if (iframe !== null) {
+      // console.log("Adding iframe" + iframe);
+      addInlineStylesInIframe(iframe, inlineCSS);
+      break;
+    }
+  }
 }
 
 function updateStyles(message){
@@ -195,34 +224,11 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
   if(iframeDocument.location.origin == "null" || iframeElement.id == "right_stream_mygrades"){
     iframeElement.onload = function() {
       iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
-      addStyles();
+      addStyles(iframeDocument, cssRules);
     };
   }
   else{
-    addStyles();
-  }
-
-  function addStyles() {
-    // Create a new <style> element for inline styles
-    var styleElement = iframeDocument.createElement("style");
-    styleElement.type = "text/css";
-    styleElement.id = "injectedStyles";
-    styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
-    iframeDocument.head.appendChild(styleElement);
-
-    // deals with iframe-ception
-    var babyIframes = [
-      iframeDocument.getElementById("right_stream_mygrades"),
-      iframeDocument.getElementById("right_stream_stream")
-    ]
-
-    for (const iframe of babyIframes) {
-      if (iframe !== null) {
-        // console.log("Adding iframe" + iframe);
-        addInlineStylesInIframe(iframe, inlineCSS);
-        break;
-      }
-    }
+    addStyles(iframeDocument, cssRules);
   }
 }
 
@@ -259,6 +265,7 @@ function refreshIframe(){
   }
 }
 
+// sets up handling of iframe styles
 function setupIframeInjection(){
   iframes = [
     document.getElementById("mybbCanvas"),
@@ -400,6 +407,7 @@ function replaceLePortlet() {
 
 // Create a MutationObserver to watch for changes in the DOM
 // Needed as tox elements don't load instantly
+var toxFrames = [];
 function observeAndStyleTox() {
   const observer = new MutationObserver((mutationsList) => {
     for (const mutation of mutationsList) {
@@ -409,6 +417,7 @@ function observeAndStyleTox() {
         for (const node of addedNodes) {
           if (node instanceof HTMLIFrameElement && node.classList.contains('tox-edit-area__iframe')) {
             addInlineStylesInIframe(node, toxCSS);
+            toxFrames.push(node);
           }
         }
       }
