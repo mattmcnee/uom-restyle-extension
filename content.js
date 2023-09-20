@@ -1,86 +1,84 @@
-var fixedID;
-if (window.location.pathname === "/webapps/portal/execute/tabs/tabAction") {
-  // On Blackboard homepage, so need to apply changes
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); // Start of the day
-  // Load deadlines to where welcome image was originally
+function loadDeadlinesIfHomepage(){
+  if (window.location.pathname === "/webapps/portal/execute/tabs/tabAction") {
+    // On Blackboard homepage, so need to apply changes
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Start of the day
+    // Load deadlines to where welcome image was originally
 
-  const xhr = new XMLHttpRequest();
-  const eventsUrl = `https://online.manchester.ac.uk/webapps/calendar/calendarData/selectedCalendarEvents?start=${Math.round((new Date()).getTime() / 1000)}`;
-  xhr.open('GET', eventsUrl, true);
-  xhr.responseType = 'json';
-  xhr.onload = () => {
-    // Parse JSON for events
-    const events = [];
-    for (let i = 0; i < xhr.response.length; i++) {
-      const event = xhr.response[i];
-      if (event.id.indexOf('GradableItem') === -1) {
-        // Not a deadline, so ignore calendar event
-        continue;
+    const xhr = new XMLHttpRequest();
+    const eventsUrl = `https://online.manchester.ac.uk/webapps/calendar/calendarData/selectedCalendarEvents?start=${Math.round((new Date()).getTime() / 1000)}`;
+    xhr.open('GET', eventsUrl, true);
+    xhr.responseType = 'json';
+    xhr.onload = () => {
+      // Parse JSON for events
+      const events = [];
+      for (let i = 0; i < xhr.response.length; i++) {
+        const event = xhr.response[i];
+        if (event.id.indexOf('GradableItem') === -1) {
+          // Not a deadline, so ignore calendar event
+          continue;
+        }
+        let courseName = event.calendarName.split(' ');
+        courseName = courseName.splice(0, courseName.length - 3).join(' ');
+        events.push({
+          uid: event.id,
+          title: event.title,
+          course: courseName,
+          date: new Date(event.startDate),
+          url: event.attemptable ? `https://online.manchester.ac.uk/webapps/calendar/launch/attempt/${event.id}` : null
+        })
       }
-      let courseName = event.calendarName.split(' ');
-      courseName = courseName.splice(0, courseName.length - 3).join(' ');
-      events.push({
-        uid: event.id,
-        title: event.title,
-        course: courseName,
-        date: new Date(event.startDate),
-        url: event.attemptable ? `https://online.manchester.ac.uk/webapps/calendar/launch/attempt/${event.id}` : null
-      })
-    }
-    events.sort((a, b) => a.date - b.date);
+      events.sort((a, b) => a.date - b.date);
 
-    const now = new Date();
-    now.setHours(now.getHours() + 1);
-    // Append future deadlines to the page
-    let items = [];
-    for (let i = 0; i < events.length; i++) {
-      const event = events[i];
-      const dayDiff = Math.round((event.date.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+      const now = new Date();
+      now.setHours(now.getHours() + 1);
+      // Append future deadlines to the page
+      let items = [];
+      for (let i = 0; i < events.length; i++) {
+        const event = events[i];
+        const dayDiff = Math.round((event.date.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 
-      // Add a condition to only include events less than 32 days away
-      if (dayDiff < 32) {
-        if (event.date < today) continue;
-        if (event.date.toDateString() === today.toDateString()) {
-          // Due today
-          items.push(`<li><a href="${event.url}" style="color: ${now >= event.date ? 'red' : 'orange'}">
-            <b>${event.course}</b><br>
-            ${event.title}<br>
-            <b>Today</b>, ${event.date.toLocaleString().substr(12, event.date.toLocaleString().length - 15) /* Exclude minutes from date */}
-          </a></li>`);
-        } else {
-          // Not due today
-          // TODO: support 'tomorrow'
-          items.push(`<li>${event.url ? `<a href="${event.url}">`: ``}
-            <b>${event.course}</b><br>
-            ${event.title}<br>
-            ${event.date.toLocaleString().substr(0, event.date.toLocaleString().length - 3) /* Exclude minutes from date */} (${dayDiff} days)
-          ${event.url ? `</a>` : ``}</li>`);
+        // Add a condition to only include events less than 32 days away
+        if (dayDiff < 32) {
+          if (event.date < today) continue;
+          if (event.date.toDateString() === today.toDateString()) {
+            // Due today
+            items.push(`<li><a href="${event.url}" style="color: ${now >= event.date ? 'red' : 'orange'}">
+              <b>${event.course}</b><br>
+              ${event.title}<br>
+              <b>Today</b>, ${event.date.toLocaleString().substr(12, event.date.toLocaleString().length - 15) /* Exclude minutes from date */}
+            </a></li>`);
+          } else {
+            // Not due today
+            // TODO: support 'tomorrow'
+            items.push(`<li>${event.url ? `<a href="${event.url}">`: ``}
+              <b>${event.course}</b><br>
+              ${event.title}<br>
+              ${event.date.toLocaleString().substr(0, event.date.toLocaleString().length - 3) /* Exclude minutes from date */} (${dayDiff} days)
+            ${event.url ? `</a>` : ``}</li>`);
+          }
         }
       }
-    }
-    fixedID = document.getElementById('$fixedId')
-    if (fixedID) {
-      fixedID.innerHTML = `<h3>Upcoming Deadlines</h3><ul class="listElement">${items.join('')}</ul>`;
-    }
-   // Now, 'events' contains the gradable calendar events.
-  };
-  xhr.send();
-
+      fixedID = document.getElementById('$fixedId')
+      if (fixedID) {
+        fixedID.innerHTML = `<h3>Upcoming Deadlines</h3><ul class="listElement">${items.join('')}</ul>`;
+      }
+     // Now, 'events' contains the gradable calendar events.
+    };
+    xhr.send();
+  }
 }
 
-const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/', 'https://www.sli.do/', 'https://gitlab.cs.man.ac.uk/'];
-
-const navHrefs = [ 
-  ['https://studentadmin.manchester.ac.uk/CSPROD/signon.html', 'Student System'],
-  ['https://timetables.manchester.ac.uk/', 'Timetable'],
-  ['https://video.manchester.ac.uk/lectures/', 'Lecture Recordings'],
-  ['https://www.exams.manchester.ac.uk/exam-timetable/', 'Exam Timetable'],
-  ['https://studentadmin.manchester.ac.uk/psp/CSPROD/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL', 'Grades'],
-  ['https://www.library.manchester.ac.uk/', 'Library'],
-  ['https://studentnet.cs.manchester.ac.uk/me/spotv2/spotv2.php', 'SPOT (CS Students)'],
-  ['https://www.library.manchester.ac.uk/training/my-learning-essentials/', 'My Learning Essentials'],
-  ['https://manchester.evaluationkit.com/', 'Evaluation Kit']];
+function preloadDeadlinesIfHomepage(){
+  if (window.location.pathname === "/webapps/portal/execute/tabs/tabAction") {
+    if (!fixedID) {
+      const fixedID = document.getElementById('$fixedId')
+      if (fixedID) {
+        fixedID.innerHTML = `<h3>Loading Upcoming Deadlines...</h3>`;
+      }
+    }
+  }
+}
 
 // Converts JSON to root style element inner text
 function getProperties(themeData) {
@@ -261,38 +259,7 @@ function refreshIframe(){
   }
 }
 
-// console.log('Custom script injected');
-
-//Retrieve data from storage
-if (navigator.userAgent.includes("Chrome")) {
-  chrome.storage.local.get(["userData"], (result) => {
-    // console.log("Data retrieved:", result.userData);
-    userData = result.userData;
-  });
-} 
-else if (navigator.userAgent.includes("Firefox")) {
-  browser.storage.local.get('userData').then((result) => {
-    // console.log(result.userData);
-    userData = result.userData;
-  });
-}
-
-var iframes;
-var root;
-// This code will run when the page begins to load
-document.addEventListener("DOMContentLoaded", function() {
-
-  // Pre-enters text for deadlines portlet
-  if (!fixedID) {
-    const fixedID = document.getElementById('$fixedId')
-    if (fixedID) {
-      fixedID.innerHTML = `<h3>Loading Upcoming Deadlines...</h3>`;
-    }
-  }
-
-  root = document.documentElement;
-  updateTheme(userData, false);
-
+function setupIframeInjection(){
   iframes = [
     document.getElementById("mybbCanvas"),
     document.getElementById("right_stream_mygrades"),
@@ -320,30 +287,7 @@ document.addEventListener("DOMContentLoaded", function() {
       iframe.addEventListener('click', refreshIframe);
     }
   }
-
-  // Fixes specific bug with text "&" symbol
-  var element = document.getElementById("crumb_2");
-  if (element) {
-    var innerText = element.textContent.trim();
-    element.textContent = innerText.replace(/&amp;/g, '&');
-  }
-
-
-  // Fixes resizing bug with mobile breadcrumbs bar
-  const observerBread = new ResizeObserver(useBreadcrumbHeight);
-  const breadcrumbs = document.getElementById("breadcrumbs");
-  if (breadcrumbs) {
-    observerBread.observe(breadcrumbs);
-  }
-
-  // Prevents having to click again on whitelisted pages
-  document.querySelectorAll('a').forEach(checkWhitelistLink);
-
-  // Replaces some portlets in home page
-  replaceKitPortlet();
-  replaceLePortlet();
-});
-
+}
 
 // This stops the outside blackboard environment page for urls in allowedHrefs
 function checkWhitelistLink(anchor) {
@@ -359,7 +303,6 @@ function checkWhitelistLink(anchor) {
     console.log("Whitelisted: " + href);
   }
 }
-
 
 // adds top margin to content panel to account for the height 
 // of breadcrumbs on mobile
@@ -377,6 +320,7 @@ function useBreadcrumbHeight(entries) {
     }
   }
 }
+
 
 // Replaces "EvaluationKIT Course Evaluations" portlet with nav links
 function replaceKitPortlet(){
@@ -454,41 +398,103 @@ function replaceLePortlet() {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// This handles the tox iframes for text input in assessments
-function handleIframeAdded(iframeElement) {
-  addInlineStylesInIframe(iframeElement, toxCSS);
-}
-
 // Create a MutationObserver to watch for changes in the DOM
 // Needed as tox elements don't load instantly
-const observer = new MutationObserver((mutationsList) => {
-  for (const mutation of mutationsList) {
-    if (mutation.type === 'childList') {
-      // Check if any added nodes are iframes with the specified class
-      const addedNodes = Array.from(mutation.addedNodes);
-      for (const node of addedNodes) {
-        if (node instanceof HTMLIFrameElement && node.classList.contains('tox-edit-area__iframe')) {
-          handleIframeAdded(node);
+function observeAndStyleTox() {
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        // Check if any added nodes are iframes with the specified class
+        const addedNodes = Array.from(mutation.addedNodes);
+        for (const node of addedNodes) {
+          if (node instanceof HTMLIFrameElement && node.classList.contains('tox-edit-area__iframe')) {
+            addInlineStylesInIframe(node, toxCSS);
+          }
         }
       }
     }
-  }
-});
+  });
 
-// Start observing the entire document
-observer.observe(document, { childList: true, subtree: true });
+  // Start observing the entire document
+  observer.observe(document, { childList: true, subtree: true });
+}
+
+function fixBreadcrumbsResize(){
+  const observerBread = new ResizeObserver(useBreadcrumbHeight);
+  const breadcrumbs = document.getElementById("breadcrumbs");
+  if (breadcrumbs) {
+    observerBread.observe(breadcrumbs);
+  }
+}
+
+function replaceAmpersand(){
+  var element = document.getElementById("crumb_2");
+  if (element) {
+    var innerText = element.textContent.trim();
+    element.textContent = innerText.replace(/&amp;/g, '&');
+  }
+}
+
+
+
+
+// Function definitions end
+
+
+
+
+const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/', 'https://www.sli.do/', 'https://gitlab.cs.man.ac.uk/'];
+
+const navHrefs = [ 
+  ['https://studentadmin.manchester.ac.uk/CSPROD/signon.html', 'Student System'],
+  ['https://timetables.manchester.ac.uk/', 'Timetable'],
+  ['https://video.manchester.ac.uk/lectures/', 'Lecture Recordings'],
+  ['https://www.exams.manchester.ac.uk/exam-timetable/', 'Exam Timetable'],
+  ['https://studentadmin.manchester.ac.uk/psp/CSPROD/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL', 'Grades'],
+  ['https://www.library.manchester.ac.uk/', 'Library'],
+  ['https://studentnet.cs.manchester.ac.uk/me/spotv2/spotv2.php', 'SPOT (CS Students)'],
+  ['https://www.library.manchester.ac.uk/training/my-learning-essentials/', 'My Learning Essentials'],
+  ['https://manchester.evaluationkit.com/', 'Evaluation Kit']];
+
+//Retrieve data from storage
+if (navigator.userAgent.includes("Chrome")) {
+  chrome.storage.local.get(["userData"], (result) => {
+    // console.log("Data retrieved:", result.userData);
+    userData = result.userData;
+  });
+} 
+else if (navigator.userAgent.includes("Firefox")) {
+  browser.storage.local.get('userData').then((result) => {
+    // console.log(result.userData);
+    userData = result.userData;
+  });
+}
+
+var iframes;
+var root;
+var fixedID;
+loadDeadlinesIfHomepage();
+document.addEventListener("DOMContentLoaded", function() {
+  root = document.documentElement;
+  updateTheme(userData, false);
+
+  preloadDeadlinesIfHomepage(); // Pre-enters text for deadlines portlet
+ 
+  setupIframeInjection(); // sets up handling of iframe styles
+
+  replaceAmpersand(); // Fixes specific bug with text "&" symbol
+
+  fixBreadcrumbsResize(); // Fixes resizing bug with mobile breadcrumbs bar
+
+  observeAndStyleTox(); // Applies iframe styling to tox elements
+
+  // Prevents having to click again on whitelisted pages
+  document.querySelectorAll('a').forEach(checkWhitelistLink);
+
+  // Replaces some portlets in home page
+  replaceKitPortlet();
+  replaceLePortlet();
+});
 
 
 var toxCSSRoot = `
