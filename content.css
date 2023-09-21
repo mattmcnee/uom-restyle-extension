@@ -655,6 +655,10 @@ ol.breadcrumb-mobile-menu-open li{
   ---
 */
 
+.portlet a.deadlineLink{
+  color: var(--text-light) !important;
+}
+
 .locationPane .contentBox + div div div{
   border-top-color: var(--background-main) !important;
   border-bottom-color: var(--background-main-outline) !important;

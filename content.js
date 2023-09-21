@@ -1,80 +1,93 @@
-function loadDeadlinesIfHomepage(){
-  if (window.location.pathname === "/webapps/portal/execute/tabs/tabAction") {
-    // On Blackboard homepage, so need to apply changes
+function loadDeadlinesIfHomepage() {
+  const homepagePath = "/webapps/portal/execute/tabs/tabAction";
+  
+  if (window.location.pathname === homepagePath) {
+    console.log("hello");
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Start of the day
-    // Load deadlines to where welcome image was originally
+    today.setHours(0, 0, 0, 0);
 
     const xhr = new XMLHttpRequest();
-    const eventsUrl = `https://online.manchester.ac.uk/webapps/calendar/calendarData/selectedCalendarEvents?start=${Math.round((new Date()).getTime() / 1000)}`;
+    const eventsUrl = `https://online.manchester.ac.uk/webapps/calendar/calendarData/selectedCalendarEvents?start=${Math.round(new Date().getTime() / 1000)}`;
+    
     xhr.open('GET', eventsUrl, true);
     xhr.responseType = 'json';
+    
     xhr.onload = () => {
-      // Parse JSON for events
-      const events = [];
-      for (let i = 0; i < xhr.response.length; i++) {
-        const event = xhr.response[i];
-        if (event.id.indexOf('GradableItem') === -1) {
-          // Not a deadline, so ignore calendar event
-          continue;
-        }
-        let courseName = event.calendarName.split(' ');
-        courseName = courseName.splice(0, courseName.length - 3).join(' ');
-        events.push({
-          uid: event.id,
-          title: event.title,
-          course: courseName,
-          date: new Date(event.startDate),
-          url: event.attemptable ? `https://online.manchester.ac.uk/webapps/calendar/launch/attempt/${event.id}` : null
-        })
-      }
-      events.sort((a, b) => a.date - b.date);
+      const events = xhr.response.filter(event => event.id.indexOf('GradableItem') !== -1);
+      events.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+      const ulElement = document.createElement('ul');
+      ulElement.classList.add('listElement');
 
       const now = new Date();
       now.setHours(now.getHours() + 1);
-      // Append future deadlines to the page
-      let items = [];
-      for (let i = 0; i < events.length; i++) {
-        const event = events[i];
-        const dayDiff = Math.round((event.date.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 
-        // Add a condition to only include events less than 32 days away
-        if (dayDiff < 32) {
-          if (event.date < today) continue;
-          if (event.date.toDateString() === today.toDateString()) {
-            // Due today
-            items.push(`<li><a href="${event.url}" style="color: ${now >= event.date ? 'red' : 'orange'}">
-              <b>${event.course}</b><br>
-              ${event.title}<br>
-              <b>Today</b>, ${event.date.toLocaleString().substr(12, event.date.toLocaleString().length - 15) /* Exclude minutes from date */}
-            </a></li>`);
+      for (const event of events) {
+        const dayDiff = Math.round((new Date(event.startDate).getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+        
+        if (dayDiff < 32 && new Date(event.startDate) >= today) {
+          const liElement = document.createElement('li');
+          const aElement = document.createElement('a');
+          
+          if (event.attemptable) {
+            aElement.href = `https://online.manchester.ac.uk/webapps/calendar/launch/attempt/${event.id}`;
           } else {
-            // Not due today
-            // TODO: support 'tomorrow'
-            items.push(`<li>${event.url ? `<a href="${event.url}">`: ``}
-              <b>${event.course}</b><br>
-              ${event.title}<br>
-              ${event.date.toLocaleString().substr(0, event.date.toLocaleString().length - 3) /* Exclude minutes from date */} (${dayDiff} days)
-            ${event.url ? `</a>` : ``}</li>`);
+            aElement.style.cursor = 'default'; // Set cursor to default for unattemptable events
           }
+          // aElement.style.color = now >= new Date(event.startDate) ? 'red' : 'orange';
+          aElement.classList.add('deadlineLink');
+
+          const bElement = document.createElement('b');
+          bElement.textContent = event.calendarName.split(' ').splice(0, event.calendarName.split(' ').length - 3).join(' ');
+          
+          const titleElement = document.createTextNode(event.title);
+          const brElement = document.createElement('br');
+          const dateText = (new Date(event.startDate).toDateString() === today.toDateString()) ? 'Today' : new Date(event.startDate).toLocaleString().substr(0, new Date(event.startDate).toLocaleString().length - 3) + ` (${dayDiff} days)`;
+          
+          aElement.appendChild(bElement);
+          aElement.appendChild(brElement);
+          aElement.appendChild(titleElement);
+
+          if (dateText === 'Today') {
+            const bElement2 = document.createElement('b');
+            bElement2.textContent = dateText;
+            aElement.appendChild(bElement2);
+            aElement.appendChild(document.createTextNode(`, ${new Date(event.startDate).toLocaleString().substr(12, new Date(event.startDate).toLocaleString().length - 15)}`));
+          } else {
+            aElement.appendChild(document.createTextNode(dateText));
+          }
+          
+          liElement.appendChild(aElement);
+          ulElement.appendChild(liElement);
         }
       }
-      fixedID = document.getElementById('$fixedId')
+      fixedID = document.getElementById('$fixedId');
       if (fixedID) {
-        fixedID.innerHTML = `<h3>Upcoming Deadlines</h3><ul class="listElement">${items.join('')}</ul>`;
+        // Clear existing content
+        while (fixedID.firstChild) {
+          fixedID.removeChild(fixedID.firstChild);
+        }
+
+        fixedID.appendChild(document.createElement('h3')).textContent = 'Upcoming Deadlines';
+        fixedID.appendChild(ulElement);
       }
-     // Now, 'events' contains the gradable calendar events.
     };
+
     xhr.send();
   }
 }
+
+
 
 function preloadDeadlinesIfHomepage(){
   if (window.location.pathname === "/webapps/portal/execute/tabs/tabAction") {
     if (!fixedID) {
       const fixedID = document.getElementById('$fixedId')
       if (fixedID) {
-        fixedID.innerHTML = `<h3>Loading Upcoming Deadlines...</h3>`;
+        while (fixedID.firstChild) {
+          fixedID.removeChild(fixedID.firstChild);
+        }
+        fixedID.appendChild(document.createElement('h3')).textContent = 'Loading Upcoming Deadlines...';
       }
     }
   }
