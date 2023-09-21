@@ -32,7 +32,7 @@ function loadDeadlinesIfHomepage() {
           if (event.attemptable) {
             aElement.href = `https://online.manchester.ac.uk/webapps/calendar/launch/attempt/${event.id}`;
           } else {
-            aElement.style.cursor = 'default'; // Set cursor to default for unattemptable events
+            aElement.style.cursor = 'text'; // Set cursor to default for unattemptable events
           }
           // aElement.style.color = now >= new Date(event.startDate) ? 'red' : 'orange';
           aElement.classList.add('deadlineLink');
@@ -379,7 +379,7 @@ function replaceKitPortlet(){
   }
 }
 
-function replaceLePortletWhenReady() {
+function replaceLePortlet() {
   const observer = new MutationObserver(function (mutationsList, observer) {
     const lePortlet = document.getElementById('module:_422_1');
     if (lePortlet) {
