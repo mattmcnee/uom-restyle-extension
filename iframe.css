@@ -124,7 +124,7 @@
 #streamDetailHeaderRight .context h2 a, #dynamic_filters_alerts li a,
 #filter_type_all_alerts:before, #settingsContainer_alerts .streamSettingHelpLinks a,
 #left_stream_alerts .inlineContextMenu a, .streamOverview-more-items a,
-#streamDetailHeaderRightClickable a, .profile-card a, .stream_item a
+#streamDetailHeaderRightClickable a, .profile-card a, .stream_item a, #gotocourseobjectlink
 {
   color: var(--text-link) !important;
 }
@@ -836,4 +836,14 @@ ul.streamSettingHelpLinks{
 
 .author a {
   text-decoration: none !important;
+}
+
+.stream_left .announcementBody div {
+  background-color: transparent !important;
+  border-radius: 6px;
+  border-color: var(--background-main-outline) !important;
+}
+
+.ui-dialog span{
+  color: var(--text-main) !important;
 }
