@@ -279,6 +279,38 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
   background-color: var(--background-tint-2-highlight) !important;
 }
 
+/*
+  ---
+  ---
+  --- Scrollbar
+  ---
+  ---
+*/
+
+
+/* For Chrome */
+.portlet ::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-main);
+}
+
+.portlet ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-button);
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
 
 
 
@@ -678,13 +710,13 @@ ol.breadcrumb-mobile-menu-open li{
   color: var(--text-link) !important;
 }
 
-.portlet .collapsible{
+.portlet .collapsible:not(.tabcontent){
    max-height: 100vh !important;
   overflow-y: hidden !important;
   border-color: var(--background-main-outline) !important;
 }
 
-.portlet .collapsible:hover{
+.portlet .collapsible:not(.tabcontent):hover{
   overflow-y: auto !important;
 }
 
@@ -1066,7 +1098,8 @@ ol.breadcrumb-mobile-menu-open li{
   background-color: var(--background-main-outline) !important;
 }
 
-.contentList .details .vtbegenerated_div, .contentList .details li{
+.contentList .details .vtbegenerated_div, .contentList .details li,
+.contentList .details strong{
   color: var(--text-main) !important;
 }
 
@@ -2007,6 +2040,35 @@ div.collectionViewReadMessageBorder{
 #announcementList .itemDetails, #announcementList .announcementInfo {
   top: 0 !important;
   bottom: 0 !important;
+}
+
+.standardtable tr{
+  background-color: var(--background-tint-1) !important;
+}
+
+.standardtable tr:hover{
+  background-color: var(--background-tint-1-highlight) !important;
+}
+
+.topaligntable tr:nth-child(even) {
+    background-color: var(--background-tint-2) !important;
+}
+
+.topaligntable tr:nth-child(odd) {
+    background-color: var(--background-tint-1) !important;
+}
+
+.topaligntable tr:not(:first-child){
+  border-top: 1px solid var(--background-main-outline) !important;
+}
+
+.topaligntable tr td:not(:first-child){
+  border-left: 1px solid var(--background-main-outline) !important;
+}
+
+.topaligntable th{
+  background-color: var(--secondary-button) !important;
+  color: var(--secondary-button-text) !important;
 }
 
 
