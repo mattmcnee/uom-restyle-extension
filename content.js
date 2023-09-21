@@ -379,44 +379,52 @@ function replaceKitPortlet(){
   }
 }
 
-function replaceLePortlet() {
-  const lePortlet = document.getElementById('module:_422_1');
-  if (lePortlet) {
+function replaceLePortletWhenReady() {
+  const observer = new MutationObserver(function (mutationsList, observer) {
+    const lePortlet = document.getElementById('module:_422_1');
+    if (lePortlet) {
+      // Disconnect the observer once lePortlet is found
+      observer.disconnect();
 
-    // Adds Font Awesome to the page for icons
-    var faLink = document.createElement('link');
-    faLink.rel = 'stylesheet';
-    faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
-    document.head.appendChild(faLink);
+      // Rest of your code here
+      var faLink = document.createElement('link');
+      faLink.rel = 'stylesheet';
+      faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
+      document.head.appendChild(faLink);
 
-    var leTitle = lePortlet.querySelector('.moduleTitle');
-    if (leTitle) {
-      leTitle.textContent = 'UoM Blackboard Restyle';
+      var leTitle = lePortlet.querySelector('.moduleTitle');
+      if (leTitle) {
+        leTitle.textContent = 'UoM Blackboard Restyle';
+      }
+      var leContent = lePortlet.querySelector('#div_422_1');
+      if (leContent) {
+        leContent.style.display = 'none';
+      }
+      var leBody = lePortlet.querySelector('.collapsible');
+      if (leBody) {
+        // Create a div element
+        var customDiv = document.createElement('div');
+
+        var leStartText = document.createTextNode('You are currently using UoM Blackboard Restyle. To open extension settings click the jigsaw icon (');
+        var leEndText = document.createTextNode(') in the top right of the browser. Select "UoM Blackboard Restyle" to change the style. Select "Manage extensions" to disable this extension.');
+        var puzzlePieceIcon = document.createElement('i');
+        puzzlePieceIcon.classList.add('fas', 'fa-puzzle-piece');
+        puzzlePieceIcon.style.opacity = '0.8';
+
+        customDiv.appendChild(leStartText);
+        customDiv.appendChild(puzzlePieceIcon);
+        customDiv.appendChild(leEndText);
+
+        // Append the custom div to leBody
+        leBody.appendChild(customDiv);
+      }
     }
-    var leContent = lePortlet.querySelector('#div_422_1');
-    if (leContent) {
-      leContent.style.display = 'none';
-    }
-    var leBody = lePortlet.querySelector('.collapsible');
-    if (leBody) {
-    // Create a div element
-    var customDiv = document.createElement('div');
+  });
 
-    var leStartText = document.createTextNode('You are currently using UoM Blackboard Restyle. To open extension settings click the jigsaw icon (');
-    var leEndText = document.createTextNode(') in the top right of the browser. Select "UoM Blackboard Restyle" to change the style. Select "Manage extensions" to disable this extension.');
-    var puzzlePieceIcon = document.createElement('i');
-    puzzlePieceIcon.classList.add('fas', 'fa-puzzle-piece');
-    puzzlePieceIcon.style.opacity = '0.8';
-
-    customDiv.appendChild(leStartText);
-    customDiv.appendChild(puzzlePieceIcon);
-    customDiv.appendChild(leEndText);
-    
-    // Append the custom div to leBody
-    leBody.appendChild(customDiv);     
-    }
-  }
+  // Start observing changes in the document
+  observer.observe(document, { childList: true, subtree: true });
 }
+
 
 // Create a MutationObserver to watch for changes in the DOM
 // Needed as tox elements don't load instantly
