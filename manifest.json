@@ -19,6 +19,11 @@
       "128": "icon-128.png"
     },
     "default_popup": "popup.html"
+  },
+  "browser_specific_settings": {
+  "gecko": {
+    "id": "restyleExtension@gmail.com",
+    "strict_min_version": "109.0"
   }
 }
 
