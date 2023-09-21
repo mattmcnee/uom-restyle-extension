@@ -839,7 +839,7 @@ ol.breadcrumb-mobile-menu-open li{
 
 .cmdiv:not([id*="actionMenu_"]) ul a{
   color: var(--text-main) !important;
-  background-color: var(--background-main) !important;
+  background-color: transparent !important;
 }
 
 .cmdiv:not([id*="actionMenu_"]) ul a:hover{
@@ -863,7 +863,7 @@ ol.breadcrumb-mobile-menu-open li{
 
 .cmdiv:not([id*="actionMenu_"]) ul li.contextmenubar_top a,
 .cmdiv:not([id*="actionMenu_"]) ul li.contextmenubar_top a:hover{
-  background-color: var(--background-main) !important;
+  background-color: transparent !important;
 }
 
 
@@ -1258,6 +1258,11 @@ ol.breadcrumb-mobile-menu-open li{
   ---
   ---
 */
+
+.db-reply-block, .reply-lvl-0 .messageTemplate {
+  box-shadow: none !important;
+  border: none !important;
+}
 
 .message-wrapper-inner form .dbThread{
   background-color: transparent !important;
@@ -2573,6 +2578,8 @@ div[id*="step"]{
   .actionBar{
     margin: 10px 30px !important;
   }
+
+
 
 
   .paging .pagingprefs{
