@@ -343,41 +343,51 @@ function useBreadcrumbHeight(entries) {
 
 
 // Replaces "EvaluationKIT Course Evaluations" portlet with nav links
-function replaceKitPortlet(){
-  const kitPortlet = document.getElementById('module:_334_1');
-  if (kitPortlet) {
-    var kitTitle = kitPortlet.querySelector('.moduleTitle');
-    if (kitTitle) {
-        kitTitle.textContent = 'Navigation Links';
-    }
-    var kitContent = kitPortlet.querySelector('#ek-widget');
-    if (kitContent) {
-        kitContent.style.display = 'none';
-    }
+function replaceKitPortlet() {
+  const observer = new MutationObserver(function (mutationsList, observer) {
+    const kitPortlet = document.getElementById('module:_334_1');
+    if (kitPortlet) {
+      // Disconnect the observer once kitPortlet is found
+      observer.disconnect();
 
-    var kitBody = kitPortlet.querySelector('.collapsible');
-    
-    // Create an unordered list
-    var ul = document.createElement('ul');
-    ul.classList.add('listElement');
+      // Rest of your code here
+      var kitTitle = kitPortlet.querySelector('.moduleTitle');
+      if (kitTitle) {
+          kitTitle.textContent = 'Navigation Links';
+      }
+      var kitContent = kitPortlet.querySelector('#ek-widget');
+      if (kitContent) {
+          kitContent.style.display = 'none';
+      }
 
-    // Loop through the navHrefs array and create list items with anchor elements
-    for (var i = 0; i < navHrefs.length; i++) {
-      var linkData = navHrefs[i];
-      var li = document.createElement('li');
-      
-      var link = document.createElement('a');
-      link.href = linkData[0]; // URL
-      link.textContent = linkData[1]; // Link text
-      
-      li.appendChild(link);
-      ul.appendChild(li);
+      var kitBody = kitPortlet.querySelector('.collapsible');
+
+      // Create an unordered list
+      var ul = document.createElement('ul');
+      ul.classList.add('listElement');
+
+      // Loop through the navHrefs array and create list items with anchor elements
+      for (var i = 0; i < navHrefs.length; i++) {
+        var linkData = navHrefs[i];
+        var li = document.createElement('li');
+
+        var link = document.createElement('a');
+        link.href = linkData[0]; // URL
+        link.textContent = linkData[1]; // Link text
+
+        li.appendChild(link);
+        ul.appendChild(li);
+      }
+
+      // Append the ul to the kitBody
+      kitBody.appendChild(ul);
     }
-    
-    // Append the ul to the kitBody
-    kitBody.appendChild(ul);
-  }
+  });
+
+  // Start observing changes in the document
+  observer.observe(document, { childList: true, subtree: true });
 }
+
 
 function replaceLePortlet() {
   const observer = new MutationObserver(function (mutationsList, observer) {
