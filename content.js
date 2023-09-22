@@ -423,22 +423,34 @@ function replaceLePortlet() {
       }
       var leBody = lePortlet.querySelector('.collapsible');
       if (leBody) {
-        // Create a div element
-        var customDiv = document.createElement('div');
+          // Create a div element
+          var customDiv = document.createElement('div');
 
-        var leStartText = document.createTextNode('You are currently using UoM Blackboard Restyle. To open extension settings click the jigsaw icon (');
-        var leEndText = document.createTextNode(') in the top right of the browser. Select "UoM Blackboard Restyle" to change the style. Select "Manage extensions" to disable this extension.');
-        var puzzlePieceIcon = document.createElement('i');
-        puzzlePieceIcon.classList.add('fas', 'fa-puzzle-piece');
-        puzzlePieceIcon.style.opacity = '0.8';
+          var leStartText = document.createTextNode('You are currently using UoM Blackboard Restyle. To open extension settings click the jigsaw icon (');
+          var leEndText = document.createTextNode(') in the top right of the browser. Select "UoM Blackboard Restyle" to change the style. Select "Manage extensions" to disable this extension.');
+          var puzzlePieceIcon = document.createElement('i');
+          puzzlePieceIcon.classList.add('fas', 'fa-puzzle-piece');
+          puzzlePieceIcon.style.opacity = '0.8';
 
-        customDiv.appendChild(leStartText);
-        customDiv.appendChild(puzzlePieceIcon);
-        customDiv.appendChild(leEndText);
+          // Create an anchor (link) element
+          var webLink = document.createElement('a');
+          webLink.href = "https://uom-blackboard-restyle.web.app/feedback.html";
+          webLink.textContent = "here."; // Text for the link
 
-        // Append the custom div to leBody
-        leBody.appendChild(customDiv);
+          var breakElement = document.createElement('hr');
+          var linkText = document.createTextNode('To give feedback or request new feature, click ');
+
+          customDiv.appendChild(leStartText);
+          customDiv.appendChild(puzzlePieceIcon);
+          customDiv.appendChild(leEndText);
+          customDiv.appendChild(breakElement);
+          customDiv.appendChild(linkText);
+          customDiv.appendChild(webLink);
+
+          // Append the custom div and link to leBody
+          leBody.appendChild(customDiv);
       }
+
     }
   });
 
