@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="icon-128.ico">
+    <title>UoM Blackboard Restyle</title>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #5E0366;
+            color: #fff;
+            padding: 20px;
+        }
+        h2 {
+            margin: 0;
+        }
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        h2 a, h2 a:hover{
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+    form {
+        max-width: calc(100% - 20px);
+    }
+
+    label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    textarea{
+        resize: vertical;
+        height: 5em;
+    }
+
+    button, .aButton{
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #666;
+        font-size: 0.8em;
+    }
+
+    button:hover, .aButton:hover{
+        background-color: #444;
+        text-decoration: none;
+    }
+
+    button[type="submit"] {
+        background-color: #007BFF;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2><a href="index.html">UoM Blackboard Restyle</a></h2>
+    </header>
+    <main>
+        <h2>Feedback</h2>
+        <p>
+            <div>
+            <form action="https://formsubmit.co/mattrmcnee@gmail.com" method="POST">
+                <label for="name">Contact name</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <label for="email">Contact email</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="type">Issue / feature request</label>
+                <textarea id="type" name="type" required ></textarea>
+                <br>
+                <a class="aButton" href="index.html">Cancel</a>
+                <button type="submit">Send</button>
+            </form>
+            </div>
+
+        </p>
+
+    </main>
+
+
+
+
+
+
+    
+
+</body>
+</html>

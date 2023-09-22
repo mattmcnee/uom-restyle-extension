@@ -200,13 +200,24 @@ function addStyles(iframeDocument, cssRules) {
     iframeDocument.getElementById("right_stream_stream")
   ]
 
-  for (const iframe of babyIframes) {
-    if (iframe !== null) {
-      // console.log("Adding iframe" + iframe);
-      addInlineStylesInIframe(iframe, inlineCSS);
-      break;
+  let runCount = 0;
+
+  function fillBabyIframes() {
+    if (runCount < 10) {
+      for (const iframe of babyIframes) {
+        if (iframe !== null) {
+          addInlineStylesInIframe(iframe, inlineCSS);
+          break;
+        }
+      }
+      runCount++;
     }
   }
+
+  // Hacky solution to style loading issue
+  fillBabyIframes();
+  // setInterval(fillBabyIframes, 100);
+
 }
 
 function updateStyles(message){
@@ -632,7 +643,10 @@ var inlineCSSCont = `
 
 /* iframePrimaryButton */
 #ical, #createeventbutton,
-.ui-dialog-buttonset button:last-child{
+.ui-dialog-buttonset button:last-child,
+.threadButtons a:first-child,
+.button-1 
+{
   background-image: none !important;
   outline: none !important;
   border: none !important;
@@ -645,13 +659,19 @@ var inlineCSSCont = `
 
 /* iframePrimaryButton:hover */
 #ical:hover, #createeventbutton:hover,
-.ui-dialog-buttonset button:last-child:hover{
+.ui-dialog-buttonset button:last-child:hover,
+.threadButtons a:first-child:hover,
+.button-1:hover
+{
   background-color: var(--primary-button-highlight) !important;
 }
 
 /* iframeButtonSecondary */
 .fc-button-main:not(.fc-button-img), .streamSettingButtons .genericButton,
-.ui-dialog-buttonset button:first-child {
+.ui-dialog-buttonset button:first-child,
+.threadButtons a:not(:first-child),
+#msgAttachment_localBrowse, #msgAttachment_csBrowse, .button-2 
+{
   background-image: none !important;
   outline: none !important;
   border: none !important;
@@ -664,7 +684,10 @@ var inlineCSSCont = `
 
 /* iframeButtonSecondary:hover */
 .fc-button-main:not(.fc-button-img):hover, .streamSettingButtons .genericButton:hover, 
-.ui-dialog-buttonset button:first-child:hover{
+.ui-dialog-buttonset button:first-child:hover,
+.threadButtons a:not(:first-child):hover,
+#msgAttachment_localBrowse:hover, #msgAttachment_csBrowse:hover, .button-2:hover
+{
   background-color: var(--secondary-button-highlight) !important;
   cursor: pointer;
 }
@@ -1430,13 +1453,41 @@ ul.streamSettingHelpLinks{
 }
 
 .stream_left .announcementBody div {
-    background-color: transparent !important;
-    border-radius: 6px;
-    border-color: var(--background-main-outline) !important;
+  background-color: transparent !important;
+  border-radius: 6px;
+  border-color: var(--background-main-outline) !important;
 }
 
 .ui-dialog span{
   color: var(--text-main) !important;
+}
+
+.lb-wrapper .lb-content, .lb-wrapper .lb-content .content-lite {
+    background-color: var(--background-main) !important;
+    border-color: var(--background-main-outline) !important;
+}
+
+input[type="text"], input[type="password"], select {
+  background-color: var(--background-main) !important;
+  border-color: var(--background-main-outline) !important;
+  color: var(--text-main) !important;
+  border-style: solid !important;
+  border-radius: 2px !important;
+  border-width: 1px !important;
+}
+
+.submitStepBottom{
+  border-top-left-radius: 6px !important;
+  border-top-right-radius: 6px !important;
+  border: none !important;
+}
+
+.submitStepBottom:not(.submitStepFixed){
+  background-color: transparent !important;
+}
+
+.submitStepFixed{
+  background-color: var(--background-main-outline);
 }
 
 `;

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="icon-128.ico">
+    <title>UoM Blackboard Restyle</title>
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #5E0366;
+            color: #fff;
+            padding: 20px;
+        }
+        h2 {
+            margin: 0;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 0 auto; 
+            max-width: 90%;
+        }
+        .carousel img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+    form {
+        max-width: calc(100% - 20px);
+    }
+
+    label {
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    textarea{
+        resize: vertical;
+        height: 5em;
+    }
+
+    button{
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #666;
+    }
+
+    button:hover{
+        background-color: #444;
+    }
+
+    button[type="submit"] {
+        background-color: #007BFF;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2>UoM Blackboard Restyle</h2>
+    </header>
+    <main>
+        <h2>About UoM Blackboard Restyle</h2>
+        <p>
+            A cleaner interface for the University of Manchester Blackboard with custom themes and dark mode. This provides a universal design to Blackboard with consistent fonts, colours and styling. It fixes many of the resizing and positioning issues present in Blackboard.
+        </p>
+
+        <h2>Setup</h2>
+        <p>
+            For Chrome this can be downloaded from the Chrome Web Store <a href="https://chrome.google.com/webstore/detail/uom-blackboard-restyle/bfadimingfhacpedgapjpnhikcbjhbmn">here</a> or loaded from <a href="https://github.com/mattmcnee/uom-restyle-extension/blob/main/uom-restyle-extension.zip">uom-restyle-extension.zip</a>.
+        </p>
+        <p>
+
+            For Firefox, this can be loaded from <a href="https://github.com/mattmcnee/uom-restyle-extension/blob/main/uom-restyle-extension.xpi">uom-restyle-extension.xpi</a>.
+        </p>
+        <p>
+
+            Allow the extension to read and change your data at online.manchester.ac.uk for it to work properly. It needs this access to apply style changes to the loaded page. No personal data is changed or stored.
+        </p>
+
+        <h2>Feedback</h2>
+        <p>
+            <div id="feedback-text">
+                If you have encountered an issue with extension or would like to submit a feature request, please click <a href="feedback.html">here</a>.
+            </div>
+
+        </p>
+        <h2>Details</h2>
+        <p>
+    The following themes are available in both light and dark mode:
+  <ul>
+    <li>Default (Purple)</li>
+    <li>Blackboard (Grey)</li>
+    <li>Ocean (Light Blue)</li>
+    <li>UoM Purple (Same Purple as UoM Logo)</li>
+    <li>Art Deco (Green and Gold Pattern)</li>
+    <li>Tron (Black and Neon Blue Pattern)</li>
+    <li>Rustic (Reddish Brown)</li>
+    <li>Camo (Brown and Green Pattern)</li>
+  </ul>
+  Upcoming deadlines are visible on the Blackboard home page, as well as links to:
+  <ul>
+    <li>Student System</li>
+    <li>Timetable</li>
+    <li>Lecture Recordings</li>
+    <li>Exam Timetable</li>
+    <li>Grades</li>
+    <li>Library</li>
+    <li>SPOT (CS Students)</li>
+    <li>My Learning Essentials</li>
+    <li>Evaluation Kit</li>
+  </ul>
+        </p>
+
+        <p>
+            Assessment paragraph entry boxes on dark mode by default display white text but will submit black text (clearly visible on standard Blackboard). If you change the text colour, the submission will be this colour. Be aware that a submission of white text is not clearly visible on Blackboard.
+        </p>
+        <p>
+The following URLs are whitelisted by the extension (Blackboard won't warn you that you're leaving the learning environment): 'https://zoom.us/', 'https://piazza.com/', 'https://www.sli.do/', 'https://gitlab.cs.man.ac.uk/'.
+</p>
+
+
+
+        <h2>Screenshots</h2>
+        <p>
+        <div class="carousel">
+            <img src="webstore-old-example-1.png" alt="Image 1">
+            <img src="webstore-new-example-1.png" alt="Image 2">
+            <img src="webstore-old-example-2.png" alt="Image 3">
+            <img src="webstore-new-example-2.png" alt="Image 4">
+        </div>
+        </p>
+    </main>
+
+
+
+
+
+
+
+    
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const images = document.querySelectorAll('.carousel img');
+        let counter = 0;
+        let translateValue = 0;
+
+        function slide() {
+            translateValue -= 100;
+            counter++;
+            if (counter === images.length) {
+                translateValue = 0;
+                counter = 0;
+            }
+            
+            for (let i = 0; i < images.length; i++) {
+                images[i].style.transform = `translateX(${translateValue}%)`;
+            }
+            
+            setTimeout(() => {
+                carousel.style.transition = 'none';
+            }, 500);
+            
+            setTimeout(slide, 3000); // Change slide every 3 seconds
+        }
+
+        setTimeout(slide, 3000);
+    </script>
+</body>
+</html>
