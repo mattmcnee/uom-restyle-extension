@@ -2672,3 +2672,9 @@ div[id*="step"]{
   }
 }
 
+@media only screen and (max-width: 1037px){
+  div#column0>div.portlet:first-child {
+    display: block !important;
+  }
+}
+

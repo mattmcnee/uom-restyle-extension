@@ -355,107 +355,134 @@ function useBreadcrumbHeight(entries) {
 
 // Replaces "EvaluationKIT Course Evaluations" portlet with nav links
 function replaceKitPortlet() {
-  const observer = new MutationObserver(function (mutationsList, observer) {
-    const kitPortlet = document.getElementById('module:_334_1');
-    if (kitPortlet) {
-      // Disconnect the observer once kitPortlet is found
-      observer.disconnect();
+  const portletColumn0 = document.getElementById("column0");
+  if (portletColumn0) {
+  forceDisplayNoneById("module:_334_1");
 
-      // Rest of your code here
-      var kitTitle = kitPortlet.querySelector('.moduleTitle');
-      if (kitTitle) {
-          kitTitle.textContent = 'Navigation Links';
-      }
-      var kitContent = kitPortlet.querySelector('#ek-widget');
-      if (kitContent) {
-          kitContent.style.display = 'none';
-      }
+  // Create new portlet
+  const kitPortlet = document.createElement("div");
+  kitPortlet.classList.add("portlet", "clearfix");
 
-      var kitBody = kitPortlet.querySelector('.collapsible');
+  // Add the header
+  const h2Element = document.createElement("h2");
+  h2Element.className = "clearfix";
+  const spanElement = document.createElement("span");
+  spanElement.className = "moduleTitle";
+  spanElement.textContent = "Navigation Links";
+  h2Element.appendChild(spanElement);
+  kitPortlet.appendChild(h2Element);
 
-      // Create an unordered list
-      var ul = document.createElement('ul');
-      ul.classList.add('listElement');
+  const kitBody = document.createElement("div");
+  kitBody.classList.add("collapsible");
 
-      // Loop through the navHrefs array and create list items with anchor elements
-      for (var i = 0; i < navHrefs.length; i++) {
-        var linkData = navHrefs[i];
-        var li = document.createElement('li');
+  // Create an unordered list
+  var ul = document.createElement('ul');
+  ul.classList.add('listElement');
 
-        var link = document.createElement('a');
-        link.href = linkData[0]; // URL
-        link.textContent = linkData[1]; // Link text
+  // Loop through the navHrefs array and create list items with anchor elements
+  for (var i = 0; i < navHrefs.length; i++) {
+    var linkData = navHrefs[i];
+    var li = document.createElement('li');
 
-        li.appendChild(link);
-        ul.appendChild(li);
-      }
+    var link = document.createElement('a');
+    link.href = linkData[0]; // URL
+    link.textContent = linkData[1]; // Link text
 
-      // Append the ul to the kitBody
-      kitBody.appendChild(ul);
-    }
-  });
+    li.appendChild(link);
+    ul.appendChild(li);
+  }
 
-  // Start observing changes in the document
-  observer.observe(document, { childList: true, subtree: true });
+  // Append the ul to the kitBody
+  kitBody.appendChild(ul);
+  kitPortlet.appendChild(kitBody);
+
+  var firstChild = portletColumn0.firstChild.nextSibling.nextSibling;
+  portletColumn0.insertBefore(kitPortlet, firstChild);
+  }
 }
 
 
 function replaceLePortlet() {
-  const observer = new MutationObserver(function (mutationsList, observer) {
-    const lePortlet = document.getElementById('module:_422_1');
-    if (lePortlet) {
-      // Disconnect the observer once lePortlet is found
-      observer.disconnect();
+  const portletColumn0 = document.getElementById("column0");
+  if (portletColumn0) {
+    forceDisplayNoneById("module:_422_1");
 
-      // Rest of your code here
-      var faLink = document.createElement('link');
-      faLink.rel = 'stylesheet';
-      faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
-      document.head.appendChild(faLink);
+    var faLink = document.createElement('link');
+    faLink.rel = 'stylesheet';
+    faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
+    document.head.appendChild(faLink);
 
-      var leTitle = lePortlet.querySelector('.moduleTitle');
-      if (leTitle) {
-        leTitle.textContent = 'UoM Blackboard Restyle';
-      }
-      var leContent = lePortlet.querySelector('#div_422_1');
-      if (leContent) {
-        leContent.style.display = 'none';
-      }
-      var leBody = lePortlet.querySelector('.collapsible');
-      if (leBody) {
-          // Create a div element
-          var customDiv = document.createElement('div');
+    // Create new portlet
+    const kitPortlet = document.createElement("div");
+    kitPortlet.classList.add("portlet", "clearfix");
 
-          var leStartText = document.createTextNode('You are currently using UoM Blackboard Restyle. To open extension settings click the jigsaw icon (');
-          var leEndText = document.createTextNode(') in the top right of the browser. Select "UoM Blackboard Restyle" to change the style. Select "Manage extensions" to disable this extension.');
-          var puzzlePieceIcon = document.createElement('i');
-          puzzlePieceIcon.classList.add('fas', 'fa-puzzle-piece');
-          puzzlePieceIcon.style.opacity = '0.8';
+    // Add the header
+    const h2Element = document.createElement("h2");
+    h2Element.className = "clearfix";
+    const spanElement = document.createElement("span");
+    spanElement.className = "moduleTitle";
+    spanElement.textContent = "UoM Blackboard Restyle";
+    h2Element.appendChild(spanElement);
+    kitPortlet.appendChild(h2Element);
 
-          // Create an anchor (link) element
-          var webLink = document.createElement('a');
-          webLink.href = "https://uom-blackboard-restyle.web.app/feedback.html";
-          webLink.textContent = "here."; // Text for the link
+    const kitBody = document.createElement("div");
+    kitBody.classList.add("collapsible");
 
-          var breakElement = document.createElement('hr');
-          var linkText = document.createTextNode('To give feedback or request new feature, click ');
+    var customDiv = document.createElement('div');
 
-          customDiv.appendChild(leStartText);
-          customDiv.appendChild(puzzlePieceIcon);
-          customDiv.appendChild(leEndText);
-          customDiv.appendChild(breakElement);
-          customDiv.appendChild(linkText);
-          customDiv.appendChild(webLink);
+    var leStartText = document.createTextNode('You are currently using UoM Blackboard Restyle. To open extension settings click the jigsaw icon (');
+    var leEndText = document.createTextNode(') in the top right of the browser. Select "UoM Blackboard Restyle" to change the style. Select "Manage extensions" to disable this extension.');
+    var puzzlePieceIcon = document.createElement('i');
+    puzzlePieceIcon.classList.add('fas', 'fa-puzzle-piece');
+    puzzlePieceIcon.style.opacity = '0.8';
 
-          // Append the custom div and link to leBody
-          leBody.appendChild(customDiv);
-      }
+    // Create an anchor (link) element
+    var webLink = document.createElement('a');
+    webLink.href = "https://uom-blackboard-restyle.web.app/feedback.html";
+    webLink.textContent = "here."; // Text for the link
 
-    }
-  });
+    var breakElement = document.createElement('hr');
+    var linkText = document.createTextNode('To give feedback or request new feature, click ');
 
-  // Start observing changes in the document
-  observer.observe(document, { childList: true, subtree: true });
+    customDiv.appendChild(leStartText);
+    customDiv.appendChild(puzzlePieceIcon);
+    customDiv.appendChild(leEndText);
+    customDiv.appendChild(breakElement);
+    customDiv.appendChild(linkText);
+    customDiv.appendChild(webLink);
+
+    // Append the custom div and link to leBody
+    kitBody.appendChild(customDiv);
+
+    // Append the ul to the kitBody
+    kitPortlet.appendChild(kitBody);
+
+    var firstChild = portletColumn0.firstChild.nextSibling.nextSibling;
+    portletColumn0.insertBefore(kitPortlet, firstChild);
+  }
+}
+
+function forceDisplayNoneById(divID){
+  var divToMonitor = document.getElementById(divID);
+  if (divToMonitor) {
+    divToMonitor.style.display = "none";
+    // Create a MutationObserver
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === "attributes" && mutation.attributeName === "style") {
+                // Check if the style attribute has changed
+                var currentDisplayStyle = divToMonitor.style.display;
+                if (currentDisplayStyle !== "none") {
+                    // If it has changed to something other than "none", set it back to "none"
+                    divToMonitor.style.display = "none";
+                }
+            }
+        });
+    });
+  }
+  // Configure the observer to watch for changes to the style attribute
+  var config = { attributes: true, attributeFilter: ["style"] };
+  observer.observe(divToMonitor, config);
 }
 
 
@@ -556,8 +583,8 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll('a').forEach(checkWhitelistLink);
 
   // Replaces some portlets in home page
-  replaceKitPortlet();
   replaceLePortlet();
+  replaceKitPortlet();
 });
 
 
