@@ -537,7 +537,7 @@ const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/', 'https://www.sl
 
 const navHrefs = [ 
   ['https://studentadmin.manchester.ac.uk/CSPROD/signon.html', 'Student System'],
-  ['https://timetables.manchester.ac.uk/', 'Timetable'],
+  ['https://timetables.manchester.ac.uk/timetables?view=week', 'Timetable'],
   ['https://video.manchester.ac.uk/lectures/', 'Lecture Recordings'],
   ['https://read.kortext.com/library/books', 'Kortext Library'],
   ['https://www.exams.manchester.ac.uk/exam-timetable/', 'Exam Timetable'],
