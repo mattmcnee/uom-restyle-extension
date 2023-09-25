@@ -711,7 +711,7 @@ ol.breadcrumb-mobile-menu-open li{
 }
 
 .portlet .collapsible:not(.tabcontent){
-   max-height: 100vh !important;
+   max-height: calc(100vh - 170px) !important;
   overflow-y: hidden !important;
   border-color: var(--background-main-outline) !important;
 }
