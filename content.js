@@ -187,37 +187,41 @@ else if (navigator.userAgent.includes("Chrome")) {
 }
 
 function addStyles(iframeDocument, cssRules) {
-  // Create a new <style> element for inline styles
-  var styleElement = iframeDocument.createElement("style");
-  styleElement.type = "text/css";
-  styleElement.id = "injectedStyles";
-  styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
-  iframeDocument.head.appendChild(styleElement);
+  if(!iframeDocument.getElementById("injectedStyles")){
 
-  // deals with iframe-ception
-  var babyIframes = [
-    iframeDocument.getElementById("right_stream_mygrades"),
-    iframeDocument.getElementById("right_stream_stream")
-  ]
+    // Create a new <style> element for inline styles
+    var styleElement = iframeDocument.createElement("style");
+    styleElement.type = "text/css";
+    styleElement.id = "injectedStyles";
+    styleElement.appendChild(iframeDocument.createTextNode(cssRules)); // For modern browsers
+    iframeDocument.head.appendChild(styleElement);
 
-  let runCount = 0;
+    // deals with iframe-ception
+    var babyIframes = [
+      iframeDocument.getElementById("right_stream_mygrades"),
+      iframeDocument.getElementById("right_stream_stream")
+    ]
 
-  function fillBabyIframes() {
-    if (runCount < 10) {
-      for (const iframe of babyIframes) {
-        if (iframe !== null) {
-          addInlineStylesInIframe(iframe, inlineCSS);
-          break;
+    console.log(iframeDocument);
+    console.log(babyIframes);
+
+    let runCount = 0;
+
+    function fillBabyIframes() {
+      if (runCount < 10) {
+        for (const iframe of babyIframes) {
+          if (iframe !== null) {
+            addInlineStylesInIframe(iframe, inlineCSS);
+            break;
+          }
         }
+        runCount++;
       }
-      runCount++;
     }
+
+    // Hacky solution to style loading issue
+    fillBabyIframes();
   }
-
-  // Hacky solution to style loading issue
-  fillBabyIframes();
-  // setInterval(fillBabyIframes, 100);
-
 }
 
 function updateStyles(message){
@@ -243,17 +247,13 @@ function updateStyles(message){
 function addInlineStylesInIframe(iframeElement, cssRules) {
   // Loads inner document
   var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
-
-  // // Checks if document is loaded yet and uses onload if not
-  if(iframeDocument.location.origin == "null" || iframeElement.id == "right_stream_mygrades"){
+  console.log("added styles to iframe");
+  // Checks if document is loaded yet and uses onload if not
+    addStyles(iframeDocument, cssRules);
     iframeElement.onload = function() {
       iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
       addStyles(iframeDocument, cssRules);
     };
-  }
-  else{
-    addStyles(iframeDocument, cssRules);
-  }
 }
 
 
@@ -533,7 +533,12 @@ function replaceAmpersand(){
 
 
 
-const allowedHrefs = ['https://zoom.us/', 'https://piazza.com/', 'https://www.sli.do/', 'https://gitlab.cs.man.ac.uk/'];
+const allowedHrefs = [
+  'https://zoom.us/', 
+  'https://piazza.com/', 
+  'https://www.sli.do/', 
+  'https://gitlab.cs.man.ac.uk/',
+  'https://web.cs.manchester.ac.uk/'];
 
 const navHrefs = [ 
   ['https://studentadmin.manchester.ac.uk/CSPROD/signon.html', 'Student System'],
@@ -684,7 +689,7 @@ var inlineCSSCont = `
 #ical, #createeventbutton,
 .ui-dialog-buttonset button:last-child,
 .threadButtons a:first-child,
-.button-1 
+.button-1, .button-3
 {
   background-image: none !important;
   outline: none !important;
@@ -700,16 +705,16 @@ var inlineCSSCont = `
 #ical:hover, #createeventbutton:hover,
 .ui-dialog-buttonset button:last-child:hover,
 .threadButtons a:first-child:hover,
-.button-1:hover
+.button-1:hover, .button-3:hover
 {
   background-color: var(--primary-button-highlight) !important;
 }
 
 /* iframeButtonSecondary */
-.fc-button-main:not(.fc-button-img), .streamSettingButtons .genericButton,
+.fc-button-main:not(.fc-button-img), .genericButton,
 .ui-dialog-buttonset button:first-child,
 .threadButtons a:not(:first-child),
-#msgAttachment_localBrowse, #msgAttachment_csBrowse, .button-2 
+#msgAttachment_localBrowse, #msgAttachment_csBrowse, .button-2, .button-4
 {
   background-image: none !important;
   outline: none !important;
@@ -722,10 +727,11 @@ var inlineCSSCont = `
 }
 
 /* iframeButtonSecondary:hover */
-.fc-button-main:not(.fc-button-img):hover, .streamSettingButtons .genericButton:hover, 
+.fc-button-main:not(.fc-button-img):hover, .genericButton:hover, 
 .ui-dialog-buttonset button:first-child:hover,
 .threadButtons a:not(:first-child):hover,
-#msgAttachment_localBrowse:hover, #msgAttachment_csBrowse:hover, .button-2:hover
+#msgAttachment_localBrowse:hover, #msgAttachment_csBrowse:hover, .button-2:hover,
+.button-4:hover
 {
   background-color: var(--secondary-button-highlight) !important;
   cursor: pointer;
@@ -752,7 +758,9 @@ var inlineCSSCont = `
 .stream_show_more_data .extras, .stream_show_more_data .extras:after,
 .stream_header h1 span, #settingsContainer_alerts label,
 .stream_dynamic_filters_content h5, .current_filter,
-.stream_settings h5, .filterBarHorizontal #sortby
+.stream_settings h5, .filterBarHorizontal #sortby,
+.stream_item .stream_details, .stream_item .stream_item_highlight,
+.stream_item .stream_user
 {
   color: var(--text-main) !important;
   text-shadow: none !important;
@@ -765,7 +773,8 @@ var inlineCSSCont = `
 .stream_left .stream_datestamp, .ui-datepicker-calendar th span,
 .fc-border-separate .fc-widget-content .fc-day-number, .fc-widget-header,
 #filter_by_mygrades button:not(.active), .stream_show_more_data,
-#streamDetailHeaderRight .timestamp, #dynamic_filters_alerts li a.active{
+#streamDetailHeaderRight .timestamp, #dynamic_filters_alerts li a.active
+{
   color: var(--text-light) !important;
   text-shadow: none !important;
 }
@@ -777,7 +786,10 @@ var inlineCSSCont = `
 #streamDetailHeaderRight .context h2 a, #dynamic_filters_alerts li a,
 #filter_type_all_alerts:before, #settingsContainer_alerts .streamSettingHelpLinks a,
 #left_stream_alerts .inlineContextMenu a, .streamOverview-more-items a,
-#streamDetailHeaderRightClickable a, .profile-card a, .stream_item a, #gotocourseobjectlink
+#streamDetailHeaderRightClickable a, .profile-card a, .stream_item a, #gotocourseobjectlink,
+.stream_item.active_stream_item .stream_details, .stream_item.active_stream_item .stream_item_highlight,
+.stream_item.active_stream_item .stream_user,
+#streamDetailRightColumn .detail-heading a
 {
   color: var(--text-link) !important;
 }
@@ -1125,6 +1137,7 @@ var inlineCSSCont = `
 #streamDetailRightColumn .detail-heading {
     border-bottom: none !important;
     padding-bottom: 0 !important;
+    color: var(--text-main) !important;
 }
 
 #streamDetailRightColumn .detail-heading h2 a {
@@ -1290,9 +1303,9 @@ var inlineCSSCont = `
   border-top: none !important;
 }
 
-#streamDetailHeaderRight .context{
+/*#streamDetailHeaderRight .context{
   display: none !important;
-} 
+} */
 
 #streamDetailHeaderRight{
   position: relative;
@@ -1300,12 +1313,12 @@ var inlineCSSCont = `
   min-height: 0 !important;
 }
 
-#streamDetailHeaderRight .timestamp{
+/*#streamDetailHeaderRight .context ~ .timestamp{
   right: -3px !important;
   position: absolute;
   bottom: -10px;
   left: 10px;
-}
+}*/
 
 .stream_right{
   box-shadow: none !important;
@@ -1422,6 +1435,8 @@ var inlineCSSCont = `
 
 .stream_dynamic_filters li a{
   color: var(--text-main) !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
 }
 
 .stream_dynamic_filters li a:hover{
@@ -1527,6 +1542,56 @@ input[type="text"], input[type="password"], select {
 
 .submitStepFixed{
   background-color: var(--background-main-outline);
+}
+
+.stream_list_filter button{
+  color: var(--text-light) !important;
+  box-shadow: none !important;
+}
+
+.stream_list_filter button.active{
+  color: var(--text-main) !important;
+}
+
+.filter-content-wrapper:before, .filter-content-wrapper:after{
+  background-color: var(--background-main) !important;
+  border-color: var(--background-main-outline) !important;
+}
+
+.stream_dynamic_filters{
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
+  border-color: var(--background-main-outline) !important;
+}
+
+.blogContainer .entryText{
+  color: var(--text-main) !important;
+}
+
+.entryFooter, .entryFooter>.u_controlsWrapper:first-child{
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important;
+}
+
+.addBlogComment textarea{
+  background-color: var(--background-main) !important;
+  color: var(--text-main) !important; 
+  border-color: var(--background-main-outline) !important;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.addBlogComment{
+  background-color: var(--background-main) !important;
+  border: none !important;
+}
+
+.addBlogComment label{
+  color: var(--text-main) !important;
+}
+
+.dbThreadBody{
+  color: var(--text-main) !important;
 }
 
 `;
