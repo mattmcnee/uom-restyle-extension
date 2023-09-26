@@ -801,8 +801,11 @@ var inlineCSSCont = `
 }
 
 .left_stream_wrapper .stream_left, .left_stream_wrapper .scrollbar_track{
-  height: calc(100% - 140px) !important;
+/*  height: calc(100% - 140px) !important;*/
+  margin-bottom: 4px !important;
 }
+
+
 
 .left_stream_wrapper{
   height: 100% !important;
@@ -1519,6 +1522,7 @@ ul.streamSettingHelpLinks{
 .lb-wrapper .lb-content, .lb-wrapper .lb-content .content-lite {
     background-color: var(--background-main) !important;
     border-color: var(--background-main-outline) !important;
+    color: var(--text-light) !important;
 }
 
 input[type="text"], input[type="password"], select {
@@ -1586,12 +1590,22 @@ input[type="text"], input[type="password"], select {
   border: none !important;
 }
 
-.addBlogComment label{
+.addBlogComment label, .dbThreadBody{
   color: var(--text-main) !important;
 }
 
-.dbThreadBody{
-  color: var(--text-main) !important;
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-button);
+  border-radius: 4px;
+  opacity: 0.5;
 }
 
 `;
