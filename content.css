@@ -586,6 +586,11 @@ ol.breadcrumb-mobile-menu-open li{
   margin-top: 8px !important;
 }
 
+.breadcrumbs ol{
+  line-height: initial !important;
+  font-size: 100% !important;
+}
+
 /*
   ---
   ---

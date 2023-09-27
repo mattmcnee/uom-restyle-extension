@@ -521,8 +521,10 @@ function replaceAmpersand(){
   var element = document.getElementById("crumb_2");
   if (element) {
     var innerText = element.textContent.trim();
-    element.textContent = innerText.replace(/&amp;/g, '&');
+    element.textContent = innerText.replace(/&amp;/g, '&').replace(/<i>|<\/i>/g, '');
   }
+  var pageTitle = document.title;
+  document.title = pageTitle.replace(/&amp;/g, '&').replace(/<i>|<\/i>/g, '');
 }
 
 
