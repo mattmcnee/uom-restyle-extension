@@ -659,7 +659,9 @@ var inlineCSSCont = `
 .stream_header, .locationPane, body, .stream_page_left .left_stream_wrapper,
 #calendar_content, #outer_left_stream_alerts, #dynamic_filters_mygrades,
 .mybb.filterBarHorizontal, .mybb.gradeTableNew .grades_header,
-#settingsContainer_alerts, .breadcrumbs, .filterBarHorizontal #sortby {
+#settingsContainer_alerts, .breadcrumbs, .filterBarHorizontal #sortby,
+.blogContainer li
+{
   background-color: var(--background-main) !important;
 }
 
@@ -762,7 +764,7 @@ var inlineCSSCont = `
 .stream_dynamic_filters_content h5, .current_filter,
 .stream_settings h5, .filterBarHorizontal #sortby,
 .stream_item .stream_details, .stream_item .stream_item_highlight,
-.stream_item .stream_user
+.stream_item .stream_user, .profileCardAvatarThumb
 {
   color: var(--text-main) !important;
   text-shadow: none !important;
@@ -775,7 +777,8 @@ var inlineCSSCont = `
 .stream_left .stream_datestamp, .ui-datepicker-calendar th span,
 .fc-border-separate .fc-widget-content .fc-day-number, .fc-widget-header,
 #filter_by_mygrades button:not(.active), .stream_show_more_data,
-#streamDetailHeaderRight .timestamp, #dynamic_filters_alerts li a.active
+#streamDetailHeaderRight .timestamp, #dynamic_filters_alerts li a.active,
+.blogContainer .commentDate, .blogContainer h5
 {
   color: var(--text-light) !important;
   text-shadow: none !important;
@@ -791,7 +794,7 @@ var inlineCSSCont = `
 #streamDetailHeaderRightClickable a, .profile-card a, .stream_item a, #gotocourseobjectlink,
 .stream_item.active_stream_item .stream_details, .stream_item.active_stream_item .stream_item_highlight,
 .stream_item.active_stream_item .stream_user,
-#streamDetailRightColumn .detail-heading a
+#streamDetailRightColumn .detail-heading a, .comment-header
 {
   color: var(--text-link) !important;
 }
@@ -802,12 +805,15 @@ var inlineCSSCont = `
   color: var(--text-link) !important;
 }
 
-.left_stream_wrapper .stream_left, .left_stream_wrapper .scrollbar_track{
-/*  height: calc(100% - 140px) !important;*/
-  margin-bottom: 4px !important;
+.blogContainer ul, .blogContainer li
+{
+  border-color: var(--background-main-outline) !important;
 }
 
-
+.left_stream_wrapper .stream_left, .left_stream_wrapper .scrollbar_track{
+/*  height: calc(100% - 140px) !important;*/
+  margin-bottom: 20px !important;
+}
 
 .left_stream_wrapper{
   height: 100% !important;
@@ -1608,6 +1614,19 @@ input[type="text"], input[type="password"], select {
   background: var(--secondary-button);
   border-radius: 4px;
   opacity: 0.5;
+}
+
+.profileCardAvatarThumb img {
+  border-width: initial;
+  border-style: none !important;
+  border-color: initial !important;
+  border-image: initial !important;
+  border: 1px solid #ddd !important;
+  border-radius: 50% !important;
+}
+
+.profile-card-open-button{
+  background-color: var(--background-main) !important;
 }
 
 `;
