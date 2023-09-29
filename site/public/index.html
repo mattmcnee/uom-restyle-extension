@@ -7,6 +7,22 @@
     <title>UoM Blackboard Restyle</title>
     <style>
         /* Add your custom CSS styles here */
+
+        .button {
+            background-color: grey;
+            text-decoration: none;
+            color: #eee;
+            padding: 5px 8px;
+            border-radius: 4px;
+        }
+
+        .button:hover{
+            text-decoration: none;
+        }
+
+        .button.active {
+            background-color: green;
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -107,11 +123,15 @@
 
         <h2>Setup</h2>
         <p>
-            For Chrome this can be downloaded from the Chrome Web Store <a href="https://chrome.google.com/webstore/detail/uom-blackboard-restyle/bfadimingfhacpedgapjpnhikcbjhbmn">here</a> or loaded from <a href="https://github.com/mattmcnee/uom-restyle-extension/blob/main/uom-restyle-extension.zip">uom-restyle-extension.zip</a>.
-        </p>
-        <p>
+            <a id="chromeLink" class="button" href="https://chrome.google.com/webstore/detail/uom-blackboard-restyle/bfadimingfhacpedgapjpnhikcbjhbmn">Chrome Web Store</a>
 
-            For Firefox, this can be loaded from <a href="https://github.com/mattmcnee/uom-restyle-extension/blob/main/uom-restyle-extension.xpi">uom-restyle-extension.xpi</a>.
+             <!-- or loaded from <a href="https://github.com/mattmcnee/uom-restyle-extension/raw/main/uom-restyle-extension.zip" download="uom-restyle-extension.zip">uom-restyle-extension.zip</a>. -->
+
+            <a id="firefoxLink" class="button" href="https://github.com/mattmcnee/uom-restyle-extension/raw/main/uom-restyle-extension.xpi" download="uom-restyle-extension.xpi">Firefox .xpi Download</a>
+
+            <a class="button" href="https://github.com/mattmcnee/uom-restyle-extension/raw/main/uom-restyle-extension.zip" download="uom-restyle-extension.zip">Chrome .zip Download</a>
+
+            <a class="button" href="https://github.com/mattmcnee/uom-restyle-extension/">Source Code</a>
         </p>
         <p>
 
@@ -180,6 +200,24 @@ The following URLs are whitelisted by the extension (Blackboard won't warn you t
 
     
     <script>
+        // Check if the browser is Chrome or Firefox
+        const isChrome = /Chrome/.test(navigator.userAgent);
+        const isFirefox = /Firefox/.test(navigator.userAgent);
+
+        // Get the link elements
+        const chromeLink = document.getElementById("chromeLink");
+        const firefoxLink = document.getElementById("firefoxLink");
+
+        // Change background color based on the browser
+        if (isChrome) {
+            chromeLink.classList.add("active");
+        } else if (isFirefox) {
+            firefoxLink.classList.add("active");
+        }
+
+
+
+
         const carousel = document.querySelector('.carousel');
         const images = document.querySelectorAll('.carousel img');
         let counter = 0;

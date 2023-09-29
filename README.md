@@ -24,9 +24,7 @@ Upcoming deadlines are visible on the Blackboard home page, as well as links to:
 - Evaluation Kit
 
 # Setup
-For Chrome this can be downloaded from the Chrome Web Store [here](https://chrome.google.com/webstore/detail/uom-blackboard-restyle/bfadimingfhacpedgapjpnhikcbjhbmn) or loaded from [uom-restyle-extension.zip](https://github.com/mattmcnee/uom-restyle-extension/blob/main/uom-restyle-extension.zip).
-
-For Firefox, this can be loaded from [uom-restyle-extension.xpi](https://github.com/mattmcnee/uom-restyle-extension/blob/main/uom-restyle-extension.xpi).
+To install this in your browser, click on the relevant link at https://uom-blackboard-restyle.web.app/.
 
 When first using the extension, it will warn you that it can read and change your data at online.manchester.ac.uk. It needs this access to apply style changes to the loaded page. No personal data is changed or stored.
 
