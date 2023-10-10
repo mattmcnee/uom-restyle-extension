@@ -1104,7 +1104,7 @@ ol.breadcrumb-mobile-menu-open li{
 }
 
 .contentList .details .vtbegenerated_div, .contentList .details li,
-.contentList .details strong{
+.contentList .details strong:not(a strong){
   color: var(--text-main) !important;
 }
 
@@ -1112,8 +1112,8 @@ ol.breadcrumb-mobile-menu-open li{
   color: var(--text-main) !important;
 }
 
-#announcementList .details a, .contentListPlain .details a,
-.contentListPlain .details a span, .contentList .details a{
+#announcementList .details a:not(.genericButton), .contentListPlain .details a:not(.genericButton),
+.contentListPlain .details a span, .contentList .details a:not(.genericButton){
   color: var(--text-link) !important;
   text-decoration: none !important;
 }
@@ -1207,13 +1207,6 @@ ol.breadcrumb-mobile-menu-open li{
 .uomFooter span a{
   text-decoration: none !important;
   color: var(--text-link) !important;
-}
-
-.uomFooter img{
-  background-color: transparent !important;
-  border-radius: 33% !important;
-  opacity: 0.6 !important;
-  margin: 4px !important;
 }
 
 .newCopyright .additionalInfo a{
@@ -1969,7 +1962,7 @@ div.collectionViewReadMessageBorder{
   margin-bottom: -20px !important;
 }
 
-#content_listContainer a, #content_listContainer span, #content_listContainer strong{
+#content_listContainer a:not(.genericButton), #content_listContainer span, #content_listContainer strong{
   background-color: transparent !important;
 }
 
@@ -2089,6 +2082,10 @@ div.collectionViewReadMessageBorder{
   ---
   ---
 */
+
+.vtbegenerated_div{
+  border-radius: 6px;
+}
 
 /*.locationPane .contentPaneWide .contentBox #pageTitleDiv + #containerdiv{
   padding-bottom: 165px;

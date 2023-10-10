@@ -1,3 +1,4 @@
+
 function loadDeadlinesIfHomepage() {
   const homepagePath = "/webapps/portal/execute/tabs/tabAction";
   
@@ -41,12 +42,12 @@ function loadDeadlinesIfHomepage() {
           bElement.textContent = event.calendarName.split(' ').splice(0, event.calendarName.split(' ').length - 3).join(' ');
           
           const titleElement = document.createTextNode(event.title);
-          const brElement = document.createElement('br');
           const dateText = (new Date(event.startDate).toDateString() === today.toDateString()) ? 'Today' : new Date(event.startDate).toLocaleString().substr(0, new Date(event.startDate).toLocaleString().length - 3) + ` (${dayDiff} days)`;
           
           aElement.appendChild(bElement);
-          aElement.appendChild(brElement);
+          aElement.appendChild(document.createElement('br'));
           aElement.appendChild(titleElement);
+          aElement.appendChild(document.createElement('br'));
 
           if (dateText === 'Today') {
             const bElement2 = document.createElement('b');
@@ -430,24 +431,41 @@ function replaceLePortlet() {
 
     var customDiv = document.createElement('div');
 
-    var leStartText = document.createTextNode('You are currently using UoM Blackboard Restyle. To open extension settings click the jigsaw icon (');
+    var leStartText = document.createTextNode('To open extension settings click the jigsaw icon (');
     var leEndText = document.createTextNode(') in the top right of the browser. Select "UoM Blackboard Restyle" to change the style. Select "Manage extensions" to disable this extension.');
     var puzzlePieceIcon = document.createElement('i');
     puzzlePieceIcon.classList.add('fas', 'fa-puzzle-piece');
     puzzlePieceIcon.style.opacity = '0.8';
 
-    // Create an anchor (link) element
     var webLink = document.createElement('a');
     webLink.href = "https://uom-blackboard-restyle.web.app/feedback.html";
     webLink.textContent = "here."; // Text for the link
+    var linkText = document.createTextNode(' To give feedback or request a new feature, click ');
 
-    var breakElement = document.createElement('hr');
-    var linkText = document.createTextNode('To give feedback or request new feature, click ');
+
+    var artLink = document.createElement('a');
+    artLink.href = "https://icons8.com/";
+    artLink.textContent = "Icons8.";
+    var artText = document.createTextNode(', with icons by ');
+
+    var autLink = document.createElement('a');
+    autLink.href = "https://mattmcneedev.web.app/";
+    autLink.textContent = "MattM Web Dev";
+    var autText = document.createTextNode('UoM Blackboard Restyle is designed by ');
+
+
 
     customDiv.appendChild(leStartText);
     customDiv.appendChild(puzzlePieceIcon);
     customDiv.appendChild(leEndText);
-    customDiv.appendChild(breakElement);
+    customDiv.appendChild(document.createElement('hr'));
+    customDiv.appendChild(autText);
+    customDiv.appendChild(autLink);
+    customDiv.appendChild(artText);
+    customDiv.appendChild(artLink);
+
+
+
     customDiv.appendChild(linkText);
     customDiv.appendChild(webLink);
 
@@ -458,7 +476,7 @@ function replaceLePortlet() {
     kitPortlet.appendChild(kitBody);
 
     var firstChild = portletColumn0.firstChild.nextSibling.nextSibling;
-    portletColumn0.insertBefore(kitPortlet, firstChild);
+    portletColumn0.appendChild(kitPortlet);
   }
 }
 
@@ -592,7 +610,346 @@ document.addEventListener("DOMContentLoaded", function() {
   // Replaces some portlets in home page
   replaceLePortlet();
   replaceKitPortlet();
+
+
+replaceImagesWithSVG("Content Folder", svgIcons.folder);
+replaceImagesWithSVG("Item", svgIcons.document);
+replaceImagesWithSVG("Module Page", svgIcons.document);
+replaceImagesWithSVG("File", svgIcons.document);
+replaceImagesWithSVG("Assignment", svgIcons.assignment);
+replaceImagesWithSVG("Groups", svgIcons.group);
+replaceImagesWithSVG("Tools Area", svgIcons.tools);
+replaceImagesWithSVG("Course Link", svgIcons.link);
+replaceImagesWithSVG("linked item", svgIcons.minLink);
+replaceImagesWithSVG("Test", svgIcons.test);
+replaceImagesWithSVG("Web Link", svgIcons.extLink);
+replaceImagesWithSVG("Discussion Board", svgIcons.chat);
+replaceImagesWithSVG("Wikis", svgIcons.wiki);
+replaceImagesWithSVG("Blank Page", svgIcons.document);
+replaceImagesWithSVG("Piazza", svgIcons.extLink);
+// UoM footer
+replaceImagesWithSVG("Address icon", svgIcons.marker);
+replaceImagesWithSVG("Phone icon", svgIcons.phone);
+replaceImagesWithSVG("Email Icon", svgIcons.email);
+replaceImagesWithSVG("Blackboard Learn", svgIcons.blackboard);
+
+
+// var power = document.getElementById("topframe.logout.label");
+// var svgString = svgIcons.power; // Assuming svgIcons.power contains your SVG string
+// var parser = new DOMParser();
+// var svgElement = parser.parseFromString(svgString, "image/svg+xml").documentElement;
+// power.parentNode.replaceChild(svgElement, power);
+
+
+
+
+  // testXHR();
 });
+
+
+function replaceImagesWithSVG(targetAltText, svgCode) {
+    // Find all images with the specified alt attribute
+    var imagesToReplace = document.querySelectorAll('img[alt="' + targetAltText + '"]');
+
+    // Replace each image with the SVG code
+    imagesToReplace.forEach(function(image) {
+        // Check if the image has the class "item_icon"
+        if (image.classList.contains("item_icon")) {
+            var svgElement = new DOMParser().parseFromString(svgCode, 'image/svg+xml').documentElement;
+            svgElement.classList.add("item_icon");
+            svgElement.classList.add(targetAltText.replace(/\s/g, ''));
+            image.parentNode.replaceChild(svgElement, image);
+        }
+        else if (targetAltText == "File"){
+            var svgElement = new DOMParser().parseFromString(svgCode, 'image/svg+xml').documentElement;
+            svgElement.style.height = "13px";
+            svgElement.style.width = "15px";
+            image.parentNode.replaceChild(svgElement, image);          
+        }
+        else if (targetAltText == "Address icon" || targetAltText == "Phone icon" || targetAltText == "Email Icon"){
+            var svgElement = new DOMParser().parseFromString(svgCode, 'image/svg+xml').documentElement;
+            svgElement.style.height = "20px";
+            svgElement.style.width = "21px";
+            svgElement.style.verticalAlign = "middle";
+            svgElement.style.margin = "0 5px";
+            image.parentNode.replaceChild(svgElement, image);          
+        }
+        else if (targetAltText == "Blackboard Learn" && image.parentNode.classList.contains("logo")) {
+            var svgElement = new DOMParser().parseFromString(svgCode, 'image/svg+xml').documentElement;
+            svgElement.style.position = "relative";
+            svgElement.style.clear = "both";
+            svgElement.style.left = "-12px";
+            svgElement.style.top = "-72px";
+            svgElement.style.width = "150px";
+            image.parentNode.replaceChild(svgElement, image);          
+        }
+    });
+}
+
+const iconColor = "#656565";
+
+
+const svgIcons = 
+  {
+  folder: 
+`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 24 24" fill="${iconColor}">
+  <path d="M 4 4 C 2.9057453 4 2 4.9057453 2 6 L 2 18 C 2 19.094255 2.9057453 20 4 20 L 20 20 C 21.094255 20 22 19.094255 22 18 L 22 8 C 22 6.9057453 21.094255 6 20 6 L 12 6 L 10 4 L 4 4 z M 4 6 L 9.171875 6 L 11.171875 8 L 20 8 L 20 18 L 4 18 L 4 6 z"></path>
+</svg>`,
+  link: `
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M185 855 l-25 -24 0 -351 0 -351 25 -24 c23 -24 30 -25 140 -25 l115
+0 0 40 0 40 -100 0 -100 0 0 320 0 320 140 0 140 0 0 -100 0 -100 100 0 100 0
+0 -59 0 -60 40 17 40 17 0 65 0 65 -118 118 -117 117 -178 0 c-176 0 -178 0
+-202 -25z"/>
+<path d="M800 434 c-8 -4 -34 -25 -57 -47 l-43 -41 27 -28 27 -28 -42 -42 -42
+-42 -28 27 -28 27 -44 -45 c-41 -42 -45 -50 -45 -95 0 -71 44 -115 115 -115
+45 0 53 4 95 45 l45 44 -27 28 -27 28 42 42 42 42 28 -27 28 -27 44 45 c41 42
+45 50 45 95 0 42 -5 54 -31 81 -31 30 -90 46 -124 33z m68 -86 c20 -20 14 -43
+-23 -78 l-35 -34 -27 27 -27 27 34 35 c35 37 58 43 78 23z m-168 -173 l24 -25
+-34 -35 c-19 -19 -41 -35 -50 -35 -20 0 -40 19 -40 39 0 15 58 81 70 81 4 0
+17 -11 30 -25z"/>
+</g>
+</svg>`,
+  assignment: `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M434 911 c-11 -5 -32 -23 -47 -40 -25 -31 -27 -31 -122 -31 -89 0
+-98 -2 -120 -25 l-25 -24 0 -311 0 -311 25 -24 24 -25 311 0 311 0 24 25 25
+24 0 311 0 311 -25 24 c-22 23 -32 25 -119 25 l-96 0 -32 36 c-35 38 -92 53
+-134 35z m80 -93 c8 -13 8 -23 -2 -38 -12 -20 -10 -20 118 -20 l130 0 0 -280
+0 -280 -280 0 -280 0 0 280 0 280 132 0 c103 0 129 3 120 12 -26 26 -4 71 32
+66 10 -2 24 -11 30 -20z"/>
+<path d="M582 664 c-30 -21 -28 -34 13 -74 l35 -34 27 27 27 27 -34 35 c-39
+40 -38 40 -68 19z"/>
+<path d="M397 482 c-112 -113 -117 -119 -117 -160 0 -42 0 -42 38 -42 35 0 46
+9 162 125 l124 125 -34 35 c-19 19 -39 35 -45 35 -6 0 -63 -53 -128 -118z"/>
+</g>
+</svg>`,
+group:`
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M412 780 c-68 -42 -91 -124 -52 -188 41 -66 113 -88 179 -54 101 51
+106 183 9 242 -18 11 -49 20 -68 20 -19 0 -50 -9 -68 -20z m108 -80 c11 -11
+20 -29 20 -40 0 -26 -34 -60 -60 -60 -11 0 -29 9 -40 20 -11 11 -20 29 -20 40
+0 11 9 29 20 40 11 11 29 20 40 20 11 0 29 -9 40 -20z"/>
+<path d="M131 666 c-87 -48 -50 -186 49 -186 51 0 100 49 100 99 0 75 -83 124
+-149 87z m74 -86 c0 -18 -6 -26 -23 -28 -24 -4 -38 18 -28 44 3 9 15 14 28 12
+17 -2 23 -10 23 -28z"/>
+<path d="M731 666 c-87 -48 -50 -186 49 -186 51 0 100 49 100 99 0 75 -83 124
+-149 87z m74 -86 c0 -18 -6 -26 -23 -28 -13 -2 -25 3 -28 12 -10 26 4 48 28
+44 17 -2 23 -10 23 -28z"/>
+<path d="M375 427 c-28 -7 -57 -17 -65 -22 -8 -5 -55 -10 -105 -10 -72 -1 -98
+-5 -132 -23 -61 -32 -73 -54 -73 -139 l0 -73 480 0 480 0 0 73 c0 85 -12 107
+-73 139 -33 18 -60 23 -127 23 -54 1 -103 8 -135 19 -65 23 -186 29 -250 13z
+m206 -83 c77 -22 99 -39 99 -74 l0 -30 -200 0 -200 0 0 29 c0 36 15 48 87 71
+72 23 143 25 214 4z m-381 -64 l0 -40 -60 0 c-52 0 -60 3 -60 18 0 33 41 60
+93 61 25 1 27 -2 27 -39z m661 14 c10 -9 19 -25 19 -36 0 -15 -8 -18 -60 -18
+l-60 0 0 41 0 42 41 -6 c22 -3 49 -13 60 -23z"/>
+</g>
+</svg>`,
+tools: `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M156 801 l-38 -39 31 -46 c36 -52 66 -76 96 -76 12 0 49 -29 90 -70
+l69 -70 -122 -123 c-141 -143 -146 -155 -83 -218 61 -61 76 -56 197 63 l104
+102 104 -102 c121 -119 136 -124 197 -63 61 61 56 76 -63 197 l-102 104 28 29
+c20 21 40 30 73 34 78 8 133 65 140 144 2 26 -1 55 -6 63 -9 12 -14 10 -38
+-12 -37 -36 -83 -27 -95 17 -6 24 -3 34 20 58 22 24 24 29 12 38 -8 5 -37 8
+-63 6 -79 -7 -136 -62 -144 -140 -5 -38 -14 -53 -54 -93 l-49 -48 -70 69 c-41
+41 -70 78 -70 90 0 29 -24 60 -75 95 -24 16 -45 30 -47 30 -2 0 -21 -18 -42
+-39z m525 -86 c13 -52 20 -59 77 -74 23 -7 42 -16 42 -21 0 -16 -57 -40 -97
+-40 -36 0 -48 -10 -238 -200 l-201 -201 -22 24 -21 23 199 199 c190 190 200
+202 200 238 0 40 24 97 40 97 5 0 15 -20 21 -45z m7 -398 l93 -93 -24 -22 -23
+-22 -94 95 c-93 93 -94 94 -75 115 10 11 21 20 24 20 4 0 48 -42 99 -93z"/>
+</g>
+</svg>`,
+document:`<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 24 24" fill="${iconColor}">
+<path d="M 6 2 C 4.9057453 2 4 2.9057453 4 4 L 4 20 C 4 21.094255 4.9057453 22 6 22 L 18 22 C 19.094255 22 20 21.094255 20 20 L 20 8 L 14 2 L 6 2 z M 6 4 L 13 4 L 13 9 L 18 9 L 18 20 L 6 20 L 6 4 z"></path>
+</svg>`,
+minLink: `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+</svg>`,
+test: `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M434 911 c-11 -5 -32 -23 -47 -40 -25 -31 -27 -31 -122 -31 -89 0
+-98 -2 -120 -25 l-25 -24 0 -311 0 -311 25 -24 24 -25 311 0 311 0 24 25 25
+24 0 311 0 311 -25 24 c-22 23 -32 25 -119 25 l-96 0 -32 36 c-35 38 -92 53
+-134 35z m80 -93 c8 -13 8 -23 -2 -38 -12 -20 -10 -20 118 -20 l130 0 0 -280
+0 -280 -280 0 -280 0 0 280 0 280 132 0 c103 0 129 3 120 12 -26 26 -4 71 32
+66 10 -2 24 -11 30 -20z"/>
+<path d="M625 640 c-30 -31 -47 -40 -72 -40 -32 0 -33 -1 -33 -40 l0 -40 48 0
+c44 0 51 4 100 53 l52 53 -28 27 -28 27 -39 -40z"/>
+<path d="M280 560 l0 -40 80 0 80 0 0 40 0 40 -80 0 -80 0 0 -40z"/>
+<path d="M625 440 c-30 -31 -47 -40 -72 -40 -32 0 -33 -1 -33 -40 l0 -40 48 0
+c44 0 51 4 100 53 l52 53 -28 27 -28 27 -39 -40z"/>
+<path d="M280 360 l0 -40 80 0 80 0 0 40 0 40 -80 0 -80 0 0 -40z"/>
+</g>
+</svg>`,
+extLink: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 24 24" fill="${iconColor}">
+<path d="M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z"></path>
+</svg>`,
+chat:`<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M105 815 l-25 -24 0 -255 0 -255 57 60 56 59 64 0 63 0 0 -75 c0 -67
+3 -79 25 -100 24 -25 25 -25 223 -25 l199 0 56 -59 57 -60 0 255 0 255 -25 24
+c-22 23 -32 25 -120 25 l-95 0 0 75 c0 67 -3 79 -25 100 l-24 25 -231 0 -231
+0 -24 -25z m455 -195 l0 -140 -200 0 -200 0 0 140 0 140 200 0 200 0 0 -140z
+m240 -200 l0 -140 -200 0 -200 0 0 60 0 60 95 0 c88 0 98 2 120 25 21 20 25
+34 25 80 l0 55 80 0 80 0 0 -140z"/>
+</g>
+</svg>`,
+power:`<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="36.000000pt" height="36.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M451 866 c-8 -9 -11 -69 -9 -191 3 -157 5 -179 20 -189 13 -8 23 -8
+35 0 16 10 18 32 21 189 3 183 -1 205 -38 205 -10 0 -23 -6 -29 -14z"/>
+<path d="M305 753 c-54 -28 -123 -104 -152 -167 -24 -52 -28 -74 -28 -146 0
+-72 4 -94 28 -146 36 -77 104 -145 182 -181 51 -24 73 -28 145 -28 72 0 94 4
+146 28 77 36 145 104 181 182 24 51 28 73 28 145 0 72 -4 94 -28 145 -48 104
+-162 199 -207 175 -28 -15 -25 -46 6 -67 96 -67 141 -134 151 -226 17 -161
+-115 -307 -277 -307 -118 0 -234 85 -266 195 -38 134 8 247 140 338 31 21 34
+52 7 67 -24 12 -19 13 -56 -7z"/>
+</g>
+</svg>
+`,
+wiki:`
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M145 815 l-25 -24 0 -311 0 -311 25 -24 24 -25 311 0 311 0 24 25 25
+24 0 311 0 311 -25 24 -24 25 -311 0 -311 0 -24 -25z m615 -335 l0 -280 -280
+0 -280 0 0 280 0 280 280 0 280 0 0 -280z"/>
+<path d="M280 640 l0 -40 200 0 200 0 0 40 0 40 -200 0 -200 0 0 -40z"/>
+<path d="M280 480 l0 -40 120 0 120 0 0 40 0 40 -120 0 -120 0 0 -40z"/>
+<path d="M280 320 l0 -40 200 0 200 0 0 40 0 40 -200 0 -200 0 0 -40z"/>
+</g>
+</svg>
+`,
+phone:`<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M130 825 c-32 -39 19 -257 87 -374 49 -83 151 -185 234 -234 117 -68
+335 -119 374 -87 20 16 22 182 3 198 -7 5 -35 12 -63 15 -27 3 -69 9 -93 13
+-42 7 -45 5 -93 -42 l-49 -48 -38 19 c-48 26 -181 159 -207 207 l-19 38 48 49
+c47 48 49 51 42 93 -4 24 -10 66 -13 93 -3 28 -10 56 -15 63 -16 19 -182 17
+-198 -3z"/>
+</g>
+</svg>`,
+email:`<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M105 775 l-25 -24 0 -271 0 -271 25 -24 24 -25 351 0 351 0 24 25 25
+24 0 271 0 271 -25 24 -24 25 -351 0 -351 0 -24 -25z m693 -77 c-2 -15 -46
+-48 -161 -120 l-157 -98 -158 98 c-114 72 -158 105 -160 120 l-3 22 321 0 321
+0 -3 -22z m-400 -247 l82 -51 83 51 c45 29 117 74 160 101 l77 48 0 -180 0
+-180 -320 0 -320 0 0 180 0 180 78 -48 c42 -27 114 -72 160 -101z"/>
+</g>
+</svg>`,
+marker:`<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M410 871 c-86 -28 -141 -74 -181 -151 -34 -65 -32 -171 4 -257 49
+-120 216 -368 247 -368 31 0 198 248 247 368 38 89 38 192 1 262 -31 60 -67
+95 -128 125 -48 24 -147 35 -190 21z m134 -83 c86 -26 147 -127 132 -219 -4
+-22 -20 -70 -36 -106 -30 -65 -148 -253 -160 -253 -12 0 -130 188 -160 253
+-38 85 -46 135 -29 194 30 107 140 164 253 131z"/>
+<path d="M431 686 c-87 -48 -50 -186 49 -186 51 0 100 49 100 99 0 75 -83 124
+-149 87z"/>
+</g>
+</svg>`,
+blackboard:`<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="458.000000pt" height="149.000000pt" viewBox="0 0 458.000000 149.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,149.000000) scale(0.100000,-0.100000)"
+fill="${iconColor}" stroke="none">
+<path d="M885 1007 c-3 -7 -4 -125 -3 -262 l3 -250 43 -3 42 -3 0 265 0 266
+-40 0 c-24 0 -43 -5 -45 -13z"/>
+<path d="M1800 755 l0 -266 43 3 42 3 3 56 c2 44 8 61 26 78 l24 22 57 -80
+c56 -81 57 -81 101 -81 24 0 44 5 44 10 0 6 -32 58 -72 115 l-72 105 74 75 74
+75 -55 0 -56 0 -69 -77 -69 -77 -5 149 -5 150 -42 3 -43 3 0 -266z"/>
+<path d="M2195 1007 c-3 -7 -4 -125 -3 -262 l3 -250 43 -3 c39 -3 42 -2 42 23
+l0 25 40 -26 c34 -23 48 -26 98 -22 103 7 162 77 162 191 0 72 -17 114 -63
+154 -61 53 -148 56 -207 7 l-30 -26 0 101 0 101 -40 0 c-24 0 -43 -5 -45 -13z
+m244 -221 c65 -34 70 -160 7 -201 -81 -53 -177 15 -163 116 11 80 85 121 156
+85z"/>
+<path d="M3977 1013 c-4 -3 -7 -46 -7 -95 l0 -89 -30 21 c-43 31 -100 36 -155
+15 -138 -52 -154 -266 -26 -352 48 -32 125 -32 174 1 l36 25 3 -22 c2 -18 11
+-23 46 -25 l42 -3 0 265 0 266 -38 0 c-21 0 -42 -3 -45 -7z m-58 -227 c53 -28
+70 -129 30 -180 -22 -28 -70 -45 -106 -38 -33 6 -72 49 -79 88 -19 101 69 174
+155 130z"/>
+<path d="M4114 1006 c-20 -15 -13 -43 12 -53 10 -4 22 1 30 11 24 33 -9 66
+-42 42z m3 -28 c-3 -8 -6 -5 -6 6 -1 11 2 17 5 13 3 -3 4 -12 1 -19z"/>
+<path d="M412 743 l3 -248 150 0 c134 1 154 3 191 22 90 48 98 170 14 219
+l-30 18 28 29 c22 24 27 37 27 82 0 39 -5 59 -20 75 -37 42 -75 50 -225 50
+l-140 0 2 -247z m276 151 c28 -19 29 -57 2 -84 -17 -17 -33 -20 -105 -20 l-85
+0 0 60 0 60 83 0 c59 0 89 -5 105 -16z m1 -195 c52 -18 66 -64 31 -99 -17 -17
+-33 -20 -120 -20 l-100 0 0 65 0 65 79 0 c43 0 92 -5 110 -11z"/>
+<path d="M1135 873 c-11 -2 -34 -9 -51 -14 -31 -10 -32 -11 -21 -45 10 -34 12
+-35 46 -28 92 21 161 0 161 -48 0 -18 -5 -19 -53 -13 -104 13 -184 -28 -193
+-100 -12 -90 41 -138 143 -133 41 3 68 10 81 21 19 17 20 17 25 -3 4 -16 13
+-20 47 -20 l41 0 -3 154 -3 155 -29 30 c-42 43 -117 61 -191 44z m137 -221
+c14 -14 -2 -61 -25 -77 -25 -17 -89 -20 -118 -5 -19 11 -25 45 -11 66 16 24
+49 34 96 30 27 -3 53 -9 58 -14z"/>
+<path d="M1535 868 c-40 -14 -94 -65 -111 -105 -19 -44 -18 -127 2 -169 49
+-103 191 -139 289 -73 40 28 42 35 15 64 l-20 22 -50 -25 c-43 -21 -53 -23
+-84 -12 -50 16 -76 53 -76 106 0 56 17 92 51 110 39 20 78 17 118 -7 l34 -21
+25 26 c22 22 24 27 11 42 -37 45 -137 65 -204 42z"/>
+<path d="M2742 869 c-69 -20 -132 -114 -132 -195 1 -76 69 -159 148 -179 155
+-41 287 86 247 237 -28 111 -144 171 -263 137z m144 -103 c29 -29 34 -41 34
+-83 0 -58 -19 -90 -66 -109 -85 -35 -173 49 -150 142 4 15 20 39 36 55 42 43
+100 41 146 -5z"/>
+<path d="M3127 866 c-26 -7 -50 -15 -52 -18 -3 -3 0 -19 6 -37 11 -30 13 -31
+48 -24 94 20 161 -1 161 -52 0 -21 -2 -21 -50 -11 -67 13 -135 -4 -172 -44
+-40 -43 -39 -107 1 -152 24 -27 36 -32 89 -36 49 -3 68 0 96 16 33 20 34 20
+39 1 4 -15 14 -19 46 -19 l41 0 0 138 c0 164 -11 195 -80 230 -50 25 -101 27
+-173 8z m132 -202 c26 -5 31 -11 31 -35 0 -43 -34 -69 -91 -69 -54 0 -72 15
+-67 57 5 44 53 61 127 47z"/>
+<path d="M3594 861 c-18 -11 -39 -30 -48 -42 -16 -23 -16 -23 -16 14 l0 37
+-45 0 -45 0 2 -187 3 -188 41 -3 42 -3 4 103 c5 138 28 176 113 190 17 3 20
+11 20 48 0 37 -3 45 -20 48 -11 1 -34 -6 -51 -17z"/>
+</g>
+</svg>`
+  };
+
 
 
 var toxCSSRoot = `
