@@ -825,8 +825,8 @@ ol.breadcrumb-mobile-menu-open li{
 
 .cmdiv:not([id*="actionMenu_"]){
   margin-top: -2.5px !important;
-  width: 300px;
-  height: calc(100vh - 124px - 40px) !important;
+  max-width: 350px;
+  max-height: calc(100vh - 124px - 40px) !important;
   overflow: hidden auto !important;
   border-color: var(--background-main-outline) !important;
   background-color: var(--background-tint-2) !important;
