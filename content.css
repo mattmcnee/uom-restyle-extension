@@ -187,7 +187,8 @@ a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.action
 /* tertiaryButtonHighlight */
 #selectAll_top:hover, #selectNone_top:hover, #selectAll_bottom:hover, #selectNone_bottom:hover,
 #top_list_action_bar .nav .sub ul li a:hover, #bottom_list_action_bar .nav .sub ul li a:hover,
-.mainButton a:hover, #courseMenuPalette li:hover a span, #courseMenuPalette h3 a:hover
+.mainButton a:hover, #courseMenuPalette li:hover a span, #courseMenuPalette h3 a:hover,
+#courseMenuPalette div.navPaletteContent ul li a:hover
 /*,.rumble_top .nav .sub ul li a:hover, .rumble .nav .sub ul li a:hover*/
 {
   color: var(--text-link) !important;
@@ -226,7 +227,7 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 .inventoryListHead th a, .localViewToggle a, .pagingprefs span, .inventoryListTableContainerDiv span,
 #announcementList h3, #pageTitleHeader span, .filterBarHorizontal #sortby, .grades_header,
 #dataCollectionContainer div h3, .infoListWrapper .key-valueTable th, .infoListWrapper .key-valueTable td,
-.portlet .viewHeader h3, .stepHelp
+.portlet .viewHeader h3, .stepHelp, #courseMenuPalette div.navPaletteContent ul li a
 {
   color: var(--text-main) !important;
 }
