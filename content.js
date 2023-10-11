@@ -3,7 +3,6 @@ function loadDeadlinesIfHomepage() {
   const homepagePath = "/webapps/portal/execute/tabs/tabAction";
   
   if (window.location.pathname === homepagePath) {
-    console.log("hello");
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -203,8 +202,8 @@ function addStyles(iframeDocument, cssRules) {
       iframeDocument.getElementById("right_stream_stream")
     ]
 
-    console.log(iframeDocument);
-    console.log(babyIframes);
+    // console.log(iframeDocument);
+    // console.log(babyIframes);
 
     let runCount = 0;
 
@@ -248,7 +247,7 @@ function updateStyles(message){
 function addInlineStylesInIframe(iframeElement, cssRules) {
   // Loads inner document
   var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
-  console.log("added styles to iframe");
+  // console.log("added styles to iframe");
   // Checks if document is loaded yet and uses onload if not
     addStyles(iframeDocument, cssRules);
     iframeElement.onload = function() {
@@ -274,7 +273,7 @@ function updateInlineStylesInIframe(iframeElement, cssRules) {
 
   for (const iframe of babyIframes) {
     if (iframe !== null) {
-      console.log("Adding iframe");
+      // console.log("Adding iframe");
       updateInlineStylesInIframe(iframe, cssRules);
       break;
     }
@@ -332,7 +331,7 @@ function checkWhitelistLink(anchor) {
   ) {
     anchor.setAttribute('onclick', `this.href='${href}';`);
     anchor.setAttribute('target', '_blank');
-    console.log("Whitelisted: " + href);
+    // console.log("Whitelisted: " + href);
   }
 }
 
@@ -611,40 +610,42 @@ document.addEventListener("DOMContentLoaded", function() {
   replaceLePortlet();
   replaceKitPortlet();
 
+  // UoM footer
+  replaceImagesWithSVG("Address icon", svgIcons.marker);
+  replaceImagesWithSVG("Phone icon", svgIcons.phone);
+  replaceImagesWithSVG("Email Icon", svgIcons.email);
 
-replaceImagesWithSVG("Content Folder", svgIcons.folder);
-replaceImagesWithSVG("Item", svgIcons.document);
-replaceImagesWithSVG("Module Page", svgIcons.document);
-replaceImagesWithSVG("File", svgIcons.document);
-replaceImagesWithSVG("Assignment", svgIcons.assignment);
-replaceImagesWithSVG("Groups", svgIcons.group);
-replaceImagesWithSVG("Tools Area", svgIcons.tools);
-replaceImagesWithSVG("Course Link", svgIcons.link);
-replaceImagesWithSVG("linked item", svgIcons.minLink);
-replaceImagesWithSVG("Test", svgIcons.test);
-replaceImagesWithSVG("Web Link", svgIcons.extLink);
-replaceImagesWithSVG("Discussion Board", svgIcons.chat);
-replaceImagesWithSVG("Wikis", svgIcons.wiki);
-replaceImagesWithSVG("Blank Page", svgIcons.document);
-replaceImagesWithSVG("Piazza", svgIcons.extLink);
-// UoM footer
-replaceImagesWithSVG("Address icon", svgIcons.marker);
-replaceImagesWithSVG("Phone icon", svgIcons.phone);
-replaceImagesWithSVG("Email Icon", svgIcons.email);
-replaceImagesWithSVG("Blackboard Learn", svgIcons.blackboard);
+  replaceImagesWithSVG("Blackboard Learn", svgIcons.blackboard);
+  replaceImagesWithSVG("File", svgIcons.document);
 
 
-// var power = document.getElementById("topframe.logout.label");
-// var svgString = svgIcons.power; // Assuming svgIcons.power contains your SVG string
-// var parser = new DOMParser();
-// var svgElement = parser.parseFromString(svgString, "image/svg+xml").documentElement;
-// power.parentNode.replaceChild(svgElement, power);
-
-
-
-
-  // testXHR();
+  replaceModuleImagesWithSVG(imageReplacementParams, "item_icon");
 });
+
+
+function replaceModuleImagesWithSVG(svgList, imgClass){
+  var imgs = document.querySelectorAll(`img.${imgClass}`);
+  imgs.forEach(function(image) {
+    var altText = image.getAttribute('alt');
+    var unchanged = true;
+    for (var i = 0; i < svgList.length; i++) {
+      if (altText == svgList[i][0]) {
+          var svgElement = new DOMParser().parseFromString(svgList[i][1], 'image/svg+xml').documentElement;
+          svgElement.classList.add(imgClass);
+          svgElement.classList.add(altText.replace(/\s/g, ''));
+          image.parentNode.replaceChild(svgElement, image);
+          unchanged = false;
+      }
+    }
+    if (unchanged) {
+        var svgElement = new DOMParser().parseFromString(svgIcons.document, 'image/svg+xml').documentElement;
+        svgElement.classList.add(imgClass);
+        svgElement.classList.add(altText.replace(/\s/g, ''));
+        image.parentNode.replaceChild(svgElement, image);
+    }
+  });
+}
+
 
 
 function replaceImagesWithSVG(targetAltText, svgCode) {
@@ -654,13 +655,7 @@ function replaceImagesWithSVG(targetAltText, svgCode) {
     // Replace each image with the SVG code
     imagesToReplace.forEach(function(image) {
         // Check if the image has the class "item_icon"
-        if (image.classList.contains("item_icon")) {
-            var svgElement = new DOMParser().parseFromString(svgCode, 'image/svg+xml').documentElement;
-            svgElement.classList.add("item_icon");
-            svgElement.classList.add(targetAltText.replace(/\s/g, ''));
-            image.parentNode.replaceChild(svgElement, image);
-        }
-        else if (targetAltText == "File"){
+        if (targetAltText == "File"){
             var svgElement = new DOMParser().parseFromString(svgCode, 'image/svg+xml').documentElement;
             svgElement.style.height = "13px";
             svgElement.style.width = "15px";
@@ -685,6 +680,14 @@ function replaceImagesWithSVG(targetAltText, svgCode) {
         }
     });
 }
+
+
+
+// var power = document.getElementById("topframe.logout.label");
+// var svgString = svgIcons.power; // Assuming svgIcons.power contains your SVG string
+// var parser = new DOMParser();
+// var svgElement = parser.parseFromString(svgString, "image/svg+xml").documentElement;
+// power.parentNode.replaceChild(svgElement, power);
 
 const iconColor = "#656565";
 
@@ -949,6 +952,25 @@ c14 -14 -2 -61 -25 -77 -25 -17 -89 -20 -118 -5 -19 11 -25 45 -11 66 16 24
 </g>
 </svg>`
   };
+
+
+  var imageReplacementParams = [
+    ["Content Folder", svgIcons.folder],
+    ["Item", svgIcons.document],
+    ["Module Page", svgIcons.document],
+    ["File", svgIcons.document],
+    ["Assignment", svgIcons.assignment],
+    ["Groups", svgIcons.group],
+    ["Tools Area", svgIcons.tools],
+    ["Course Link", svgIcons.link],
+    ["linked item", svgIcons.minLink],
+    ["Test", svgIcons.test],
+    ["Web Link", svgIcons.extLink],
+    ["Discussion Board", svgIcons.chat],
+    ["Wikis", svgIcons.wiki],
+    ["Blank Page", svgIcons.document],
+    ["Piazza", svgIcons.extLink]
+];
 
 
 
