@@ -563,10 +563,10 @@ const navHrefs = [
   ['https://studentadmin.manchester.ac.uk/CSPROD/signon.html', 'Student System'],
   ['https://timetables.manchester.ac.uk/timetables?view=week', 'Timetable'],
   ['https://video.manchester.ac.uk/lectures/', 'Lecture Recordings'],
-  ['https://read.kortext.com/library/books', 'Kortext Library'],
+  ['https://app.kortext.com/identity/different-account/institution', 'Textbook Library (Kortext)'],
   ['https://www.exams.manchester.ac.uk/exam-timetable/', 'Exam Timetable'],
   ['https://studentadmin.manchester.ac.uk/psp/CSPROD/EMPLOYEE/SA/c/SA_LEARNER_SERVICES.SSS_STUDENT_CENTER.GBL', 'Grades'],
-  ['https://www.library.manchester.ac.uk/', 'Library'],
+  ['https://www.library.manchester.ac.uk/resources/', 'UoM Library'],
   ['https://studentnet.cs.manchester.ac.uk/me/spotv2/spotv2.php', 'SPOT (CS Students)'],
   ['https://www.library.manchester.ac.uk/training/my-learning-essentials/', 'My Learning Essentials'],
   ['https://manchester.evaluationkit.com/', 'Evaluation Kit']];
