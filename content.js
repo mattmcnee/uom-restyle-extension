@@ -1900,6 +1900,7 @@ ul.streamSettingHelpLinks{
   background-color: transparent !important;
   border-radius: 6px;
   border-color: var(--background-main-outline) !important;
+  color: var(--text-main) !important;
 }
 
 .ui-dialog span{
@@ -1997,10 +1998,9 @@ input[type="text"], input[type="password"], select {
 
 .profileCardAvatarThumb img {
   border-width: initial;
-  border-style: none !important;
-  border-color: initial !important;
-  border-image: initial !important;
-  border: 1px solid #ddd !important;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
   border-radius: 50% !important;
 }
 

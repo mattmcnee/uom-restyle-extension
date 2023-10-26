@@ -1081,6 +1081,7 @@ ol.breadcrumb-mobile-menu-open li{
   background-color: transparent !important;
   border-color: var(--background-main-outline) !important;
   border-radius: 6px;
+  color: var(--text-main) !important;
 }
 
 .item h3 a span{
@@ -1235,16 +1236,58 @@ ol.breadcrumb-mobile-menu-open li{
 */
 
 .tocSide_pullExpanded{
-  transform: translate(-12px, -4px);
   border-bottom-right-radius: 10px !important;
   border: none !important;
   z-index: 2 !important;
-  border-right: 1px solid #ccc !important;
-  border-bottom: 1px solid #ccc !important;
+  border-right: 1px solid var(--background-main-outline) !important;
+  border-bottom: 1px solid var(--background-main-outline) !important;
+}
+
+.sideTOC{
+  border-color: var(--background-main-outline) !important;
+}
+
+.contentPane.sideTOC_panelMax{
+  padding-left: 375px !important;
+  padding-right: 5px !important;
+}
+
+.contentPane.sideTOC_panelMin{
+  padding-left: 35px !important;
+  padding-right: 5px !important;
+}
+
+.contentPane.sideTOC_panel{
+  padding-left: 225px !important;
+  padding-right: 5px !important;
+}
+
+.sideTOCMinimize{
+  transform: translate(-24px, -4px);
+}
+
+.sideTOC:not(.sideTOCMinimize){
+  transform: translate(-12px, -4px);
+/*  width: 300px !important;*/
 }
 
 .tocWrapper a{
   border: none !important;
+  box-shadow: none !important;
+}
+
+.sideTOCMinimize .tocActions{
+  left: -18px !important;
+}
+
+.tocActions .button-3-img{
+  background-color: transparent !important;
+}
+
+div .submitStepBottom{
+/*  border-top: 1px solid var(--background-main-outline) !important;
+  border-left: 1px solid var(--background-main-outline) !important;
+  border-right: 1px solid var(--background-main-outline) !important;*/
   box-shadow: none !important;
 }
 
