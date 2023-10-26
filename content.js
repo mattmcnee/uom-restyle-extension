@@ -253,6 +253,7 @@ function addInlineStylesInIframe(iframeElement, cssRules) {
     iframeElement.onload = function() {
       iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
       addStyles(iframeDocument, cssRules);
+      observeAndStyleTox(iframeDocument);
     };
 }
 
@@ -506,7 +507,7 @@ function forceDisplayNoneById(divID){
 // Create a MutationObserver to watch for changes in the DOM
 // Needed as tox elements don't load instantly
 var toxFrames = [];
-function observeAndStyleTox() {
+function observeAndStyleTox(doc) {
   const observer = new MutationObserver((mutationsList) => {
     for (const mutation of mutationsList) {
       if (mutation.type === 'childList') {
@@ -523,7 +524,7 @@ function observeAndStyleTox() {
   });
 
   // Start observing the entire document
-  observer.observe(document, { childList: true, subtree: true });
+  observer.observe(doc, { childList: true, subtree: true });
 }
 
 function fixBreadcrumbsResize(){
@@ -601,7 +602,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   fixBreadcrumbsResize(); // Fixes resizing bug with mobile breadcrumbs bar
 
-  observeAndStyleTox(); // Applies iframe styling to tox elements
+  observeAndStyleTox(document); // Applies iframe styling to tox elements
 
   // Prevents having to click again on whitelisted pages
   document.querySelectorAll('a').forEach(checkWhitelistLink);
@@ -2007,6 +2008,65 @@ input[type="text"], input[type="password"], select {
 .profile-card-open-button{
   background-color: var(--background-main) !important;
 }
+
+.tox .tox-toolbar, .tox .tox-toolbar__primary,
+.tox .tox-toolbar-overlord  {
+  background-color: var(--background-main) !important;
+  color: var(--text-light) !important;
+  border-color: var(--background-main-outline) !important;
+}
+
+.tox .tox-toolbar__primary{
+  border-bottom: 1px solid var(--background-main-outline) !important;
+  background-image: none !important;
+}
+
+.tox span{
+  color: var(--text-light) !important;
+}
+
+.tox .tox-toolbar__overflow{
+  background-image: none !important;
+  background: linear-gradient(180deg, var(--background-main) 39px, var(--background-main-outline) 39px, var(--background-main-outline) 40px, var(--background-main) 40px, var(--background-main) 77px, var(--background-main-outline) 77px) !important;
+}
+
+.tox .tox-toolbar__group {
+  border-color: var(--background-main-outline) !important;
+}
+
+.tox-tinymce{
+  border-color: var(--background-main-outline) !important;
+}
+
+.tox .tox-tbtn{
+  background-color: var(--background-main) !important;
+}
+
+.tox .tox-tbtn:hover {
+  background-color: var(--background-tint-1-highlight) !important;
+}
+
+.tox .tox-tbtn--enabled, .tox .tox-tbtn--enabled:hover {
+  background-color: var(--background-tint-2-highlight) !important;
+}
+
+.tox .tox-tbtn svg {
+  fill: var(--text-light) !important;
+}
+
+.tox .tox-statusbar {
+  background-color: var(--background-main) !important;
+  border-color: var(--background-main-outline) !important;
+}
+
+.tox-statusbar__branding a,  .tox-statusbar__path-item, .tox .tox-statusbar button{
+  color: var(--text-light) !important;
+}
+
+.tox .tox-sidebar-wrap {
+  background-color: var(--background-main) !important;
+}
+
 
 `;
 

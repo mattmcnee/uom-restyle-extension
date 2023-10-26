@@ -1285,9 +1285,6 @@ ol.breadcrumb-mobile-menu-open li{
 }
 
 div .submitStepBottom{
-/*  border-top: 1px solid var(--background-main-outline) !important;
-  border-left: 1px solid var(--background-main-outline) !important;
-  border-right: 1px solid var(--background-main-outline) !important;*/
   box-shadow: none !important;
 }
 
@@ -2215,6 +2212,7 @@ div.collectionViewReadMessageBorder{
 
 .tox .tox-statusbar {
   background-color: var(--background-main) !important;
+  border-color: var(--background-main-outline) !important;
 }
 
 .tox-statusbar__branding a,  .tox-statusbar__path-item, .tox .tox-statusbar button{
