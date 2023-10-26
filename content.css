@@ -665,6 +665,12 @@ ol.breadcrumb-mobile-menu-open li{
 
 .accordion_content{
   height: calc(100vh - 199px) !important;
+  background-color: var(--background-main) !important;
+  box-shadow: none !important;
+}
+
+.accordion_content a{
+  color: var(--text-link) !important;
 }
 
 .flyout-menu .mybb-tools a{
@@ -678,12 +684,33 @@ ol.breadcrumb-mobile-menu-open li{
 }
 
 .flyout-menu .accordion_content li{
-  border-top: 1px dotted #ccc !important;
+  border-top: 1px dotted var(--background-main-outline) !important;
 }
 
 .flyout-menu .accordion_content li:first-child {
   border: none !important;
 }
+
+.flyout-menu .accordion-wrapper .accordion_toggle span{
+  background-color: var(--secondary-button) !important;
+  color: var(--secondary-button-text) !important;
+  border-color: var(--background-main-outline) !important;
+}
+
+.flyout-menu .accordion-wrapper{
+  background-color: var(--background-main) !important;
+}
+
+.bottom-buttons li{
+  background-color: var(--secondary-button) !important;
+  border-color: var(--background-main-outline) !important;
+}
+
+.bottom-buttons li a:hover{
+  background-color: var(--secondary-button-highlight) !important;
+}
+
+
 
 /*
   ---
