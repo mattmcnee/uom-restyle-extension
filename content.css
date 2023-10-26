@@ -701,12 +701,16 @@ ol.breadcrumb-mobile-menu-open li{
   background-color: var(--background-main) !important;
 }
 
+.flyout-menu  .labelMenuItem{
+  color: var(--text-main) !important;
+}
+
 .bottom-buttons li{
   background-color: var(--secondary-button) !important;
   border-color: var(--background-main-outline) !important;
 }
 
-.bottom-buttons li a:hover{
+.bottom-buttons li a:hover, .bottom-buttons li a:focus{
   background-color: var(--secondary-button-highlight) !important;
 }
 
@@ -1055,6 +1059,11 @@ ol.breadcrumb-mobile-menu-open li{
   ---
   ---
 */
+
+.details iframe {
+  max-width: 660px !important;
+  width: 100% !important;
+}
 
 #pageList .liItem:hover{
   background: transparent;
@@ -2747,4 +2756,12 @@ div[id*="step"]{
     display: block !important;
   }
 }
+
+@media only screen and (min-width: 421px) and (max-width: 500px){
+  .contentList {
+    width: unset !important;
+  }
+}
+
+
 
