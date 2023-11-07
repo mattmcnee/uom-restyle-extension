@@ -243,7 +243,7 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 }
 
 /* backgroundTint1 */
-.contentListPlain li,
+.contentListPlain li:not(li ul li),
 .contentList li:nth-child(odd),
 #forumMessagesContainer .db-message-wrapper:nth-child(odd),
 #listContainer_databody tr:nth-child(odd),
