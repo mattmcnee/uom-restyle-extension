@@ -12,7 +12,7 @@
 #calendar_content, #outer_left_stream_alerts, #dynamic_filters_mygrades,
 .mybb.filterBarHorizontal, .mybb.gradeTableNew .grades_header,
 #settingsContainer_alerts, .breadcrumbs, .filterBarHorizontal #sortby,
-.blogContainer li
+.blogContainer li, .stream_page_left
 {
   background-color: var(--background-main) !important;
 }
@@ -1037,4 +1037,12 @@ input[type="text"], input[type="password"], select {
 
 .tox .tox-sidebar-wrap {
   background-color: var(--background-main) !important;
+}
+
+.external-breadcrumbs .breadcrumbs {
+  padding: 12px 9px 12px 12px !important;
+}
+
+.external-breadcrumbs .breadcrumbs span{
+  color: var(--text-main) !important;
 }

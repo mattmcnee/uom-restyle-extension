@@ -226,7 +226,7 @@ function addStyles(iframeDocument, cssRules) {
 
 function updateStyles(message){
   // Save data to storage
-  var userData = message;
+  userData = message;
   if (navigator.userAgent.includes("Firefox")) {
     browser.storage.local.set({ userData: message });
     // console.log("Data saved:", message);
@@ -242,19 +242,38 @@ function updateStyles(message){
   updateTheme(userData, true);
 }
 
+function isCrossOrigin(iframeElement) {
+  try {
+    // Try to access the document property of the iframe
+    var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
+    // If no error is thrown, it is same-origin
+    return false;
+  } catch (e) {
+    // Error means it is cross-origin
+    return true;
+  }
+}
+
+
 
 // Adds CSS styles to iframes
 function addInlineStylesInIframe(iframeElement, cssRules) {
-  // Loads inner document
-  var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
-  // console.log("added styles to iframe");
-  // Checks if document is loaded yet and uses onload if not
+  if(!isCrossOrigin(iframeElement)){
+    // Loads inner document
+    var iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
+    // console.log("added styles to iframe");
+    // Checks if document is loaded yet and uses onload if not
     addStyles(iframeDocument, cssRules);
     iframeElement.onload = function() {
-      iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
-      addStyles(iframeDocument, cssRules);
-      observeAndStyleTox(iframeDocument);
-    };
+      if(!isCrossOrigin(iframeElement)){
+        iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
+        addStyles(iframeDocument, cssRules);
+        observeAndStyleTox(iframeDocument);       
+      }
+
+    };   
+  }
+
 }
 
 
@@ -573,6 +592,7 @@ const navHrefs = [
   ['https://manchester.evaluationkit.com/', 'Evaluation Kit']];
 
 //Retrieve data from storage
+var userData;
 if (navigator.userAgent.includes("Chrome")) {
   chrome.storage.local.get(["userData"], (result) => {
     // console.log("Data retrieved:", result.userData);
@@ -1040,7 +1060,7 @@ var inlineCSSCont = `
 #calendar_content, #outer_left_stream_alerts, #dynamic_filters_mygrades,
 .mybb.filterBarHorizontal, .mybb.gradeTableNew .grades_header,
 #settingsContainer_alerts, .breadcrumbs, .filterBarHorizontal #sortby,
-.blogContainer li
+.blogContainer li, .stream_page_left
 {
   background-color: var(--background-main) !important;
 }
@@ -2065,6 +2085,14 @@ input[type="text"], input[type="password"], select {
 
 .tox .tox-sidebar-wrap {
   background-color: var(--background-main) !important;
+}
+
+.external-breadcrumbs .breadcrumbs {
+  padding: 12px 9px 12px 12px !important;
+}
+
+.external-breadcrumbs .breadcrumbs span{
+  color: var(--text-main) !important;
 }
 
 
