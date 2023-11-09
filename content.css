@@ -188,8 +188,9 @@ a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.action
 #selectAll_top:hover, #selectNone_top:hover, #selectAll_bottom:hover, #selectNone_bottom:hover,
 #top_list_action_bar .nav .sub ul li a:hover, #bottom_list_action_bar .nav .sub ul li a:hover,
 .mainButton a:hover, #courseMenuPalette li:hover a span, #courseMenuPalette h3 a:hover,
-#courseMenuPalette div.navPaletteContent ul li a:hover
-/*,.rumble_top .nav .sub ul li a:hover, .rumble .nav .sub ul li a:hover*/
+#courseMenuPalette div.navPaletteContent ul li a:hover,
+/*,.rumble_top .nav .sub ul li a:hover, .rumble .nav .sub ul li a:hover,*/
+.navPaletteContent .submenu li a:hover, .navPaletteContent h4 a:hover
 {
   color: var(--text-link) !important;
   cursor: pointer;
@@ -227,7 +228,8 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 .inventoryListHead th a, .localViewToggle a, .pagingprefs span, .inventoryListTableContainerDiv span,
 #announcementList h3, #pageTitleHeader span, .filterBarHorizontal #sortby, .grades_header,
 #dataCollectionContainer div h3, .infoListWrapper .key-valueTable th, .infoListWrapper .key-valueTable td,
-.portlet .viewHeader h3, .stepHelp, #courseMenuPalette div.navPaletteContent ul li a
+.portlet .viewHeader h3, .stepHelp, #courseMenuPalette div.navPaletteContent ul li a,
+.navPaletteContent .submenu li a, .navPaletteContent h4 a
 {
   color: var(--text-main) !important;
 }
