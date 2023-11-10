@@ -516,10 +516,10 @@ function forceDisplayNoneById(divID){
             }
         });
     });
-  }
   // Configure the observer to watch for changes to the style attribute
   var config = { attributes: true, attributeFilter: ["style"] };
   observer.observe(divToMonitor, config);
+  }
 }
 
 
