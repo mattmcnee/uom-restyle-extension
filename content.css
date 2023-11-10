@@ -1627,6 +1627,13 @@ a.reply-count-link {
   border-radius: 2px !important;
 }
 
+.announcementList div {
+  background-color: transparent !important;
+  border-radius: 6px;
+  border-color: var(--background-main-outline) !important;
+  color: var(--text-main) !important;
+}
+
 /*
   ---
   ---
