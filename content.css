@@ -190,7 +190,8 @@ a.reply-count-link:hover, .inventory_paging a:hover, #navsecondary a:not(.action
 .mainButton a:hover, #courseMenuPalette li:hover a span, #courseMenuPalette h3 a:hover,
 #courseMenuPalette div.navPaletteContent ul li a:hover,
 /*,.rumble_top .nav .sub ul li a:hover, .rumble .nav .sub ul li a:hover,*/
-.navPaletteContent .submenu li a:hover, .navPaletteContent h4 a:hover
+.navPaletteContent .submenu li a:hover, .navPaletteContent h4 a:hover,
+#attachments a, .indexBlock a
 {
   color: var(--text-link) !important;
   cursor: pointer;
@@ -229,7 +230,7 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 #announcementList h3, #pageTitleHeader span, .filterBarHorizontal #sortby, .grades_header,
 #dataCollectionContainer div h3, .infoListWrapper .key-valueTable th, .infoListWrapper .key-valueTable td,
 .portlet .viewHeader h3, .stepHelp, #courseMenuPalette div.navPaletteContent ul li a,
-.navPaletteContent .submenu li a, .navPaletteContent h4 a
+.navPaletteContent .submenu li a, .navPaletteContent h4 a, .selectItems label, .stepcontent div.label
 {
   color: var(--text-main) !important;
 }
@@ -249,7 +250,10 @@ body, .contentPane #copyright p, .contentPane #copyright div, .breadcrumbs, .bre
 .contentList li:nth-child(odd),
 #forumMessagesContainer .db-message-wrapper:nth-child(odd),
 #listContainer_databody tr:nth-child(odd),
-#announcementList li:nth-child(odd) :not(.vtbegenerated li, b, strong)
+#announcementList li:nth-child(odd) :not(.vtbegenerated li, b, strong),
+.navDropdownCombo .dropDown:hover, .navDropdownCombo .dropDown .list li a:hover, 
+.navDropdownCombo .rightBtn:hover, .navDropdownCombo .leftBtn:hover,
+div .gradingPanelCollapse_btn.expanded:hover, div .gradingPanelCollapse_btn.expanded:focus
 {
   background-color: var(--background-tint-1) !important;
 }
@@ -622,6 +626,15 @@ ol.breadcrumb-mobile-menu-open li{
   text-decoration: none !important;
 }
 
+.resizeControls:not(.gradingPanel .resizeControls){
+  position: relative;
+  background-color: var(--background-main) !important;
+}
+
+.maximizer_btn{
+  background-color: transparent !important;
+}
+
 /*
   ---
   ---
@@ -821,6 +834,12 @@ ol.breadcrumb-mobile-menu-open li{
   ---
   ---
 */
+
+.selectItems{
+  background-color: transparent !important;
+  border-color: var(--background-main-outline) !important;
+  border-radius: 6px;
+}
 
 .contextMenuContainer .cmimg{
   position: relative !important;
@@ -2082,6 +2101,158 @@ div.collectionViewReadMessageBorder{
 
 .inventory tbody .gray td, .inventory tbody .gray th{
   background-color: var(--background-tint-1) !important;
+}
+
+.blogEntry tr td, .collapseTabsData tr td, .details tr td, .details tr th{
+  width: unset !important;
+  padding: 0 5px;
+  border: 1px solid var(--background-main-outline) !important;
+  min-width: 50px;
+}
+
+.blogEntry table, .collapseTabsData table, .details table{
+  width: unset !important;
+  max-width: 100%;
+  border-collapse: collapse !important;
+  border: 1px solid var(--background-main-outline) !important;
+}
+
+.blogContainer .wikiPage{
+  border: none !important;
+}
+
+.blogContainer, .blogEntry{
+  background-color: transparent !important;
+}
+
+.blogContainer h4 a{
+  color: var(--text-link) !important;
+}
+
+.blogContainer .entryDate {
+  color: var(--text-light) !important;
+}
+
+.contentDetailsHeader{
+  background-color: transparent !important;
+}
+
+.contentDetailsHeader a{
+  color: var(--text-main) !important;
+}
+
+.indexBlock a.tabOpener, .indexBlock a.tabOpener:hover{
+  color: var(--text-light) !important;
+}
+
+/*
+  ---
+  ---
+  --- Notepad
+  ---
+  ---
+*/
+
+.inlineGrader{
+  background-color: transparent !important;
+  border-top: 1px solid var(--background-main-outline) !important;
+}
+
+.journalContainer .blogHead {
+  background-color: transparent !important;
+  color: var(--text-main) !important;
+}
+
+.journalContainer .blogEntry h4{
+  background-color: transparent !important;
+}
+
+.journalContainer .blogEntry {
+  background-image: none !important;
+  border: 1px solid var(--background-main-outline) !important;
+  background-color: var(--background-main) !important;
+  border-radius: 10px;
+  padding: 0 !important;
+}
+
+.journalContainer .entryFooter {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+.journalContainer .blogEntry div{
+    background-color: transparent !important;
+}
+
+
+.journalContainer .entryDate{
+  border-color: var(--background-main-outline) !important;
+}
+
+.gradingPanel{
+  border-color: var(--background-main-outline) !important;
+}
+
+.gradingPanel .gradingPanelHeader, .gradingPanel .maximizer_btn, .gradingPanel .gradingPanelCollapse_btn{
+  background-color: transparent !important;
+}
+
+.gradingPanel .gradingPanelHeader span{
+  color: var(--text-main) !important;
+}
+
+.gradingPanel .navDropdownCombo, .gradingPanel .navDropdownCombo a{
+  border-color: var(--background-main-outline) !important;
+}
+
+.navDropdownCombo .dropDown .currentUser{
+  background-image: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  overflow-y: hidden !important;
+}
+
+.gradingPanel .gradeEntry{
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.gradingPanel .grade{
+  background-color: transparent;
+  border: 1px solid var(--background-main-outline) !important;
+  border-radius: 6px;
+}
+
+.gradingPanel .gradeSubmissionPanel, .gradingPanel .attemptHeader{
+  background-color: transparent !important;
+}
+
+.gradingPanel .gradeSubmissionPanel, .journalContainer .entryComments li{
+  border-color: var(--background-main-outline) !important;
+}
+
+.journalContainer .entryDate {
+  color: var(--text-light) !important;
+}
+
+.journalContainer .blogEntry a:not(.genericButton){
+  color: var(--text-link) !important;
+} 
+
+.journalContainer .entryComments{
+  background-color: transparent !important;
+}
+
+.journalContainer .entryComments h5{
+  color: var(--text-light) !important;
+}
+
+.journalContainer .entryComments li .commentDate{
+  color: var(--text-light) !important;
+}
+
+.navPalette.tools{
+  border-top: 1px solid var(--background-main-outline) !important;
 }
 
 

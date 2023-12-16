@@ -68,7 +68,7 @@ function loadDeadlinesIfHomepage() {
           fixedID.removeChild(fixedID.firstChild);
         }
 
-        fixedID.appendChild(document.createElement('h3')).textContent = 'Upcoming Deadlines';
+        fixedID.appendChild(document.createElement('h3')).textContent = 'No Upcoming Deadlines';
         fixedID.appendChild(ulElement);
       }
     };
@@ -376,7 +376,7 @@ function useBreadcrumbHeight(entries) {
 // Replaces "EvaluationKIT Course Evaluations" portlet with nav links
 function replaceKitPortlet() {
   const portletColumn0 = document.getElementById("column0");
-  if (portletColumn0) {
+  if (portletColumn0 && window.location.pathname == "/webapps/portal/execute/tabs/tabAction") {
   forceDisplayNoneById("module:_334_1");
 
   // Create new portlet
@@ -424,7 +424,7 @@ function replaceKitPortlet() {
 
 function replaceLePortlet() {
   const portletColumn0 = document.getElementById("column0");
-  if (portletColumn0) {
+  if (portletColumn0 && window.location.pathname == "/webapps/portal/execute/tabs/tabAction") {
     forceDisplayNoneById("module:_422_1");
 
     var faLink = document.createElement('link');
