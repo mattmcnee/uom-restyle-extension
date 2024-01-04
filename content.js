@@ -68,8 +68,15 @@ function loadDeadlinesIfHomepage() {
           fixedID.removeChild(fixedID.firstChild);
         }
 
-        fixedID.appendChild(document.createElement('h3')).textContent = 'No Upcoming Deadlines';
-        fixedID.appendChild(ulElement);
+        if(ulElement.firstChild){
+          fixedID.appendChild(document.createElement('h3')).textContent = 'Upcoming Deadlines';
+          fixedID.appendChild(ulElement);
+        }
+        else{
+          fixedID.appendChild(document.createElement('h3')).textContent = 'No Upcoming Deadlines';
+        }
+
+
       }
     };
 
