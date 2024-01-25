@@ -342,6 +342,10 @@ div .gradingPanelCollapse_btn.expanded:hover, div .gradingPanelCollapse_btn.expa
   ---
 */
 
+.path{
+  max-width: 90% !important;
+}
+
 #Blackboard a{
   color: #eee !important;
 }
@@ -2367,10 +2371,11 @@ div.collectionViewReadMessageBorder{
 .stepTitleRight{
   margin-top: 0 !important;
   margin-right: 10px !important;
-  padding: 4px 12px !important;
+  padding: 4px 5px 4px 12px !important;
   border-bottom-right-radius: 5px !important;
   border-right: 1px solid #ccc !important;
   border-color: var(--background-main-outline) !important;
+  box-shadow: none !important;
 }
 
 .stepTitleRight input{
@@ -2400,7 +2405,8 @@ div.collectionViewReadMessageBorder{
 
 .tox .tox-toolbar__overflow{
   background-image: none !important;
-  background: linear-gradient(180deg, var(--background-main) 39px, var(--background-main-outline) 39px, var(--background-main-outline) 40px, var(--background-main) 40px, var(--background-main) 77px, var(--background-main-outline) 77px) !important;
+  background-color: var(--background-main) !important;
+/*  background: linear-gradient(180deg, var(--background-main) 39px, var(--background-main-outline) 39px, var(--background-main-outline) 40px, var(--background-main) 40px, var(--background-main) 77px, var(--background-main-outline) 77px) !important;*/
 }
 
 .tox .tox-toolbar__group {

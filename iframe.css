@@ -999,7 +999,8 @@ input[type="text"], input[type="password"], select {
 
 .tox .tox-toolbar__overflow{
   background-image: none !important;
-  background: linear-gradient(180deg, var(--background-main) 39px, var(--background-main-outline) 39px, var(--background-main-outline) 40px, var(--background-main) 40px, var(--background-main) 77px, var(--background-main-outline) 77px) !important;
+  background-color: var(--background-main) !important;
+/*  background: linear-gradient(180deg, var(--background-main) 39px, var(--background-main-outline) 39px, var(--background-main-outline) 40px, var(--background-main) 40px, var(--background-main) 77px, var(--background-main-outline) 77px) !important;*/
 }
 
 .tox .tox-toolbar__group {

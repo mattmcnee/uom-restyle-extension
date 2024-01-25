@@ -100,6 +100,110 @@ function preloadDeadlinesIfHomepage(){
   }
 }
 
+
+
+// "https://online.manchester.ac.uk/webapps/blackboard/execute/courseMain?course_id=_79125_1&sc=";
+
+
+function loadCourseData() {
+  const courseUrl = "https://online.manchester.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_79125_1&content_id=_15207009_1";
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', courseUrl, true);
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      console.log("Response from course URL:", xhr.responseText);
+    } else {
+      console.error("Request failed. Returned status of " + xhr.status);
+    }
+  };
+  xhr.onerror = () => {
+    console.error("Request error.");
+  };
+  xhr.send();
+}
+
+
+// Fix course unit tabs
+function setupCourseTabs() {
+    // Create the new tab structure
+    const tabHtml = `
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'Semester1')">Semester 1</button>
+            <button class="tablinks" onclick="openTab(event, 'Semester2')">Semester 2</button>
+            <button class="tablinks" onclick="openTab(event, 'PastYears')">Past years’ courses</button>
+        </div>
+        <div id="Semester1" class="tabcontent" style="display: none;"></div>
+        <div id="Semester2" class="tabcontent" style="display: none;"></div>
+        <div id="PastYears" class="tabcontent" style="display: none;"></div>`;
+
+    // Replace the existing tab structure with the new one
+    const tabContainer = document.querySelector('.tab');
+    tabContainer.innerHTML = tabHtml;
+
+    // // Filter and distribute courses into appropriate tabs
+    // const allCourses = document.querySelectorAll('.listElement li');
+    // allCourses.forEach(course => {
+    //     const courseTitle = course.textContent;
+    //     if (courseTitle.includes('1st Semester')) {
+    //         document.querySelector('#Semester1').appendChild(course.cloneNode(true));
+    //     }
+    //     if (courseTitle.includes('2nd Semester')) {
+    //         document.querySelector('#Semester2').appendChild(course.cloneNode(true));
+    //     }
+    //     if (!courseTitle.includes('1st Semester') && !courseTitle.includes('2nd Semester')) {
+    //         document.querySelector('#Semester1').appendChild(course.cloneNode(true));
+    //         document.querySelector('#Semester2').appendChild(course.cloneNode(true));
+    //     }
+    // });
+
+    // // Tab opening function
+    // window.openTab = function(evt, tabName) {
+    //     const tabcontent = document.getElementsByClassName("tabcontent");
+    //     for (let i = 0; i < tabcontent.length; i++) {
+    //         tabcontent[i].style.display = "none";
+    //     }
+
+    //     const tablinks = document.getElementsByClassName("tablinks");
+    //     for (let i = 0; i < tablinks.length; i++) {
+    //         tablinks[i].className = tablinks[i].className.replace(" active", "");
+    //     }
+
+    //     document.getElementById(tabName).style.display = "block";
+    //     evt.currentTarget.className += " active";
+    // };
+}
+
+
+// function observeCourseListUpdates() {
+//     // Target the specific element
+//     const targetNode = document.querySelector('#div_339_1 #CurrentCourses .listElement');
+
+
+//     // Ensure the target node exists
+//     if (!targetNode) {
+//         console.error('Target node for course list not found.');
+//         return;
+//     }
+
+//     const config = { childList: true, subtree: false }; // Observe direct children only
+
+//     const callback = function(mutationsList, observer) {
+//         for (let mutation of mutationsList) {
+//             if (mutation.type === 'childList') {
+//                 setupCourseTabs(); // Call your function
+//                 break;
+//             }
+//         }
+//     };
+
+//     const observer = new MutationObserver(callback);
+//     observer.observe(targetNode, config);
+// }
+
+
+
+
 // Converts JSON to root style element inner text
 function getProperties(themeData) {
   const cssText = `
@@ -630,6 +734,9 @@ document.addEventListener("DOMContentLoaded", function() {
   fixBreadcrumbsResize(); // Fixes resizing bug with mobile breadcrumbs bar
 
   observeAndStyleTox(document); // Applies iframe styling to tox elements
+
+  // observeCourseListUpdates(); // To fix course unit tabs
+  loadCourseData();
 
   // Prevents having to click again on whitelisted pages
   document.querySelectorAll('a').forEach(checkWhitelistLink);
@@ -2054,7 +2161,8 @@ input[type="text"], input[type="password"], select {
 
 .tox .tox-toolbar__overflow{
   background-image: none !important;
-  background: linear-gradient(180deg, var(--background-main) 39px, var(--background-main-outline) 39px, var(--background-main-outline) 40px, var(--background-main) 40px, var(--background-main) 77px, var(--background-main-outline) 77px) !important;
+  background-color: var(--background-main) !important;
+/*  background: linear-gradient(180deg, var(--background-main) 39px, var(--background-main-outline) 39px, var(--background-main-outline) 40px, var(--background-main) 40px, var(--background-main) 77px, var(--background-main-outline) 77px) !important;*/
 }
 
 .tox .tox-toolbar__group {
