@@ -102,104 +102,170 @@ function preloadDeadlinesIfHomepage(){
 
 
 
-// "https://online.manchester.ac.uk/webapps/blackboard/execute/courseMain?course_id=_79125_1&sc=";
-
-
-function loadCourseData() {
-  const courseUrl = "https://online.manchester.ac.uk/webapps/blackboard/content/listContent.jsp?course_id=_79125_1&content_id=_15207009_1";
-
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', courseUrl, true);
-  xhr.onload = () => {
-    if (xhr.status === 200) {
-      console.log("Response from course URL:", xhr.responseText);
-    } else {
-      console.error("Request failed. Returned status of " + xhr.status);
-    }
-  };
-  xhr.onerror = () => {
-    console.error("Request error.");
-  };
-  xhr.send();
-}
-
-
 // Fix course unit tabs
 function setupCourseTabs() {
-    // Create the new tab structure
-    const tabHtml = `
-        <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Semester1')">Semester 1</button>
-            <button class="tablinks" onclick="openTab(event, 'Semester2')">Semester 2</button>
-            <button class="tablinks" onclick="openTab(event, 'PastYears')">Past years’ courses</button>
-        </div>
-        <div id="Semester1" class="tabcontent" style="display: none;"></div>
-        <div id="Semester2" class="tabcontent" style="display: none;"></div>
-        <div id="PastYears" class="tabcontent" style="display: none;"></div>`;
-
-    // Replace the existing tab structure with the new one
     const tabContainer = document.querySelector('.tab');
-    tabContainer.innerHTML = tabHtml;
+    
+    // Clear existing content in the tab container
+    while (tabContainer.firstChild) {
+        tabContainer.removeChild(tabContainer.firstChild);
+    }
 
-    // // Filter and distribute courses into appropriate tabs
-    // const allCourses = document.querySelectorAll('.listElement li');
-    // allCourses.forEach(course => {
-    //     const courseTitle = course.textContent;
-    //     if (courseTitle.includes('1st Semester')) {
-    //         document.querySelector('#Semester1').appendChild(course.cloneNode(true));
-    //     }
-    //     if (courseTitle.includes('2nd Semester')) {
-    //         document.querySelector('#Semester2').appendChild(course.cloneNode(true));
-    //     }
-    //     if (!courseTitle.includes('1st Semester') && !courseTitle.includes('2nd Semester')) {
-    //         document.querySelector('#Semester1').appendChild(course.cloneNode(true));
-    //         document.querySelector('#Semester2').appendChild(course.cloneNode(true));
-    //     }
-    // });
+    // Create new tab structure
+    const createTabButton = (text, tabId) => {
+        const button = document.createElement('button');
+        button.className = 'tablinks';
+        button.id = tabId;
+        button.textContent = text;
+        button.onclick = (event) => newTab(event, tabId);
+        return button;
+    };
 
-    // // Tab opening function
-    // window.openTab = function(evt, tabName) {
-    //     const tabcontent = document.getElementsByClassName("tabcontent");
-    //     for (let i = 0; i < tabcontent.length; i++) {
-    //         tabcontent[i].style.display = "none";
-    //     }
+    tabContainer.appendChild(createTabButton('Semester 1', 'Semester1'));
+    tabContainer.appendChild(createTabButton('Semester 2', 'Semester2'));
+    tabContainer.appendChild(createTabButton('Past years’ courses', 'PastYears'));
 
-    //     const tablinks = document.getElementsByClassName("tablinks");
-    //     for (let i = 0; i < tablinks.length; i++) {
-    //         tablinks[i].className = tablinks[i].className.replace(" active", "");
-    //     }
+    const h3ForSem1 = document.createElement('h3');
+    h3ForSem1.textContent = 'Courses where you are: Student';
 
-    //     document.getElementById(tabName).style.display = "block";
-    //     evt.currentTarget.className += " active";
-    // };
+    const sem1 = document.createElement('div');
+    sem1.id = 'Sem1';
+    sem1.className = 'tabcontent collapsible';
+    sem1.style.display = 'none';
+
+    const ul1 = document.createElement('ul');
+    ul1.className = 'listElement';
+
+    // Append h3 before ul
+    sem1.appendChild(h3ForSem1);
+    sem1.appendChild(ul1);
+    tabContainer.parentNode.appendChild(sem1);
+
+    const h3ForSem2 = document.createElement('h3');
+    h3ForSem2.textContent = 'Courses where you are: Student';
+
+    const sem2 = document.createElement('div');
+    sem2.id = 'Sem2';
+    sem2.className = 'tabcontent collapsible';
+    sem2.style.display = 'none';
+
+    const ul2 = document.createElement('ul');
+    ul2.className = 'listElement';
+
+    // Append h3 before ul
+    sem2.appendChild(h3ForSem2);
+    sem2.appendChild(ul2);
+    tabContainer.parentNode.appendChild(sem2);
+
+
+
+    const allCourses = document.querySelectorAll('#module\\:_339_1 #CurrentCourses .listElement li');
+    console.log(allCourses);
+    allCourses.forEach(course => {
+        const courseTitle = course.textContent;
+        if (courseTitle.includes('1st Semester')) {
+            document.querySelector('#Sem1 .listElement').appendChild(course.cloneNode(true));
+        }
+        if (courseTitle.includes('2nd Semester')) {
+            document.querySelector('#Sem2 .listElement').appendChild(course.cloneNode(true));
+        }
+        if (!courseTitle.includes('1st Semester') && !courseTitle.includes('2nd Semester')) {
+            document.querySelector('#Sem1 .listElement').appendChild(course.cloneNode(true));
+            document.querySelector('#Sem2 .listElement').appendChild(course.cloneNode(true));
+        }
+    });
+
+    const currentCourses = document.getElementById('CurrentCourses');
+    const formerCourses = document.getElementById('FormerCourses');
+
+    if (currentCourses) {
+        currentCourses.style.display = 'none';
+    }
+
+    if (formerCourses) {
+        formerCourses.style.display = 'none';
+    }
+
+    const currentDate = new Date();
+    let activeTabId;
+
+    if (currentDate >= new Date(currentDate.getFullYear(), 1, 28) && // Feb 28
+        currentDate < new Date(currentDate.getFullYear(), 8, 1)) {    // Sep 1
+        activeTabId = 'Semester2';
+    } else {
+        activeTabId = 'Semester1';
+    }
+
+    // Activate the appropriate tab
+    const activeTab = document.getElementById(activeTabId);
+    const activeTabContent = document.getElementById(activeTabId === 'Semester1' ? 'Sem1' : 'Sem2');
+
+    if (activeTab && activeTabContent) {
+        activeTab.className += " active";
+        activeTabContent.style.display = 'block';
+    }
+
+
 }
 
 
-// function observeCourseListUpdates() {
-//     // Target the specific element
-//     const targetNode = document.querySelector('#div_339_1 #CurrentCourses .listElement');
+function newTab(evt, tabId) {
+    // Prevent default action of the event
+    evt.preventDefault();
+
+    // Get all elements with class="tabcontent" and hide them
+    const tabcontent = document.getElementsByClassName("tabcontent");
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    const tablinks = document.getElementsByClassName("tablinks");
+    for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Handling specific tab IDs
+    if (tabId === 'Semester1') {
+        document.getElementById('Sem1').style.display = 'block';
+        document.getElementById('Sem2').style.display = 'none';
+        document.getElementById('FormerCourses').style.display = 'none';
+    } else if (tabId === 'Semester2') {
+        document.getElementById('Sem1').style.display = 'none';
+        document.getElementById('Sem2').style.display = 'block';
+        document.getElementById('FormerCourses').style.display = 'none';
+    } else if (tabId === 'PastYears'){
+        document.getElementById('Sem1').style.display = 'none';
+        document.getElementById('Sem2').style.display = 'none';
+        document.getElementById('FormerCourses').style.display = 'block';
+    }
+
+    evt.currentTarget.className += " active";
+}
 
 
-//     // Ensure the target node exists
-//     if (!targetNode) {
-//         console.error('Target node for course list not found.');
-//         return;
-//     }
 
-//     const config = { childList: true, subtree: false }; // Observe direct children only
+function setupObserver() {
+    const targetNode = document.getElementById('module:_339_1');
 
-//     const callback = function(mutationsList, observer) {
-//         for (let mutation of mutationsList) {
-//             if (mutation.type === 'childList') {
-//                 setupCourseTabs(); // Call your function
-//                 break;
-//             }
-//         }
-//     };
+    if (!targetNode) {
+        console.error('Target node not found.');
+        return;
+    }
 
-//     const observer = new MutationObserver(callback);
-//     observer.observe(targetNode, config);
-// }
+    const config = { childList: true, subtree: true };
+
+    const callback = function(mutationsList, observer) {
+        console.log('Change detected in #module:_339_1');
+        observer.disconnect();
+        setupCourseTabs();
+        
+    };
+
+    const observer = new MutationObserver(callback);
+    observer.observe(targetNode, config);
+}
+
 
 
 
@@ -735,8 +801,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   observeAndStyleTox(document); // Applies iframe styling to tox elements
 
-  // observeCourseListUpdates(); // To fix course unit tabs
-  loadCourseData();
+  //observeCourseListUpdates(); // To fix course unit tabs
+  // Call the function to set up the observer
+  setupObserver();
+
+
 
   // Prevents having to click again on whitelisted pages
   document.querySelectorAll('a').forEach(checkWhitelistLink);
