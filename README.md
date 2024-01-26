@@ -3,7 +3,11 @@
 A cleaner interface for the University of Manchester Blackboard with custom themes and dark mode. This provides a universal design to Blackboard with consistent fonts, colours and styling. It fixes many of the resizing and positioning issues present in Blackboard.
 
 # Setup
-To install this in your browser, click on the relevant link at https://uom-blackboard-restyle.web.app/.
+### Available at:
+- [Chrome Web Store](https://chromewebstore.google.com/detail/uom-blackboard-restyle/bfadimingfhacpedgapjpnhikcbjhbmn)
+- <a href="https://github.com/mattmcnee/uom-restyle-extension/raw/main/uom-restyle-extension.xpi" download="uom-restyle-extension.xpi">Firefox .xpi Download</a>
+- <a href="https://github.com/mattmcnee/uom-restyle-extension/raw/main/uom-restyle-extension.zip" download="uom-restyle-extension.zip">Chrome .zip Download</a>
+
 
 The extension requires the permission to read and change your data at online.manchester.ac.uk. This is how it loads your upcoming deadlines. No personal data is changed or stored.
 
