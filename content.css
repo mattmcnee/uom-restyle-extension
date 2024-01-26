@@ -743,6 +743,10 @@ ol.breadcrumb-mobile-menu-open li{
   ---
 */
 
+.portlet .tab{
+  margin-left: -5px !important;
+}
+
 .portlet a.deadlineLink{
   color: var(--text-light) !important;
 }
