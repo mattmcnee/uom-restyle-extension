@@ -249,7 +249,7 @@ function setupObserver() {
     const targetNode = document.getElementById('module:_339_1');
 
     if (!targetNode) {
-        console.error('Target node not found.');
+        console.log('Target node not found.');
         return;
     }
 
@@ -786,12 +786,12 @@ else if (navigator.userAgent.includes("Firefox")) {
 var iframes;
 var root;
 var fixedID;
-loadDeadlinesIfHomepage();
+// loadDeadlinesIfHomepage();
 document.addEventListener("DOMContentLoaded", function() {
   root = document.documentElement;
   updateTheme(userData, false);
 
-  preloadDeadlinesIfHomepage(); // Pre-enters text for deadlines portlet
+  // preloadDeadlinesIfHomepage(); // Pre-enters text for deadlines portlet
  
   setupIframeInjection(); // sets up handling of iframe styles
 
@@ -803,7 +803,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   //observeCourseListUpdates(); // To fix course unit tabs
   // Call the function to set up the observer
-  setupObserver();
+  // setupObserver();
 
 
 
