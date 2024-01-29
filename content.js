@@ -1,11 +1,8 @@
 function redirectIfManchesterURL(url) {
     const targetURL = 'https://online.manchester.ac.uk/ultra';
     const redirectTo = 'https://online.manchester.ac.uk/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_92_1';
-    console.log("Hello")
-    console.log("URL being checked: ", url);
 
     if (url === targetURL) {
-        console.log("Hello")
         window.location.replace(redirectTo);
     }
 }
@@ -327,12 +324,14 @@ function setupCourseTabs() {
     const currentDate = new Date();
     let activeTabId;
 
-    if (currentDate >= new Date(currentDate.getFullYear(), 1, 28) && // Feb 28
+    if (currentDate >= new Date(currentDate.getFullYear(), 0, 28) && // Feb 28
         currentDate < new Date(currentDate.getFullYear(), 8, 1)) {    // Sep 1
         activeTabId = 'Semester2';
     } else {
         activeTabId = 'Semester1';
     }
+
+    console.log(activeTabId);
 
     // Activate the appropriate tab
     const activeTab = document.getElementById(activeTabId);
