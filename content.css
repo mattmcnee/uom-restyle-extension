@@ -368,12 +368,17 @@ div .gradingPanelCollapse_btn.expanded:hover, div .gradingPanelCollapse_btn.expa
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+.global-nav-bar{
+  width: initial !important;
+}
+
 .tabWrapper-right .appTabs td.active{
   border-bottom: none !important;
+  position: relative !important;
 }
 
 
-.tabWrapper-right{
+.topTabs .tabWrapper-right{
   height: 20px;
   position: absolute;
   top: 1px;
@@ -381,24 +386,43 @@ div .gradingPanelCollapse_btn.expanded:hover, div .gradingPanelCollapse_btn.expa
   background-color: none !important;
 /*  transform: scaleY(0.5);*/
   border: none !important;
+/*  max-height: initial !important;*/
+  background: transparent !important;
 }
 
-.tabWrapper-right a{
+.tabWrapper-right a, .tabWrapper-right a span{
+  display: block !important;
+  z-index: 900 !important;
 /*  transform: scaleY(2.0);*/
 }
 
-.brandingImgWrap{
+.topTabs .brandingImgWrap{
   background: var(--main-theme-styled) !important;
 
 /*  background-color: var(--main-theme) !important;*/
   height: 75px !important;
   display: flex;
   align-items: center;
+  width: 100% !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.topTabs .tabWrapper-right .appTabs {
+    height: 100% !important;
+    max-height: 100% !important;
+    float: right !important;
+    top: 0 !important;
+}
+
+table.bouncer td {
+  width: initial !important;
 }
 
 .brandingImgWrap img{
   z-index: 2 !important;
   cursor: pointer;
+  display: block !important;
 }
 
 .brandingImgWrap::after{
@@ -448,6 +472,10 @@ margin-top: 5px;
   height: 20px !important;
   padding: 20px 0 20px 0 !important;
   vertical-align: top !important;
+}
+
+.topTabs .tabWrapper-right{
+  display: block !important;
 }
 
 
