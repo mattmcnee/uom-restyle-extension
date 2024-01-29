@@ -92,7 +92,7 @@
 
 * :not(.fas){
   outline: none !important;
-  font-family: var(--global-font) !important;
+/*  font-family: var(--global-font) !important;*/
 /*  line-height: 1.2;*/
 }
 
@@ -377,14 +377,14 @@ div .gradingPanelCollapse_btn.expanded:hover, div .gradingPanelCollapse_btn.expa
   height: 20px;
   position: absolute;
   top: 1px;
-  right: 240px;
+  right: 0px;
   background-color: none !important;
-  transform: scaleY(0.5);
+/*  transform: scaleY(0.5);*/
   border: none !important;
 }
 
 .tabWrapper-right a{
-  transform: scaleY(2.0);
+/*  transform: scaleY(2.0);*/
 }
 
 .brandingImgWrap{
@@ -458,8 +458,12 @@ margin-top: 5px;
   transform: translateY(18px);
 }
 
-.appTabs td.active + td{
+.appTabs td:not(.active){
   transform: translateY(-3px);
+}
+
+.appTabs a span {
+  color: #efefef !important;
 }
 /*
 .appTabs td.active a{

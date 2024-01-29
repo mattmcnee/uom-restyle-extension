@@ -1,3 +1,132 @@
+function redirectIfManchesterURL(url) {
+    const targetURL = 'https://online.manchester.ac.uk/ultra';
+    const redirectTo = 'https://online.manchester.ac.uk/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_92_1';
+    console.log("Hello")
+    console.log("URL being checked: ", url);
+
+    if (url === targetURL) {
+        console.log("Hello")
+        window.location.replace(redirectTo);
+    }
+}
+
+function addTopBar() {
+
+  const homepagePath = "https://online.manchester.ac.uk/ultra/";
+
+  if (!window.location.href.startsWith(homepagePath)) {
+
+    // Nav structure
+    var table = document.createElement('table');
+    table.className = 'bouncer';
+    var row = table.insertRow();
+    var cell = row.insertCell();
+
+    var topDiv = document.createElement('div');
+    topDiv.className = 'topTabs bgBanner';
+
+    // Left nav
+    var brandingDiv = document.createElement('div');
+    brandingDiv.className = 'brandingImgWrap';
+
+    var link = document.createElement('a');
+    link.href = "http://www.manchester.ac.uk";
+    link.target = "_blank";
+    link.title = "Blackboard Learn";
+
+    var image = document.createElement('img');
+    image.src = "/branding/_1_1/uom_logo_learn2016theme.png";
+    image.alt = "Blackboard Learn";
+    image.title = "Blackboard Learn";
+    image.className = "bannerImage";
+
+    link.appendChild(image);
+    brandingDiv.appendChild(link);
+    topDiv.appendChild(brandingDiv);
+
+    // Add the tabWrapper-right div
+    var tabWrapperRight = document.createElement('div');
+    tabWrapperRight.className = 'tabWrapper-right';
+
+    var globalNav = document.createElement('div');
+    globalNav.className = 'global-nav-bar';
+    tabWrapperRight.appendChild(globalNav);
+
+    var table2 = document.createElement('table');
+    table2.className = 'appTabs transparent';
+    var row2 = table2.insertRow();
+    var cell1 = row2.insertCell();
+    var cell2 = row2.insertCell();
+    var cell3 = row2.insertCell();
+
+    cell1.id = 'Blackboard';
+    cell1.className = 'active';
+
+    cell2.id = 'My Manchester';
+
+    // Create and append the new anchor element to cell1
+    var newLink = document.createElement('a');
+    newLink.href = "/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_92_1";
+    var span = document.createElement('span');
+    span.textContent = 'Blackboard';
+    newLink.appendChild(span);  
+    cell1.appendChild(newLink);
+
+
+    var newLink2 = document.createElement('a');
+    newLink2.href = "https://online.manchester.ac.uk/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_64_1";
+    var span2 = document.createElement('span');
+    span2.textContent = 'My Manchester';
+    newLink2.appendChild(span2);  
+    cell2.appendChild(newLink2);
+
+    var newLink3 = document.createElement('a');
+    newLink3.href = "https://online.manchester.ac.uk/ultra/institution-page";
+    var span3 = document.createElement('span');
+    span3.textContent = 'New Homepage';
+    newLink3.appendChild(span3);  
+    cell3.appendChild(newLink3);
+
+
+
+    // var newLink3 = document.createElement('a');
+    // newLink3.href = "https://online.manchester.ac.uk/ultra/profile";
+    // var span3 = document.createElement('span');
+    // // var accountImg = document.createElement('img');
+    // // accountImg.src = 'https://learn.content.blackboardcdn.com/3900.82.0-rel.51+579fa4e/images/ci/ng/default_profile_avatar.svg';
+    // // accountImg.className = 'global-top-avatar';
+
+    // // accountImg.style.height = '30px';
+    // // accountImg.style.width = '30px';
+    // // accountImg.style.borderRadius = '15px';
+
+    // span3.textContent = "Account";
+
+    // // newLink3.appendChild(accountImg);
+    // newLink3.appendChild(span3);
+
+    // cell3.appendChild(newLink3);
+
+
+    // Append tabWrapperRight to topDiv
+    topDiv.appendChild(tabWrapperRight);
+
+    // Append topDiv to the cell
+    cell.appendChild(topDiv);
+
+    // Append table2 to globalNav
+    globalNav.appendChild(table2);
+
+    // Insert the table at the top of the body
+    var body = document.body;
+    if (body.firstChild) {
+      body.insertBefore(table, body.firstChild);
+    } else {
+      body.appendChild(table);
+    }
+  }
+}
+
 
 function loadDeadlinesIfHomepage() {
   const homepagePath = "/webapps/portal/execute/tabs/tabAction";
@@ -80,11 +209,20 @@ function loadDeadlinesIfHomepage() {
       }
     };
 
+    xhr.onerror = () => {
+      const fixedID = document.getElementById('$fixedId');
+      if (fixedID) {
+        // Clear existing content
+        while (fixedID.firstChild) {
+          fixedID.removeChild(fixedID.firstChild);
+        }
+        fixedID.appendChild(document.createElement('h3')).textContent = 'Error loading deadlines';
+      }
+    };
+
     xhr.send();
   }
 }
-
-
 
 function preloadDeadlinesIfHomepage(){
   if (window.location.pathname === "/webapps/portal/execute/tabs/tabAction") {
@@ -786,12 +924,13 @@ else if (navigator.userAgent.includes("Firefox")) {
 var iframes;
 var root;
 var fixedID;
-// loadDeadlinesIfHomepage();
+redirectIfManchesterURL(window.location.href);
+loadDeadlinesIfHomepage();
 document.addEventListener("DOMContentLoaded", function() {
   root = document.documentElement;
   updateTheme(userData, false);
 
-  // preloadDeadlinesIfHomepage(); // Pre-enters text for deadlines portlet
+  preloadDeadlinesIfHomepage(); // Pre-enters text for deadlines portlet
  
   setupIframeInjection(); // sets up handling of iframe styles
 
@@ -801,11 +940,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
   observeAndStyleTox(document); // Applies iframe styling to tox elements
 
-  //observeCourseListUpdates(); // To fix course unit tabs
-  // Call the function to set up the observer
-  // setupObserver();
+  setupObserver();
 
-
+  addTopBar();
 
   // Prevents having to click again on whitelisted pages
   document.querySelectorAll('a').forEach(checkWhitelistLink);
