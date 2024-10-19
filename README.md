@@ -1,3 +1,5 @@
+> ⚠️ **Warning**: As of 01/06/2024, this library is no longer maintained and may not work with further updates to the Blackboard system.
+
 # uom-restyle-extension
 
 A cleaner interface for the University of Manchester Blackboard with custom themes and dark mode. This provides a universal design to Blackboard with consistent fonts, colours and styling. It fixes many of the resizing and positioning issues present in Blackboard.
